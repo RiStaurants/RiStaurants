@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="drawer_title_list">
+		<item>restaurants</item>
+		<item>dishes</item>
+		<item>cuisine</item>
+		<item>settings</item>
+	</string-array>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Dividers -->
+	<dimen name="drawer_divider">1dp</dimen>
+
+    <!-- Icons -->
+    <dimen name="drawer_icon_size">45dp</dimen>
+
+    <!-- TextView size -->
+    <dimen name="drawer_text_size">34dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="drawer_padding">8dp</dimen>
+
+</resources>
