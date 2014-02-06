@@ -17,5 +17,6 @@
     <dimen name="drawer_padding">8dp</dimen>
 	<dimen name="list_padding_left">8dp</dimen>
 	<dimen name="list_padding_right">8dp</dimen>
+    <dimen name="row_padding">4dp</dimen>
 
 </resources>

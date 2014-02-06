@@ -22,13 +22,12 @@ public class RestaurantsFrag extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// TODO: Implement this method
+		// inflate layout
 		return inflater.inflate(R.layout.frag_restaurants, null);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		// TODO: Implement this method
 		super.onActivityCreated(savedInstanceState);
 		
 		// instantiate views
