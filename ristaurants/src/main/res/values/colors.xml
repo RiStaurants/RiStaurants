@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<color name="drawer_background">#ff0099cc</color>
+	<color name="background">#ff0099cc</color>
+	<color name="text_overlay">#bb005577</color>
 </resources>
