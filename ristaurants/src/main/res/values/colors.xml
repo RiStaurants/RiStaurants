@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="drawer_background">#004499</color>
+	<color name="drawer_background">#ff0099cc</color>
 </resources>

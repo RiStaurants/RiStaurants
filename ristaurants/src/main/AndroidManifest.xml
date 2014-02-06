@@ -6,7 +6,7 @@
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/ab_title_app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.Theme" >
 
         <activity
             android:label="@string/ab_title_app_name"
