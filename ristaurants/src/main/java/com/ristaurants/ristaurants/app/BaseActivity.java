@@ -2,6 +2,7 @@ package com.ristaurants.ristaurants.app;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.*;
 import android.preference.PreferenceManager;
@@ -123,9 +124,6 @@ public class BaseActivity extends FragmentActivity {
         // update selected item
         mLvDrawer.setItemChecked(position, true);
 
-        // Set action bar title
-        getActionBar().setTitle(mDrawerTitles[position]);
-
         // close navigation menu
         mDrawerLayout.closeDrawer(mLvDrawer);
     }
@@ -148,7 +146,8 @@ public class BaseActivity extends FragmentActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
-        return super.onPrepareOptionsMenu(menu);
+        //return super.onPrepareOptionsMenu(menu);
+        return false;
     }
 
     @Override
