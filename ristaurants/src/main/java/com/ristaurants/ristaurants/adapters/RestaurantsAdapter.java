@@ -77,6 +77,7 @@ public class RestaurantsAdapter extends BaseAdapter
 			
 			// set restaurant image
 			ImageLoader imageLoader = SingletonVolley.getImageLoader();
+			imageLoader.setBatchedResponseDelay(0);
 			imageLoader.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantImage, R.drawable.ic_launcher, R.drawable.ic_launcher));
 			
 		} catch (JSONException e) {

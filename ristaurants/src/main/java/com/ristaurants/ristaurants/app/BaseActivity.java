@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
+import android.view.*;
 
 public class BaseActivity extends FragmentActivity {
 	// instance variables
@@ -110,9 +111,14 @@ public class BaseActivity extends FragmentActivity {
         // navigation menu item click
         switch (position) {
             case 0:
-                // start FavoritesFrag Fragment
+                // start Restaurants Fragment
                 mFrag = new RestaurantsFrag();
                 break;
+				
+			case 1:
+				// start dishes Fragment
+				mFrag = new DishesFrag();
+				break;
         }
 
         // switch fragment with animation
@@ -125,7 +131,7 @@ public class BaseActivity extends FragmentActivity {
         mLvDrawer.setItemChecked(position, true);
 
         // close navigation menu
-        mDrawerLayout.closeDrawer(mLvDrawer);
+		closeLeftDrawer();
     }
 
     @Override
@@ -178,21 +184,21 @@ public class BaseActivity extends FragmentActivity {
      * @return Returns true if the navigation drawer is open, otherwise returns faults.
      */
     public boolean isLeftDrawerOpen() {
-        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mLvDrawer);
+        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(Gravity.START);
     }
 
     /**
      * Open the navigation drawer.
      */
     public void openLeftDrawer() {
-        mDrawerLayout.openDrawer(mLvDrawer);
+        mDrawerLayout.openDrawer(Gravity.START);
     }
 
     /**
      * Close the navigation drawer.
      */
     public void closeLeftDrawer() {
-        mDrawerLayout.closeDrawer(mLvDrawer);
+        mDrawerLayout.closeDrawer(Gravity.START);
     }
 
     /**

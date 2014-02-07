@@ -17,7 +17,6 @@
 			android:id="@+id/iv_restaurant_image"
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/restaurants_height"
-			android:gravity="center"
 			android:scaleType="centerCrop"
 			android:scaleGravity="top"/>
 
