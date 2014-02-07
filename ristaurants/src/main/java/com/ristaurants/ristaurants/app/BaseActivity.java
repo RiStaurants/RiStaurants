@@ -119,6 +119,16 @@ public class BaseActivity extends FragmentActivity {
 				// start dishes Fragment
 				mFrag = new DishesFrag();
 				break;
+				
+			case 2:
+                // start Cuisine Fragment
+                mFrag = new CuisineFrag();
+                break;
+
+			case 3:
+				// start Settings Fragment
+				mFrag = new SettingsFrag();
+				break;
         }
 
         // switch fragment with animation
