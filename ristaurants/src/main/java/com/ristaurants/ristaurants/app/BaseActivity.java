@@ -65,7 +65,7 @@ public class BaseActivity extends FragmentActivity {
 
         // set navigation menu adapter
         mLvDrawer.setAdapter(new NaviDrawerLeftAdapter(this, mDrawerIcons, mDrawerTitles));
-        mDrawerLayout.openDrawer(mLvDrawer);
+        //mDrawerLayout.openDrawer(mLvDrawer);
         mLvDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

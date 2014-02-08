@@ -15,6 +15,10 @@ import com.ristaurants.ristaurants.misc.SingletonVolley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.widget.*;
+import android.widget.RatingBar.*;
+import android.content.*;
+import android.net.*;
 
 public class RestaurantsAdapter extends BaseAdapter {
     // instance variables
@@ -68,9 +72,10 @@ public class RestaurantsAdapter extends BaseAdapter {
             // instantiate views
             mViewHolder = new ViewHolder();
             assert view != null;
-            mViewHolder.mIvRestaurantImageLeft = (ImageView) view.findViewById(R.id.iv_restaurant_image);
-            mViewHolder.mTvRestaurantNameLeft = (TextView) view.findViewById(R.id.tv_restaurant_name);
-            mViewHolder.mTvRestaurantRateLeft = (TextView) view.findViewById(R.id.tv_restaurant_rate);
+            mViewHolder.mIvRestaurantImage = (ImageView) view.findViewById(R.id.iv_restaurant_image);
+            mViewHolder.mIvRestaurantRate = (ImageView) view.findViewById(R.id.iv_restaurant_rate);
+			mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
+			mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
 
             // save view holder in tag
             view.setTag(mViewHolder);
@@ -82,14 +87,29 @@ public class RestaurantsAdapter extends BaseAdapter {
         // set data
         try {
             // set restaurant name
-            mViewHolder.mTvRestaurantNameLeft.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("name"));
-            mViewHolder.mTvRestaurantRateLeft.setText("rate: *****");
+            mViewHolder.mTvRestaurantName.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("name"));
+			mViewHolder.mTvRestaurantPhone.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("phone"));
+			mViewHolder.mTvRestaurantPhone.setOnClickListener(new OnClickListener(){
 
+					@Override
+					public void onClick(View view) {
+						// open phone dialer with phone number
+						Intent intent = new Intent(Intent.ACTION_DIAL, null);
+						intent.setData(Uri.parse("tel:" + ((TextView)view).getText().toString()));
+						mContext.startActivity(intent);
+					}
+				});
+			
             // set restaurant image
-            ImageLoader imageLoader = SingletonVolley.getImageLoader();
-            imageLoader.setBatchedResponseDelay(0);
-            imageLoader.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantImageLeft, R.drawable.ic_launcher, R.drawable.ic_launcher));
+            ImageLoader restaurantImage = SingletonVolley.getImageLoader();
+            restaurantImage.setBatchedResponseDelay(0);
+            restaurantImage.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantImage, R.drawable.ic_launcher, R.drawable.ic_launcher));
 
+			// set restaurant rate image
+            ImageLoader restaurantRate = SingletonVolley.getImageLoader();
+            restaurantRate.setBatchedResponseDelay(0);
+            restaurantRate.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("rate"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantRate, R.drawable.ic_launcher, R.drawable.ic_launcher));
+			
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -101,8 +121,9 @@ public class RestaurantsAdapter extends BaseAdapter {
 
     class ViewHolder {
         // instantiate views
-        ImageView mIvRestaurantImageLeft;
-        TextView mTvRestaurantNameLeft;
-        TextView mTvRestaurantRateLeft;
+        ImageView mIvRestaurantImage;
+        ImageView mIvRestaurantRate;
+		TextView mTvRestaurantName;
+		TextView mTvRestaurantPhone;
     }
 }

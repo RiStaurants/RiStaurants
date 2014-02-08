@@ -2,5 +2,6 @@
 <resources>
 	<color name="drawer_background">#ff0099cc</color>
 	<color name="background">#ff0099cc</color>
+	<color name="selected_item_bg">#D72014</color>
 	<color name="text_overlay">#bb005577</color>
 </resources>

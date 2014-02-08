@@ -8,15 +8,19 @@
 
 	<!-- Images -->
     <dimen name="restaurants_height">150dp</dimen>
+	<dimen name="rate_width">100dp</dimen>
+	<dimen name="rate_height">20dp</dimen>
 	
     <!-- TextView size -->
     <dimen name="drawer_text_size">35sp</dimen>
 	<dimen name="restaurants_name_size">25sp</dimen>
+	<dimen name="restaurants_subname_size">18sp</dimen>
 
     <!-- Padding -->
     <dimen name="drawer_padding">8dp</dimen>
 	<dimen name="list_padding_left">8dp</dimen>
 	<dimen name="list_padding_right">8dp</dimen>
     <dimen name="row_padding">4dp</dimen>
+	<dimen name="view_divider_padding">8dp</dimen>
 
 </resources>
