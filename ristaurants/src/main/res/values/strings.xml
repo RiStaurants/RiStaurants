@@ -3,6 +3,7 @@
 
     <!-- Action Bar Titles -->
     <string name="ab_title_app_name">RiStaurants</string>
+    <string name="ab_title_restaurants">RESTAURANTS</string>
 
     <!-- Content Desc -->
     <string name="content_drawer_left_icon">Navigation Icon</string>

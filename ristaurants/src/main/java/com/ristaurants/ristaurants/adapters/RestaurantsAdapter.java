@@ -89,7 +89,7 @@ public class RestaurantsAdapter extends BaseAdapter {
             // set restaurant name
             mViewHolder.mTvRestaurantName.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("name"));
 			mViewHolder.mTvRestaurantPhone.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("phone"));
-			mViewHolder.mTvRestaurantPhone.setOnClickListener(new OnClickListener(){
+			mViewHolder.mTvRestaurantPhone.setOnClickListener(new View.OnClickListener(){
 
 					@Override
 					public void onClick(View view) {

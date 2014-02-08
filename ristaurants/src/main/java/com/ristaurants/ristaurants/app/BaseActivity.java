@@ -2,18 +2,21 @@ package com.ristaurants.ristaurants.app;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.*;
 import android.preference.PreferenceManager;
 import android.support.v4.app.*;
 import android.support.v4.widget.*;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
+import com.ristaurants.ristaurants.views.TypefaceSpan;
+
 import android.view.*;
 
 public class BaseActivity extends FragmentActivity {
@@ -33,8 +36,13 @@ public class BaseActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_base);
+
+        // create custom font for action bar
+        SpannableString customActionBarFont = new SpannableString(getResources().getString(R.string.ab_title_restaurants));
+        customActionBarFont.setSpan(new TypefaceSpan(this, "Bender-Solid.otf"), 0, customActionBarFont.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		
 		// set-up action bar
+        getActionBar().setTitle(customActionBarFont);
 		getActionBar().setHomeButtonEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
