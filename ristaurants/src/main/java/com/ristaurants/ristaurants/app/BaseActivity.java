@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
-import com.ristaurants.ristaurants.views.TypefaceSpan;
+import com.ristaurants.ristaurants.views.ActionBarFont;
 
 import android.view.*;
 
@@ -39,7 +39,7 @@ public class BaseActivity extends FragmentActivity {
 
         // create custom font for action bar
         SpannableString customActionBarFont = new SpannableString(getResources().getString(R.string.ab_title_restaurants));
-        customActionBarFont.setSpan(new TypefaceSpan(this, "Bender-Solid.otf"), 0, customActionBarFont.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        customActionBarFont.setSpan(new ActionBarFont(this, "Bender-Solid.otf"), 0, customActionBarFont.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		
 		// set-up action bar
         getActionBar().setTitle(customActionBarFont);

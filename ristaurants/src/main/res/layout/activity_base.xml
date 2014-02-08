@@ -3,16 +3,16 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/dl_drawer"
 	android:layout_height="match_parent"
-	android:layout_width="match_parent">
+	android:layout_width="match_parent"
+	android:background="@color/background">
 
 	<!-- Fragment Holder -->
 	<FrameLayout
 		android:id="@+id/fl_drawer"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:background="@android:color/white" />
+		android:layout_height="match_parent"/>
 	
-	<!-- Navigation Drawer -->
+	<!-- Navigation Drawer Left -->
 	<ListView
 		android:id="@+id/lv_drawer_left"
 		android:layout_width="match_parent"

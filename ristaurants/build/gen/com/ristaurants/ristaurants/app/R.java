@@ -117,11 +117,12 @@ public final class R {
         /**  Action Bar Titles 
          */
         public static final int ab_title_app_name=0x7f070000;
+        public static final int ab_title_restaurants=0x7f070001;
         /**  Content Desc 
          */
-        public static final int content_drawer_left_icon=0x7f070001;
-        public static final int drawer_close=0x7f070003;
-        public static final int drawer_open=0x7f070002;
+        public static final int content_drawer_left_icon=0x7f070002;
+        public static final int drawer_close=0x7f070004;
+        public static final int drawer_open=0x7f070003;
     }
     public static final class style {
         public static final int ActionBar_Solid_Theme=0x7f080001;
