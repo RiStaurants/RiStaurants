@@ -1,5 +1,6 @@
 package com.ristaurants.ristaurants.app;
 
+import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.os.*;
@@ -38,11 +39,13 @@ public class RestaurantsFrag extends Fragment {
 		
 		// json to request
 		JsonObjectRequest request = new JsonObjectRequest(BASE_URL, null, new Response.Listener<JSONObject>(){
-
 				@Override
 				public void onResponse(JSONObject jsonObject) {
+                    // check if devices is in landscape
+                    boolean isInLandscape = getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+
 					// instantiate ListView adapter
-					mAdapter = new RestaurantsAdapter(getActivity(), jsonObject);
+					mAdapter = new RestaurantsAdapter(getActivity(), isInLandscape, jsonObject);
 
 					// set adapter to ListView
 					mLvContent.setAdapter(mAdapter);

@@ -7,21 +7,23 @@
     android:paddingBottom="@dimen/row_padding">
 
 	<RelativeLayout
+        android:id="@+id/rl_left"
 		android:layout_height="match_parent"
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
+        android:weightSum="1"
         android:orientation="vertical"
         android:background="@drawable/row_restaurants_item_bg" >
 
 		<ImageView
 			android:id="@+id/iv_restaurant_image"
-			android:layout_width="match_parent"
+			android:layout_width="@dimen/restaurants_height"
 			android:layout_height="@dimen/restaurants_height"
 			android:scaleType="centerCrop"
 			android:scaleGravity="top"/>
 
 		<com.ristaurants.ristaurants.views.RobotoThinTextView
 			android:id="@+id/tv_restaurant_name"
-			android:layout_below="@+id/iv_restaurant_image"
+			android:layout_toRightOf="@+id/iv_restaurant_image"
 			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
 			android:textSize="@dimen/restaurants_name_size"
@@ -29,6 +31,7 @@
 
 		<com.ristaurants.ristaurants.views.RobotoThinTextView
 			android:id="@+id/tv_restaurant_rate"
+            android:layout_toRightOf="@+id/iv_restaurant_image"
 			android:layout_below="@+id/tv_restaurant_name"
 			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
