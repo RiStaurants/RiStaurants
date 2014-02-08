@@ -11,7 +11,7 @@
 		android:layout_width="match_parent"
         android:orientation="vertical"
         android:background="@drawable/row_restaurants_item_bg" >
-		
+
 		<ImageView
 			android:id="@+id/iv_restaurant_image"
 			android:layout_width="match_parent"
@@ -26,7 +26,7 @@
 			android:layout_width="match_parent"
 			android:textSize="@dimen/restaurants_name_size"
 			android:textColor="@android:color/black"/>
-		
+
 		<com.ristaurants.ristaurants.views.RobotoThinTextView
 			android:id="@+id/tv_restaurant_rate"
 			android:layout_below="@+id/tv_restaurant_name"

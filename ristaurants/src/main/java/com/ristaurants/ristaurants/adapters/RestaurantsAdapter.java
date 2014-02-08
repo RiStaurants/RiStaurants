@@ -62,6 +62,7 @@ public class RestaurantsAdapter extends BaseAdapter
             assert view != null;
             mViewHolder.mIvRestaurantImage = (ImageView) view.findViewById(R.id.iv_restaurant_image);
             mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
+			mViewHolder.mTvRestaurantRate = (TextView) view.findViewById(R.id.tv_restaurant_rate);
 
             // save view holder in tag
             view.setTag(mViewHolder);
@@ -74,6 +75,7 @@ public class RestaurantsAdapter extends BaseAdapter
         try {
 			// set restaurant name
 			mViewHolder.mTvRestaurantName.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("name"));
+			mViewHolder.mTvRestaurantRate.setText("rate: *****");
 			
 			// set restaurant image
 			ImageLoader imageLoader = SingletonVolley.getImageLoader();
@@ -93,5 +95,6 @@ public class RestaurantsAdapter extends BaseAdapter
         // instantiate views
         ImageView mIvRestaurantImage;
         TextView mTvRestaurantName;
+		TextView mTvRestaurantRate;
     }
 }
