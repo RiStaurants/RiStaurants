@@ -62,20 +62,24 @@ public class RestaurantsFrag extends Fragment {
 		
 		// add request to queue
 		queue.add(request);
+
+        Toast.makeText(getActivity(), getGpsCoordinates(), Toast.LENGTH_LONG).show();
 	}
 	
-	private long[] getGpsCoordinates(){
+	private String getGpsCoordinates(){
 		// variables
 		LocationManager locMang;
-		long[] coordinates = new long[2];
+		final double[] coordinates = new double[2];
 		
 		//
 		locMang = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 		locMang.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 10, new LocationListener(){
 
 				@Override
-				public void onLocationChanged(Location p1) {
-					// TODO: Implement this method
+				public void onLocationChanged(Location location) {
+					// get location
+                    coordinates[0] = location.getLatitude();
+                    coordinates[1] = location.getLongitude();
 				}
 
 				@Override
@@ -84,19 +88,19 @@ public class RestaurantsFrag extends Fragment {
 				}
 
 				@Override
-				public void onProviderEnabled(String p1) {
+				public void onProviderEnabled(String provider) {
 					// TODO: Implement this method
 				}
 
 				@Override
-				public void onProviderDisabled(String p1) {
+				public void onProviderDisabled(String provider) {
 					// TODO: Implement this method
 				}
 			});
 		
 		
 		// return
-		return coordinates;
+		return String.format("&location=%d,%d", coordinates[0], coordinates[1]);
 	}
 	
 }
