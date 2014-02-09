@@ -10,6 +10,8 @@ import com.android.volley.toolbox.*;
 import com.ristaurants.ristaurants.misc.*;
 import org.json.*;
 import com.ristaurants.ristaurants.adapters.*;
+import android.location.*;
+import android.content.*;
 
 /**
  * Restaurants Fragment
@@ -22,8 +24,6 @@ public class RestaurantsFrag extends Fragment {
 	//private final String BASE_URL = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/restaurants-view.json";
     private final String BASE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+restaurants+in+providence+rhode+island&sensor=false&types=restaurant&location=41.8238889,-71.4133333&radius=500" + API_KEY;
 
-
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// inflate layout
@@ -62,6 +62,41 @@ public class RestaurantsFrag extends Fragment {
 		
 		// add request to queue
 		queue.add(request);
+	}
+	
+	private long[] getGpsCoordinates(){
+		// variables
+		LocationManager locMang;
+		long[] coordinates = new long[2];
+		
+		//
+		locMang = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+		locMang.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 10, new LocationListener(){
+
+				@Override
+				public void onLocationChanged(Location p1) {
+					// TODO: Implement this method
+				}
+
+				@Override
+				public void onStatusChanged(String p1, int p2, Bundle p3) {
+					// TODO: Implement this method
+				}
+
+				@Override
+				public void onProviderEnabled(String p1) {
+					// TODO: Implement this method
+				}
+
+				@Override
+				public void onProviderDisabled(String p1) {
+					// TODO: Implement this method
+				}
+			});
+		
+		
+		// return
+		return coordinates;
 	}
 	
 }
