@@ -1,11 +1,10 @@
 package com.ristaurants.ristaurants.app;
 
-import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.os.*;
 import android.widget.*;
-import android.widget.AdapterView.*;
+
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
 import com.ristaurants.ristaurants.misc.*;
@@ -17,11 +16,11 @@ import com.ristaurants.ristaurants.adapters.*;
  */
 public class RestaurantsFrag extends Fragment {
 	// instance variables
-    private static final String mApiKey = "&key=AIzaSyB48wXIVLTIamI2z1eixGyXkEzp9SVeizA";
+    private static final String API_KEY = "&key=AIzaSyB48wXIVLTIamI2z1eixGyXkEzp9SVeizA";
 	private ListView mLvContent;
 	private RestaurantsAdapter mAdapter;
 	//private final String BASE_URL = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/restaurants-view.json";
-    private final String BASE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+restaurants+in+providence+rhode+island&sensor=false&types=restaurant&location=41.8238889,-71.4133333&radius=500" + mApiKey;
+    private final String BASE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+restaurants+in+providence+rhode+island&sensor=false&types=restaurant&location=41.8238889,-71.4133333&radius=500" + API_KEY;
 
 
 	
@@ -46,7 +45,7 @@ public class RestaurantsFrag extends Fragment {
 				@Override
 				public void onResponse(JSONObject jsonObject) {
 					// instantiate ListView adapter
-					mAdapter = new RestaurantsAdapter(getActivity(), jsonObject, mApiKey);
+					mAdapter = new RestaurantsAdapter(getActivity(), jsonObject, API_KEY);
 
 					// set adapter to ListView
 					mLvContent.setAdapter(mAdapter);

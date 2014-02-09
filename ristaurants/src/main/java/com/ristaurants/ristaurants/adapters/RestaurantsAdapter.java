@@ -15,19 +15,13 @@ import com.ristaurants.ristaurants.misc.SingletonVolley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.widget.*;
-import android.widget.RatingBar.*;
+
 import android.content.*;
 import android.net.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class RestaurantsAdapter extends BaseAdapter {
     // instance variables
-    private final String mApiKey;
+    private final String API_KEY;
     private final String PHOTO_REFS_API = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&sensor=true&photoreference=";
     private final String DETAILS_REFS_API = "https://maps.googleapis.com/maps/api/place/details/json?sensor=true&reference=";
     private Context mContext;
@@ -35,7 +29,7 @@ public class RestaurantsAdapter extends BaseAdapter {
 
     public RestaurantsAdapter(Context context, JSONObject data, String apiKey) {
         // extract parameters
-        this.mApiKey = apiKey;
+        this.API_KEY = apiKey;
         this.mContext = context;
         this.mData = data;
     }
@@ -114,7 +108,7 @@ public class RestaurantsAdapter extends BaseAdapter {
             String photoRefs = mData.getJSONArray("results").getJSONObject(position).getJSONArray("photos").getJSONObject(0).getString("photo_reference");
             ImageLoader restaurantImage = SingletonVolley.getImageLoader();
             restaurantImage.setBatchedResponseDelay(0);
-            restaurantImage.get( (PHOTO_REFS_API + photoRefs + mApiKey) , ImageLoader.getImageListener(mViewHolder.mIvRestaurantImage, R.drawable.ic_launcher, R.drawable.ic_launcher));
+            restaurantImage.get( (PHOTO_REFS_API + photoRefs + API_KEY) , ImageLoader.getImageListener(mViewHolder.mIvRestaurantImage, R.drawable.ic_launcher, R.drawable.ic_launcher));
 
 			// set restaurant rate image
             ImageLoader restaurantRate = SingletonVolley.getImageLoader();
