@@ -1,5 +1,6 @@
 package com.ristaurants.ristaurants.adapters;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ public class RestaurantsAdapter extends BaseAdapter {
     // instance variables
     private Context mContext;
     private JSONObject mData;
+    private int mLastAnimPosition = -1;
 
     public RestaurantsAdapter(Context context, JSONObject data) {
         // extract parameters
@@ -122,6 +124,12 @@ public class RestaurantsAdapter extends BaseAdapter {
             ImageLoader restaurantRate = SingletonVolley.getImageLoader();
             restaurantRate.setBatchedResponseDelay(0);
             restaurantRate.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("rate"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantRate, R.drawable.ic_launcher, R.drawable.ic_launcher));
+
+            // set animation
+            if (mLastAnimPosition < position) {
+                ObjectAnimator.ofFloat(view, "translationY", 200, 0).setDuration(500).start();
+                mLastAnimPosition = position;
+            }
 			
         } catch (JSONException e) {
             e.printStackTrace();
