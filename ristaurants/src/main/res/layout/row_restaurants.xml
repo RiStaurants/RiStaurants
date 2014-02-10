@@ -48,6 +48,7 @@
 			android:layout_below="@+id/lv_name_plus_rate"
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/drawer_divider"
+			android:layout_margin="@dimen/view_divider_padding"
 			android:background="@android:color/darker_gray"/>
 
 		<com.ristaurants.ristaurants.views.RobotoThinTextView

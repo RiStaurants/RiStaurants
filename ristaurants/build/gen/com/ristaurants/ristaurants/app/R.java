@@ -88,7 +88,7 @@ public final class R {
         public static final int tab_unselected_theme=0x7f020028;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000e;
+        public static final int action_settings=0x7f0a000f;
         public static final int dl_drawer=0x7f0a0000;
         public static final int fl_drawer=0x7f0a0001;
         public static final int iv_drawer_left_icon=0x7f0a0004;
@@ -97,8 +97,9 @@ public final class R {
         public static final int lv_content=0x7f0a0003;
         public static final int lv_drawer_left=0x7f0a0002;
         public static final int lv_name_plus_rate=0x7f0a0007;
-        public static final int rl_left=0x7f0a000d;
+        public static final int rl_left=0x7f0a000e;
         public static final int tv_drawer_left=0x7f0a0005;
+        public static final int tv_restaurant_address=0x7f0a000d;
         public static final int tv_restaurant_name=0x7f0a0008;
         public static final int tv_restaurant_phone=0x7f0a000c;
         public static final int tv_restaurant_phone_text=0x7f0a000b;

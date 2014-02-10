@@ -73,7 +73,7 @@
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
 			android:textSize="@dimen/restaurants_subname_size"
-			android:textColor="@android:color/black"/>
+			android:textColor="@color/background"/>
 
         <com.ristaurants.ristaurants.views.RobotoThinTextView
             android:id="@+id/tv_restaurant_address"
@@ -81,6 +81,7 @@
             android:layout_toRightOf="@+id/iv_restaurant_image"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+			android:paddingLeft="@dimen/list_padding_left"
             android:textSize="@dimen/restaurants_subname_size"
             android:textColor="@android:color/black"/>
 
