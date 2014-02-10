@@ -127,7 +127,7 @@ public class RestaurantsAdapter extends BaseAdapter {
 
             // set animation
             if (mLastAnimPosition < position) {
-                ObjectAnimator.ofFloat(view, "translationY", 200, 0).setDuration(500).start();
+                //ObjectAnimator.ofFloat(view, "translationY", 200, 0).setDuration(500).start();
                 mLastAnimPosition = position;
             }
 			
