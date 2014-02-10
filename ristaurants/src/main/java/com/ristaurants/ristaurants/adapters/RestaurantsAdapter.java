@@ -113,7 +113,7 @@ public class RestaurantsAdapter extends BaseAdapter {
 			// set restaurant rate image
             ImageLoader restaurantRate = SingletonVolley.getImageLoader();
             restaurantRate.setBatchedResponseDelay(0);
-            //restaurantRate.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("rate"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantRate, R.drawable.ic_launcher, R.drawable.ic_launcher));
+            restaurantRate.get("http://tingyang.me/Content/image/review/five_star.png", ImageLoader.getImageListener(mViewHolder.mIvRestaurantRate, R.drawable.ic_launcher, R.drawable.ic_launcher));
 			
         } catch (JSONException e) {
             e.printStackTrace();

@@ -36,7 +36,7 @@ public class RestaurantsFrag extends Fragment {
 		
 		// instantiate views
 		mLvContent = (ListView) getActivity().findViewById(R.id.lv_content);
-		
+
 		// request a volley queue
 		RequestQueue queue = SingletonVolley.getRequestQueue();
 		
@@ -62,45 +62,5 @@ public class RestaurantsFrag extends Fragment {
 		
 		// add request to queue
 		queue.add(request);
-
-        Toast.makeText(getActivity(), getGpsCoordinates(), Toast.LENGTH_LONG).show();
 	}
-	
-	private String getGpsCoordinates(){
-		// variables
-		LocationManager locMang;
-		final double[] coordinates = new double[2];
-		
-		//
-		locMang = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-		locMang.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 10, new LocationListener(){
-
-				@Override
-				public void onLocationChanged(Location location) {
-					// get location
-                    coordinates[0] = location.getLatitude();
-                    coordinates[1] = location.getLongitude();
-				}
-
-				@Override
-				public void onStatusChanged(String p1, int p2, Bundle p3) {
-					// TODO: Implement this method
-				}
-
-				@Override
-				public void onProviderEnabled(String provider) {
-					// TODO: Implement this method
-				}
-
-				@Override
-				public void onProviderDisabled(String provider) {
-					// TODO: Implement this method
-				}
-			});
-		
-		
-		// return
-		return String.format("&location=%d,%d", coordinates[0], coordinates[1]);
-	}
-	
 }
