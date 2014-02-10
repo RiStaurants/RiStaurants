@@ -64,9 +64,17 @@
 			android:layout_toRightOf="@+id/tv_restaurant_phone_text"
 			android:layout_below="@+id/v_divider"
 			android:layout_height="wrap_content"
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:textSize="@dimen/restaurants_subname_size"
-			android:textColor="@android:color/black"/>
+			android:textColor="@color/background"/>
+
+        <com.ristaurants.ristaurants.views.RobotoThinTextView
+            android:id="@+id/tv_restaurant_address"
+            android:layout_below="@+id/tv_restaurant_phone"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/restaurants_subname_size"
+            android:textColor="@android:color/black"/>
 
 	</RelativeLayout>
 

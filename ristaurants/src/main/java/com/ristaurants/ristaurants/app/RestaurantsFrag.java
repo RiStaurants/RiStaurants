@@ -21,8 +21,10 @@ public class RestaurantsFrag extends Fragment {
     private static final String API_KEY = "&key=AIzaSyB48wXIVLTIamI2z1eixGyXkEzp9SVeizA";
 	private ListView mLvContent;
 	private RestaurantsAdapter mAdapter;
-	//private final String BASE_URL = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/restaurants-view.json";
-    private final String BASE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=best+restaurants+in+providence+rhode+island&sensor=false&types=restaurant&location=41.8238889,-71.4133333&radius=500" + API_KEY;
+	private final String BASE_URL = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/restaurants-view.json";
+
+
+    //"address" : “320 broad street providence, ri 02907”
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class RestaurantsFrag extends Fragment {
 				@Override
 				public void onResponse(JSONObject jsonObject) {
 					// instantiate ListView adapter
-					mAdapter = new RestaurantsAdapter(getActivity(), jsonObject, API_KEY);
+					mAdapter = new RestaurantsAdapter(getActivity(), jsonObject);
 
 					// set adapter to ListView
 					mLvContent.setAdapter(mAdapter);
@@ -55,7 +57,7 @@ public class RestaurantsFrag extends Fragment {
 				@Override
 				public void onErrorResponse(VolleyError error) {
 					// log errors
-					VolleyLog.e("Volley Error @RestaurantsFrag: ", error.getMessage());
+					VolleyLog.e("Volley Error @RestaurantsFrag: " + error.getMessage(), error.getMessage());
 				}
 			}
 		);

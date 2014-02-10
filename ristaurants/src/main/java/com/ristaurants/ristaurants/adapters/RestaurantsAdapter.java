@@ -1,6 +1,7 @@
 package com.ristaurants.ristaurants.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,15 +22,11 @@ import android.net.*;
 
 public class RestaurantsAdapter extends BaseAdapter {
     // instance variables
-    private final String API_KEY;
-    private final String PHOTO_REFS_API = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&sensor=true&photoreference=";
-    private final String DETAILS_REFS_API = "https://maps.googleapis.com/maps/api/place/details/json?sensor=true&reference=";
     private Context mContext;
     private JSONObject mData;
 
-    public RestaurantsAdapter(Context context, JSONObject data, String apiKey) {
+    public RestaurantsAdapter(Context context, JSONObject data) {
         // extract parameters
-        this.API_KEY = apiKey;
         this.mContext = context;
         this.mData = data;
     }
@@ -37,7 +34,7 @@ public class RestaurantsAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         try {
-            return this.mData.getJSONArray("results").length();
+            return this.mData.getJSONArray("restaurants").length();
         } catch (JSONException e) {
             e.printStackTrace();
             return 0;
@@ -47,7 +44,7 @@ public class RestaurantsAdapter extends BaseAdapter {
     @Override
     public Object getItem(int position) {
         try {
-            return this.mData.getJSONArray("results").getJSONObject(position);
+            return this.mData.getJSONArray("restaurants").getJSONObject(position);
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -77,6 +74,7 @@ public class RestaurantsAdapter extends BaseAdapter {
             mViewHolder.mIvRestaurantRate = (ImageView) view.findViewById(R.id.iv_restaurant_rate);
 			mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
 			mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
+            mViewHolder.mTvRestaurantAddress = (TextView) view.findViewById(R.id.tv_restaurant_address);
 
             // save view holder in tag
             view.setTag(mViewHolder);
@@ -88,11 +86,10 @@ public class RestaurantsAdapter extends BaseAdapter {
         // set data
         try {
             // set restaurant name
-            mViewHolder.mTvRestaurantName.setText(mData.getJSONArray("results").getJSONObject(position).getString("name").toLowerCase());
+            mViewHolder.mTvRestaurantName.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("name").toLowerCase());
 
             // set restaurant phone
-            String detailRefs = mData.getJSONArray("results").getJSONObject(position).getString("reference");
-			//mViewHolder.mTvRestaurantPhone.setText(detailRefs);
+			mViewHolder.mTvRestaurantPhone.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("phone"));
 			mViewHolder.mTvRestaurantPhone.setOnClickListener(new View.OnClickListener(){
 
 					@Override
@@ -103,17 +100,28 @@ public class RestaurantsAdapter extends BaseAdapter {
 						mContext.startActivity(intent);
 					}
 				});
+
+            // set restaurant address
+            mViewHolder.mTvRestaurantAddress.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("address").toLowerCase());
+            mViewHolder.mTvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // open phone dialer with phone number
+                    Intent intent = new Intent(Intent.ACTION_VIEW, null);
+                    intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + ((TextView)view).getText().toString()));
+                    mContext.startActivity(intent);
+                }
+            });
 			
             // set restaurant image
-            String photoRefs = mData.getJSONArray("results").getJSONObject(position).getJSONArray("photos").getJSONObject(0).getString("photo_reference");
             ImageLoader restaurantImage = SingletonVolley.getImageLoader();
             restaurantImage.setBatchedResponseDelay(0);
-            restaurantImage.get( (PHOTO_REFS_API + photoRefs + API_KEY) , ImageLoader.getImageListener(mViewHolder.mIvRestaurantImage, R.drawable.ic_launcher, R.drawable.ic_launcher));
+            restaurantImage.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantImage, R.drawable.ic_launcher, R.drawable.ic_launcher));
 
 			// set restaurant rate image
             ImageLoader restaurantRate = SingletonVolley.getImageLoader();
             restaurantRate.setBatchedResponseDelay(0);
-            restaurantRate.get("http://tingyang.me/Content/image/review/five_star.png", ImageLoader.getImageListener(mViewHolder.mIvRestaurantRate, R.drawable.ic_launcher, R.drawable.ic_launcher));
+            restaurantRate.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("rate"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantRate, R.drawable.ic_launcher, R.drawable.ic_launcher));
 			
         } catch (JSONException e) {
             e.printStackTrace();
@@ -129,5 +137,6 @@ public class RestaurantsAdapter extends BaseAdapter {
         ImageView mIvRestaurantRate;
 		TextView mTvRestaurantName;
 		TextView mTvRestaurantPhone;
+        TextView mTvRestaurantAddress;
     }
 }
