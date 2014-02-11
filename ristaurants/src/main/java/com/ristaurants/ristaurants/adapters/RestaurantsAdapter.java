@@ -93,7 +93,6 @@ public class RestaurantsAdapter extends BaseAdapter {
             // set restaurant phone
 			mViewHolder.mTvRestaurantPhone.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("phone"));
 			mViewHolder.mTvRestaurantPhone.setOnClickListener(new View.OnClickListener(){
-
 					@Override
 					public void onClick(View view) {
 						// open phone dialer with phone number
@@ -106,15 +105,15 @@ public class RestaurantsAdapter extends BaseAdapter {
             // set restaurant address
             mViewHolder.mTvRestaurantAddress.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("address").toLowerCase());
             mViewHolder.mTvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // open phone dialer with phone number
-                    Intent intent = new Intent(Intent.ACTION_VIEW, null);
-                    intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + ((TextView)view).getText().toString()));
-                    mContext.startActivity(intent);
-                }
-            });
-			
+					@Override
+					public void onClick(View view) {
+						// open phone dialer with phone number
+						Intent intent = new Intent(Intent.ACTION_VIEW, null);
+						intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + ((TextView)view).getText().toString()));
+						mContext.startActivity(intent);
+					}
+				});
+
             // set restaurant image
             ImageLoader restaurantImage = SingletonVolley.getImageLoader();
             restaurantImage.setBatchedResponseDelay(0);
@@ -130,7 +129,7 @@ public class RestaurantsAdapter extends BaseAdapter {
                 //ObjectAnimator.ofFloat(view, "translationY", 200, 0).setDuration(500).start();
                 mLastAnimPosition = position;
             }
-			
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

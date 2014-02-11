@@ -3,8 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/dl_drawer"
 	android:layout_height="match_parent"
-	android:layout_width="match_parent"
-	android:background="@color/background">
+	android:layout_width="match_parent">
 
 	<!-- Fragment Holder -->
 	<FrameLayout
@@ -22,8 +21,7 @@
 		android:divider="@android:color/white"
 		android:dividerHeight="@dimen/drawer_divider"
 		android:background="@color/drawer_background"
-		android:orientation="vertical" 
-		android:entries="@array/drawer_title_list"/>
+		android:orientation="vertical" />
 
 </android.support.v4.widget.DrawerLayout>
 

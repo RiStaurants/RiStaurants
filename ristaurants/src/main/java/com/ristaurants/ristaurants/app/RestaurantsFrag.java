@@ -12,19 +12,16 @@ import org.json.*;
 import com.ristaurants.ristaurants.adapters.*;
 import android.location.*;
 import android.content.*;
+import android.graphics.drawable.*;
 
 /**
  * Restaurants Fragment
  */
 public class RestaurantsFrag extends Fragment {
 	// instance variables
-    private static final String API_KEY = "&key=AIzaSyB48wXIVLTIamI2z1eixGyXkEzp9SVeizA";
 	private ListView mLvContent;
 	private RestaurantsAdapter mAdapter;
 	private final String BASE_URL = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/restaurants-view.json";
-
-
-    //"address" : “320 broad street providence, ri 02907”
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +32,9 @@ public class RestaurantsFrag extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		
+		// set action bar background
+		HelperClass.setActionBarBackground(getActivity(), R.color.restaurants_bg);
 		
 		// instantiate views
 		mLvContent = (ListView) getActivity().findViewById(R.id.lv_content);

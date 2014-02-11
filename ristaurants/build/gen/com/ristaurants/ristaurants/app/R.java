@@ -15,8 +15,14 @@ public final class R {
     }
     public static final class color {
         public static final int background=0x7f050001;
+        public static final int cuisine_bg=0x7f050006;
+        public static final int dishes_bg=0x7f050005;
         public static final int drawer_background=0x7f050000;
+        /**  Action Bar Color 
+         */
+        public static final int restaurants_bg=0x7f050004;
         public static final int selected_item_bg=0x7f050002;
+        public static final int settings_bg=0x7f050007;
         public static final int text_overlay=0x7f050003;
     }
     public static final class dimen {
@@ -107,9 +113,12 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_base=0x7f030000;
-        public static final int frag_restaurants=0x7f030001;
-        public static final int row_drawer_left=0x7f030002;
-        public static final int row_restaurants=0x7f030003;
+        public static final int frag_cuisine=0x7f030001;
+        public static final int frag_dishes=0x7f030002;
+        public static final int frag_restaurants=0x7f030003;
+        public static final int frag_settings=0x7f030004;
+        public static final int row_drawer_left=0x7f030005;
+        public static final int row_restaurants=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f090000;

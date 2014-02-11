@@ -3,6 +3,7 @@
     android:layout_height="match_parent"
 	android:paddingLeft="@dimen/list_padding_left"
 	android:paddingRight="@dimen/list_padding_right"
+	android:background="@color/restaurants_bg"
     android:orientation="vertical">
 	
 	<ListView
