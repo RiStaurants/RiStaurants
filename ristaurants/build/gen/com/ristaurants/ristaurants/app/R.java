@@ -18,11 +18,12 @@ public final class R {
         public static final int cuisine_bg=0x7f050006;
         public static final int dishes_bg=0x7f050005;
         public static final int drawer_background=0x7f050000;
+        public static final int flavors_bg=0x7f050007;
         /**  Action Bar Color 
          */
         public static final int restaurants_bg=0x7f050004;
         public static final int selected_item_bg=0x7f050002;
-        public static final int settings_bg=0x7f050007;
+        public static final int settings_bg=0x7f050008;
         public static final int text_overlay=0x7f050003;
     }
     public static final class dimen {
@@ -68,32 +69,34 @@ public final class R {
         public static final int cuisine_icon=0x7f02000d;
         public static final int dishes_icon=0x7f02000e;
         public static final int five_star=0x7f02000f;
-        public static final int ic_launcher=0x7f020010;
-        public static final int ic_navigation_drawer=0x7f020011;
-        public static final int list_focused_theme=0x7f020012;
-        public static final int list_pressed_theme=0x7f020013;
-        public static final int menu_dropdown_panel_theme=0x7f020014;
-        public static final int progress_bg_theme=0x7f020015;
-        public static final int progress_horizontal_theme=0x7f020016;
-        public static final int progress_primary_theme=0x7f020017;
-        public static final int progress_secondary_theme=0x7f020018;
-        public static final int restaurant_icon=0x7f020019;
-        public static final int row_restaurants_item_bg=0x7f02001a;
-        public static final int selectable_background_theme=0x7f02001b;
-        public static final int settings_icon=0x7f02001c;
-        public static final int spinner_ab_default_theme=0x7f02001d;
-        public static final int spinner_ab_disabled_theme=0x7f02001e;
-        public static final int spinner_ab_focused_theme=0x7f02001f;
-        public static final int spinner_ab_pressed_theme=0x7f020020;
-        public static final int spinner_background_ab_theme=0x7f020021;
-        public static final int tab_indicator_ab_theme=0x7f020022;
-        public static final int tab_selected_focused_theme=0x7f020023;
-        public static final int tab_selected_pressed_theme=0x7f020024;
-        public static final int tab_selected_theme=0x7f020025;
-        public static final int tab_unselected_focused_theme=0x7f020026;
-        public static final int tab_unselected_pressed_theme=0x7f020027;
-        public static final int tab_unselected_theme=0x7f020028;
-        public static final int view_gradient_black=0x7f020029;
+        public static final int flavors_icon=0x7f020010;
+        public static final int ic_action_logo=0x7f020011;
+        public static final int ic_launcher=0x7f020012;
+        public static final int ic_navigation_drawer=0x7f020013;
+        public static final int list_focused_theme=0x7f020014;
+        public static final int list_pressed_theme=0x7f020015;
+        public static final int menu_dropdown_panel_theme=0x7f020016;
+        public static final int progress_bg_theme=0x7f020017;
+        public static final int progress_horizontal_theme=0x7f020018;
+        public static final int progress_primary_theme=0x7f020019;
+        public static final int progress_secondary_theme=0x7f02001a;
+        public static final int restaurant_icon=0x7f02001b;
+        public static final int row_restaurants_item_bg=0x7f02001c;
+        public static final int selectable_background_theme=0x7f02001d;
+        public static final int settings_icon=0x7f02001e;
+        public static final int spinner_ab_default_theme=0x7f02001f;
+        public static final int spinner_ab_disabled_theme=0x7f020020;
+        public static final int spinner_ab_focused_theme=0x7f020021;
+        public static final int spinner_ab_pressed_theme=0x7f020022;
+        public static final int spinner_background_ab_theme=0x7f020023;
+        public static final int tab_indicator_ab_theme=0x7f020024;
+        public static final int tab_selected_focused_theme=0x7f020025;
+        public static final int tab_selected_pressed_theme=0x7f020026;
+        public static final int tab_selected_theme=0x7f020027;
+        public static final int tab_unselected_focused_theme=0x7f020028;
+        public static final int tab_unselected_pressed_theme=0x7f020029;
+        public static final int tab_unselected_theme=0x7f02002a;
+        public static final int view_gradient_black=0x7f02002b;
     }
     public static final class id {
         public static final int action_settings=0x7f0a000f;
@@ -117,10 +120,11 @@ public final class R {
         public static final int activity_base=0x7f030000;
         public static final int frag_cuisine=0x7f030001;
         public static final int frag_dishes=0x7f030002;
-        public static final int frag_restaurants=0x7f030003;
-        public static final int frag_settings=0x7f030004;
-        public static final int row_drawer_left=0x7f030005;
-        public static final int row_restaurants=0x7f030006;
+        public static final int frag_flavors=0x7f030003;
+        public static final int frag_restaurants=0x7f030004;
+        public static final int frag_settings=0x7f030005;
+        public static final int row_drawer_left=0x7f030006;
+        public static final int row_restaurants=0x7f030007;
     }
     public static final class menu {
         public static final int main=0x7f090000;
