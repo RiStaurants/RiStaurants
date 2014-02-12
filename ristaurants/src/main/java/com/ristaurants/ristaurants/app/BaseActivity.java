@@ -158,7 +158,7 @@ public class BaseActivity extends FragmentActivity {
 
         // switch fragment with animation
         FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
-        mFragTrans.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        //mFragTrans.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         mFragTrans.replace(R.id.fl_drawer, mFrag);
         mFragTrans.commit();
 		

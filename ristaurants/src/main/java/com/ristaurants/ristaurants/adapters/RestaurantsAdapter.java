@@ -1,25 +1,14 @@
 package com.ristaurants.ristaurants.adapters;
 
-import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.toolbox.ImageLoader;
-import com.ristaurants.ristaurants.app.R;
-import com.ristaurants.ristaurants.misc.SingletonVolley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import android.animation.*;
 import android.content.*;
 import android.net.*;
+import android.view.*;
+import android.widget.*;
+import com.android.volley.toolbox.*;
+import com.ristaurants.ristaurants.app.*;
+import com.ristaurants.ristaurants.misc.*;
+import org.json.*;
 
 public class RestaurantsAdapter extends BaseAdapter {
     // instance variables
@@ -72,8 +61,8 @@ public class RestaurantsAdapter extends BaseAdapter {
             // instantiate views
             mViewHolder = new ViewHolder();
             assert view != null;
-            mViewHolder.mIvRestaurantImage = (ImageView) view.findViewById(R.id.iv_restaurant_image);
-            mViewHolder.mIvRestaurantRate = (ImageView) view.findViewById(R.id.iv_restaurant_rate);
+            mViewHolder.mIvRestaurantImage = (NetworkImageView) view.findViewById(R.id.niv_restaurant_image);
+            mViewHolder.mIvRestaurantRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_rate);
 			mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
 			mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
             mViewHolder.mTvRestaurantAddress = (TextView) view.findViewById(R.id.tv_restaurant_address);
@@ -87,6 +76,12 @@ public class RestaurantsAdapter extends BaseAdapter {
 
         // set data
         try {
+			// set restaurant image
+			mViewHolder.mIvRestaurantImage.setImageUrl(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), SingletonVolley.getImageLoader());
+			
+			// set restaurant rate image
+			mViewHolder.mIvRestaurantRate.setImageUrl(mData.getJSONArray("restaurants").getJSONObject(position).getString("rate"), SingletonVolley.getImageLoader());
+			
             // set restaurant name
             mViewHolder.mTvRestaurantName.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("name").toLowerCase());
 
@@ -114,19 +109,9 @@ public class RestaurantsAdapter extends BaseAdapter {
 					}
 				});
 
-            // set restaurant image
-            ImageLoader restaurantImage = SingletonVolley.getImageLoader();
-            restaurantImage.setBatchedResponseDelay(0);
-            restaurantImage.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantImage, R.drawable.ic_launcher, R.drawable.ic_launcher));
-
-			// set restaurant rate image
-            ImageLoader restaurantRate = SingletonVolley.getImageLoader();
-            restaurantRate.setBatchedResponseDelay(0);
-            restaurantRate.get(mData.getJSONArray("restaurants").getJSONObject(position).getString("rate"), ImageLoader.getImageListener(mViewHolder.mIvRestaurantRate, R.drawable.ic_launcher, R.drawable.ic_launcher));
-
-            // set animation
+            // set fade in animation
             if (mLastAnimPosition < position) {
-                //ObjectAnimator.ofFloat(view, "translationY", 200, 0).setDuration(500).start();
+				ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantImage, "alpha", 0f, 1f).setDuration(200).start();
                 mLastAnimPosition = position;
             }
 
@@ -140,8 +125,8 @@ public class RestaurantsAdapter extends BaseAdapter {
 
     class ViewHolder {
         // instantiate views
-        ImageView mIvRestaurantImage;
-        ImageView mIvRestaurantRate;
+        NetworkImageView mIvRestaurantImage;
+        NetworkImageView mIvRestaurantRate;
 		TextView mTvRestaurantName;
 		TextView mTvRestaurantPhone;
         TextView mTvRestaurantAddress;

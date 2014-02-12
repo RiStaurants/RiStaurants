@@ -2,81 +2,82 @@
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
-    android:paddingTop="@dimen/row_padding"
-    android:paddingBottom="@dimen/row_padding">
-
-	<RelativeLayout
-		android:layout_height="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight">
+	
+	<com.android.volley.toolbox.NetworkImageView
+		android:id="@+id/niv_restaurant_image"
 		android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/row_restaurants_item_bg" >
+		android:layout_height="@dimen/restaurants_height"
+		android:scaleType="centerCrop"
+		android:scaleGravity="top"/>
 
-		<ImageView
-			android:id="@+id/iv_restaurant_image"
-			android:layout_width="match_parent"
-			android:layout_height="@dimen/restaurants_height"
-			android:scaleType="centerCrop"
-			android:scaleGravity="top"/>
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/restaurants_height_half"
+		android:background="@drawable/view_gradient_black"/>
 
-		<LinearLayout
-			android:id="@+id/lv_name_plus_rate"
-			android:layout_below="@+id/iv_restaurant_image"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal">
-			
-			<com.ristaurants.ristaurants.views.RobotoThinTextView
-				android:id="@+id/tv_restaurant_name"
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:layout_weight="1.75"
-				android:textSize="@dimen/restaurants_name_size"
-				android:textColor="@android:color/black"/>
+	<LinearLayout
+		android:id="@+id/lv_name_plus_rate"
+		android:layout_below="@+id/niv_restaurant_image"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:visibility="gone">
 
-			<ImageView
-				android:id="@+id/iv_restaurant_rate"
-				android:layout_height="@dimen/rate_height"
-				android:layout_width="@dimen/rate_width"
-				android:layout_gravity="center_vertical"
-				android:layout_weight="0.25"/>
-
-		</LinearLayout>
-
-		<View
-			android:id="@+id/v_divider"
-			android:layout_below="@+id/lv_name_plus_rate"
-			android:layout_width="match_parent"
-			android:layout_height="@dimen/drawer_divider"
-			android:layout_margin="@dimen/view_divider_padding"
-			android:background="@android:color/darker_gray"/>
 
 		<com.ristaurants.ristaurants.views.RobotoThinTextView
-			android:id="@+id/tv_restaurant_phone_text"
-			android:layout_below="@+id/v_divider"
+			android:id="@+id/tv_restaurant_name"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:textSize="@dimen/restaurants_subname_size"
-			android:textColor="@android:color/black"
-			android:text="phone: "/>
+			android:layout_weight="1.75"
+			android:textSize="@dimen/restaurants_name_size"
+			android:textColor="@android:color/black"/>
 
-		<com.ristaurants.ristaurants.views.RobotoThinTextView
-			android:id="@+id/tv_restaurant_phone"
-			android:layout_toRightOf="@+id/tv_restaurant_phone_text"
-			android:layout_below="@+id/v_divider"
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:textSize="@dimen/restaurants_subname_size"
-			android:textColor="@color/background"/>
+		<com.android.volley.toolbox.NetworkImageView
+			android:id="@+id/niv_restaurant_rate"
+			android:layout_height="@dimen/rate_height"
+			android:layout_width="@dimen/rate_width"
+			android:layout_gravity="center_vertical"
+			android:layout_weight="0.25"/>
 
-        <com.ristaurants.ristaurants.views.RobotoThinTextView
-            android:id="@+id/tv_restaurant_address"
-            android:layout_below="@+id/tv_restaurant_phone"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:textSize="@dimen/restaurants_subname_size"
-            android:textColor="@android:color/black"/>
+	</LinearLayout>
 
-	</RelativeLayout>
+	<View
+		android:id="@+id/v_divider"
+		android:layout_below="@+id/lv_name_plus_rate"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/drawer_divider"
+		android:layout_margin="@dimen/view_divider_padding"
+		android:background="@android:color/darker_gray"
+		android:visibility="gone"/>
+
+	<com.ristaurants.ristaurants.views.RobotoThinTextView
+		android:id="@+id/tv_restaurant_phone_text"
+		android:layout_below="@+id/v_divider"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:textSize="@dimen/restaurants_subname_size"
+		android:textColor="@android:color/black"
+		android:text="phone: "
+		android:visibility="gone"/>
+
+	<com.ristaurants.ristaurants.views.RobotoThinTextView
+		android:id="@+id/tv_restaurant_phone"
+		android:layout_toRightOf="@+id/tv_restaurant_phone_text"
+		android:layout_below="@+id/v_divider"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:textSize="@dimen/restaurants_subname_size"
+		android:textColor="@color/background"
+		android:visibility="gone"/>
+
+	<com.ristaurants.ristaurants.views.RobotoThinTextView
+		android:id="@+id/tv_restaurant_address"
+		android:layout_below="@+id/tv_restaurant_phone"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:textSize="@dimen/restaurants_subname_size"
+		android:textColor="@android:color/black"
+		android:visibility="gone"/>
 
 </RelativeLayout>

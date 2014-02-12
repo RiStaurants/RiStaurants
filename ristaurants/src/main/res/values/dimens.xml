@@ -7,7 +7,8 @@
     <dimen name="drawer_icon_size">45dp</dimen>
 
 	<!-- Images -->
-    <dimen name="restaurants_height">150dp</dimen>
+    <dimen name="restaurants_height">250dp</dimen>
+	<dimen name="restaurants_height_half">125dp</dimen>
 	<dimen name="rate_width">100dp</dimen>
 	<dimen name="rate_height">20dp</dimen>
 	

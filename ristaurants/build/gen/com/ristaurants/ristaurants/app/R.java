@@ -34,21 +34,22 @@ public final class R {
         public static final int drawer_icon_size=0x7f060001;
         /**  Padding 
          */
-        public static final int drawer_padding=0x7f060008;
+        public static final int drawer_padding=0x7f060009;
         /**  TextView size 
          */
-        public static final int drawer_text_size=0x7f060005;
-        public static final int list_padding_left=0x7f060009;
-        public static final int list_padding_right=0x7f06000a;
-        public static final int rate_height=0x7f060004;
-        public static final int rate_width=0x7f060003;
+        public static final int drawer_text_size=0x7f060006;
+        public static final int list_padding_left=0x7f06000a;
+        public static final int list_padding_right=0x7f06000b;
+        public static final int rate_height=0x7f060005;
+        public static final int rate_width=0x7f060004;
         /**  Images 
          */
         public static final int restaurants_height=0x7f060002;
-        public static final int restaurants_name_size=0x7f060006;
-        public static final int restaurants_subname_size=0x7f060007;
-        public static final int row_padding=0x7f06000b;
-        public static final int view_divider_padding=0x7f06000c;
+        public static final int restaurants_height_half=0x7f060003;
+        public static final int restaurants_name_size=0x7f060007;
+        public static final int restaurants_subname_size=0x7f060008;
+        public static final int row_padding=0x7f06000c;
+        public static final int view_divider_padding=0x7f06000d;
     }
     public static final class drawable {
         public static final int ab_background_textured_theme=0x7f020000;
@@ -92,17 +93,18 @@ public final class R {
         public static final int tab_unselected_focused_theme=0x7f020026;
         public static final int tab_unselected_pressed_theme=0x7f020027;
         public static final int tab_unselected_theme=0x7f020028;
+        public static final int view_gradient_black=0x7f020029;
     }
     public static final class id {
         public static final int action_settings=0x7f0a000f;
         public static final int dl_drawer=0x7f0a0000;
         public static final int fl_drawer=0x7f0a0001;
         public static final int iv_drawer_left_icon=0x7f0a0004;
-        public static final int iv_restaurant_image=0x7f0a0006;
-        public static final int iv_restaurant_rate=0x7f0a0009;
         public static final int lv_content=0x7f0a0003;
         public static final int lv_drawer_left=0x7f0a0002;
         public static final int lv_name_plus_rate=0x7f0a0007;
+        public static final int niv_restaurant_image=0x7f0a0006;
+        public static final int niv_restaurant_rate=0x7f0a0009;
         public static final int rl_left=0x7f0a000e;
         public static final int tv_drawer_left=0x7f0a0005;
         public static final int tv_restaurant_address=0x7f0a000d;
