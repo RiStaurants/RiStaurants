@@ -1,6 +1,7 @@
 package com.ristaurants.ristaurants.adapters;
 
 import android.animation.*;
+import android.app.Activity;
 import android.content.*;
 import android.net.*;
 import android.view.*;
@@ -65,7 +66,7 @@ public class RestaurantsAdapter extends BaseAdapter {
             mViewHolder.mIvRestaurantRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_rate);
 			mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
 			mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
-            mViewHolder.mTvRestaurantAddress = (TextView) view.findViewById(R.id.tv_restaurant_address);
+            mViewHolder.mTvRestaurantAddress = (ImageView) view.findViewById(R.id.iv_restuarant_map);
 
             // save view holder in tag
             view.setTag(mViewHolder);
@@ -98,13 +99,13 @@ public class RestaurantsAdapter extends BaseAdapter {
 				});
 
             // set restaurant address
-            mViewHolder.mTvRestaurantAddress.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("address").toLowerCase());
+            final String address = mData.getJSONArray("restaurants").getJSONObject(position).getString("address").toLowerCase();
             mViewHolder.mTvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
 						// open phone dialer with phone number
 						Intent intent = new Intent(Intent.ACTION_VIEW, null);
-						intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + ((TextView)view).getText().toString()));
+						intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + address));
 						mContext.startActivity(intent);
 					}
 				});
@@ -127,8 +128,8 @@ public class RestaurantsAdapter extends BaseAdapter {
         // instantiate views
         NetworkImageView mIvRestaurantImage;
         NetworkImageView mIvRestaurantRate;
+        ImageView mTvRestaurantAddress;
 		TextView mTvRestaurantName;
 		TextView mTvRestaurantPhone;
-        TextView mTvRestaurantAddress;
     }
 }

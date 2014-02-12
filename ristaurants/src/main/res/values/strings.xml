@@ -9,5 +9,6 @@
     <string name="content_drawer_left_icon">Navigation Icon</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="phone_text">phone: </string>
 
 </resources>
