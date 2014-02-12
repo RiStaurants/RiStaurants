@@ -63,6 +63,7 @@ public class BaseActivity extends FragmentActivity {
                 getResources().getDrawable(R.drawable.restaurant_icon),
                 getResources().getDrawable(R.drawable.dishes_icon),
                 getResources().getDrawable(R.drawable.cuisine_icon),
+                getResources().getDrawable(R.drawable.flavors_icon),
                 getResources().getDrawable(R.drawable.settings_icon)
         };
 
@@ -70,11 +71,12 @@ public class BaseActivity extends FragmentActivity {
         mDrawerTitles = getResources().getStringArray(R.array.drawer_title_list);
 		
 		// instantiate drawer colors
-		mDrawerBackgroundColor = new ColorDrawable[4];
+		mDrawerBackgroundColor = new ColorDrawable[5];
 		mDrawerBackgroundColor[0] =	new ColorDrawable(getResources().getInteger(R.color.restaurants_bg));
 		mDrawerBackgroundColor[1] = new ColorDrawable(getResources().getInteger(R.color.dishes_bg));
 		mDrawerBackgroundColor[2] = new ColorDrawable(getResources().getInteger(R.color.cuisine_bg));
-		mDrawerBackgroundColor[3] = new ColorDrawable(getResources().getInteger(R.color.settings_bg));
+        mDrawerBackgroundColor[3] = new ColorDrawable(getResources().getInteger(R.color.flavors_bg));
+		mDrawerBackgroundColor[4] = new ColorDrawable(getResources().getInteger(R.color.settings_bg));
 
         // instantiate views
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_drawer);
@@ -152,8 +154,13 @@ public class BaseActivity extends FragmentActivity {
 
 			case 3:
 				// start Settings Fragment
-				mFrag = new SettingsFrag();
+				mFrag = new FlavorsFrag();
 				break;
+
+            case 4:
+                // start Settings Fragment
+                mFrag = new SettingsFrag();
+                break;
         }
 
         // switch fragment with animation

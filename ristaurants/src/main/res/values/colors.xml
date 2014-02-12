@@ -4,10 +4,11 @@
 	<color name="background">#ff0099cc</color>
 	<color name="selected_item_bg">#44ffffff</color>
 	<color name="text_overlay">#bb005577</color>
-	
+
 	<!-- Action Bar Color -->
 	<color name="restaurants_bg">#ff0099cc</color>
 	<color name="dishes_bg">#cc0000</color>
 	<color name="cuisine_bg">#ff8800</color>
+    <color name="flavors_bg">#9933cc</color>
 	<color name="settings_bg">#669900</color>
 </resources>
