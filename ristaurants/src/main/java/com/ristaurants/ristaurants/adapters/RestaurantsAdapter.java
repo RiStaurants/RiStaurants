@@ -24,24 +24,22 @@ public class RestaurantsAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        /*try {
+        try {
             return this.mData.getJSONArray("restaurants").length();
         } catch (JSONException e) {
             e.printStackTrace();
             return 0;
-        }*/
-        return 3;
+        }
     }
 
     @Override
     public Object getItem(int position) {
-        /*try {
+        try {
             return this.mData.getJSONArray("restaurants").getJSONObject(position);
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
-        }*/
-        return null;
+        }
     }
 
     @Override

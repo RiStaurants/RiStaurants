@@ -7,7 +7,7 @@ import android.database.*;
 import android.graphics.*;
 
 /**
- * Class that extends TextView, to change font to Roboto - regular
+ * Class that extends TextView, to change font to Roboto - Thin
  */
 public class RobotoThinTextView extends TextView {
 
