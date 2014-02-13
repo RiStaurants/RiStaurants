@@ -21,7 +21,7 @@ public class RestaurantsFrag extends Fragment {
 	// instance variables
 	private ListView mLvContent;
 	private RestaurantsAdapter mAdapter;
-	private final String BASE_URL = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/restaurants-view.json";
+	private final String BASE_URL = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/restaurants_list.json";
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

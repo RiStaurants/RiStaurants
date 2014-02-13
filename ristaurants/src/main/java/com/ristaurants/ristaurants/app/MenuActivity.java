@@ -80,11 +80,12 @@ public class MenuActivity extends FragmentActivity implements ActionBar.TabListe
         ActionBar.Tab beverageTab = mActionBar.newTab();
 
         // set tab title
-        breakfastTab.setText("breakfast");
-        lunchTab.setText("lunch");
-        dinnerTab.setText("dinner");
-        dessertTab.setText("dessert");
-        beverageTab.setText("beverage");
+		String[] tabTitles = getResources().getStringArray(R.array.restaurants_menu_tab_titles);
+        breakfastTab.setText(tabTitles[0]);
+        lunchTab.setText(tabTitles[1]);
+        dinnerTab.setText(tabTitles[2]);
+        dessertTab.setText(tabTitles[3]);
+        beverageTab.setText(tabTitles[4]);
 
         // set tab listener
         breakfastTab.setTabListener(this);

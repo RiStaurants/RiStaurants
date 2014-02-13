@@ -8,49 +8,66 @@
 package com.ristaurants.ristaurants.app;
 
 public final class R {
+    public static final class anim {
+        public static final int anim_in=0x7f040000;
+        public static final int anim_null=0x7f040001;
+        public static final int anim_out=0x7f040002;
+        public static final int anim_screenshots=0x7f040003;
+        public static final int anim_slide_in_down=0x7f040004;
+        public static final int anim_slide_in_left=0x7f040005;
+        public static final int anim_slide_in_right=0x7f040006;
+        public static final int anim_slide_in_up=0x7f040007;
+        public static final int anim_slide_out_down=0x7f040008;
+        public static final int anim_slide_out_left=0x7f040009;
+        public static final int anim_slide_out_right=0x7f04000a;
+        public static final int anim_slide_out_up=0x7f04000b;
+    }
     public static final class array {
-        public static final int drawer_title_list=0x7f040000;
+        public static final int drawer_title_list=0x7f050000;
+        public static final int restaurants_menu_tab_titles=0x7f050001;
     }
     public static final class attr {
     }
     public static final class color {
-        public static final int background=0x7f050001;
-        public static final int cuisine_bg=0x7f050006;
-        public static final int dishes_bg=0x7f050005;
-        public static final int drawer_background=0x7f050000;
-        public static final int flavors_bg=0x7f050007;
+        public static final int background=0x7f060001;
+        public static final int cuisine_bg=0x7f060006;
+        public static final int dishes_bg=0x7f060005;
+        public static final int drawer_background=0x7f060000;
+        public static final int flavors_bg=0x7f060007;
+        public static final int menus_bg=0x7f060009;
+        public static final int menus_tab_bg=0x7f06000a;
         /**  Action Bar Color 
          */
-        public static final int restaurants_bg=0x7f050004;
-        public static final int selected_item_bg=0x7f050002;
-        public static final int settings_bg=0x7f050008;
-        public static final int text_overlay=0x7f050003;
+        public static final int restaurants_bg=0x7f060004;
+        public static final int selected_item_bg=0x7f060002;
+        public static final int settings_bg=0x7f060008;
+        public static final int text_overlay=0x7f060003;
     }
     public static final class dimen {
         /**  Dividers 
          */
-        public static final int drawer_divider=0x7f060000;
+        public static final int drawer_divider=0x7f070000;
         /**  Icons 
          */
-        public static final int drawer_icon_size=0x7f060001;
+        public static final int drawer_icon_size=0x7f070001;
         /**  Padding 
          */
-        public static final int drawer_padding=0x7f060009;
+        public static final int drawer_padding=0x7f070009;
         /**  TextView size 
          */
-        public static final int drawer_text_size=0x7f060006;
-        public static final int list_padding_left=0x7f06000a;
-        public static final int list_padding_right=0x7f06000b;
-        public static final int rate_height=0x7f060005;
-        public static final int rate_width=0x7f060004;
+        public static final int drawer_text_size=0x7f070006;
+        public static final int list_padding_left=0x7f07000a;
+        public static final int list_padding_right=0x7f07000b;
+        public static final int rate_height=0x7f070005;
+        public static final int rate_width=0x7f070004;
         /**  Images 
          */
-        public static final int restaurants_height=0x7f060002;
-        public static final int restaurants_height_half=0x7f060003;
-        public static final int restaurants_name_size=0x7f060007;
-        public static final int restaurants_subname_size=0x7f060008;
-        public static final int row_padding=0x7f06000c;
-        public static final int view_divider_padding=0x7f06000d;
+        public static final int restaurants_height=0x7f070002;
+        public static final int restaurants_height_half=0x7f070003;
+        public static final int restaurants_name_size=0x7f070007;
+        public static final int restaurants_subname_size=0x7f070008;
+        public static final int row_padding=0x7f07000c;
+        public static final int view_divider_padding=0x7f07000d;
     }
     public static final class drawable {
         public static final int ab_background_textured_theme=0x7f020000;
@@ -71,87 +88,104 @@ public final class R {
         public static final int five_star=0x7f02000f;
         public static final int flavors_icon=0x7f020010;
         public static final int ic_action_logo=0x7f020011;
-        public static final int ic_launcher=0x7f020012;
-        public static final int ic_navigation_drawer=0x7f020013;
-        public static final int list_focused_theme=0x7f020014;
-        public static final int list_pressed_theme=0x7f020015;
-        public static final int menu_dropdown_panel_theme=0x7f020016;
-        public static final int progress_bg_theme=0x7f020017;
-        public static final int progress_horizontal_theme=0x7f020018;
-        public static final int progress_primary_theme=0x7f020019;
-        public static final int progress_secondary_theme=0x7f02001a;
-        public static final int restaurant_icon=0x7f02001b;
-        public static final int row_restaurants_item_bg=0x7f02001c;
-        public static final int selectable_background_theme=0x7f02001d;
-        public static final int settings_icon=0x7f02001e;
-        public static final int spinner_ab_default_theme=0x7f02001f;
-        public static final int spinner_ab_disabled_theme=0x7f020020;
-        public static final int spinner_ab_focused_theme=0x7f020021;
-        public static final int spinner_ab_pressed_theme=0x7f020022;
-        public static final int spinner_background_ab_theme=0x7f020023;
-        public static final int tab_indicator_ab_theme=0x7f020024;
-        public static final int tab_selected_focused_theme=0x7f020025;
-        public static final int tab_selected_pressed_theme=0x7f020026;
-        public static final int tab_selected_theme=0x7f020027;
-        public static final int tab_unselected_focused_theme=0x7f020028;
-        public static final int tab_unselected_pressed_theme=0x7f020029;
-        public static final int tab_unselected_theme=0x7f02002a;
-        public static final int view_gradient_black=0x7f02002b;
+        public static final int ic_action_place=0x7f020012;
+        public static final int ic_launcher=0x7f020013;
+        public static final int ic_navigation_drawer=0x7f020014;
+        public static final int list_focused_theme=0x7f020015;
+        public static final int list_pressed_theme=0x7f020016;
+        public static final int menu_dropdown_panel_theme=0x7f020017;
+        public static final int progress_bg_theme=0x7f020018;
+        public static final int progress_horizontal_theme=0x7f020019;
+        public static final int progress_primary_theme=0x7f02001a;
+        public static final int progress_secondary_theme=0x7f02001b;
+        public static final int restaurant_icon=0x7f02001c;
+        public static final int row_restaurants_item_bg=0x7f02001d;
+        public static final int selectable_background_theme=0x7f02001e;
+        public static final int settings_icon=0x7f02001f;
+        public static final int spinner_ab_default_theme=0x7f020020;
+        public static final int spinner_ab_disabled_theme=0x7f020021;
+        public static final int spinner_ab_focused_theme=0x7f020022;
+        public static final int spinner_ab_pressed_theme=0x7f020023;
+        public static final int spinner_background_ab_theme=0x7f020024;
+        public static final int tab_indicator_ab_theme=0x7f020025;
+        public static final int tab_selected_focused_theme=0x7f020026;
+        public static final int tab_selected_pressed_theme=0x7f020027;
+        public static final int tab_selected_theme=0x7f020028;
+        public static final int tab_unselected_focused_theme=0x7f020029;
+        public static final int tab_unselected_pressed_theme=0x7f02002a;
+        public static final int tab_unselected_theme=0x7f02002b;
+        public static final int view_gradient_bottom_black=0x7f02002c;
+        public static final int view_gradient_top_black=0x7f02002d;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000f;
-        public static final int dl_drawer=0x7f0a0000;
-        public static final int fl_drawer=0x7f0a0001;
-        public static final int iv_drawer_left_icon=0x7f0a0004;
-        public static final int lv_content=0x7f0a0003;
-        public static final int lv_drawer_left=0x7f0a0002;
-        public static final int lv_name_plus_rate=0x7f0a0007;
-        public static final int niv_restaurant_image=0x7f0a0006;
-        public static final int niv_restaurant_rate=0x7f0a0009;
-        public static final int rl_left=0x7f0a000e;
-        public static final int tv_drawer_left=0x7f0a0005;
-        public static final int tv_restaurant_address=0x7f0a000d;
-        public static final int tv_restaurant_name=0x7f0a0008;
-        public static final int tv_restaurant_phone=0x7f0a000c;
-        public static final int tv_restaurant_phone_text=0x7f0a000b;
-        public static final int v_divider=0x7f0a000a;
+        public static final int action_settings=0x7f0b000f;
+        public static final int dl_drawer=0x7f0b0000;
+        public static final int fl_drawer=0x7f0b0001;
+        public static final int iv_drawer_left_icon=0x7f0b0005;
+        public static final int iv_restuarant_map=0x7f0b000e;
+        public static final int ll_phone_number=0x7f0b000b;
+        public static final int lv_content=0x7f0b0004;
+        public static final int lv_drawer_left=0x7f0b0002;
+        public static final int lv_name_plus_rate=0x7f0b0008;
+        public static final int menu_restaurant_menu=0x7f0b0010;
+        public static final int niv_restaurant_image=0x7f0b0007;
+        public static final int niv_restaurant_rate=0x7f0b000a;
+        public static final int tv_drawer_left=0x7f0b0006;
+        public static final int tv_restaurant_name=0x7f0b0009;
+        public static final int tv_restaurant_phone=0x7f0b000d;
+        public static final int tv_restaurant_phone_text=0x7f0b000c;
+        public static final int vp_restaurants_menus=0x7f0b0003;
     }
     public static final class layout {
         public static final int activity_base=0x7f030000;
-        public static final int frag_cuisine=0x7f030001;
-        public static final int frag_dishes=0x7f030002;
-        public static final int frag_flavors=0x7f030003;
-        public static final int frag_restaurants=0x7f030004;
-        public static final int frag_settings=0x7f030005;
-        public static final int row_drawer_left=0x7f030006;
-        public static final int row_restaurants=0x7f030007;
+        public static final int activity_menu=0x7f030001;
+        public static final int frag_beverage=0x7f030002;
+        public static final int frag_breakfast=0x7f030003;
+        public static final int frag_cuisine=0x7f030004;
+        public static final int frag_dessert=0x7f030005;
+        public static final int frag_dinner=0x7f030006;
+        public static final int frag_dishes=0x7f030007;
+        public static final int frag_flavors=0x7f030008;
+        public static final int frag_lunch=0x7f030009;
+        public static final int frag_restaurants=0x7f03000a;
+        public static final int frag_settings=0x7f03000b;
+        public static final int row_drawer_left=0x7f03000c;
+        public static final int row_restaurants=0x7f03000d;
     }
     public static final class menu {
-        public static final int main=0x7f090000;
+        public static final int main=0x7f0a0000;
+        public static final int menu_restaurants=0x7f0a0001;
     }
     public static final class string {
         /**  Action Bar Titles 
          */
-        public static final int ab_title_app_name=0x7f070000;
-        public static final int ab_title_restaurants=0x7f070001;
+        public static final int ab_title_app_name=0x7f080000;
+        public static final int ab_title_menu=0x7f080002;
+        public static final int ab_title_restaurants=0x7f080001;
         /**  Content Desc 
          */
-        public static final int content_drawer_left_icon=0x7f070002;
-        public static final int drawer_close=0x7f070004;
-        public static final int drawer_open=0x7f070003;
+        public static final int content_drawer_left_icon=0x7f080003;
+        public static final int drawer_close=0x7f080005;
+        public static final int drawer_open=0x7f080004;
+        /**  Menu 
+         */
+        public static final int menu_restaurant_menu=0x7f080007;
+        /**  Misc 
+         */
+        public static final int phone_text=0x7f080006;
     }
     public static final class style {
-        public static final int ActionBar_Solid_Theme=0x7f080001;
-        public static final int ActionBar_Transparent_Theme=0x7f080002;
-        public static final int ActionBarTabStyle_Theme=0x7f080005;
-        public static final int ActionButton_CloseMode_Theme=0x7f080008;
-        public static final int DropDownListView_Theme=0x7f080004;
-        public static final int DropDownNav_Theme=0x7f080006;
-        public static final int PopupMenu_Theme=0x7f080003;
-        public static final int ProgressBar_Theme=0x7f080007;
-        public static final int Theme_Theme=0x7f080000;
+        public static final int ActionBar_Solid_Theme=0x7f090001;
+        public static final int ActionBar_Transparent_Theme=0x7f090002;
+        public static final int ActionBarTabStyle_Theme=0x7f090005;
+        public static final int ActionButton_CloseMode_Theme=0x7f090008;
+        public static final int DropDownListView_Theme=0x7f090004;
+        public static final int DropDownNav_Theme=0x7f090006;
+        public static final int PopupMenu_Theme=0x7f090003;
+        public static final int ProgressBar_Theme=0x7f090007;
+        public static final int Theme_Theme=0x7f090000;
         /**  this style is only referenced in a Light.DarkActionBar based theme 
          */
-        public static final int Theme_Theme_Widget=0x7f080009;
+        public static final int Theme_Theme_Widget=0x7f090009;
     }
 }

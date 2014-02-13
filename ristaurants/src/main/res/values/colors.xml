@@ -11,6 +11,6 @@
 	<color name="cuisine_bg">#ff8800</color>
     <color name="flavors_bg">#9933cc</color>
 	<color name="settings_bg">#669900</color>
-    <color name="menus_bg">#ffcc0088</color>
-    <color name="menus_tab_bg">#ff8f005a</color>
+    <color name="menus_bg">#ff0099cc</color>
+    <color name="menus_tab_bg">#ff33b5e5</color>
 </resources>
