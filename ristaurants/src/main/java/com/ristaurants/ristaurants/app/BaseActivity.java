@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
+import com.ristaurants.ristaurants.misc.HelperClass;
 import com.ristaurants.ristaurants.views.ActionBarFont;
 
 import android.view.*;
@@ -39,12 +40,8 @@ public class BaseActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_base);
 
-        // create custom font for action bar
-        SpannableString customActionBarFont = new SpannableString(getResources().getString(R.string.ab_title_restaurants));
-        customActionBarFont.setSpan(new ActionBarFont(this, "Bender-Solid.otf"), 0, customActionBarFont.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		
 		// set-up action bar
-        getActionBar().setTitle(customActionBarFont);
+        getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_restaurants)));
 		getActionBar().setHomeButtonEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
@@ -189,7 +186,7 @@ public class BaseActivity extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // if the drawer is open, show the global app actions in the action bar. See also
         // showGlobalContextActionBar, which controls the top-left area of the action bar.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
     }

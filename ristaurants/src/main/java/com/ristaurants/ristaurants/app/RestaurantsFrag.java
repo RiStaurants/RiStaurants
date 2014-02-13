@@ -64,5 +64,30 @@ public class RestaurantsFrag extends Fragment {
 		
 		// add request to queue
 		queue.add(request);
+
+        // refresh action bar menu
+        setHasOptionsMenu(true);
 	}
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_restaurants, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // check which item in the menu was clicked
+        switch (item.getItemId()){
+            case R.id.menu_restaurant_menu:
+                // start the menu activity
+                startActivity(new Intent(getActivity(), MenuActivity.class));
+
+                // set activity animation
+                getActivity().overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

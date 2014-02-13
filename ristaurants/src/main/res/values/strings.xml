@@ -4,11 +4,17 @@
     <!-- Action Bar Titles -->
     <string name="ab_title_app_name">RiStaurants</string>
     <string name="ab_title_restaurants">RESTAURANTS</string>
+    <string name="ab_title_menu">MENUS</string>
 
     <!-- Content Desc -->
     <string name="content_drawer_left_icon">Navigation Icon</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+    <!-- Misc -->
     <string name="phone_text">phone: </string>
+
+    <!-- Menu -->
+    <string name="menu_restaurant_menu">MENU</string>
 
 </resources>

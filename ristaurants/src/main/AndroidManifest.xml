@@ -24,6 +24,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:label="@string/ab_title_menu"
+            android:name=".MenuActivity" >
+            <intent-filter >
+                <action android:name="com.ristaurants.ristaurants.app.MENUACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
