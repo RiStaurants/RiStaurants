@@ -103,22 +103,6 @@ public class MenuActivity extends FragmentActivity implements ActionBar.TabListe
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // go back to previous screens
-                onBackPressed();
-
-                // set activity animation
-                this.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         mViewPager.setCurrentItem(tab.getPosition());
     }
@@ -168,5 +152,26 @@ public class MenuActivity extends FragmentActivity implements ActionBar.TabListe
         public int getCount() {
             return 5;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // go back to previous screens
+                onBackPressed();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        // set activity animation
+        this.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
     }
 }
