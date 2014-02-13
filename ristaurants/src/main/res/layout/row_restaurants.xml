@@ -72,11 +72,19 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/iv_restuarant_menu"
+        android:layout_toLeftOf="@+id/iv_restuarant_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_action_collections_view_as_list"/>
+
+    <ImageView
         android:id="@+id/iv_restuarant_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/ic_action_place"/>
+        android:src="@drawable/ic_action_location_place"/>
 
 </RelativeLayout>

@@ -10,9 +10,8 @@ import com.android.volley.toolbox.*;
 import com.ristaurants.ristaurants.misc.*;
 import org.json.*;
 import com.ristaurants.ristaurants.adapters.*;
-import android.location.*;
+
 import android.content.*;
-import android.graphics.drawable.*;
 
 /**
  * Restaurants Fragment
@@ -81,7 +80,7 @@ public class RestaurantsFrag extends Fragment {
         switch (item.getItemId()){
             case R.id.menu_restaurant_menu:
                 // start the menu activity
-                startActivity(new Intent(getActivity(), MenuActivity.class));
+                startActivity(new Intent(getActivity(), RestaurantMenuActivity.class));
 
                 // set activity animation
                 getActivity().overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);

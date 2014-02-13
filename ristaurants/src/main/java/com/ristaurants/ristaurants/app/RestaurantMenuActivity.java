@@ -16,7 +16,7 @@ import com.ristaurants.ristaurants.misc.HelperClass;
 /**
  *
  */
-public class MenuActivity extends FragmentActivity implements ActionBar.TabListener {
+public class RestaurantMenuActivity extends FragmentActivity implements ActionBar.TabListener {
     // instance variables
     private ActionBar mActionBar;
     private ViewPager mViewPager;

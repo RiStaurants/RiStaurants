@@ -16,5 +16,6 @@
 
     <!-- Menu -->
     <string name="menu_restaurant_menu">MENU</string>
+    <string name="menu_restaurant_random">Random Restaurants</string>
 
 </resources>
