@@ -4,7 +4,11 @@ import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
 import com.ristaurants.ristaurants.misc.HelperClass;
@@ -15,11 +19,43 @@ import com.ristaurants.ristaurants.misc.HelperClass;
 public class MenuActivity extends FragmentActivity implements ActionBar.TabListener {
     // instance variables
     private ActionBar mActionBar;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        // instantiate
+        mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
+        mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i2) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mActionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+                if (i == ViewPager.SCROLL_STATE_IDLE){
+
+                }
+
+                if (i == ViewPager.SCROLL_STATE_DRAGGING) {
+
+                }
+
+                if (i == ViewPager.SCROLL_STATE_SETTLING) {
+
+                }
+
+            }
+        });
 
         // set action bar background color
         HelperClass.setActionBarBackground(this, R.color.menus_bg);
@@ -84,7 +120,7 @@ public class MenuActivity extends FragmentActivity implements ActionBar.TabListe
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-
+        mViewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -95,5 +131,42 @@ public class MenuActivity extends FragmentActivity implements ActionBar.TabListe
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
+    }
+
+    private class MenusPagerAdapter extends FragmentPagerAdapter {
+
+        public MenusPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int item) {
+            Fragment mFrag = null;
+
+            switch (item) {
+                case 0:
+                    mFrag = new BreakfastFrag();
+                    break;
+                case 1:
+                    mFrag = new LunchFrag();
+                    break;
+                case 2:
+                    mFrag = new DinnerFrag();
+                    break;
+                case 3:
+                    mFrag = new DessertsFrag();
+                    break;
+                case 4:
+                    mFrag = new BeverageFrag();
+                    break;
+            }
+
+            return mFrag;
+        }
+
+        @Override
+        public int getCount() {
+            return 5;
+        }
     }
 }
