@@ -1,6 +1,7 @@
 package com.ristaurants.ristaurants.adapters;
 
 import android.animation.*;
+import android.app.Activity;
 import android.content.*;
 import android.net.*;
 import android.view.*;
@@ -106,6 +107,9 @@ public class RestaurantsAdapter extends BaseAdapter {
                     Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
                     intent.putExtra("jsonObjectUrl", jsonObjectUrl);
                     mContext.startActivity(intent);
+
+                    // set activity animation
+                    ((Activity)mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 }
             });
 

@@ -79,11 +79,6 @@ public class RestaurantsFrag extends Fragment {
         // check which item in the menu was clicked
         switch (item.getItemId()){
             case R.id.menu_restaurant_menu:
-                // start the menu activity
-                startActivity(new Intent(getActivity(), RestaurantMenuActivity.class));
-
-                // set activity animation
-                getActivity().overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
         }
 
