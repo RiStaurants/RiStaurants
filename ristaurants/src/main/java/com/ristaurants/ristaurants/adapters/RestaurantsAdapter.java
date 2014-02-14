@@ -85,7 +85,8 @@ public class RestaurantsAdapter extends BaseAdapter {
 			mViewHolder.mIvRestaurantRate.setImageUrl(mData.getJSONArray("restaurants").getJSONObject(position).getString("rate"), SingletonVolley.getImageLoader());
 			
             // set restaurant name
-            mViewHolder.mTvRestaurantName.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("name").toLowerCase());
+			final String restaurantName = mData.getJSONArray("restaurants").getJSONObject(position).getString("name").toLowerCase();
+            mViewHolder.mTvRestaurantName.setText(restaurantName);
 
             // set restaurant phone
 			mViewHolder.mTvRestaurantPhone.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("phone"));
@@ -105,6 +106,7 @@ public class RestaurantsAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
+					intent.putExtra("restaurantName", restaurantName);
                     intent.putExtra("jsonObjectUrl", jsonObjectUrl);
                     mContext.startActivity(intent);
 

@@ -22,6 +22,7 @@ import com.ristaurants.ristaurants.misc.HelperClass;
 import com.ristaurants.ristaurants.misc.SingletonVolley;
 
 import org.json.JSONObject;
+import android.widget.*;
 
 /**
  *
@@ -30,8 +31,8 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
     // instance variables
     private ActionBar mActionBar;
     private ViewPager mViewPager;
-    private String mRestaurantMenuUrl;
-    private JSONObject mJsonMenu;
+	private String mRestaurantMenuUrl;
+	private String mRestaurantName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,32 +40,9 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
         setContentView(R.layout.activity_menu);
 
         if (getIntent().getExtras() != null) {
+			// get data from previous activity
             mRestaurantMenuUrl = getIntent().getExtras().getString("jsonObjectUrl");
-
-            // request a volley queue
-            RequestQueue queue = SingletonVolley.getRequestQueue();
-
-            // json to request
-            JsonObjectRequest request = new JsonObjectRequest(mRestaurantMenuUrl, null, new Response.Listener<JSONObject>(){
-                @Override
-                public void onResponse(JSONObject jsonObject) {
-                    //
-                    mJsonMenu = jsonObject;
-
-                    Log.d("JSON MENU", mJsonMenu.toString());
-                }
-            }, new Response.ErrorListener(){
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // log errors
-                    VolleyLog.e("Volley Error @RestaurantsMenuActivity: " + error.getMessage(), error.getMessage());
-                }
-            }
-            );
-
-            // add request to queue
-            queue.add(request);
+			mRestaurantName = getIntent().getExtras().getString("restaurantName");
         }
 
         // instantiate
@@ -171,7 +149,7 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
 
             switch (item) {
                 case 0:
-                    mFrag = new BreakfastFrag();
+                    mFrag = new BreakfastFrag(mRestaurantMenuUrl, mRestaurantName);
                     break;
                 case 1:
                     mFrag = new LunchFrag();

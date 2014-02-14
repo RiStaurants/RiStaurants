@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	
+	<com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/niv_restaurant_menu_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/restaurants_menu_height"
+        android:scaleType="centerCrop"
+        android:scaleGravity="top" />
+	
+	<View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/restaurants_menu_height_half"
+        android:background="@drawable/view_gradient_top_black" />
+	
+	<com.ristaurants.ristaurants.views.BenderSolidTextView
+		android:id="@+id/tv_restaurant_menu_name"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:padding="@dimen/row_padding"
+		android:textSize="@dimen/restaurants_name_size"
+		android:textColor="@android:color/white" />
+	
+	<LinearLayout
+        android:id="@+id/ll_review_amount_plus_rate"
+		android:layout_below="@+id/niv_restaurant_menu_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/row_padding"
+        android:orientation="horizontal">
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:id="@+id/tv_restaurant_menu_review_amount"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1.75"
+            android:textSize="@dimen/restaurants_subname_size"
+            android:textColor="@android:color/black" 
+			android:text="20 reviews"/>
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/niv_restaurant_menu_rate"
+            android:layout_height="@dimen/rate_height"
+            android:layout_width="@dimen/rate_width"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.25" />
+
+    </LinearLayout>
+	
+	<View
+		android:id="@+id/v_divider"
+		android:layout_below="@+id/ll_review_amount_plus_rate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/drawer_divider"
+		android:background="@android:color/darker_gray"/>
+	
+	<TextView
+		android:id="@+id/tv_restaurant_menu_desc"
+		android:layout_below="@+id/v_divider"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:padding="@dimen/row_padding"
+		android:textSize="@dimen/restaurants_subname_size"
+		android:textColor="@android:color/black"/>
+
+</RelativeLayout>
+

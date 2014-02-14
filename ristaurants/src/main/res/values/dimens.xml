@@ -9,6 +9,8 @@
 	<!-- Images -->
     <dimen name="restaurants_height">250dp</dimen>
 	<dimen name="restaurants_height_half">125dp</dimen>
+	<dimen name="restaurants_menu_height">100dp</dimen>
+	<dimen name="restaurants_menu_height_half">50dp</dimen>
 	<dimen name="rate_width">100dp</dimen>
 	<dimen name="rate_height">20dp</dimen>
 	
@@ -17,11 +19,12 @@
 	<dimen name="restaurants_name_size">25sp</dimen>
 	<dimen name="restaurants_subname_size">18sp</dimen>
 
-    <!-- Padding -->
+    <!-- Padding and Margin-->
     <dimen name="drawer_padding">8dp</dimen>
 	<dimen name="list_padding_left">8dp</dimen>
 	<dimen name="list_padding_right">8dp</dimen>
     <dimen name="row_padding">4dp</dimen>
 	<dimen name="view_divider_padding">8dp</dimen>
+	<dimen name="row_margin">8dp</dimen>
 
 </resources>

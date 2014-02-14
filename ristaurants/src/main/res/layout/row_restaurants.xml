@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/restaurants_height_half"
         android:background="@drawable/view_gradient_top_black" />
+	
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/restaurants_height_half"
