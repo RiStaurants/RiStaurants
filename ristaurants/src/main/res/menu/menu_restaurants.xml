@@ -2,7 +2,7 @@
     <item
         android:id="@+id/menu_restaurant_menu"
         android:title="@string/menu_restaurant_random"
-        android:icon="@drawable/ic_action_ic_action_random"
+        android:icon="@drawable/ic_action_random"
         android:orderInCategory="1"
         android:showAsAction="always" />
 </menu>

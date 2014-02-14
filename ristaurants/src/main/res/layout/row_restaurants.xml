@@ -72,15 +72,15 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/iv_restuarant_menu"
-        android:layout_toLeftOf="@+id/iv_restuarant_map"
+        android:id="@+id/iv_restaurant_menu"
+        android:layout_toLeftOf="@+id/iv_restaurant_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:src="@drawable/ic_action_collections_view_as_list"/>
 
     <ImageView
-        android:id="@+id/iv_restuarant_map"
+        android:id="@+id/iv_restaurant_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

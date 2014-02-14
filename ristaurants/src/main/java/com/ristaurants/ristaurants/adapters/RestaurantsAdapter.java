@@ -1,7 +1,6 @@
 package com.ristaurants.ristaurants.adapters;
 
 import android.animation.*;
-import android.app.Activity;
 import android.content.*;
 import android.net.*;
 import android.view.*;
@@ -66,7 +65,8 @@ public class RestaurantsAdapter extends BaseAdapter {
             mViewHolder.mIvRestaurantRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_rate);
 			mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
 			mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
-            mViewHolder.mTvRestaurantAddress = (ImageView) view.findViewById(R.id.iv_restuarant_map);
+            mViewHolder.mIvRestaurantAddress = (ImageView) view.findViewById(R.id.iv_restaurant_map);
+            mViewHolder.mIvRestaurantMenu = (ImageView) view.findViewById(R.id.iv_restaurant_menu);
 
             // save view holder in tag
             view.setTag(mViewHolder);
@@ -98,17 +98,28 @@ public class RestaurantsAdapter extends BaseAdapter {
 					}
 				});
 
+            // set restaurant menu
+            final String jsonObjectUrl = mData.getJSONArray("restaurants").getJSONObject(position).getString("menus");
+            mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
+                    intent.putExtra("jsonObjectUrl", jsonObjectUrl);
+                    mContext.startActivity(intent);
+                }
+            });
+
             // set restaurant address
             final String address = mData.getJSONArray("restaurants").getJSONObject(position).getString("address").toLowerCase();
-            mViewHolder.mTvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						// open phone dialer with phone number
-						Intent intent = new Intent(Intent.ACTION_VIEW, null);
-						intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + address));
-						mContext.startActivity(intent);
-					}
-				});
+            mViewHolder.mIvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // open phone dialer with phone number
+                    Intent intent = new Intent(Intent.ACTION_VIEW, null);
+                    intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + address));
+                    mContext.startActivity(intent);
+                }
+            });
 
             // set fade in animation
             if (mLastAnimPosition < position) {
@@ -128,7 +139,8 @@ public class RestaurantsAdapter extends BaseAdapter {
         // instantiate views
         NetworkImageView mIvRestaurantImage;
         NetworkImageView mIvRestaurantRate;
-        ImageView mTvRestaurantAddress;
+        ImageView mIvRestaurantAddress;
+        ImageView mIvRestaurantMenu;
 		TextView mTvRestaurantName;
 		TextView mTvRestaurantPhone;
     }

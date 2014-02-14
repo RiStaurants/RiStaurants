@@ -9,9 +9,19 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.ristaurants.ristaurants.adapters.RestaurantsAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
+import com.ristaurants.ristaurants.misc.SingletonVolley;
+
+import org.json.JSONObject;
 
 /**
  *
@@ -20,11 +30,42 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
     // instance variables
     private ActionBar mActionBar;
     private ViewPager mViewPager;
+    private String mRestaurantMenuUrl;
+    private JSONObject mJsonMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        if (getIntent().getExtras() != null) {
+            mRestaurantMenuUrl = getIntent().getExtras().getString("jsonObjectUrl");
+
+            // request a volley queue
+            RequestQueue queue = SingletonVolley.getRequestQueue();
+
+            // json to request
+            JsonObjectRequest request = new JsonObjectRequest(mRestaurantMenuUrl, null, new Response.Listener<JSONObject>(){
+                @Override
+                public void onResponse(JSONObject jsonObject) {
+                    //
+                    mJsonMenu = jsonObject;
+
+                    Log.d("JSON MENU", mJsonMenu.toString());
+                }
+            }, new Response.ErrorListener(){
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // log errors
+                    VolleyLog.e("Volley Error @RestaurantsMenuActivity: " + error.getMessage(), error.getMessage());
+                }
+            }
+            );
+
+            // add request to queue
+            queue.add(request);
+        }
 
         // instantiate
         mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
