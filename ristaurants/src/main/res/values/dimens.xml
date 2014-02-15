@@ -2,6 +2,7 @@
 <resources>
 	<!-- Dividers -->
 	<dimen name="drawer_divider">1dp</dimen>
+    <dimen name="no_diver">0dp</dimen>
 
     <!-- Icons -->
     <dimen name="drawer_icon_size">45dp</dimen>

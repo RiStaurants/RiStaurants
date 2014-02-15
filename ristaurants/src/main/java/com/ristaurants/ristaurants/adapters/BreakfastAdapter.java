@@ -15,7 +15,7 @@ public class BreakfastAdapter extends BaseAdapter {
 	// instance variables
 	private Context mContext;
 	private JSONObject mData;
-	private int mLastAnimPosition = -1;
+	private int mLastAnimPosition = 1;
 	
 	public BreakfastAdapter(Context context, JSONObject data){
 		mContext = context;
@@ -64,6 +64,7 @@ public class BreakfastAdapter extends BaseAdapter {
             mViewHolder.mIvDishImage = (NetworkImageView) view.findViewById(R.id.niv_restaurant_menu_image);
 			mViewHolder.mTvDishName = (TextView) view.findViewById(R.id.tv_restaurant_menu_name);
 			mViewHolder.mTvDishDesc = (TextView) view.findViewById(R.id.tv_restaurant_menu_desc);
+            mViewHolder.mTvDishReviewCount = (TextView) view.findViewById(R.id.tv_restaurant_menu_review_amount);
 
             // save view holder in tag
             view.setTag(mViewHolder);
@@ -80,12 +81,18 @@ public class BreakfastAdapter extends BaseAdapter {
 			// set restaurant dish name
 			mViewHolder.mTvDishName.setText(mData.getJSONObject("menus").getJSONArray("breakfast").getJSONObject(position).getString("name"));
 			
-			// set restaurant dish name
+			// set restaurant dish description
 			mViewHolder.mTvDishDesc.setText(mData.getJSONObject("menus").getJSONArray("breakfast").getJSONObject(position).getString("description"));
+
+            // set restaurant dish review count
+            final int reviewCount = mData.getJSONObject("menus").getJSONArray("breakfast").getJSONObject(position).getJSONArray("reviews").length();
+            mViewHolder.mTvDishReviewCount.setText(String.format("%d %s", reviewCount, "reviews"));
 			
-            // set fade in animation
+            // set view animation
             if (mLastAnimPosition < position) {
-				ObjectAnimator.ofFloat(mViewHolder.mIvDishImage, "alpha", 0f, 1f).setDuration(200).start();
+                ObjectAnimator.ofFloat(mViewHolder.mTvDishName, "alpha", 0f, 1f).setDuration(1000).start();
+                ObjectAnimator.ofFloat(mViewHolder.mTvDishDesc, "alpha", 0f, 1f).setDuration(1000).start();
+                ObjectAnimator.ofFloat(view, "translationY", 200, 0).setDuration(500).start();
                 mLastAnimPosition = position;
             }
 
@@ -102,5 +109,6 @@ public class BreakfastAdapter extends BaseAdapter {
         NetworkImageView mIvDishImage;
 		TextView mTvDishName;
 		TextView mTvDishDesc;
+        TextView mTvDishReviewCount;
     }
 }
