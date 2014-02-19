@@ -49,28 +49,29 @@ public final class R {
         public static final int drawer_divider=0x7f070000;
         /**  Icons 
          */
-        public static final int drawer_icon_size=0x7f070001;
+        public static final int drawer_icon_size=0x7f070002;
         /**  Padding and Margin
          */
-        public static final int drawer_padding=0x7f07000b;
+        public static final int drawer_padding=0x7f07000c;
         /**  TextView size 
          */
-        public static final int drawer_text_size=0x7f070008;
-        public static final int list_padding_left=0x7f07000c;
-        public static final int list_padding_right=0x7f07000d;
-        public static final int rate_height=0x7f070007;
-        public static final int rate_width=0x7f070006;
+        public static final int drawer_text_size=0x7f070009;
+        public static final int list_padding_left=0x7f07000d;
+        public static final int list_padding_right=0x7f07000e;
+        public static final int no_diver=0x7f070001;
+        public static final int rate_height=0x7f070008;
+        public static final int rate_width=0x7f070007;
         /**  Images 
          */
-        public static final int restaurants_height=0x7f070002;
-        public static final int restaurants_height_half=0x7f070003;
-        public static final int restaurants_menu_height=0x7f070004;
-        public static final int restaurants_menu_height_half=0x7f070005;
-        public static final int restaurants_name_size=0x7f070009;
-        public static final int restaurants_subname_size=0x7f07000a;
-        public static final int row_margin=0x7f070010;
-        public static final int row_padding=0x7f07000e;
-        public static final int view_divider_padding=0x7f07000f;
+        public static final int restaurants_height=0x7f070003;
+        public static final int restaurants_height_half=0x7f070004;
+        public static final int restaurants_menu_height=0x7f070005;
+        public static final int restaurants_menu_height_half=0x7f070006;
+        public static final int restaurants_name_size=0x7f07000a;
+        public static final int restaurants_subname_size=0x7f07000b;
+        public static final int row_margin=0x7f070011;
+        public static final int row_padding=0x7f07000f;
+        public static final int view_divider_padding=0x7f070010;
     }
     public static final class drawable {
         public static final int ab_background_textured_theme=0x7f020000;
@@ -154,7 +155,7 @@ public final class R {
         public static final int activity_base=0x7f030000;
         public static final int activity_menu=0x7f030001;
         public static final int frag_beverage=0x7f030002;
-        public static final int frag_breakfast=0x7f030003;
+        public static final int frag_restaurant_menu=0x7f030003;
         public static final int frag_cuisine=0x7f030004;
         public static final int frag_dessert=0x7f030005;
         public static final int frag_dinner=0x7f030006;

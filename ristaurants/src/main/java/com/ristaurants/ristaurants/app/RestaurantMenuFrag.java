@@ -7,15 +7,15 @@ import android.view.*;
 import android.widget.*;
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
-import com.ristaurants.ristaurants.adapters.*;
 import com.ristaurants.ristaurants.misc.*;
 import org.json.*;
+import com.ristaurants.ristaurants.adapters.*;
 
 /**
- * Created by cs15 on 2/12/14.
+ * Fragment to display the breakfast menu of the restaurant
  */
-public class LunchFrag extends Fragment {
-	// instance variables
+public class RestaurantMenuFrag extends Fragment {
+    // instance variables
 	private ListView mLvContent;
 	private RestaurantMenuAdapter mAdapter;
     private JSONObject mRestaurantMenu;
@@ -58,7 +58,7 @@ public class LunchFrag extends Fragment {
 					// list view adapter 
 					mAdapter = new RestaurantMenuAdapter(getActivity(), mRestaurantMenu, mMenuType);
 					mLvContent.setAdapter(mAdapter);
-					
+
 					Log.i("@@@@@@@", mMenuType);
 				}
 			}, new Response.ErrorListener(){
@@ -78,8 +78,8 @@ public class LunchFrag extends Fragment {
 		mTvRestaurantName.setText(mMenuType);
     }
 
-	public static LunchFrag newInstance(String restaurantMenuUrl, String restaurantName, String menuType) {
-		LunchFrag mFrag = new LunchFrag();
+	public static RestaurantMenuFrag newInstance(String restaurantMenuUrl, String restaurantName, String menuType) {
+		RestaurantMenuFrag mFrag = new RestaurantMenuFrag();
 
 		Bundle args = new Bundle();
 		args.putString("mRestaurantMenuUrl", restaurantMenuUrl);

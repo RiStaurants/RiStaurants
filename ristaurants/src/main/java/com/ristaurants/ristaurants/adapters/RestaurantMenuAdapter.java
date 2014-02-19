@@ -11,21 +11,23 @@ import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
 import org.json.*;
 
-public class BreakfastAdapter extends BaseAdapter {
+public class RestaurantMenuAdapter extends BaseAdapter {
 	// instance variables
 	private Context mContext;
 	private JSONObject mData;
+	private String mMenuType;
 	private int mLastAnimPosition = 1;
-	
-	public BreakfastAdapter(Context context, JSONObject data){
+
+	public RestaurantMenuAdapter(Context context, JSONObject data, String menuType){
 		mContext = context;
 		mData = data;
+		mMenuType = menuType;
 	}
 
 	@Override
 	public int getCount() {
 		try {
-			return mData.getJSONObject("menus").getJSONArray("breakfast").length();
+			return mData.getJSONObject("menus").getJSONArray(mMenuType).length();
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return 0;
@@ -35,7 +37,7 @@ public class BreakfastAdapter extends BaseAdapter {
 	@Override
 	public Object getItem(int position) {
 		try {
-			return mData.getJSONObject("menus").getJSONArray("breakfast").getJSONObject(position);
+			return mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position);
 		} catch (JSONException e) {
 			e.printStackTrace();
 			return null;
@@ -76,18 +78,18 @@ public class BreakfastAdapter extends BaseAdapter {
         // set data
         try {
 			// set restaurant dish image
-			mViewHolder.mIvDishImage.setImageUrl(mData.getJSONObject("menus").getJSONArray("breakfast").getJSONObject(position).getString("image"), SingletonVolley.getImageLoader());
-			
+			mViewHolder.mIvDishImage.setImageUrl(mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getString("image"), SingletonVolley.getImageLoader());
+
 			// set restaurant dish name
-			mViewHolder.mTvDishName.setText(mData.getJSONObject("menus").getJSONArray("breakfast").getJSONObject(position).getString("name"));
-			
+			mViewHolder.mTvDishName.setText(mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getString("name"));
+
 			// set restaurant dish description
-			mViewHolder.mTvDishDesc.setText(mData.getJSONObject("menus").getJSONArray("breakfast").getJSONObject(position).getString("description"));
+			mViewHolder.mTvDishDesc.setText(mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getString("description"));
 
             // set restaurant dish review count
-            final int reviewCount = mData.getJSONObject("menus").getJSONArray("breakfast").getJSONObject(position).getJSONArray("reviews").length();
+            final int reviewCount = mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getJSONArray("reviews").length();
             mViewHolder.mTvDishReviewCount.setText(String.format("%d %s", reviewCount, "reviews"));
-			
+
             // set view animation
             if (mLastAnimPosition < position) {
                 ObjectAnimator.ofFloat(mViewHolder.mTvDishName, "alpha", 0f, 1f).setDuration(1000).start();

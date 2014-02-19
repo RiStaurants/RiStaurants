@@ -47,6 +47,7 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
 
         // instantiate
         mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
+		mViewPager.setOffscreenPageLimit(1);
         mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -119,7 +120,6 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
         mActionBar.addTab(dinnerTab);
         mActionBar.addTab(dessertTab);
         mActionBar.addTab(beverageTab);
-
     }
 
     @Override
@@ -134,7 +134,7 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
+		
     }
 
     private class MenusPagerAdapter extends FragmentPagerAdapter {
@@ -149,10 +149,10 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
 
             switch (item) {
                 case 0:
-                    mFrag = new BreakfastFrag(mRestaurantMenuUrl, mRestaurantName);
+                    mFrag = new RestaurantMenuFrag().newInstance(mRestaurantMenuUrl, mRestaurantName, "breakfast");
                     break;
                 case 1:
-                    mFrag = new LunchFrag();
+                    mFrag = new LunchFrag().newInstance(mRestaurantMenuUrl, mRestaurantName, "lunch");
                     break;
                 case 2:
                     mFrag = new DinnerFrag();
@@ -164,7 +164,7 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
                     mFrag = new BeverageFrag();
                     break;
             }
-
+			
             return mFrag;
         }
 
