@@ -9,20 +9,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.MenuItem;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.ristaurants.ristaurants.adapters.RestaurantsAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
-import com.ristaurants.ristaurants.misc.SingletonVolley;
-
-import org.json.JSONObject;
-import android.widget.*;
 
 /**
  *
@@ -33,6 +22,7 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
     private ViewPager mViewPager;
 	private String mRestaurantMenuUrl;
 	private String mRestaurantName;
+    private String[] mTabTitles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,12 +90,12 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
         ActionBar.Tab beverageTab = mActionBar.newTab();
 
         // set tab title
-		String[] tabTitles = getResources().getStringArray(R.array.restaurants_menu_tab_titles);
-        breakfastTab.setText(tabTitles[0]);
-        lunchTab.setText(tabTitles[1]);
-        dinnerTab.setText(tabTitles[2]);
-        dessertTab.setText(tabTitles[3]);
-        beverageTab.setText(tabTitles[4]);
+		mTabTitles = getResources().getStringArray(R.array.restaurants_menu_tab_titles);
+        breakfastTab.setText(mTabTitles[0]);
+        lunchTab.setText(mTabTitles[1]);
+        dinnerTab.setText(mTabTitles[2]);
+        dessertTab.setText(mTabTitles[3]);
+        beverageTab.setText(mTabTitles[4]);
 
         // set tab listener
         breakfastTab.setTabListener(this);
@@ -145,26 +135,17 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
 
         @Override
         public Fragment getItem(int item) {
-            Fragment mFrag = null;
+            // create instance of fragment
+            RestaurantMenuFrag mFrag = new RestaurantMenuFrag();
 
-            switch (item) {
-                case 0:
-                    mFrag = new RestaurantMenuFrag().newInstance(mRestaurantMenuUrl, mRestaurantName, "breakfast");
-                    break;
-                case 1:
-                    mFrag = new LunchFrag().newInstance(mRestaurantMenuUrl, mRestaurantName, "lunch");
-                    break;
-                case 2:
-                    mFrag = new DinnerFrag();
-                    break;
-                case 3:
-                    mFrag = new DessertsFrag();
-                    break;
-                case 4:
-                    mFrag = new BeverageFrag();
-                    break;
-            }
-			
+            // create bundle to pass data
+            Bundle args = new Bundle();
+            args.putString("mRestaurantMenuUrl", mRestaurantMenuUrl);
+            args.putString("mRestaurantName", mRestaurantName);
+            args.putString("mMenuType", mTabTitles[item]);
+            mFrag.setArguments(args);
+
+            // return fragment and pass data
             return mFrag;
         }
 

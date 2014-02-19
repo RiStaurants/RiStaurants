@@ -19,9 +19,9 @@ public class RestaurantMenuFrag extends Fragment {
 	private ListView mLvContent;
 	private RestaurantMenuAdapter mAdapter;
     private JSONObject mRestaurantMenu;
-	private static String mRestaurantMenuUrl;
-	private static String mRestaurantName;
-	private static String mMenuType;
+	private String mRestaurantMenuUrl;
+	private String mRestaurantName;
+	private String mMenuType;
 
 	//public RestaurantMenuFrag(){};
 
@@ -58,8 +58,6 @@ public class RestaurantMenuFrag extends Fragment {
 					// list view adapter 
 					mAdapter = new RestaurantMenuAdapter(getActivity(), mRestaurantMenu, mMenuType);
 					mLvContent.setAdapter(mAdapter);
-
-					Log.i("@@@@@@@", mMenuType);
 				}
 			}, new Response.ErrorListener(){
 
@@ -77,16 +75,4 @@ public class RestaurantMenuFrag extends Fragment {
 		// display restaurant name
 		mTvRestaurantName.setText(mMenuType);
     }
-
-	public static RestaurantMenuFrag newInstance(String restaurantMenuUrl, String restaurantName, String menuType) {
-		RestaurantMenuFrag mFrag = new RestaurantMenuFrag();
-
-		Bundle args = new Bundle();
-		args.putString("mRestaurantMenuUrl", restaurantMenuUrl);
-		args.putString("mRestaurantName", restaurantName);
-		args.putString("mMenuType", menuType);
-		mFrag.setArguments(args);
-
-		return mFrag;
-	}
 }
