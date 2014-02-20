@@ -1,25 +1,28 @@
 package com.ristaurants.ristaurants.app;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.MenuItem;
+import android.app.*;
+import android.graphics.drawable.*;
+import android.os.*;
+import android.support.v4.app.*;
+import android.support.v4.view.*;
+import android.view.*;
+import com.android.volley.*;
+import com.android.volley.toolbox.*;
+import com.ristaurants.ristaurants.adapters.*;
+import com.ristaurants.ristaurants.misc.*;
+import org.json.*;
 
-import com.ristaurants.ristaurants.misc.HelperClass;
+import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 
 /**
  *
  */
-public class RestaurantMenuActivity extends FragmentActivity implements ActionBar.TabListener {
+public class RestaurantMenuActivity extends FragmentActivity {
     // instance variables
-    private ActionBar mActionBar;
     private ViewPager mViewPager;
+	private JSONObject mRestaurantMenu;
 	private String mRestaurantMenuUrl;
 	private String mRestaurantName;
     private String[] mTabTitles;
@@ -28,6 +31,9 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+		
+		// set tab title
+		mTabTitles = getResources().getStringArray(R.array.restaurants_menu_tab_titles);
 
         if (getIntent().getExtras() != null) {
 			// get data from previous activity
@@ -35,38 +41,49 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
 			mRestaurantName = getIntent().getExtras().getString("restaurantName");
         }
 
-        // instantiate
-        mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
-		mViewPager.setOffscreenPageLimit(1);
-        mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i2) {
+		// check saveInstanceState
+		if (savedInstanceState == null) {
+			// request a volley queue
+			RequestQueue queue = SingletonVolley.getRequestQueue();
 
-            }
+			// json to request
+			JsonObjectRequest request = new JsonObjectRequest(mRestaurantMenuUrl, null, new Response.Listener<JSONObject>(){
 
-            @Override
-            public void onPageSelected(int position) {
-                mActionBar.setSelectedNavigationItem(position);
-            }
+					@Override
+					public void onResponse(JSONObject jsonObject) {
+						// get the json file containing the menu data
+						mRestaurantMenu = jsonObject;
+						
+						// instantiate view pager after getting json
+						mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
+						mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
+					}
+				}, new Response.ErrorListener(){
 
-            @Override
-            public void onPageScrollStateChanged(int i) {
-                if (i == ViewPager.SCROLL_STATE_IDLE){
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						// log errors
+						VolleyLog.e("Volley Error: " + error.getMessage(), error.getMessage());
+					}
+				}
+			);
 
-                }
-
-                if (i == ViewPager.SCROLL_STATE_DRAGGING) {
-
-                }
-
-                if (i == ViewPager.SCROLL_STATE_SETTLING) {
-
-                }
-
-            }
-        });
-
+			// add request to queue
+			queue.add(request);
+			
+		} else { 
+			try {
+				// get json from saved instance
+				mRestaurantMenu = new JSONObject(savedInstanceState.getString("mRestaurantMenu", null));
+				
+				// instantiate view pager after getting json
+				mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
+				mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+        
         // set action bar background color
         HelperClass.setActionBarBackground(this, R.color.menus_bg);
 
@@ -74,60 +91,37 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_menu)));
         getActionBar().setHomeButtonEnabled(true);
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        // action bar instance
-        mActionBar = getActionBar();
-
-        // change tab background colors
-        mActionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.menus_tab_bg)));
-
-        // create action bar tabs
-        ActionBar.Tab breakfastTab = mActionBar.newTab();
-        ActionBar.Tab lunchTab = mActionBar.newTab();
-        ActionBar.Tab dinnerTab = mActionBar.newTab();
-        ActionBar.Tab dessertTab = mActionBar.newTab();
-        ActionBar.Tab beverageTab = mActionBar.newTab();
-
-        // set tab title
-		mTabTitles = getResources().getStringArray(R.array.restaurants_menu_tab_titles);
-        breakfastTab.setText(mTabTitles[0]);
-        lunchTab.setText(mTabTitles[1]);
-        dinnerTab.setText(mTabTitles[2]);
-        dessertTab.setText(mTabTitles[3]);
-        beverageTab.setText(mTabTitles[4]);
-
-        // set tab listener
-        breakfastTab.setTabListener(this);
-        lunchTab.setTabListener(this);
-        dinnerTab.setTabListener(this);
-        dessertTab.setTabListener(this);
-        beverageTab.setTabListener(this);
-
-        // add tabs to action bar
-        mActionBar.addTab(breakfastTab);
-        mActionBar.addTab(lunchTab);
-        mActionBar.addTab(dinnerTab);
-        mActionBar.addTab(dessertTab);
-        mActionBar.addTab(beverageTab);
     }
 
     @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        mViewPager.setCurrentItem(tab.getPosition());
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // go back to previous screens
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+
+		// save state
+		outState.putString("mRestaurantMenu", mRestaurantMenu.toString());
+	}
 
     @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    public void onBackPressed() {
+        super.onBackPressed();
 
+        // set activity animation
+        this.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
     }
 
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-		
-    }
-
-    private class MenusPagerAdapter extends FragmentPagerAdapter {
+	/** ViewPager Adapter */
+    private class MenusPagerAdapter extends FragmentStatePagerAdapter {
 
         public MenusPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -136,43 +130,20 @@ public class RestaurantMenuActivity extends FragmentActivity implements ActionBa
         @Override
         public Fragment getItem(int item) {
             // create instance of fragment
-            RestaurantMenuFrag mFrag = new RestaurantMenuFrag();
+            Fragment mFrag = new RestaurantMenuFrag().newInstance(mRestaurantMenu, mTabTitles[item]);
 
-            // create bundle to pass data
-            Bundle args = new Bundle();
-            args.putString("mRestaurantMenuUrl", mRestaurantMenuUrl);
-            args.putString("mRestaurantName", mRestaurantName);
-            args.putString("mMenuType", mTabTitles[item]);
-            mFrag.setArguments(args);
-
-            // return fragment and pass data
             return mFrag;
         }
 
         @Override
         public int getCount() {
-            return 5;
+            return mTabTitles.length;
         }
-    }
+		
+		@Override
+		public CharSequence getPageTitle(int position) {
+			return mTabTitles[position].toUpperCase();
+		}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // go back to previous screens
-                onBackPressed();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        // set activity animation
-        this.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
     }
 }

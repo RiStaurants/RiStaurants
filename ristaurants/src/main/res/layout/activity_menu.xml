@@ -8,4 +8,14 @@
     android:background="@color/menus_bg"
     android:orientation="vertical" >
 
+	<android.support.v4.view.PagerTitleStrip
+		android:id="@+id/pager_title_strip"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="top"
+		android:paddingTop="@dimen/row_margin"
+		android:paddingBottom="@dimen/row_margin"
+		android:textSize="@dimen/restaurants_name_size"
+		android:textColor="@android:color/white" />
+
 </android.support.v4.view.ViewPager>
