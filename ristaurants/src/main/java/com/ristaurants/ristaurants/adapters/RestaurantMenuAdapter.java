@@ -1,9 +1,7 @@
 package com.ristaurants.ristaurants.adapters;
 
 import android.animation.*;
-import android.app.*;
 import android.content.*;
-import android.net.*;
 import android.view.*;
 import android.widget.*;
 import com.android.volley.toolbox.*;
@@ -58,7 +56,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
         if (view == null) {
             // inflate view
             LayoutInflater viewInflater = (LayoutInflater) this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = viewInflater.inflate(R.layout.row_breakfast, null);
+            view = viewInflater.inflate(R.layout.row_restaurant_menu, null);
 
             // instantiate views
             mViewHolder = new ViewHolder();

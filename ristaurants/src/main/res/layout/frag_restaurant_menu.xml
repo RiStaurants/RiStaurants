@@ -6,21 +6,6 @@
 	android:background="@android:color/white"
 	android:orientation="vertical">
 
-	<com.ristaurants.ristaurants.views.BenderSolidTextView
-		android:id="@+id/tv_restaurant_name"
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:gravity="center"
-		android:layout_marginTop="@dimen/row_margin"
-		android:layout_marginBottom="@dimen/row_margin"
-		android:textSize="@dimen/restaurants_name_size"
-		android:textColor="@color/restaurants_bg" />
-	
-	<View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/drawer_divider"
-        android:background="@color/restaurants_bg" />
-
 	<ListView
 		android:id="@+id/lv_content"
 		android:layout_height="wrap_content"

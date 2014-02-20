@@ -9,6 +9,7 @@
         android:id="@+id/niv_restaurant_menu_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/restaurants_menu_height"
+        android:layout_marginTop="@dimen/row_margin"
         android:scaleType="centerCrop"
         android:scaleGravity="top" />
 	
@@ -17,6 +18,7 @@
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:padding="@dimen/row_padding"
+        android:layout_marginTop="@dimen/row_margin"
 		android:textSize="@dimen/restaurants_name_size"
 		android:textColor="@android:color/white"
         android:shadowColor="@android:color/black"
