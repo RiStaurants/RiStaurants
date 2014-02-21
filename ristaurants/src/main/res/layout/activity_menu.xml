@@ -15,7 +15,7 @@
 		android:layout_gravity="top"
 		android:paddingTop="@dimen/row_margin"
 		android:paddingBottom="@dimen/row_margin"
-		android:textSize="@dimen/restaurants_name_size"
+		android:textSize="@dimen/pager_title_strip_size"
 		android:textColor="@android:color/white" />
 
 </android.support.v4.view.ViewPager>

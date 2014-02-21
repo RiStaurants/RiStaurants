@@ -1,6 +1,7 @@
 package com.ristaurants.ristaurants.adapters;
 
 import android.animation.*;
+import android.app.*;
 import android.content.*;
 import android.view.*;
 import android.widget.*;
@@ -16,7 +17,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
 	private String mMenuType;
 	private int mLastAnimPosition = 1;
 
-	public RestaurantMenuAdapter(Context context, JSONObject data, String menuType){
+	public RestaurantMenuAdapter(Context context, JSONObject data, String menuType) {
 		mContext = context;
 		mData = data;
 		mMenuType = menuType;
@@ -48,7 +49,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View view, ViewGroup viewGroup) {
+	public View getView(final int position, View view, ViewGroup viewGroup) {
 		// get view
         ViewHolder mViewHolder;
 
@@ -76,10 +77,12 @@ public class RestaurantMenuAdapter extends BaseAdapter {
         // set data
         try {
 			// set restaurant dish image
-			mViewHolder.mIvDishImage.setImageUrl(mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getString("image"), SingletonVolley.getImageLoader());
+			final String dishImageUrl = mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getString("image");
+			mViewHolder.mIvDishImage.setImageUrl(dishImageUrl, SingletonVolley.getImageLoader());
 
 			// set restaurant dish name
-			mViewHolder.mTvDishName.setText(mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getString("name"));
+			final String dishName = mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getString("name");
+			mViewHolder.mTvDishName.setText(dishName);
 
 			// set restaurant dish description
 			mViewHolder.mTvDishDesc.setText(mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getString("description"));
@@ -87,6 +90,25 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             // set restaurant dish review count
             final int reviewCount = mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getJSONArray("reviews").length();
             mViewHolder.mTvDishReviewCount.setText(String.format("%d %s", reviewCount, "reviews"));
+			mViewHolder.mTvDishReviewCount.setOnClickListener(new View.OnClickListener(){
+
+					@Override
+					public void onClick(View view) {
+						try {
+							// open reviews activity
+							Intent intent = new Intent(mContext, DishesReviews.class);
+							intent.putExtra("mReviews", mData.getJSONObject("menus").getJSONArray(mMenuType).getJSONObject(position).getJSONArray("reviews").toString());
+							intent.putExtra("mDishImageUrl", dishImageUrl);
+							intent.putExtra("mDishName", dishName);
+							mContext.startActivity(intent);
+
+							// set activity animation
+							((Activity)mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					}
+				});
 
             // set view animation
             if (mLastAnimPosition < position) {

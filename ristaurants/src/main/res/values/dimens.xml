@@ -12,6 +12,7 @@
 	<dimen name="restaurants_height_half">125dp</dimen>
 	<dimen name="restaurants_menu_height">100dp</dimen>
 	<dimen name="restaurants_menu_height_half">50dp</dimen>
+	<dimen name ="dish_reviews_height">200dp</dimen>
 	<dimen name="rate_width">100dp</dimen>
 	<dimen name="rate_height">20dp</dimen>
 	
@@ -19,6 +20,7 @@
     <dimen name="drawer_text_size">35sp</dimen>
 	<dimen name="restaurants_name_size">25sp</dimen>
 	<dimen name="restaurants_subname_size">18sp</dimen>
+	<dimen name="pager_title_strip_size">35sp</dimen>
 
     <!-- Padding and Margin-->
     <dimen name="drawer_padding">8dp</dimen>

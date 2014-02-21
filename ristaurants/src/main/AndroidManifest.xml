@@ -32,6 +32,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+		
+		<activity
+            android:label="@string/ab_title_reviews"
+            android:name=".DishesReviews" >
+            <intent-filter >
+                <action android:name="com.ristaurants.ristaurants.app.DISHESREVIEWS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 

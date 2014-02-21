@@ -15,4 +15,28 @@
         <item>desserts</item>
 		<item>beverages</item>
 	</string-array>
+	
+	<string-array name="stub">
+		<item>breakfast</item>
+		<item>lunch</item>
+		<item>dinner</item>
+        <item>desserts</item>
+		<item>beverages</item>
+		<item>breakfast</item>
+		<item>lunch</item>
+		<item>dinner</item>
+        <item>desserts</item>
+		<item>beverages</item>
+		<item>breakfast</item>
+		<item>lunch</item>
+		<item>dinner</item>
+        <item>desserts</item>
+		<item>beverages</item>
+		<item>breakfast</item>
+		<item>lunch</item>
+		<item>dinner</item>
+        <item>desserts</item>
+		<item>beverages</item>
+		<item>...!!!...done...!!!...</item>
+	</string-array>
 </resources>

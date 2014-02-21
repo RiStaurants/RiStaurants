@@ -24,7 +24,7 @@
         android:shadowColor="@android:color/black"
         android:shadowDx="1"
         android:shadowDy="1"
-        android:shadowRadius="0"/>
+        android:shadowRadius="1"/>
 	
 	<LinearLayout
         android:id="@+id/ll_review_amount_plus_rate"

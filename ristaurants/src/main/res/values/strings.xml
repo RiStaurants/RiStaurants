@@ -5,6 +5,7 @@
     <string name="ab_title_app_name">RiStaurants</string>
     <string name="ab_title_restaurants">RESTAURANTS</string>
     <string name="ab_title_menu">MENUS</string>
+	<string name="ab_title_reviews">REVIEWS</string>
 
     <!-- Content Desc -->
     <string name="content_drawer_left_icon">Navigation Icon</string>
