@@ -39,8 +39,8 @@ public class DishesReviews extends Activity {
 			mTvDishName.setText(dishName);
 			
 			// animate dish image and name
-			ObjectAnimator.ofFloat(mTvDishName, "alpha", 0f, 1f).setDuration(1500).start();
-			ObjectAnimator.ofFloat(mIvDishImage, "translationY", -500, 0).setDuration(1000).start();
+			ObjectAnimator.ofFloat(mTvDishName, "alpha", 0f, 1f).setDuration(1000).start();
+			ObjectAnimator.ofFloat(mIvDishImage, "translationY", -1000, 0).setDuration(700).start();
 		}
     }
 
