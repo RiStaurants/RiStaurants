@@ -12,7 +12,7 @@
 	<dimen name="restaurants_height_half">125dp</dimen>
 	<dimen name="restaurants_menu_height">100dp</dimen>
 	<dimen name="restaurants_menu_height_half">50dp</dimen>
-	<dimen name ="dish_reviews_height">200dp</dimen>
+	<dimen name ="dish_reviews_height">150dp</dimen>
 	<dimen name="rate_width">100dp</dimen>
 	<dimen name="rate_height">20dp</dimen>
 	

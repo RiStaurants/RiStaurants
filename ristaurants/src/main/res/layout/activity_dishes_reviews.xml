@@ -31,6 +31,7 @@
 		android:layout_below="@+id/niv_dish_reviews_image"
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
+		android:scrollbars="none"
 		android:paddingTop="@dimen/row_margin"
 		android:paddingLeft="@dimen/row_padding"
 		android:paddingRight="@dimen/row_padding"

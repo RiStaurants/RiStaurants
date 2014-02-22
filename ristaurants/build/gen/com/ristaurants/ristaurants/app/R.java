@@ -128,33 +128,37 @@ public final class R {
         public static final int view_gradient_top_black=0x7f020030;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b001a;
+        public static final int action_settings=0x7f0b001e;
         public static final int dl_drawer=0x7f0b0000;
         public static final int fl_drawer=0x7f0b0001;
-        public static final int iv_drawer_left_icon=0x7f0b0008;
-        public static final int iv_restaurant_map=0x7f0b0019;
-        public static final int iv_restaurant_menu=0x7f0b0018;
-        public static final int ll_phone_number=0x7f0b0015;
-        public static final int ll_review_amount_plus_rate=0x7f0b000c;
+        public static final int iv_drawer_left_icon=0x7f0b000c;
+        public static final int iv_restaurant_map=0x7f0b001d;
+        public static final int iv_restaurant_menu=0x7f0b001c;
+        public static final int ll_phone_number=0x7f0b0019;
+        public static final int ll_review_amount_plus_rate=0x7f0b0010;
         public static final int lv_content=0x7f0b0005;
         public static final int lv_drawer_left=0x7f0b0002;
-        public static final int lv_name_plus_rate=0x7f0b0012;
-        public static final int menu_restaurant_menu=0x7f0b001b;
+        public static final int lv_name_plus_rate=0x7f0b0016;
+        public static final int menu_restaurant_menu=0x7f0b001f;
+        public static final int niv_dish_review_rate=0x7f0b000a;
         public static final int niv_dish_reviews_image=0x7f0b0003;
-        public static final int niv_restaurant_image=0x7f0b0011;
-        public static final int niv_restaurant_menu_image=0x7f0b000a;
-        public static final int niv_restaurant_menu_rate=0x7f0b000e;
-        public static final int niv_restaurant_rate=0x7f0b0014;
+        public static final int niv_restaurant_image=0x7f0b0015;
+        public static final int niv_restaurant_menu_image=0x7f0b000e;
+        public static final int niv_restaurant_menu_rate=0x7f0b0012;
+        public static final int niv_restaurant_rate=0x7f0b0018;
         public static final int pager_title_strip=0x7f0b0007;
+        public static final int tv_dish_review_author=0x7f0b0008;
+        public static final int tv_dish_review_date=0x7f0b0009;
+        public static final int tv_dish_review_review=0x7f0b000b;
         public static final int tv_dish_reviews_name=0x7f0b0004;
-        public static final int tv_drawer_left=0x7f0b0009;
-        public static final int tv_restaurant_menu_desc=0x7f0b0010;
-        public static final int tv_restaurant_menu_name=0x7f0b000b;
-        public static final int tv_restaurant_menu_review_amount=0x7f0b000d;
-        public static final int tv_restaurant_name=0x7f0b0013;
-        public static final int tv_restaurant_phone=0x7f0b0017;
-        public static final int tv_restaurant_phone_text=0x7f0b0016;
-        public static final int v_divider=0x7f0b000f;
+        public static final int tv_drawer_left=0x7f0b000d;
+        public static final int tv_restaurant_menu_desc=0x7f0b0014;
+        public static final int tv_restaurant_menu_name=0x7f0b000f;
+        public static final int tv_restaurant_menu_review_amount=0x7f0b0011;
+        public static final int tv_restaurant_name=0x7f0b0017;
+        public static final int tv_restaurant_phone=0x7f0b001b;
+        public static final int tv_restaurant_phone_text=0x7f0b001a;
+        public static final int v_divider=0x7f0b0013;
         public static final int vp_restaurants_menus=0x7f0b0006;
     }
     public static final class layout {
@@ -167,9 +171,10 @@ public final class R {
         public static final int frag_restaurant_menu=0x7f030006;
         public static final int frag_restaurants=0x7f030007;
         public static final int frag_settings=0x7f030008;
-        public static final int row_drawer_left=0x7f030009;
-        public static final int row_restaurant_menu=0x7f03000a;
-        public static final int row_restaurants=0x7f03000b;
+        public static final int row_dish_reviews=0x7f030009;
+        public static final int row_drawer_left=0x7f03000a;
+        public static final int row_restaurant_menu=0x7f03000b;
+        public static final int row_restaurants=0x7f03000c;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
