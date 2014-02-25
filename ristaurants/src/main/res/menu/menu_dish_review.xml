@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_dish_review_add"
+        android:title="@string/menu_dish_review_add"
+        android:icon="@drawable/ic_action_content_new"
+        android:orderInCategory="1"
+        android:showAsAction="always" />
+</menu>

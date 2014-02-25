@@ -61,11 +61,20 @@ public class DishesReviews extends Activity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_dish_review, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // go back to previous screens
                 onBackPressed();
+                break;
+            case R.id.menu_dish_review_add:
+                Toast.makeText(this, "Add Review Button Was Clicked!", Toast.LENGTH_LONG).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

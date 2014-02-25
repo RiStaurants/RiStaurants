@@ -17,8 +17,7 @@
 			android:layout_width="wrap_content"
 			android:layout_weight="1.50"
 			android:textColor="@android:color/black"
-			android:textSize="@dimen/restaurants_name_size"
-			android:text="John Doe"/>
+			android:textSize="@dimen/restaurants_name_size"/>
 
 		<com.ristaurants.ristaurants.views.BenderSolidTextView
 			android:id="@+id/tv_dish_review_date"
@@ -27,8 +26,7 @@
 			android:layout_weight="0.50"
 			android:gravity="right"
 			android:textColor="@android:color/darker_gray"
-			android:textSize="@dimen/restaurants_name_size"
-			android:text="2/14/2014"/>
+			android:textSize="@dimen/restaurants_name_size"/>
 
 	</LinearLayout>
 
@@ -54,7 +52,7 @@
 		android:layout_marginBottom="@dimen/row_padding"
 		android:textColor="@android:color/black"
 		android:textSize="@dimen/restaurants_subname_size"
-		android:text="John Doe"/>
+        android:textStyle="bold"/>
 
 </LinearLayout>
 
