@@ -2,6 +2,7 @@ package com.ristaurants.ristaurants.app;
 
 import android.animation.*;
 import android.app.*;
+import android.content.Intent;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
@@ -74,7 +75,12 @@ public class DishesReviews extends Activity {
                 onBackPressed();
                 break;
             case R.id.menu_dish_review_add:
-                Toast.makeText(this, "Add Review Button Was Clicked!", Toast.LENGTH_LONG).show();
+                // open the add reviews activity
+                Intent intent = new Intent(this, AddDishReview.class);
+                startActivity(intent);
+
+                // set activity animation
+                this.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 break;
         }
         return super.onOptionsItemSelected(item);

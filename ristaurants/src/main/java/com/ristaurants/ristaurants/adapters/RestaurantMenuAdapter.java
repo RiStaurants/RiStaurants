@@ -102,9 +102,9 @@ public class RestaurantMenuAdapter extends BaseAdapter {
 							intent.putExtra("mDishName", dishName);
 							mContext.startActivity(intent);
 
-							// set activity animation
-							((Activity)mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-						} catch (JSONException e) {
+                            // set activity animation
+                            ((Activity)mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                        } catch (JSONException e) {
 							e.printStackTrace();
 						}
 					}
