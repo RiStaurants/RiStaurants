@@ -5,8 +5,6 @@ import android.support.v4.app.*;
 import android.support.v4.view.*;
 import android.view.*;
 
-import com.android.volley.*;
-import com.android.volley.toolbox.*;
 import com.ristaurants.ristaurants.misc.*;
 
 import org.json.*;
@@ -24,7 +22,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
     // instance variables
     private ViewPager mViewPager;
     private JSONObject mRestaurantMenu;
-    private String mRestaurantMenuUrl;
+    private String mRestaurantMenuString;
     private String[] mPagerTitles;
 
     @Override
@@ -36,55 +34,21 @@ public class RestaurantMenuActivity extends FragmentActivity {
         mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
 
         if (getIntent().getExtras() != null) {
-            // get data from previous activity
-            mRestaurantMenuUrl = getIntent().getExtras().getString("jsonObjectUrl");
-        }
 
-        // check saveInstanceState
-        if (savedInstanceState == null) {
-            // request a volley queue
-            RequestQueue queue = SingletonVolley.getRequestQueue();
-
-            // json to request
-            JsonObjectRequest request = new JsonObjectRequest(mRestaurantMenuUrl, null, new Response.Listener<JSONObject>() {
-
-                @Override
-                public void onResponse(JSONObject jsonObject) {
-                    // get the json file containing the menu data
-                    mRestaurantMenu = jsonObject;
-
-                    try {
-                        // get menu categories
-                        getMenuCategories(mRestaurantMenu.getJSONObject("menus").names());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // log errors
-                    VolleyLog.e("Volley Error: " + error.getMessage(), error.getMessage());
-                }
-            }
-            );
-
-            // add request to queue
-            queue.add(request);
-
-        } else {
             try {
-                // get json from saved instance
-                mRestaurantMenu = new JSONObject(savedInstanceState.getString("mRestaurantMenu", null));
+                // get data from previous activity
+                mRestaurantMenuString = getIntent().getExtras().getString("jsonObject");
+
+                // convert to JSON
+                mRestaurantMenu = new JSONObject(mRestaurantMenuString);
 
                 // get menu categories
                 getMenuCategories(mRestaurantMenu.getJSONObject("menus").names());
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+
 
         // set action bar background color
         HelperClass.setActionBarBackground(this, R.color.menus_bg);

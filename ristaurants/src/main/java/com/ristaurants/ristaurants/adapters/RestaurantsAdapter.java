@@ -7,6 +7,7 @@ import android.net.*;
 import android.view.*;
 import android.widget.*;
 import com.android.volley.toolbox.*;
+import com.parse.ParseUser;
 import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
 import org.json.*;
@@ -94,16 +95,16 @@ public class RestaurantsAdapter extends BaseAdapter {
 				});
 
             // set restaurant menu
-            final String jsonObjectUrl = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/los_andes_menu.json";
+            final JSONObject jsonObject = mDataList.get(position).getJSONObject("restaurantMenu");
             mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
-                    intent.putExtra("jsonObjectUrl", jsonObjectUrl);
+                    intent.putExtra("jsonObject", jsonObject.toString());
                     mContext.startActivity(intent);
 
                     // set activity animation
-                    ((Activity)mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                    ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 }
             });
 			

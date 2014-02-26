@@ -2,13 +2,13 @@
 <ScrollView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_height="match_parent"
-	android:layout_width="match_parent">
+	android:layout_width="match_parent"
+    android:background="@android:color/white">
 
 	<RelativeLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:padding="@dimen/row_padding"
-		android:background="@android:color/white">
+		android:layout_height="wrap_content"
+		android:padding="@dimen/row_padding">
 
 		<EditText
 			android:id="@+id/et_author"
@@ -34,26 +34,41 @@
 			android:textColor="@android:color/black"
 			android:textSize="@dimen/restaurants_subname_size"/>
 
-		<Spinner
-			android:id="@+id/sp_rate"
-			android:layout_height="wrap_content"
-			android:layout_width="match_parent"
-			android:layout_below="@+id/et_desc"
-			android:layout_alignParentLeft="true"
-			android:layout_alignParentStart="true"
-			android:entries="@array/rate_spinner_items"/>
+        <LinearLayout
+            android:id="@+id/ll_rate"
+            android:layout_below="@+id/et_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal">
+
+            <com.ristaurants.ristaurants.views.RobotoThinTextView
+                android:id="@+id/tv_select_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/restaurants_subname_size"
+                android:text="Select Rate: " />
+
+            <Spinner
+                android:id="@+id/sp_rate"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:entries="@array/rate_spinner_items"/>
+        </LinearLayout>
 
 		<Button
 			android:id="@+id/bt_add"
+			android:layout_below="@+id/ll_rate"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_below="@+id/sp_rate"
 			android:layout_alignParentLeft="true"
 			android:layout_alignParentStart="true"
 			android:onClick="onAddReview"
 			android:text="Add"/>
 
-	</RelativeLayout>
+    </RelativeLayout>
 
 </ScrollView>
 
