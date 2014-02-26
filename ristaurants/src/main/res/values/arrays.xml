@@ -16,6 +16,23 @@
 		<item>beverages</item>
 	</string-array>
 	
+	<string-array name="rate_image_urls">
+		<item>http://i.imgur.com/Y9TvPpG.png</item>
+		<item>http://i.imgur.com/Y9TvPpG.png</item>
+		<item>http://i.imgur.com/ulKYumX.png</item>
+        <item>http://i.imgur.com/S27KmPP.png</item>
+		<item>http://i.imgur.com/JvR5JVB.png</item>
+		<item>http://i.imgur.com/DeZyddy.png</item>
+	</string-array>
+	
+	<string-array name="rate_spinner_items">
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+	</string-array>
+	
 	<string-array name="stub">
 		<item>breakfast</item>
 		<item>lunch</item>

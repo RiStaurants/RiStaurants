@@ -10,37 +10,29 @@ import com.android.volley.toolbox.*;
 import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
 import org.json.*;
+import com.parse.ParseObject;
+import java.util.*;
 
 public class RestaurantsAdapter extends BaseAdapter {
     // instance variables
     private Context mContext;
-    private JSONObject mData;
+	private List<ParseObject> mDataList;
     private int mLastAnimPosition = -1;
 
-    public RestaurantsAdapter(Context context, JSONObject data) {
+    public RestaurantsAdapter(Context context, List<ParseObject> dataList) {
         // extract parameters
         this.mContext = context;
-        this.mData = data;
+		this.mDataList = dataList;
     }
 
     @Override
     public int getCount() {
-        try {
-            return this.mData.getJSONArray("restaurants").length();
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return 0;
-        }
+		return this.mDataList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        try {
-            return this.mData.getJSONArray("restaurants").getJSONObject(position);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
+		return this.mDataList.get(position);
     }
 
     @Override
@@ -79,17 +71,18 @@ public class RestaurantsAdapter extends BaseAdapter {
         // set data
         try {
 			// set restaurant image
-			mViewHolder.mIvRestaurantImage.setImageUrl(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), SingletonVolley.getImageLoader());
+			mViewHolder.mIvRestaurantImage.setImageUrl(mDataList.get(position).getString("restaurantImage"), SingletonVolley.getImageLoader());
+			//mViewHolder.mIvRestaurantImage.setImageUrl(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), SingletonVolley.getImageLoader());
 			
 			// set restaurant rate image
-			mViewHolder.mIvRestaurantRate.setImageUrl(mData.getJSONArray("restaurants").getJSONObject(position).getString("rate"), SingletonVolley.getImageLoader());
+			mViewHolder.mIvRestaurantRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("restaurantRate")), SingletonVolley.getImageLoader());
 			
             // set restaurant name
-			final String restaurantName = mData.getJSONArray("restaurants").getJSONObject(position).getString("name").toLowerCase();
-            mViewHolder.mTvRestaurantName.setText(restaurantName);
+			//final String restaurantName = mData.getJSONArray("restaurants").getJSONObject(position).getString("name").toLowerCase();
+            mViewHolder.mTvRestaurantName.setText(mDataList.get(position).getString("restaurantName"));
 
             // set restaurant phone
-			mViewHolder.mTvRestaurantPhone.setText(mData.getJSONArray("restaurants").getJSONObject(position).getString("phone"));
+			mViewHolder.mTvRestaurantPhone.setText(mDataList.get(position).getString("restaurantPhone"));
 			mViewHolder.mTvRestaurantPhone.setOnClickListener(new View.OnClickListener(){
 					@Override
 					public void onClick(View view) {
@@ -101,12 +94,11 @@ public class RestaurantsAdapter extends BaseAdapter {
 				});
 
             // set restaurant menu
-            final String jsonObjectUrl = mData.getJSONArray("restaurants").getJSONObject(position).getString("menus");
+            final String jsonObjectUrl = "https://dl.dropboxusercontent.com/u/27136243/RiStaurants/json/los_andes_menu.json";
             mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
-					intent.putExtra("restaurantName", restaurantName);
                     intent.putExtra("jsonObjectUrl", jsonObjectUrl);
                     mContext.startActivity(intent);
 
@@ -114,9 +106,9 @@ public class RestaurantsAdapter extends BaseAdapter {
                     ((Activity)mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
                 }
             });
-
+			
             // set restaurant address
-            final String address = mData.getJSONArray("restaurants").getJSONObject(position).getString("address").toLowerCase();
+            final String address = mDataList.get(position).getString("restaurantAddress").toLowerCase();
             mViewHolder.mIvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -133,7 +125,7 @@ public class RestaurantsAdapter extends BaseAdapter {
                 mLastAnimPosition = position;
             }
 
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

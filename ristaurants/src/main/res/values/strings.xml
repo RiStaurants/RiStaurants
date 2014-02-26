@@ -23,5 +23,6 @@
 
     <!-- Messages -->
     <string name="review_was_added">Your review was successfully added.</string>
+	<string name="please_fill_all_fields">Please compete all field.</string>
 
 </resources>

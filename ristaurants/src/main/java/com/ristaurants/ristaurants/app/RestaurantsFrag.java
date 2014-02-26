@@ -46,59 +46,30 @@ public class RestaurantsFrag extends Fragment {
         // instantiate Parse Database
         Parse.initialize(getActivity(), "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
 
-
         // set action bar background
         HelperClass.setActionBarBackground(getActivity(), R.color.restaurants_bg);
 
         // instantiate views
         mLvContent = (ListView) getActivity().findViewById(R.id.lv_content);
 
-        // request a volley queue
-        RequestQueue queue = SingletonVolley.getRequestQueue();
+		// get data from database
+		ParseQuery<ParseObject> parseObject = ParseQuery.getQuery("restaurants");
+		parseObject.findInBackground(new FindCallback<ParseObject>() {
+				public void done(List<ParseObject> restaurantList, ParseException e) {
+					if (e == null) {
+						// instantiate ListView adapter
+						mAdapter = new RestaurantsAdapter(getActivity(), restaurantList);
 
-        // json to request
-        JsonObjectRequest request = new JsonObjectRequest(BASE_URL, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                // instantiate ListView adapter
-                mAdapter = new RestaurantsAdapter(getActivity(), jsonObject);
-
-                // set adapter to ListView
-                mLvContent.setAdapter(mAdapter);
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // log errors
-                VolleyLog.e("Volley Error @RestaurantsFrag: " + error.getMessage(), error.getMessage());
-            }
-        }
-        );
-
-        // add request to queue
-        queue.add(request);
+						// set adapter to ListView
+						mLvContent.setAdapter(mAdapter);
+					} else {
+						Log.e("ParseObject", "Error: " + e.getMessage());
+					}
+				}
+			});
 
         // refresh action bar menu
         setHasOptionsMenu(true);
-
-        // get data from database
-        try {
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurants");
-            query.findInBackground(new FindCallback<ParseObject>() {
-                public void done(List<ParseObject> scoreList, ParseException e) {
-                    if (e == null) {
-                        for (int i = 0; i < scoreList.size(); i++) {
-                            Log.d("Restaurant Name: ", scoreList.get(i).getString("restaurantName"));
-                        }
-                    } else {
-                        Log.d("score", "Error: " + e.getMessage());
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -118,3 +89,4 @@ public class RestaurantsFrag extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 }
+

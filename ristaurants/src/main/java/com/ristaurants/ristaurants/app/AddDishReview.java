@@ -11,11 +11,13 @@ import android.widget.Toast;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.ristaurants.ristaurants.misc.HelperClass;
+import android.widget.*;
 
 public class AddDishReview extends Activity {
     // instance variables
     private EditText mEtAuthor;
     private EditText mEtDesc;
+	private Spinner mNpRate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class AddDishReview extends Activity {
         // instantiate view
         mEtAuthor = (EditText) findViewById(R.id.et_author);
         mEtDesc = (EditText) findViewById(R.id.et_desc);
+		mNpRate = (Spinner) findViewById(R.id.sp_rate);
     }
 
     @Override
@@ -59,18 +62,24 @@ public class AddDishReview extends Activity {
 
     public void onAddReview(View view) {
         try {
-            // upload review to parse
-            ParseObject mParse = new ParseObject("TestObject");
-            mParse.put("dishAuthor", mEtAuthor.getText().toString());
-            mParse.put("dishReview", mEtDesc.getText().toString());
-            mParse.put("dishRate", 3);
-            mParse.saveInBackground();
+			// check if fields are empty
+			if (!mEtAuthor.getText().toString().equals("") && !mEtDesc.getText().toString().equals("")) {
+				// upload review to parse
+				ParseObject mParse = new ParseObject("TestObject");
+				mParse.put("dishAuthor", mEtAuthor.getText().toString());
+				mParse.put("dishReview", mEtDesc.getText().toString());
+				mParse.put("dishRate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
+				mParse.saveInBackground();
 
-            // return to previous activity
-            onBackPressed();
+				// return to previous activity
+				onBackPressed();
 
-            // let user know the review was added
-            Toast.makeText(this, R.string.review_was_added, Toast.LENGTH_LONG).show();
+				// let user know the review was added
+				Toast.makeText(this, R.string.review_was_added, Toast.LENGTH_LONG).show();
+			} else {
+				// let user know the review was added
+				Toast.makeText(this, R.string.please_fill_all_fields, Toast.LENGTH_LONG).show();
+			}
         } catch (Exception e) {
             e.printStackTrace();
         }
