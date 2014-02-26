@@ -118,41 +118,42 @@ public final class R {
         public static final int view_gradient_top_black=0x7f020031;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0020;
-        public static final int dl_drawer=0x7f0b0002;
+        public static final int action_settings=0x7f0b0021;
+        public static final int bt_add=0x7f0b0002;
+        public static final int dl_drawer=0x7f0b0003;
         public static final int et_author=0x7f0b0000;
         public static final int et_desc=0x7f0b0001;
-        public static final int fl_drawer=0x7f0b0003;
-        public static final int iv_drawer_left_icon=0x7f0b000e;
-        public static final int iv_restaurant_map=0x7f0b001f;
-        public static final int iv_restaurant_menu=0x7f0b001e;
-        public static final int ll_phone_number=0x7f0b001b;
-        public static final int ll_review_amount_plus_rate=0x7f0b0012;
-        public static final int lv_content=0x7f0b0007;
-        public static final int lv_drawer_left=0x7f0b0004;
-        public static final int lv_name_plus_rate=0x7f0b0018;
-        public static final int menu_dish_review_add=0x7f0b0021;
-        public static final int menu_restaurant_menu=0x7f0b0022;
-        public static final int niv_dish_review_rate=0x7f0b000c;
-        public static final int niv_dish_reviews_image=0x7f0b0005;
-        public static final int niv_restaurant_image=0x7f0b0017;
-        public static final int niv_restaurant_menu_image=0x7f0b0010;
-        public static final int niv_restaurant_menu_rate=0x7f0b0014;
-        public static final int niv_restaurant_rate=0x7f0b001a;
-        public static final int pager_title_strip=0x7f0b0009;
-        public static final int tv_dish_review_author=0x7f0b000a;
-        public static final int tv_dish_review_date=0x7f0b000b;
-        public static final int tv_dish_review_review=0x7f0b000d;
-        public static final int tv_dish_reviews_name=0x7f0b0006;
-        public static final int tv_drawer_left=0x7f0b000f;
-        public static final int tv_restaurant_menu_desc=0x7f0b0016;
-        public static final int tv_restaurant_menu_name=0x7f0b0011;
-        public static final int tv_restaurant_menu_review_amount=0x7f0b0013;
-        public static final int tv_restaurant_name=0x7f0b0019;
-        public static final int tv_restaurant_phone=0x7f0b001d;
-        public static final int tv_restaurant_phone_text=0x7f0b001c;
-        public static final int v_divider=0x7f0b0015;
-        public static final int vp_restaurants_menus=0x7f0b0008;
+        public static final int fl_drawer=0x7f0b0004;
+        public static final int iv_drawer_left_icon=0x7f0b000f;
+        public static final int iv_restaurant_map=0x7f0b0020;
+        public static final int iv_restaurant_menu=0x7f0b001f;
+        public static final int ll_phone_number=0x7f0b001c;
+        public static final int ll_review_amount_plus_rate=0x7f0b0013;
+        public static final int lv_content=0x7f0b0008;
+        public static final int lv_drawer_left=0x7f0b0005;
+        public static final int lv_name_plus_rate=0x7f0b0019;
+        public static final int menu_dish_review_add=0x7f0b0022;
+        public static final int menu_restaurant_menu=0x7f0b0023;
+        public static final int niv_dish_review_rate=0x7f0b000d;
+        public static final int niv_dish_reviews_image=0x7f0b0006;
+        public static final int niv_restaurant_image=0x7f0b0018;
+        public static final int niv_restaurant_menu_image=0x7f0b0011;
+        public static final int niv_restaurant_menu_rate=0x7f0b0015;
+        public static final int niv_restaurant_rate=0x7f0b001b;
+        public static final int pager_title_strip=0x7f0b000a;
+        public static final int tv_dish_review_author=0x7f0b000b;
+        public static final int tv_dish_review_date=0x7f0b000c;
+        public static final int tv_dish_review_review=0x7f0b000e;
+        public static final int tv_dish_reviews_name=0x7f0b0007;
+        public static final int tv_drawer_left=0x7f0b0010;
+        public static final int tv_restaurant_menu_desc=0x7f0b0017;
+        public static final int tv_restaurant_menu_name=0x7f0b0012;
+        public static final int tv_restaurant_menu_review_amount=0x7f0b0014;
+        public static final int tv_restaurant_name=0x7f0b001a;
+        public static final int tv_restaurant_phone=0x7f0b001e;
+        public static final int tv_restaurant_phone_text=0x7f0b001d;
+        public static final int v_divider=0x7f0b0016;
+        public static final int vp_restaurants_menus=0x7f0b0009;
     }
     public static final class layout {
         public static final int activity_add_dish_review=0x7f030000;
@@ -188,6 +189,7 @@ public final class R {
         public static final int menu_restaurant_menu=0x7f080009;
         public static final int menu_restaurant_random=0x7f08000a;
         public static final int phone_text=0x7f08000b;
+        public static final int review_was_added=0x7f08000c;
     }
     public static final class style {
         public static final int ActionBar_Solid_Theme=0x7f090000;
