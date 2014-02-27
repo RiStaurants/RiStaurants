@@ -20,6 +20,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -30,8 +31,7 @@ import java.util.List;
 public class RestaurantMenuActivity extends FragmentActivity {
     // instance variables
     private ViewPager mViewPager;
-    private JSONObject mRestaurantMenu;
-    private String mRestaurantMenuString;
+    private List<ParseObject> mParseObjectList;
     private String[] mPagerTitles;
 
     @Override
@@ -47,18 +47,16 @@ public class RestaurantMenuActivity extends FragmentActivity {
 
         if (getIntent().getExtras() != null) {
             try {
-                // get menu categories
-                //getMenuCategories(mRestaurantMenu.getJSONObject("menus").names());
-
                 // get data from database
                 ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(getIntent().getExtras().getString("menuClassName"));
                 parseObject.findInBackground(new FindCallback<ParseObject>() {
-                    public void done(List<ParseObject> list, ParseException e) {
+                    public void done(List<ParseObject> parseObjectList, ParseException e) {
                         if (e == null) {
-                            // get menu categories
-                            getMenuCategories(list.get(0).getInt("dishCategoriesCount"));
+                            // get response
+                            mParseObjectList = parseObjectList;
 
-                            Toast.makeText(RestaurantMenuActivity.this, list.get(0).getObjectId(), Toast.LENGTH_LONG).show();
+                            // get menu categories
+                            getMenuCategories(parseObjectList.size());
                         } else {
                             Log.e("ParseObject", "Error: " + e.getMessage());
                         }
@@ -79,6 +77,38 @@ public class RestaurantMenuActivity extends FragmentActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    /**
+     * Get restaurant menu categories. It also sets the ViewPager adapter and PagerTitleStrip
+     *
+     * @param categoriesCount The amount of menu categories
+     */
+    private void getMenuCategories(int categoriesCount) {
+        try {
+            // local variables
+            ArrayList<String> categories = new ArrayList<String>();
+            int indexTracker = 1;
+
+            // add first item
+            categories.add(mParseObjectList.get(0).getString("dishCategories"));
+
+            // create non-duplicate category items
+            for (int i = 1; i < categoriesCount; i++) {
+                if (!mParseObjectList.get(i).getString("dishCategories").equals(categories.get(indexTracker - 1))) {
+                    categories.add(mParseObjectList.get(i).getString("dishCategories"));
+                    indexTracker++;
+                }
+            }
+
+            // convert ArrayList to array and set PagerTitleStrip titles
+            mPagerTitles = categories.toArray(new String[categories.size()]);
+
+            // set view pager adapter
+            mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -90,37 +120,9 @@ public class RestaurantMenuActivity extends FragmentActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Get restaurant menu categories. It also sets the ViewPager adapter and PagerTitleStrip
-     *
-     * @param categoriesCount The amount of menu categories
-     */
-    private void getMenuCategories(int categoriesCount) {
-        try {
-            // set categories size
-            mPagerTitles = new String[categoriesCount];
-
-            // convert json array to normal array of strings
-            for (int i = 0; i < categoriesCount; i++) {
-                //mPagerTitles[i] = categories.getString(i);
-            }
-
-            // reverse the array
-            Collections.reverse(Arrays.asList(mPagerTitles));
-
-            // set view pager adapter
-            mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        // save state
-        outState.putString("mRestaurantMenu", mRestaurantMenu.toString());
     }
 
     @Override
@@ -143,7 +145,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int item) {
             // create instance of fragment
-            return new RestaurantMenuFrag().newInstance(mRestaurantMenu, mPagerTitles[item]);
+            return new RestaurantMenuFrag().newInstance(mParseObjectList, mPagerTitles[item]);
         }
 
         @Override
