@@ -18,6 +18,7 @@ public class AddDishReview extends Activity {
     private EditText mEtAuthor;
     private EditText mEtDesc;
 	private Spinner mNpRate;
+    private String mDishReviewClassName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,10 @@ public class AddDishReview extends Activity {
         mEtAuthor = (EditText) findViewById(R.id.et_author);
         mEtDesc = (EditText) findViewById(R.id.et_desc);
 		mNpRate = (Spinner) findViewById(R.id.sp_rate);
+
+        if (getIntent().getExtras() != null) {
+            mDishReviewClassName = getIntent().getExtras().getString("mDishReviewClassName");
+        }
     }
 
     @Override
@@ -65,10 +70,10 @@ public class AddDishReview extends Activity {
 			// check if fields are empty
 			if (!mEtAuthor.getText().toString().equals("") && !mEtDesc.getText().toString().equals("")) {
 				// upload review to parse
-				ParseObject mParse = new ParseObject("TestObject");
-				mParse.put("dishAuthor", mEtAuthor.getText().toString());
-				mParse.put("dishReview", mEtDesc.getText().toString());
-				mParse.put("dishRate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
+				ParseObject mParse = new ParseObject(mDishReviewClassName);
+				mParse.put("dishReviewAuthor", mEtAuthor.getText().toString());
+				mParse.put("dishReviewDesc", mEtDesc.getText().toString());
+				mParse.put("dishReviewRate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
 				mParse.saveInBackground();
 
 				// return to previous activity

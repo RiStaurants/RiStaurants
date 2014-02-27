@@ -1,6 +1,7 @@
 package com.ristaurants.ristaurants.adapters;
 
 import android.animation.*;
+import android.app.Activity;
 import android.content.*;
 import android.view.*;
 import android.widget.*;
@@ -82,27 +83,27 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             // set restaurant dish review count
             final int reviewCount = 2;
             mViewHolder.mTvDishReviewCount.setText(String.format("%d %s", reviewCount, "reviews"));
-            /*
-            mViewHolder.mTvDishReviewCount.setOnClickListener(new View.OnClickListener(){
+            mViewHolder.mTvDishReviewCount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // variable to create the dish name class name for Parse.com
+                    String dishNameClassName = mData.get(position).getString("dishName");
 
-					@Override
-					public void onClick(View view) {
-						try {
-							// open reviews activity
-							Intent intent = new Intent(mContext, DishesReviews.class);
-							intent.putExtra("mReviews", mData.getJSONObject("menus").getJSONArray(mMenuCategory).getJSONObject(position).getJSONArray("reviews").toString());
-							intent.putExtra("mDishImageUrl", dishImageUrl);
-							intent.putExtra("mDishName", dishName);
-							mContext.startActivity(intent);
+                    // replace empty spaces and append the (Reviews) String.
+                    dishNameClassName = dishNameClassName.replace(" ", "");
+                    dishNameClassName += "Reviews";
 
-                            // set activity animation
-                            ((Activity)mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-                        } catch (JSONException e) {
-							e.printStackTrace();
-						}
-					}
-				});
-            */
+                    // open reviews activity
+                    Intent intent = new Intent(mContext, DishesReviews.class);
+                    intent.putExtra("mDishReviewClassName", dishNameClassName);
+                    intent.putExtra("mDishImageUrl", dishImageUrl);
+                    intent.putExtra("mDishName", dishName);
+                    mContext.startActivity(intent);
+
+                    // set activity animation
+                    ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                }
+            });
 
             // set view animation
             if (mLastAnimPosition < position) {

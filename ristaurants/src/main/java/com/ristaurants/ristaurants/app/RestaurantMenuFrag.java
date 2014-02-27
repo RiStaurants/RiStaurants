@@ -79,6 +79,8 @@ public class RestaurantMenuFrag extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
+        outState.putString("mMenuCategory", mMenuCategory);
     }
 
     public static Fragment newInstance(List<ParseObject> parseObjectList, String menuCategory) {

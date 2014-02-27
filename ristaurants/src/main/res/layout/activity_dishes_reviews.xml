@@ -36,7 +36,6 @@
 		android:paddingLeft="@dimen/row_padding"
 		android:paddingRight="@dimen/row_padding"
 		android:divider="@color/restaurants_bg"
-		android:dividerHeight="@dimen/drawer_divider"
-		android:entries="@array/stub"/>
+		android:dividerHeight="@dimen/drawer_divider"/>
 
 </RelativeLayout>

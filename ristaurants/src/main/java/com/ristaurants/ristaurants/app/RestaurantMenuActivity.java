@@ -46,27 +46,22 @@ public class RestaurantMenuActivity extends FragmentActivity {
         mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
 
         if (getIntent().getExtras() != null) {
-            try {
-                // get data from database
-                ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(getIntent().getExtras().getString("menuClassName"));
-                parseObject.findInBackground(new FindCallback<ParseObject>() {
-                    public void done(List<ParseObject> parseObjectList, ParseException e) {
-                        if (e == null) {
-                            // get response
-                            mParseObjectList = parseObjectList;
+            // get data from database
+            ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(getIntent().getExtras().getString("menuClassName"));
+            parseObject.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> parseObjectList, ParseException e) {
+                    if (e == null) {
+                        // get response
+                        mParseObjectList = parseObjectList;
 
-                            // get menu categories
-                            getMenuCategories(parseObjectList.size());
-                        } else {
-                            Log.e("ParseObject", "Error: " + e.getMessage());
-                        }
+                        // get menu categories
+                        getMenuCategories(parseObjectList.size());
+                    } else {
+                        Log.e("ParseObject", "Error: " + e.getMessage());
                     }
-                });
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                }
+            });
         }
-
 
         // set action bar background color
         HelperClass.setActionBarBackground(this, R.color.menus_bg);
