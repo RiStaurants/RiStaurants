@@ -3,17 +3,26 @@ package com.ristaurants.ristaurants.app;
 import android.os.*;
 import android.support.v4.app.*;
 import android.support.v4.view.*;
+import android.util.Log;
 import android.view.*;
 
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.ristaurants.ristaurants.adapters.RestaurantsAdapter;
 import com.ristaurants.ristaurants.misc.*;
 
 import org.json.*;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -30,21 +39,32 @@ public class RestaurantMenuActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        // instantiate Parse Database
+        Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
+
         // instantiate view pager after getting json
         mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
 
         if (getIntent().getExtras() != null) {
-
             try {
-                // get data from previous activity
-                mRestaurantMenuString = getIntent().getExtras().getString("jsonObject");
-
-                // convert to JSON
-                mRestaurantMenu = new JSONObject(mRestaurantMenuString);
-
                 // get menu categories
-                getMenuCategories(mRestaurantMenu.getJSONObject("menus").names());
-            } catch (JSONException e) {
+                //getMenuCategories(mRestaurantMenu.getJSONObject("menus").names());
+
+                // get data from database
+                ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(getIntent().getExtras().getString("menuClassName"));
+                parseObject.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> list, ParseException e) {
+                        if (e == null) {
+                            // get menu categories
+                            getMenuCategories(list.get(0).getInt("dishCategoriesCount"));
+
+                            Toast.makeText(RestaurantMenuActivity.this, list.get(0).getObjectId(), Toast.LENGTH_LONG).show();
+                        } else {
+                            Log.e("ParseObject", "Error: " + e.getMessage());
+                        }
+                    }
+                });
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -73,16 +93,16 @@ public class RestaurantMenuActivity extends FragmentActivity {
     /**
      * Get restaurant menu categories. It also sets the ViewPager adapter and PagerTitleStrip
      *
-     * @param categories The JSONArray containing all categories
+     * @param categoriesCount The amount of menu categories
      */
-    private void getMenuCategories(JSONArray categories) {
+    private void getMenuCategories(int categoriesCount) {
         try {
             // set categories size
-            mPagerTitles = new String[categories.length()];
+            mPagerTitles = new String[categoriesCount];
 
             // convert json array to normal array of strings
-            for (int i = 0; i < categories.length(); i++) {
-                mPagerTitles[i] = categories.getString(i);
+            for (int i = 0; i < categoriesCount; i++) {
+                //mPagerTitles[i] = categories.getString(i);
             }
 
             // reverse the array
@@ -90,7 +110,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
 
             // set view pager adapter
             mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -7,6 +7,7 @@ import android.net.*;
 import android.view.*;
 import android.widget.*;
 import com.android.volley.toolbox.*;
+import com.parse.Parse;
 import com.parse.ParseUser;
 import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
@@ -72,18 +73,16 @@ public class RestaurantsAdapter extends BaseAdapter {
         // set data
         try {
 			// set restaurant image
-			mViewHolder.mIvRestaurantImage.setImageUrl(mDataList.get(position).getString("restaurantImage"), SingletonVolley.getImageLoader());
-			//mViewHolder.mIvRestaurantImage.setImageUrl(mData.getJSONArray("restaurants").getJSONObject(position).getString("image"), SingletonVolley.getImageLoader());
+			mViewHolder.mIvRestaurantImage.setImageUrl(mDataList.get(position).getString("image"), SingletonVolley.getImageLoader());
 			
 			// set restaurant rate image
-			mViewHolder.mIvRestaurantRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("restaurantRate")), SingletonVolley.getImageLoader());
+			mViewHolder.mIvRestaurantRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("rate")), SingletonVolley.getImageLoader());
 			
             // set restaurant name
-			//final String restaurantName = mData.getJSONArray("restaurants").getJSONObject(position).getString("name").toLowerCase();
-            mViewHolder.mTvRestaurantName.setText(mDataList.get(position).getString("restaurantName"));
+            mViewHolder.mTvRestaurantName.setText(mDataList.get(position).getString("name"));
 
             // set restaurant phone
-			mViewHolder.mTvRestaurantPhone.setText(mDataList.get(position).getString("restaurantPhone"));
+			mViewHolder.mTvRestaurantPhone.setText(mDataList.get(position).getString("phone"));
 			mViewHolder.mTvRestaurantPhone.setOnClickListener(new View.OnClickListener(){
 					@Override
 					public void onClick(View view) {
@@ -95,12 +94,12 @@ public class RestaurantsAdapter extends BaseAdapter {
 				});
 
             // set restaurant menu
-            final JSONObject jsonObject = mDataList.get(position).getJSONObject("restaurantMenu");
+            final String menuClassName = mDataList.get(position).getString("menuClassName");
             mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
-                    intent.putExtra("jsonObject", jsonObject.toString());
+                    intent.putExtra("menuClassName", menuClassName);
                     mContext.startActivity(intent);
 
                     // set activity animation
@@ -109,7 +108,7 @@ public class RestaurantsAdapter extends BaseAdapter {
             });
 			
             // set restaurant address
-            final String address = mDataList.get(position).getString("restaurantAddress").toLowerCase();
+            final String address = mDataList.get(position).getString("address").toLowerCase();
             mViewHolder.mIvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
