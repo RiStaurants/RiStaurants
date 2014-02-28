@@ -57,6 +57,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             mViewHolder = new ViewHolder();
             assert view != null;
             mViewHolder.mIvDishImage = (NetworkImageView) view.findViewById(R.id.niv_restaurant_menu_image);
+			mViewHolder.mIvDishRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_menu_rate);
             mViewHolder.mTvDishName = (TextView) view.findViewById(R.id.tv_restaurant_menu_name);
             mViewHolder.mTvDishDesc = (TextView) view.findViewById(R.id.tv_restaurant_menu_desc);
             mViewHolder.mTvDishReviewCount = (TextView) view.findViewById(R.id.tv_restaurant_menu_review_amount);
@@ -72,6 +73,10 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             // set restaurant dish image
             final String dishImageUrl = mData.get(position).getString("dishImage");
             mViewHolder.mIvDishImage.setImageUrl(dishImageUrl, SingletonVolley.getImageLoader());
+			
+			// set restaurant rate image
+			mViewHolder.mIvDishRate.setImageUrl(HelperClass.getRateImage(mContext, Integer.parseInt(mData.get(position).getString("dishRate"))), SingletonVolley.getImageLoader());
+			
 
             // set restaurant dish name
             final String dishName = mData.get(position).getString("dishName");
@@ -81,7 +86,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             mViewHolder.mTvDishDesc.setText(mData.get(position).getString("dishDesc"));
 
             // set restaurant dish review count
-            final int reviewCount = 2;
+            final int reviewCount = mData.get(position).getInt("dishReviewsCount");
             mViewHolder.mTvDishReviewCount.setText(String.format("%d %s", reviewCount, "reviews"));
             mViewHolder.mTvDishReviewCount.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,6 +103,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
                     intent.putExtra("mDishReviewClassName", dishNameClassName);
                     intent.putExtra("mDishImageUrl", dishImageUrl);
                     intent.putExtra("mDishName", dishName);
+					intent.putExtra("mDishID", mData.get(position).getObjectId());
                     mContext.startActivity(intent);
 
                     // set activity animation
@@ -121,6 +127,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
     class ViewHolder {
         // instantiate views
         NetworkImageView mIvDishImage;
+		NetworkImageView mIvDishRate;
         TextView mTvDishName;
         TextView mTvDishDesc;
         TextView mTvDishReviewCount;

@@ -26,6 +26,7 @@ public class DishesReviews extends Activity {
     // instance variables
     private DishReviewsAdapter mAdapter;
     private String mDishReviewClassName;
+	private String mDishID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +43,17 @@ public class DishesReviews extends Activity {
 
         // get data from previous activity
         if (getIntent().getExtras() != null) {
-            // get dish review class name
+            // get dish review class name and ID
             mDishReviewClassName = getIntent().getExtras().getString("mDishReviewClassName");
-
+			mDishID = getIntent().getExtras().getString("mDishID");
+			
             // display dish image
             String dishImageUrl = getIntent().getExtras().getString("mDishImageUrl");
             NetworkImageView mIvDishImage = (NetworkImageView) findViewById(R.id.niv_dish_reviews_image);
             mIvDishImage.setImageUrl(dishImageUrl, SingletonVolley.getImageLoader());
-            setBlackAndWhite(mIvDishImage);
+            
+			// set image to black and white
+			HelperClass.toGrayScale(mIvDishImage);
 
             // display dish name
             String dishName = getIntent().getExtras().getString("mDishName", "No Dish Name");
@@ -97,23 +101,6 @@ public class DishesReviews extends Activity {
         });
     }
 
-    /**
-     * Convert image view to gray scale.
-     *
-     * @param imageView The ImageView to convert to GrayScale.
-     */
-    private void setBlackAndWhite(ImageView imageView){
-        float[] colorMatrix = {
-                0.33f, 0.33f, 0.33f, 0, 0, //red
-                0.33f, 0.33f, 0.33f, 0, 0, //green
-                0.33f, 0.33f, 0.33f, 0, 0, //blue
-                0, 0, 0, 1, 0    //alpha
-        };
-
-        ColorFilter colorFilter = new ColorMatrixColorFilter(colorMatrix);
-        imageView.setColorFilter(colorFilter);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_dish_review, menu);
@@ -131,6 +118,7 @@ public class DishesReviews extends Activity {
                 // open the add reviews activity
                 Intent intent = new Intent(this, AddDishReview.class);
                 intent.putExtra("mDishReviewClassName", mDishReviewClassName);
+				intent.putExtra("mDishID", mDishID);
                 startActivity(intent);
 
                 // set activity animation

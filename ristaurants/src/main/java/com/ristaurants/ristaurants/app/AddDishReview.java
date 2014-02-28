@@ -19,12 +19,13 @@ public class AddDishReview extends Activity {
     private EditText mEtDesc;
 	private Spinner mNpRate;
     private String mDishReviewClassName;
+	private String mDishID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dish_review);
-
+		
         // instantiate Parse Database
         Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
 
@@ -41,8 +42,12 @@ public class AddDishReview extends Activity {
         mEtDesc = (EditText) findViewById(R.id.et_desc);
 		mNpRate = (Spinner) findViewById(R.id.sp_rate);
 
+		// get data from previous activity
         if (getIntent().getExtras() != null) {
             mDishReviewClassName = getIntent().getExtras().getString("mDishReviewClassName");
+			mDishID = getIntent().getExtras().getString("mDishID");
+			
+			//Toast.makeText(this, mDishReviewClassName, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -69,11 +74,15 @@ public class AddDishReview extends Activity {
         try {
 			// check if fields are empty
 			if (!mEtAuthor.getText().toString().equals("") && !mEtDesc.getText().toString().equals("")) {
-				// upload review to parse
+				// link review to dish
+				ParseObject dishPointerID = ParseObject.createWithoutData(mDishReviewClassName, mDishID);
+				
+				// create and upload review to parse
 				ParseObject mParse = new ParseObject(mDishReviewClassName);
 				mParse.put("dishReviewAuthor", mEtAuthor.getText().toString());
 				mParse.put("dishReviewDesc", mEtDesc.getText().toString());
 				mParse.put("dishReviewRate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
+				mParse.put("dishPointer", dishPointerID);
 				mParse.saveInBackground();
 
 				// return to previous activity
@@ -81,6 +90,9 @@ public class AddDishReview extends Activity {
 
 				// let user know the review was added
 				Toast.makeText(this, R.string.review_was_added, Toast.LENGTH_LONG).show();
+				
+				
+				//parseObjectOrderItem.put( "productId", product);
 			} else {
 				// let user know the review was added
 				Toast.makeText(this, R.string.please_fill_all_fields, Toast.LENGTH_LONG).show();

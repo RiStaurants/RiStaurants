@@ -12,6 +12,9 @@ import android.content.*;
 import org.json.JSONArray;
 
 import java.util.List;
+import android.graphics.*;
+import android.widget.*;
+import android.text.*;
 
 public class HelperClass {
 	
@@ -55,4 +58,21 @@ public class HelperClass {
 		// return rate image url
 		return rateImageUrl[rateValue];
 	}
+	
+	/**
+     * Convert image view to gray scale.
+     *
+     * @param imageView The ImageView to convert to GrayScale.
+     */
+    public static void toGrayScale(ImageView imageView){
+        float[] colorMatrix = {
+			0.33f, 0.33f, 0.33f, 0, 0, //red
+			0.33f, 0.33f, 0.33f, 0, 0, //green
+			0.33f, 0.33f, 0.33f, 0, 0, //blue
+			0, 0, 0, 1, 0    //alpha
+        };
+
+        ColorFilter colorFilter = new ColorMatrixColorFilter(colorMatrix);
+        imageView.setColorFilter(colorFilter);
+    }
 }
