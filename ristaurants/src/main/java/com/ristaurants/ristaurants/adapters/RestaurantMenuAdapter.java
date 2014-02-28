@@ -86,9 +86,11 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             // set restaurant dish review count
             final int reviewCount = mDataList.get(position).getInt("dishReviewsCount");
             mViewHolder.mTvDishReviewCount.setText(String.format("%d %s", reviewCount, "reviews"));
-            mViewHolder.mTvDishReviewCount.setOnClickListener(new View.OnClickListener() {
+
+            // on click listener
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View v) {
                     // variable to create the dish name class name for Parse.com
                     String dishNameClassName = mDataList.get(position).getString("dishName");
 
@@ -101,7 +103,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
                     intent.putExtra("mDishReviewClassName", dishNameClassName);
                     intent.putExtra("mDishImageUrl", dishImageUrl);
                     intent.putExtra("mDishName", dishName);
-					intent.putExtra("mDishID", mDataList.get(position).getObjectId());
+                    intent.putExtra("mDishID", mDataList.get(position).getObjectId());
                     intent.putExtra("mMenuClassName", mDataList.get(position).getClassName());
                     mContext.startActivity(intent);
 
