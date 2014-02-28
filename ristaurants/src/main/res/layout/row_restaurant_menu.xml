@@ -12,6 +12,12 @@
         android:layout_marginTop="@dimen/row_margin"
         android:scaleType="centerCrop"
         android:scaleGravity="top" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/restaurants_height_half"
+        android:layout_marginTop="@dimen/row_margin"
+        android:background="@drawable/view_gradient_top_black" />
 	
 	<com.ristaurants.ristaurants.views.BenderSolidTextView
 		android:id="@+id/tv_restaurant_menu_name"

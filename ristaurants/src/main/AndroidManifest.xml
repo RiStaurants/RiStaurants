@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ristaurants.ristaurants.app" >
-	
-	<!-- Permissions -->
-	<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-		
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
-		android:name="com.ristaurants.ristaurants.misc.Singleton"
+        android:name="com.ristaurants.ristaurants.misc.Singleton"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/ab_title_app_name"
         android:theme="@style/Theme.Theme" >
-
         <activity
+            android:name="com.ristaurants.ristaurants.app.MainActivity"
             android:label="@string/ab_title_app_name"
-            android:name=".MainActivity" >
-            <intent-filter >
+            android:screenOrientation="portrait">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
+            android:name="com.ristaurants.ristaurants.app.RestaurantMenuActivity"
             android:label="@string/ab_title_menu"
-            android:name=".RestaurantMenuActivity" >
-            <intent-filter >
+            android:screenOrientation="portrait">
+            <intent-filter>
                 <action android:name="com.ristaurants.ristaurants.app.MENUACTIVITY" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-		
-		<activity
-            android:label="@string/ab_title_reviews"
-            android:name=".DishesReviews" >
-            <intent-filter >
-                <action android:name="com.ristaurants.ristaurants.app.DISHESREVIEWS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ristaurants.ristaurants.app.DishesReviews"
+            android:label="@string/ab_title_reviews"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ristaurants.ristaurants.app.DISHESREVIEWS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AddDishReview"
+            android:label="@string/ab_title_add_dish_review"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ristaurants.ristaurants.app.ADDDISHREVIEWS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -14,6 +14,11 @@
         android:scaleType="centerCrop"
         android:scaleGravity="top" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/restaurants_height_half"
+        android:background="@drawable/view_gradient_top_black" />
+
 	<com.ristaurants.ristaurants.views.BenderSolidTextView
 		android:id="@+id/tv_dish_reviews_name"
 		android:layout_height="wrap_content"
@@ -36,7 +41,6 @@
 		android:paddingLeft="@dimen/row_padding"
 		android:paddingRight="@dimen/row_padding"
 		android:divider="@color/restaurants_bg"
-		android:dividerHeight="@dimen/drawer_divider"
-		android:entries="@array/stub"/>
+		android:dividerHeight="@dimen/drawer_divider"/>
 
 </RelativeLayout>

@@ -4,8 +4,14 @@ import android.graphics.drawable.*;
 import android.text.Spannable;
 import android.text.SpannableString;
 
+import com.parse.ParseObject;
 import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.views.ActionBarFont;
+import android.content.*;
+
+import org.json.JSONArray;
+
+import java.util.List;
 
 public class HelperClass {
 	
@@ -35,4 +41,18 @@ public class HelperClass {
         customActionBarFont.setSpan(new ActionBarFont(activity, "Bender-Solid.otf"), 0, customActionBarFont.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return customActionBarFont;
     }
+	
+	/**
+	 * Get the url of the rate image.
+	 *
+	 * @param context The context.
+	 * @param rateValue Which rate image url to return.
+	 */
+	public static String getRateImage(Context context, int rateValue){
+		// array containing all the rate images urls
+		String[] rateImageUrl = context.getResources().getStringArray(R.array.rate_image_urls);
+		
+		// return rate image url
+		return rateImageUrl[rateValue];
+	}
 }

@@ -1,48 +1,46 @@
 package com.ristaurants.ristaurants.adapters;
 
-import android.animation.*;
-import android.app.*;
 import android.content.*;
 import android.view.*;
 import android.widget.*;
+
 import com.android.volley.toolbox.*;
+import com.parse.ParseObject;
 import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
-import org.json.*;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class DishReviewsAdapter extends BaseAdapter {
-	// instance variables
-	private Context mContext;
-	private JSONArray mData;
+    // instance variables
+    private Context mContext;
+    private List<ParseObject> mData;
 
-	public DishReviewsAdapter(Context context, JSONArray data) {
-		mContext = context;
-		mData = data;
-	}
+    public DishReviewsAdapter(Context context, List<ParseObject> data) {
+        mContext = context;
+        mData = data;
+    }
 
-	@Override
-	public int getCount() {
-		return mData.length();
-	}
+    @Override
+    public int getCount() {
+        return mData.size();
+    }
 
-	@Override
-	public Object getItem(int position) {
-		try {
-			return mData.getJSONObject(position);
-		} catch (JSONException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+    @Override
+    public Object getItem(int position) {
+        return mData.get(position);
+    }
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-	@Override
-	public View getView(final int position, View view, ViewGroup viewGroup) {
-		// get view
+    @Override
+    public View getView(final int position, View view, ViewGroup viewGroup) {
+        // get view
         ViewHolder mViewHolder;
 
         // check if view needs to get inflated
@@ -55,8 +53,8 @@ public class DishReviewsAdapter extends BaseAdapter {
             mViewHolder = new ViewHolder();
             assert view != null;
             mViewHolder.mIvDishReviewRate = (NetworkImageView) view.findViewById(R.id.niv_dish_review_rate);
-			mViewHolder.mTvDishReviewAuthor = (TextView) view.findViewById(R.id.tv_dish_review_author);
-			mViewHolder.mTvDishReviewDate = (TextView) view.findViewById(R.id.tv_dish_review_date);
+            mViewHolder.mTvDishReviewAuthor = (TextView) view.findViewById(R.id.tv_dish_review_author);
+            mViewHolder.mTvDishReviewDate = (TextView) view.findViewById(R.id.tv_dish_review_date);
             mViewHolder.mTvDishReviewDesc = (TextView) view.findViewById(R.id.tv_dish_review_review);
 
             // save view holder in tag
@@ -65,27 +63,22 @@ public class DishReviewsAdapter extends BaseAdapter {
             // get view holder from tag
             mViewHolder = (ViewHolder) view.getTag();
         }
-		
-		// set data
-		try {
-			// set author name
-			String author = mData.getJSONObject(position).getString("author");
-			mViewHolder.mTvDishReviewAuthor.setText(author);
-			
-			// set author name
-			String date = mData.getJSONObject(position).getString("date");
-			mViewHolder.mTvDishReviewDate.setText(date);
-			
-			// set author name
-			String review = mData.getJSONObject(position).getString("review");
-			mViewHolder.mTvDishReviewDesc.setText(review);
-			
-			// set restaurant rate image
-			mViewHolder.mIvDishReviewRate.setImageUrl(mData.getJSONObject(position).getString("rate"), SingletonVolley.getImageLoader());
-			
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+
+        // set review author name
+        String author = mData.get(position).getString("dishReviewAuthor");
+        mViewHolder.mTvDishReviewAuthor.setText(author);
+
+        // set review date
+        Date date = mData.get(position).getUpdatedAt();
+        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(mContext);
+        mViewHolder.mTvDishReviewDate.setText(dateFormat.format(date));
+
+        // set review desc
+        String review = mData.get(position).getString("dishReviewDesc");
+        mViewHolder.mTvDishReviewDesc.setText(review);
+
+        // set restaurant rate image
+        mViewHolder.mIvDishReviewRate.setImageUrl(HelperClass.getRateImage(mContext, mData.get(position).getInt("dishReviewRate")), SingletonVolley.getImageLoader());
 
         // return view
         return view;
@@ -94,8 +87,8 @@ public class DishReviewsAdapter extends BaseAdapter {
     class ViewHolder {
         // instantiate views
         NetworkImageView mIvDishReviewRate;
-		TextView mTvDishReviewAuthor;
-		TextView mTvDishReviewDate;
+        TextView mTvDishReviewAuthor;
+        TextView mTvDishReviewDate;
         TextView mTvDishReviewDesc;
     }
 }
