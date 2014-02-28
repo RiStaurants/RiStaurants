@@ -3,6 +3,8 @@ package com.ristaurants.ristaurants.app;
 import android.animation.*;
 import android.app.*;
 import android.content.Intent;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.*;
 import android.util.Log;
 import android.view.*;
@@ -47,6 +49,7 @@ public class DishesReviews extends Activity {
             String dishImageUrl = getIntent().getExtras().getString("mDishImageUrl");
             NetworkImageView mIvDishImage = (NetworkImageView) findViewById(R.id.niv_dish_reviews_image);
             mIvDishImage.setImageUrl(dishImageUrl, SingletonVolley.getImageLoader());
+            setBlackAndWhite(mIvDishImage);
 
             // display dish name
             String dishName = getIntent().getExtras().getString("mDishName", "No Dish Name");
@@ -57,23 +60,58 @@ public class DishesReviews extends Activity {
             ObjectAnimator.ofFloat(mTvDishName, "alpha", 0f, 1f).setDuration(1000).start();
 
             // get data from database
-            ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(mDishReviewClassName);
-            parseObject.orderByDescending("createdAt");
-            parseObject.findInBackground(new FindCallback<ParseObject>() {
-                public void done(List<ParseObject> parseObjectList, ParseException e) {
-                    if (e == null) {
-                        // set list view adapter
-                        mAdapter = new DishReviewsAdapter(DishesReviews.this, parseObjectList);
-
-                        // set list view
-                        final ListView mLvContent = (ListView) findViewById(R.id.lv_content);
-                        mLvContent.setAdapter(mAdapter);
-                    } else {
-                        Log.e("ParseObject", "Error: " + e.getMessage());
-                    }
-                }
-            });
+            makeNetworkCode(mDishReviewClassName);
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        // get data from database
+        makeNetworkCode(mDishReviewClassName);
+    }
+
+    /**
+     * Get the list of review from the database.
+     *
+     * @param dishReviewClassName The class name to search for in the database.
+     */
+    private void makeNetworkCode(String dishReviewClassName) {
+        // get data from database
+        ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(dishReviewClassName);
+        parseObject.orderByDescending("createdAt");
+        parseObject.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> parseObjectList, ParseException e) {
+                if (e == null) {
+                    // set list view adapter
+                    mAdapter = new DishReviewsAdapter(DishesReviews.this, parseObjectList);
+
+                    // set list view
+                    final ListView mLvContent = (ListView) findViewById(R.id.lv_content);
+                    mLvContent.setAdapter(mAdapter);
+                } else {
+                    Log.e("ParseObject", "Error: " + e.getMessage());
+                }
+            }
+        });
+    }
+
+    /**
+     * Convert image view to gray scale.
+     *
+     * @param imageView The ImageView to convert to GrayScale.
+     */
+    private void setBlackAndWhite(ImageView imageView){
+        float[] colorMatrix = {
+                0.33f, 0.33f, 0.33f, 0, 0, //red
+                0.33f, 0.33f, 0.33f, 0, 0, //green
+                0.33f, 0.33f, 0.33f, 0, 0, //blue
+                0, 0, 0, 1, 0    //alpha
+        };
+
+        ColorFilter colorFilter = new ColorMatrixColorFilter(colorMatrix);
+        imageView.setColorFilter(colorFilter);
     }
 
     @Override

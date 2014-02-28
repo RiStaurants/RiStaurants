@@ -1,19 +1,17 @@
 package com.ristaurants.ristaurants.adapters;
 
-import android.animation.*;
-import android.app.*;
 import android.content.*;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrixColorFilter;
 import android.view.*;
 import android.widget.*;
 
 import com.android.volley.toolbox.*;
-import com.parse.Parse;
 import com.parse.ParseObject;
 import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
 
-import org.json.*;
-
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -73,8 +71,9 @@ public class DishReviewsAdapter extends BaseAdapter {
         mViewHolder.mTvDishReviewAuthor.setText(author);
 
         // set review date
-        Date date = mData.get(position).getDate("updateAt");
-        mViewHolder.mTvDishReviewDate.setText(date.toString());
+        Date date = mData.get(position).getUpdatedAt();
+        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(mContext);
+        mViewHolder.mTvDishReviewDate.setText(dateFormat.format(date));
 
         // set review desc
         String review = mData.get(position).getString("dishReviewDesc");
