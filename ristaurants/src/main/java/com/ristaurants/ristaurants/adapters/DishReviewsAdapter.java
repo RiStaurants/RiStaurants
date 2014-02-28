@@ -1,8 +1,6 @@
 package com.ristaurants.ristaurants.adapters;
 
 import android.content.*;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrixColorFilter;
 import android.view.*;
 import android.widget.*;
 
