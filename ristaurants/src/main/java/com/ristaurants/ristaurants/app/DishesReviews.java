@@ -3,8 +3,6 @@ package com.ristaurants.ristaurants.app;
 import android.animation.*;
 import android.app.*;
 import android.content.Intent;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrixColorFilter;
 import android.os.*;
 import android.util.Log;
 import android.view.*;
@@ -18,14 +16,13 @@ import com.parse.ParseQuery;
 import com.ristaurants.ristaurants.adapters.*;
 import com.ristaurants.ristaurants.misc.*;
 
-import org.json.*;
-
 import java.util.List;
 
 public class DishesReviews extends Activity {
     // instance variables
     private DishReviewsAdapter mAdapter;
     private String mDishReviewClassName;
+    private String mMenuClassName;
 	private String mDishID;
 
     @Override
@@ -45,6 +42,7 @@ public class DishesReviews extends Activity {
         if (getIntent().getExtras() != null) {
             // get dish review class name and ID
             mDishReviewClassName = getIntent().getExtras().getString("mDishReviewClassName");
+            mMenuClassName = getIntent().getExtras().getString("mMenuClassName");
 			mDishID = getIntent().getExtras().getString("mDishID");
 			
             // display dish image
@@ -99,6 +97,8 @@ public class DishesReviews extends Activity {
                 }
             }
         });
+
+
     }
 
     @Override
@@ -118,6 +118,7 @@ public class DishesReviews extends Activity {
                 // open the add reviews activity
                 Intent intent = new Intent(this, AddDishReview.class);
                 intent.putExtra("mDishReviewClassName", mDishReviewClassName);
+                intent.putExtra("mMenuClassName", mMenuClassName);
 				intent.putExtra("mDishID", mDishID);
                 startActivity(intent);
 

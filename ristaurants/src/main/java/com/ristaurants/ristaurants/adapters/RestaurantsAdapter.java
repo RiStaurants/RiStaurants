@@ -6,35 +6,39 @@ import android.content.*;
 import android.net.*;
 import android.view.*;
 import android.widget.*;
+
 import com.android.volley.toolbox.*;
 import com.parse.Parse;
 import com.parse.ParseUser;
 import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
+
 import org.json.*;
+
 import com.parse.ParseObject;
+
 import java.util.*;
 
 public class RestaurantsAdapter extends BaseAdapter {
     // instance variables
     private Context mContext;
-	private List<ParseObject> mDataList;
+    private List<ParseObject> mDataList;
     private int mLastAnimPosition = -1;
 
     public RestaurantsAdapter(Context context, List<ParseObject> dataList) {
         // extract parameters
         this.mContext = context;
-		this.mDataList = dataList;
+        this.mDataList = dataList;
     }
 
     @Override
     public int getCount() {
-		return this.mDataList.size();
+        return this.mDataList.size();
     }
 
     @Override
     public Object getItem(int position) {
-		return this.mDataList.get(position);
+        return this.mDataList.get(position);
     }
 
     @Override
@@ -58,8 +62,8 @@ public class RestaurantsAdapter extends BaseAdapter {
             assert view != null;
             mViewHolder.mIvRestaurantImage = (NetworkImageView) view.findViewById(R.id.niv_restaurant_image);
             mViewHolder.mIvRestaurantRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_rate);
-			mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
-			mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
+            mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
+            mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
             mViewHolder.mIvRestaurantAddress = (ImageView) view.findViewById(R.id.iv_restaurant_map);
             mViewHolder.mIvRestaurantMenu = (ImageView) view.findViewById(R.id.iv_restaurant_menu);
 
@@ -72,41 +76,44 @@ public class RestaurantsAdapter extends BaseAdapter {
 
         // set data
         try {
-			// set restaurant image
-			mViewHolder.mIvRestaurantImage.setImageUrl(mDataList.get(position).getString("image"), SingletonVolley.getImageLoader());
-			
-			// set restaurant rate image
-			mViewHolder.mIvRestaurantRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("rate")), SingletonVolley.getImageLoader());
-			
+            // set restaurant image
+            mViewHolder.mIvRestaurantImage.setImageUrl(mDataList.get(position).getString("image"), SingletonVolley.getImageLoader());
+
+            // set restaurant rate image
+            mViewHolder.mIvRestaurantRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("rate")), SingletonVolley.getImageLoader());
+
             // set restaurant name
             mViewHolder.mTvRestaurantName.setText(mDataList.get(position).getString("name"));
 
             // set restaurant phone
-			mViewHolder.mTvRestaurantPhone.setText(mDataList.get(position).getString("phone"));
-			mViewHolder.mTvRestaurantPhone.setOnClickListener(new View.OnClickListener(){
-					@Override
-					public void onClick(View view) {
-						// open phone dialer with phone number
-						Intent intent = new Intent(Intent.ACTION_DIAL, null);
-						intent.setData(Uri.parse("tel:" + ((TextView)view).getText().toString()));
-						mContext.startActivity(intent);
-					}
-				});
+            mViewHolder.mTvRestaurantPhone.setText(mDataList.get(position).getString("phone"));
+            mViewHolder.mTvRestaurantPhone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // open phone dialer with phone number
+                    Intent intent = new Intent(Intent.ACTION_DIAL, null);
+                    intent.setData(Uri.parse("tel:" + ((TextView) view).getText().toString()));
+                    mContext.startActivity(intent);
+                }
+            });
 
             // set restaurant menu
             final String menuClassName = mDataList.get(position).getString("menuClassName");
-            mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
-                    intent.putExtra("menuClassName", menuClassName);
-                    mContext.startActivity(intent);
+            if (!menuClassName.equals("")) {
+                mViewHolder.mIvRestaurantMenu.setVisibility(View.VISIBLE);
+                mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
+                        intent.putExtra("menuClassName", menuClassName);
+                        mContext.startActivity(intent);
 
-                    // set activity animation
-                    ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
-                }
-            });
-			
+                        // set activity animation
+                        ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                    }
+                });
+            }
+
             // set restaurant address
             final String address = mDataList.get(position).getString("address").toLowerCase();
             mViewHolder.mIvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +128,7 @@ public class RestaurantsAdapter extends BaseAdapter {
 
             // set fade in animation
             if (mLastAnimPosition < position) {
-				ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantImage, "alpha", 0f, 1f).setDuration(200).start();
+                ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantImage, "alpha", 0f, 1f).setDuration(200).start();
                 mLastAnimPosition = position;
             }
 
@@ -139,7 +146,7 @@ public class RestaurantsAdapter extends BaseAdapter {
         NetworkImageView mIvRestaurantRate;
         ImageView mIvRestaurantAddress;
         ImageView mIvRestaurantMenu;
-		TextView mTvRestaurantName;
-		TextView mTvRestaurantPhone;
+        TextView mTvRestaurantName;
+        TextView mTvRestaurantPhone;
     }
 }

@@ -12,29 +12,28 @@ import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RestaurantMenuAdapter extends BaseAdapter {
     // instance variables
     private Context mContext;
-    private ArrayList<ParseObject> mData;
+    private ArrayList<ParseObject> mDataList;
     private String mMenuCategory;
     private int mLastAnimPosition = 1;
 
     public RestaurantMenuAdapter(Context context, ArrayList<ParseObject> data, String menuCategory) {
         mContext = context;
-        mData = data;
+        mDataList = data;
         mMenuCategory = menuCategory;
     }
 
     @Override
     public int getCount() {
-        return mData.size();
+        return mDataList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mData.get(position);
+        return mDataList.get(position);
     }
 
     @Override
@@ -69,41 +68,41 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             mViewHolder = (ViewHolder) view.getTag();
         }
 
-        if (mData.get(position).getString("dishCategories").equals(mMenuCategory)) {
+        if (mDataList.get(position).getString("dishCategories").equals(mMenuCategory)) {
             // set restaurant dish image
-            final String dishImageUrl = mData.get(position).getString("dishImage");
+            final String dishImageUrl = mDataList.get(position).getString("dishImage");
             mViewHolder.mIvDishImage.setImageUrl(dishImageUrl, SingletonVolley.getImageLoader());
 			
 			// set restaurant rate image
-			mViewHolder.mIvDishRate.setImageUrl(HelperClass.getRateImage(mContext, Integer.parseInt(mData.get(position).getString("dishRate"))), SingletonVolley.getImageLoader());
-			
+			mViewHolder.mIvDishRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("dishRate")), SingletonVolley.getImageLoader());
 
             // set restaurant dish name
-            final String dishName = mData.get(position).getString("dishName");
+            final String dishName = mDataList.get(position).getString("dishName");
             mViewHolder.mTvDishName.setText(dishName);
 
             // set restaurant dish description
-            mViewHolder.mTvDishDesc.setText(mData.get(position).getString("dishDesc"));
+            mViewHolder.mTvDishDesc.setText(mDataList.get(position).getString("dishDesc"));
 
             // set restaurant dish review count
-            final int reviewCount = mData.get(position).getInt("dishReviewsCount");
+            final int reviewCount = mDataList.get(position).getInt("dishReviewsCount");
             mViewHolder.mTvDishReviewCount.setText(String.format("%d %s", reviewCount, "reviews"));
             mViewHolder.mTvDishReviewCount.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     // variable to create the dish name class name for Parse.com
-                    String dishNameClassName = mData.get(position).getString("dishName");
+                    String dishNameClassName = mDataList.get(position).getString("dishName");
 
                     // replace empty spaces and append the (Reviews) String.
                     dishNameClassName = dishNameClassName.replace(" ", "");
-                    dishNameClassName += "Reviews";
+                    dishNameClassName += "DishReviews";
 
                     // open reviews activity
                     Intent intent = new Intent(mContext, DishesReviews.class);
                     intent.putExtra("mDishReviewClassName", dishNameClassName);
                     intent.putExtra("mDishImageUrl", dishImageUrl);
                     intent.putExtra("mDishName", dishName);
-					intent.putExtra("mDishID", mData.get(position).getObjectId());
+					intent.putExtra("mDishID", mDataList.get(position).getObjectId());
+                    intent.putExtra("mMenuClassName", mDataList.get(position).getClassName());
                     mContext.startActivity(intent);
 
                     // set activity animation

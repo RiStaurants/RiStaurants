@@ -11,6 +11,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.ristaurants.ristaurants.adapters.DishReviewsAdapter;
 import com.ristaurants.ristaurants.adapters.RestaurantsAdapter;
 import com.ristaurants.ristaurants.misc.*;
 
@@ -18,6 +19,7 @@ import org.json.*;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
     private ViewPager mViewPager;
     private List<ParseObject> mParseObjectList;
     private String[] mPagerTitles;
+    private String mMenuClassName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,21 +49,8 @@ public class RestaurantMenuActivity extends FragmentActivity {
         mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
 
         if (getIntent().getExtras() != null) {
-            // get data from database
-            ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(getIntent().getExtras().getString("menuClassName"));
-            parseObject.findInBackground(new FindCallback<ParseObject>() {
-                public void done(List<ParseObject> parseObjectList, ParseException e) {
-                    if (e == null) {
-                        // get response
-                        mParseObjectList = parseObjectList;
-
-                        // get menu categories
-                        getMenuCategories(parseObjectList.size());
-                    } else {
-                        Log.e("ParseObject", "Error: " + e.getMessage());
-                    }
-                }
-            });
+            mMenuClassName = getIntent().getExtras().getString("menuClassName");
+            makeNetworkCode(mMenuClassName);
         }
 
         // set action bar background color
@@ -104,6 +94,29 @@ public class RestaurantMenuActivity extends FragmentActivity {
         }
     }
 
+    /**
+     * Get the list of review from the database.
+     *
+     * @param menuClassName The class name to search for in the database.
+     */
+    private void makeNetworkCode(String menuClassName) {
+        // get data from database
+        ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(menuClassName);
+        parseObject.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> parseObjectList, ParseException e) {
+                if (e == null) {
+                    // get response
+                    mParseObjectList = parseObjectList;
+
+                    // get menu categories
+                    getMenuCategories(parseObjectList.size());
+                } else {
+                    Log.e("ParseObject", "Error: " + e.getMessage());
+                }
+            }
+        });
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -118,6 +131,14 @@ public class RestaurantMenuActivity extends FragmentActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        // make fresh data from server
+        makeNetworkCode(mMenuClassName);
     }
 
     @Override
