@@ -36,6 +36,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
     private List<ParseObject> mParseObjectList;
     private String[] mPagerTitles;
     private String mMenuClassName;
+    private int mCurrentPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +49,15 @@ public class RestaurantMenuActivity extends FragmentActivity {
         // instantiate view pager after getting json
         mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
 
+        // get data fom previous activity
         if (getIntent().getExtras() != null) {
             mMenuClassName = getIntent().getExtras().getString("menuClassName");
             makeNetworkCode(mMenuClassName);
+
+            // get view pager position
+            if (savedInstanceState != null) {
+                mCurrentPosition = savedInstanceState.getInt("mCurrentPosition", 0);
+            }
         }
 
         // set action bar background color
@@ -89,6 +96,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
 
             // set view pager adapter
             mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
+            mViewPager.setCurrentItem(mCurrentPosition);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -131,6 +139,17 @@ public class RestaurantMenuActivity extends FragmentActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+
+        // save state
+        outState.putInt("mCurrentPosition", mViewPager.getCurrentItem());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // save current position
+        mCurrentPosition = mViewPager.getCurrentItem();
     }
 
     @Override

@@ -97,7 +97,8 @@ public class RestaurantsAdapter extends BaseAdapter {
 
             // set restaurant menu
             final String menuClassName = mDataList.get(position).getString("menuClassName");
-            if (!menuClassName.equals("") || !menuClassName.equals(null)) {
+            Toast.makeText(mContext, menuClassName, Toast.LENGTH_LONG).show();
+            if (menuClassName != null) {
                 mViewHolder.mIvRestaurantMenu.setVisibility(View.VISIBLE);
                 mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
                     @Override
