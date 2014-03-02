@@ -114,7 +114,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
 
             // set view animation
             if (mLastAnimPosition < position) {
-                ObjectAnimator.ofFloat(mViewHolder.mTvDishName, "alpha", 0f, 1f).setDuration(1000).start();
+                ObjectAnimator.ofFloat(mViewHolder.mTvDishName, "alpha", 0f, 1f).setDuration(1500).start();
                 ObjectAnimator.ofFloat(mViewHolder.mTvDishDesc, "alpha", 0f, 1f).setDuration(1000).start();
                 ObjectAnimator.ofFloat(view, "translationY", 200, 0).setDuration(500).start();
                 mLastAnimPosition = position;

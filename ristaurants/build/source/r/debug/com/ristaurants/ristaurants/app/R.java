@@ -13,14 +13,14 @@ public final class R {
         public static final int anim_null=0x7f040001;
         public static final int anim_out=0x7f040002;
         public static final int anim_screenshots=0x7f040003;
-        public static final int anim_slide_in_down=0x7f040004;
+        public static final int anim_slide_in_bottom=0x7f040004;
         public static final int anim_slide_in_left=0x7f040005;
         public static final int anim_slide_in_right=0x7f040006;
-        public static final int anim_slide_in_up=0x7f040007;
-        public static final int anim_slide_out_down=0x7f040008;
+        public static final int anim_slide_in_top=0x7f040007;
+        public static final int anim_slide_out_bottom=0x7f040008;
         public static final int anim_slide_out_left=0x7f040009;
         public static final int anim_slide_out_right=0x7f04000a;
-        public static final int anim_slide_out_up=0x7f04000b;
+        public static final int anim_slide_out_top=0x7f04000b;
     }
     public static final class array {
         public static final int drawer_title_list=0x7f050000;
@@ -30,41 +30,209 @@ public final class R {
         public static final int stub=0x7f050004;
     }
     public static final class attr {
+        /** 
+    The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
+    MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, or
+    &lt;width&gt;x&lt;height&gt;.
+        
+         <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int adSize=0x7f010000;
+        /** 
+    A comma-separated list of the supported ad sizes. The sizes must be one of
+    BANNER, FULL_BANNER, LEADERBOARD, MEDIUM_RECTANGLE, SMART_BANNER,
+    WIDE_SKYSCRAPER, or &lt;width&gt;x&lt;height&gt;.
+        
+         <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int adSizes=0x7f010001;
+        /**  The ad unit ID. 
+         <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int adUnitId=0x7f010002;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cameraBearing=0x7f010004;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cameraTargetLat=0x7f010005;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cameraTargetLng=0x7f010006;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cameraTilt=0x7f010007;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int cameraZoom=0x7f010008;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td></td></tr>
+<tr><td><code>normal</code></td><td>1</td><td></td></tr>
+<tr><td><code>satellite</code></td><td>2</td><td></td></tr>
+<tr><td><code>terrain</code></td><td>3</td><td></td></tr>
+<tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
+</table>
+         */
+        public static final int mapType=0x7f010003;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int uiCompass=0x7f010009;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int uiRotateGestures=0x7f01000a;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int uiScrollGestures=0x7f01000b;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int uiTiltGestures=0x7f01000c;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int uiZoomControls=0x7f01000d;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int uiZoomGestures=0x7f01000e;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int useViewLifecycle=0x7f01000f;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int zOrderOnTop=0x7f010010;
     }
     public static final class color {
         public static final int background=0x7f060000;
-        public static final int cuisine_bg=0x7f060001;
-        public static final int dishes_bg=0x7f060002;
-        public static final int drawer_background=0x7f060003;
-        public static final int flavors_bg=0x7f060004;
-        public static final int menus_bg=0x7f060005;
-        public static final int menus_tab_bg=0x7f060006;
-        public static final int restaurants_bg=0x7f060007;
-        public static final int selected_item_bg=0x7f060008;
-        public static final int settings_bg=0x7f060009;
-        public static final int text_overlay=0x7f06000a;
+        public static final int common_action_bar_splitter=0x7f060001;
+        public static final int common_signin_btn_dark_text_default=0x7f060002;
+        public static final int common_signin_btn_dark_text_disabled=0x7f060003;
+        public static final int common_signin_btn_dark_text_focused=0x7f060004;
+        public static final int common_signin_btn_dark_text_pressed=0x7f060005;
+        public static final int common_signin_btn_default_background=0x7f060006;
+        public static final int common_signin_btn_light_text_default=0x7f060007;
+        public static final int common_signin_btn_light_text_disabled=0x7f060008;
+        public static final int common_signin_btn_light_text_focused=0x7f060009;
+        public static final int common_signin_btn_light_text_pressed=0x7f06000a;
+        public static final int common_signin_btn_text_dark=0x7f060015;
+        public static final int common_signin_btn_text_light=0x7f060016;
+        public static final int cuisine_bg=0x7f06000b;
+        public static final int dishes_bg=0x7f06000c;
+        public static final int drawer_background=0x7f06000d;
+        public static final int flavors_bg=0x7f06000e;
+        public static final int menus_bg=0x7f06000f;
+        public static final int menus_tab_bg=0x7f060010;
+        public static final int restaurants_bg=0x7f060011;
+        public static final int selected_item_bg=0x7f060012;
+        public static final int settings_bg=0x7f060013;
+        public static final int text_overlay=0x7f060014;
     }
     public static final class dimen {
-        public static final int dish_reviews_height=0x7f070000;
-        public static final int drawer_divider=0x7f070001;
-        public static final int drawer_icon_size=0x7f070002;
-        public static final int drawer_padding=0x7f070003;
-        public static final int drawer_text_size=0x7f070004;
-        public static final int list_padding_left=0x7f070005;
-        public static final int list_padding_right=0x7f070006;
-        public static final int no_diver=0x7f070007;
-        public static final int pager_title_strip_size=0x7f070008;
-        public static final int rate_height=0x7f070009;
-        public static final int rate_width=0x7f07000a;
-        public static final int restaurants_height=0x7f07000b;
-        public static final int restaurants_height_half=0x7f07000c;
-        public static final int restaurants_menu_height=0x7f07000d;
-        public static final int restaurants_menu_height_half=0x7f07000e;
-        public static final int restaurants_name_size=0x7f07000f;
-        public static final int restaurants_subname_size=0x7f070010;
-        public static final int row_margin=0x7f070011;
-        public static final int row_padding=0x7f070012;
-        public static final int view_divider_padding=0x7f070013;
+        public static final int dish_reviews_height=0x7f080000;
+        public static final int dish_title_bar_padding_right=0x7f080001;
+        public static final int dish_title_bar_strip=0x7f080002;
+        public static final int drawer_divider=0x7f080003;
+        public static final int drawer_icon_size=0x7f080004;
+        public static final int drawer_padding=0x7f080005;
+        public static final int drawer_text_size=0x7f080006;
+        public static final int list_padding_left=0x7f080007;
+        public static final int list_padding_right=0x7f080008;
+        public static final int no_diver=0x7f080009;
+        public static final int pager_title_strip_size=0x7f08000a;
+        public static final int rate_height=0x7f08000b;
+        public static final int rate_width=0x7f08000c;
+        public static final int restaurants_height=0x7f08000d;
+        public static final int restaurants_height_half=0x7f08000e;
+        public static final int restaurants_menu_height=0x7f08000f;
+        public static final int restaurants_menu_height_half=0x7f080010;
+        public static final int restaurants_name_size=0x7f080011;
+        public static final int restaurants_subname_size=0x7f080012;
+        public static final int row_margin=0x7f080013;
+        public static final int row_padding=0x7f080014;
+        public static final int row_restaurant_menu_top=0x7f080015;
+        public static final int view_divider_padding=0x7f080016;
     }
     public static final class drawable {
         public static final int ab_background_textured_theme=0x7f020000;
@@ -80,84 +248,125 @@ public final class R {
         public static final int btn_cab_done_theme=0x7f02000a;
         public static final int cab_background_bottom_theme=0x7f02000b;
         public static final int cab_background_top_theme=0x7f02000c;
-        public static final int cuisine_icon=0x7f02000d;
-        public static final int dishes_icon=0x7f02000e;
-        public static final int five_star=0x7f02000f;
-        public static final int flavors_icon=0x7f020010;
-        public static final int ic_action_collections_view_as_list=0x7f020011;
-        public static final int ic_action_content_new=0x7f020012;
-        public static final int ic_action_location_place=0x7f020013;
-        public static final int ic_action_logo=0x7f020014;
-        public static final int ic_action_place=0x7f020015;
-        public static final int ic_action_random=0x7f020016;
-        public static final int ic_launcher=0x7f020017;
-        public static final int ic_navigation_drawer=0x7f020018;
-        public static final int list_focused_theme=0x7f020019;
-        public static final int list_pressed_theme=0x7f02001a;
-        public static final int menu_dropdown_panel_theme=0x7f02001b;
-        public static final int progress_bg_theme=0x7f02001c;
-        public static final int progress_horizontal_theme=0x7f02001d;
-        public static final int progress_primary_theme=0x7f02001e;
-        public static final int progress_secondary_theme=0x7f02001f;
-        public static final int restaurant_icon=0x7f020020;
-        public static final int row_restaurants_item_bg=0x7f020021;
-        public static final int selectable_background_theme=0x7f020022;
-        public static final int settings_icon=0x7f020023;
-        public static final int spinner_ab_default_theme=0x7f020024;
-        public static final int spinner_ab_disabled_theme=0x7f020025;
-        public static final int spinner_ab_focused_theme=0x7f020026;
-        public static final int spinner_ab_pressed_theme=0x7f020027;
-        public static final int spinner_background_ab_theme=0x7f020028;
-        public static final int tab_indicator_ab_theme=0x7f020029;
-        public static final int tab_selected_focused_theme=0x7f02002a;
-        public static final int tab_selected_pressed_theme=0x7f02002b;
-        public static final int tab_selected_theme=0x7f02002c;
-        public static final int tab_unselected_focused_theme=0x7f02002d;
-        public static final int tab_unselected_pressed_theme=0x7f02002e;
-        public static final int tab_unselected_theme=0x7f02002f;
-        public static final int view_gradient_bottom_black=0x7f020030;
-        public static final int view_gradient_top_black=0x7f020031;
+        public static final int common_signin_btn_icon_dark=0x7f02000d;
+        public static final int common_signin_btn_icon_disabled_dark=0x7f02000e;
+        public static final int common_signin_btn_icon_disabled_focus_dark=0x7f02000f;
+        public static final int common_signin_btn_icon_disabled_focus_light=0x7f020010;
+        public static final int common_signin_btn_icon_disabled_light=0x7f020011;
+        public static final int common_signin_btn_icon_focus_dark=0x7f020012;
+        public static final int common_signin_btn_icon_focus_light=0x7f020013;
+        public static final int common_signin_btn_icon_light=0x7f020014;
+        public static final int common_signin_btn_icon_normal_dark=0x7f020015;
+        public static final int common_signin_btn_icon_normal_light=0x7f020016;
+        public static final int common_signin_btn_icon_pressed_dark=0x7f020017;
+        public static final int common_signin_btn_icon_pressed_light=0x7f020018;
+        public static final int common_signin_btn_text_dark=0x7f020019;
+        public static final int common_signin_btn_text_disabled_dark=0x7f02001a;
+        public static final int common_signin_btn_text_disabled_focus_dark=0x7f02001b;
+        public static final int common_signin_btn_text_disabled_focus_light=0x7f02001c;
+        public static final int common_signin_btn_text_disabled_light=0x7f02001d;
+        public static final int common_signin_btn_text_focus_dark=0x7f02001e;
+        public static final int common_signin_btn_text_focus_light=0x7f02001f;
+        public static final int common_signin_btn_text_light=0x7f020020;
+        public static final int common_signin_btn_text_normal_dark=0x7f020021;
+        public static final int common_signin_btn_text_normal_light=0x7f020022;
+        public static final int common_signin_btn_text_pressed_dark=0x7f020023;
+        public static final int common_signin_btn_text_pressed_light=0x7f020024;
+        public static final int cuisine_icon=0x7f020025;
+        public static final int dishes_icon=0x7f020026;
+        public static final int five_star=0x7f020027;
+        public static final int flavors_icon=0x7f020028;
+        public static final int ic_action_collections_view_as_list=0x7f020029;
+        public static final int ic_action_content_new=0x7f02002a;
+        public static final int ic_action_location_directions=0x7f02002b;
+        public static final int ic_action_location_place=0x7f02002c;
+        public static final int ic_action_logo=0x7f02002d;
+        public static final int ic_action_navigation_expand=0x7f02002e;
+        public static final int ic_action_navigation_previous_item=0x7f02002f;
+        public static final int ic_action_place=0x7f020030;
+        public static final int ic_action_random=0x7f020031;
+        public static final int ic_launcher=0x7f020032;
+        public static final int ic_navigation_drawer=0x7f020033;
+        public static final int ic_plusone_medium_off_client=0x7f020034;
+        public static final int ic_plusone_small_off_client=0x7f020035;
+        public static final int ic_plusone_standard_off_client=0x7f020036;
+        public static final int ic_plusone_tall_off_client=0x7f020037;
+        public static final int list_focused_theme=0x7f020038;
+        public static final int list_pressed_theme=0x7f020039;
+        public static final int menu_dropdown_panel_theme=0x7f02003a;
+        public static final int progress_bg_theme=0x7f02003b;
+        public static final int progress_horizontal_theme=0x7f02003c;
+        public static final int progress_primary_theme=0x7f02003d;
+        public static final int progress_secondary_theme=0x7f02003e;
+        public static final int restaurant_icon=0x7f02003f;
+        public static final int row_restaurants_item_bg=0x7f020040;
+        public static final int selectable_background_theme=0x7f020041;
+        public static final int settings_icon=0x7f020042;
+        public static final int spinner_ab_default_theme=0x7f020043;
+        public static final int spinner_ab_disabled_theme=0x7f020044;
+        public static final int spinner_ab_focused_theme=0x7f020045;
+        public static final int spinner_ab_pressed_theme=0x7f020046;
+        public static final int spinner_background_ab_theme=0x7f020047;
+        public static final int tab_indicator_ab_theme=0x7f020048;
+        public static final int tab_selected_focused_theme=0x7f020049;
+        public static final int tab_selected_pressed_theme=0x7f02004a;
+        public static final int tab_selected_theme=0x7f02004b;
+        public static final int tab_unselected_focused_theme=0x7f02004c;
+        public static final int tab_unselected_pressed_theme=0x7f02004d;
+        public static final int tab_unselected_theme=0x7f02004e;
+        public static final int view_gradient_bottom_black=0x7f02004f;
+        public static final int view_gradient_top_black=0x7f020050;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0024;
-        public static final int bt_add=0x7f0b0005;
-        public static final int dl_drawer=0x7f0b0006;
-        public static final int et_author=0x7f0b0000;
-        public static final int et_desc=0x7f0b0001;
-        public static final int fl_drawer=0x7f0b0007;
-        public static final int iv_drawer_left_icon=0x7f0b0012;
-        public static final int iv_restaurant_map=0x7f0b0023;
-        public static final int iv_restaurant_menu=0x7f0b0022;
-        public static final int ll_phone_number=0x7f0b001f;
-        public static final int ll_rate=0x7f0b0002;
-        public static final int ll_review_amount_plus_rate=0x7f0b0016;
-        public static final int lv_content=0x7f0b000b;
-        public static final int lv_drawer_left=0x7f0b0008;
-        public static final int lv_name_plus_rate=0x7f0b001c;
-        public static final int menu_dish_review_add=0x7f0b0025;
-        public static final int menu_restaurant_menu=0x7f0b0026;
-        public static final int niv_dish_review_rate=0x7f0b0010;
-        public static final int niv_dish_reviews_image=0x7f0b0009;
-        public static final int niv_restaurant_image=0x7f0b001b;
-        public static final int niv_restaurant_menu_image=0x7f0b0014;
-        public static final int niv_restaurant_menu_rate=0x7f0b0018;
-        public static final int niv_restaurant_rate=0x7f0b001e;
-        public static final int pager_title_strip=0x7f0b000d;
-        public static final int sp_rate=0x7f0b0004;
-        public static final int tv_dish_review_author=0x7f0b000e;
-        public static final int tv_dish_review_date=0x7f0b000f;
-        public static final int tv_dish_review_review=0x7f0b0011;
-        public static final int tv_dish_reviews_name=0x7f0b000a;
-        public static final int tv_drawer_left=0x7f0b0013;
-        public static final int tv_restaurant_menu_desc=0x7f0b001a;
-        public static final int tv_restaurant_menu_name=0x7f0b0015;
-        public static final int tv_restaurant_menu_review_amount=0x7f0b0017;
-        public static final int tv_restaurant_name=0x7f0b001d;
-        public static final int tv_restaurant_phone=0x7f0b0021;
-        public static final int tv_restaurant_phone_text=0x7f0b0020;
-        public static final int tv_select_rate=0x7f0b0003;
-        public static final int v_divider=0x7f0b0019;
-        public static final int vp_restaurants_menus=0x7f0b000c;
+        public static final int action_settings=0x7f07002a;
+        public static final int bt_add=0x7f07000a;
+        public static final int dl_drawer=0x7f07000b;
+        public static final int et_author=0x7f070005;
+        public static final int et_desc=0x7f070006;
+        public static final int fl_drawer=0x7f07000c;
+        public static final int gm_map=0x7f070013;
+        public static final int hybrid=0x7f070004;
+        public static final int iv_drawer_left_icon=0x7f070018;
+        public static final int iv_restaurant_map=0x7f070029;
+        public static final int iv_restaurant_menu=0x7f070028;
+        public static final int ll_phone_number=0x7f070025;
+        public static final int ll_rate=0x7f070007;
+        public static final int ll_review_amount_plus_rate=0x7f07001c;
+        public static final int lv_content=0x7f070010;
+        public static final int lv_drawer_left=0x7f07000d;
+        public static final int lv_name_plus_rate=0x7f070022;
+        public static final int menu_directions=0x7f07002c;
+        public static final int menu_dish_review_add=0x7f07002b;
+        public static final int menu_restaurants_random=0x7f07002d;
+        public static final int niv_dish_review_rate=0x7f070016;
+        public static final int niv_dish_reviews_image=0x7f07000e;
+        public static final int niv_restaurant_image=0x7f070021;
+        public static final int niv_restaurant_menu_image=0x7f07001a;
+        public static final int niv_restaurant_menu_rate=0x7f07001e;
+        public static final int niv_restaurant_rate=0x7f070024;
+        public static final int none=0x7f070000;
+        public static final int normal=0x7f070001;
+        public static final int pager_title_strip=0x7f070012;
+        public static final int satellite=0x7f070002;
+        public static final int sp_rate=0x7f070009;
+        public static final int terrain=0x7f070003;
+        public static final int tv_dish_review_author=0x7f070014;
+        public static final int tv_dish_review_date=0x7f070015;
+        public static final int tv_dish_review_review=0x7f070017;
+        public static final int tv_dish_reviews_name=0x7f07000f;
+        public static final int tv_drawer_left=0x7f070019;
+        public static final int tv_restaurant_menu_desc=0x7f070020;
+        public static final int tv_restaurant_menu_name=0x7f07001b;
+        public static final int tv_restaurant_menu_review_amount=0x7f07001d;
+        public static final int tv_restaurant_name=0x7f070023;
+        public static final int tv_restaurant_phone=0x7f070027;
+        public static final int tv_restaurant_phone_text=0x7f070026;
+        public static final int tv_select_rate=0x7f070008;
+        public static final int v_divider=0x7f07001f;
+        public static final int vp_restaurants_menus=0x7f070011;
+    }
+    public static final class integer {
+        public static final int google_play_services_version=0x7f090000;
     }
     public static final class layout {
         public static final int activity_add_dish_review=0x7f030000;
@@ -167,45 +376,396 @@ public final class R {
         public static final int frag_cuisine=0x7f030004;
         public static final int frag_dishes=0x7f030005;
         public static final int frag_flavors=0x7f030006;
-        public static final int frag_restaurant_menu=0x7f030007;
-        public static final int frag_restaurants=0x7f030008;
-        public static final int frag_settings=0x7f030009;
-        public static final int row_dish_reviews=0x7f03000a;
-        public static final int row_drawer_left=0x7f03000b;
-        public static final int row_restaurant_menu=0x7f03000c;
-        public static final int row_restaurants=0x7f03000d;
+        public static final int frag_maps=0x7f030007;
+        public static final int frag_restaurant_menu=0x7f030008;
+        public static final int frag_restaurants=0x7f030009;
+        public static final int frag_settings=0x7f03000a;
+        public static final int row_dish_reviews=0x7f03000b;
+        public static final int row_drawer_left=0x7f03000c;
+        public static final int row_restaurant_menu=0x7f03000d;
+        public static final int row_restaurants=0x7f03000e;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
-        public static final int menu_dish_review=0x7f0a0001;
-        public static final int menu_restaurants=0x7f0a0002;
+        public static final int main=0x7f0c0000;
+        public static final int menu_dish_review=0x7f0c0001;
+        public static final int menu_google_map=0x7f0c0002;
+        public static final int menu_restaurants=0x7f0c0003;
     }
     public static final class string {
-        public static final int ab_title_add_dish_review=0x7f080000;
-        public static final int ab_title_app_name=0x7f080001;
-        public static final int ab_title_menu=0x7f080002;
-        public static final int ab_title_restaurants=0x7f080003;
-        public static final int ab_title_reviews=0x7f080004;
-        public static final int content_drawer_left_icon=0x7f080005;
-        public static final int drawer_close=0x7f080006;
-        public static final int drawer_open=0x7f080007;
-        public static final int menu_dish_review_add=0x7f080008;
-        public static final int menu_restaurant_menu=0x7f080009;
-        public static final int menu_restaurant_random=0x7f08000a;
-        public static final int phone_text=0x7f08000b;
-        public static final int please_fill_all_fields=0x7f08000c;
-        public static final int review_was_added=0x7f08000d;
+        public static final int ab_title_add_dish_review=0x7f0a0000;
+        public static final int ab_title_app_name=0x7f0a0001;
+        public static final int ab_title_maps=0x7f0a0002;
+        public static final int ab_title_menu=0x7f0a0003;
+        public static final int ab_title_restaurants=0x7f0a0004;
+        public static final int ab_title_reviews=0x7f0a0005;
+        public static final int auth_client_needs_enabling_title=0x7f0a0006;
+        public static final int auth_client_needs_installation_title=0x7f0a0007;
+        public static final int auth_client_needs_update_title=0x7f0a0008;
+        public static final int auth_client_play_services_err_notification_msg=0x7f0a0009;
+        public static final int auth_client_requested_by_msg=0x7f0a000a;
+        public static final int auth_client_using_bad_version_title=0x7f0a000b;
+        public static final int common_google_play_services_enable_button=0x7f0a000c;
+        public static final int common_google_play_services_enable_text=0x7f0a000d;
+        public static final int common_google_play_services_enable_title=0x7f0a000e;
+        public static final int common_google_play_services_install_button=0x7f0a000f;
+        public static final int common_google_play_services_install_text_phone=0x7f0a0010;
+        public static final int common_google_play_services_install_text_tablet=0x7f0a0011;
+        public static final int common_google_play_services_install_title=0x7f0a0012;
+        public static final int common_google_play_services_invalid_account_text=0x7f0a0013;
+        public static final int common_google_play_services_invalid_account_title=0x7f0a0014;
+        public static final int common_google_play_services_network_error_text=0x7f0a0015;
+        public static final int common_google_play_services_network_error_title=0x7f0a0016;
+        public static final int common_google_play_services_unknown_issue=0x7f0a0017;
+        public static final int common_google_play_services_unsupported_date_text=0x7f0a0018;
+        public static final int common_google_play_services_unsupported_text=0x7f0a0019;
+        public static final int common_google_play_services_unsupported_title=0x7f0a001a;
+        public static final int common_google_play_services_update_button=0x7f0a001b;
+        public static final int common_google_play_services_update_text=0x7f0a001c;
+        public static final int common_google_play_services_update_title=0x7f0a001d;
+        public static final int common_signin_button_text=0x7f0a001e;
+        public static final int common_signin_button_text_long=0x7f0a001f;
+        public static final int content_drawer_left_icon=0x7f0a0020;
+        public static final int drawer_close=0x7f0a0021;
+        public static final int drawer_open=0x7f0a0022;
+        public static final int menu_directions=0x7f0a0023;
+        public static final int menu_dish_review_add=0x7f0a0024;
+        public static final int menu_restaurant_menu=0x7f0a0025;
+        public static final int menu_restaurant_random=0x7f0a0026;
+        public static final int phone_text=0x7f0a0027;
+        public static final int please_fill_all_fields=0x7f0a0028;
+        public static final int review_was_added=0x7f0a0029;
     }
     public static final class style {
-        public static final int ActionBar_Solid_Theme=0x7f090000;
-        public static final int ActionBar_Transparent_Theme=0x7f090001;
-        public static final int ActionBarTabStyle_Theme=0x7f090002;
-        public static final int ActionButton_CloseMode_Theme=0x7f090003;
-        public static final int DropDownListView_Theme=0x7f090004;
-        public static final int DropDownNav_Theme=0x7f090005;
-        public static final int PopupMenu_Theme=0x7f090006;
-        public static final int ProgressBar_Theme=0x7f090007;
-        public static final int Theme_Theme=0x7f090008;
-        public static final int Theme_Theme_Widget=0x7f090009;
+        public static final int ActionBar_Solid_Theme=0x7f0b0000;
+        public static final int ActionBar_Transparent_Theme=0x7f0b0001;
+        public static final int ActionBarTabStyle_Theme=0x7f0b0002;
+        public static final int ActionButton_CloseMode_Theme=0x7f0b0003;
+        public static final int DropDownListView_Theme=0x7f0b0004;
+        public static final int DropDownNav_Theme=0x7f0b0005;
+        public static final int PopupMenu_Theme=0x7f0b0006;
+        public static final int ProgressBar_Theme=0x7f0b0007;
+        public static final int Theme_Theme=0x7f0b0008;
+        public static final int Theme_Theme_Widget=0x7f0b0009;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a AdsAttrs.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #AdsAttrs_adSize com.ristaurants.ristaurants.app:adSize}</code></td><td>
+    The size of the ad.</td></tr>
+           <tr><td><code>{@link #AdsAttrs_adSizes com.ristaurants.ristaurants.app:adSizes}</code></td><td>
+    A comma-separated list of the supported ad sizes.</td></tr>
+           <tr><td><code>{@link #AdsAttrs_adUnitId com.ristaurants.ristaurants.app:adUnitId}</code></td><td> The ad unit ID.</td></tr>
+           </table>
+           @see #AdsAttrs_adSize
+           @see #AdsAttrs_adSizes
+           @see #AdsAttrs_adUnitId
+         */
+        public static final int[] AdsAttrs = {
+            0x7f010000, 0x7f010001, 0x7f010002
+        };
+        /**
+          <p>
+          @attr description
+          
+    The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
+    MEDIUM_RECTANGLE, SMART_BANNER, WIDE_SKYSCRAPER, or
+    &lt;width&gt;x&lt;height&gt;.
+        
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.ristaurants.ristaurants.app:adSize
+        */
+        public static final int AdsAttrs_adSize = 0;
+        /**
+          <p>
+          @attr description
+          
+    A comma-separated list of the supported ad sizes. The sizes must be one of
+    BANNER, FULL_BANNER, LEADERBOARD, MEDIUM_RECTANGLE, SMART_BANNER,
+    WIDE_SKYSCRAPER, or &lt;width&gt;x&lt;height&gt;.
+        
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.ristaurants.ristaurants.app:adSizes
+        */
+        public static final int AdsAttrs_adSizes = 1;
+        /**
+          <p>
+          @attr description
+           The ad unit ID. 
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.ristaurants.ristaurants.app:adUnitId
+        */
+        public static final int AdsAttrs_adUnitId = 2;
+        /** Attributes that can be used with a MapAttrs.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MapAttrs_cameraBearing com.ristaurants.ristaurants.app:cameraBearing}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLat com.ristaurants.ristaurants.app:cameraTargetLat}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTargetLng com.ristaurants.ristaurants.app:cameraTargetLng}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraTilt com.ristaurants.ristaurants.app:cameraTilt}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_cameraZoom com.ristaurants.ristaurants.app:cameraZoom}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_mapType com.ristaurants.ristaurants.app:mapType}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiCompass com.ristaurants.ristaurants.app:uiCompass}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiRotateGestures com.ristaurants.ristaurants.app:uiRotateGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiScrollGestures com.ristaurants.ristaurants.app:uiScrollGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiTiltGestures com.ristaurants.ristaurants.app:uiTiltGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomControls com.ristaurants.ristaurants.app:uiZoomControls}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_uiZoomGestures com.ristaurants.ristaurants.app:uiZoomGestures}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_useViewLifecycle com.ristaurants.ristaurants.app:useViewLifecycle}</code></td><td></td></tr>
+           <tr><td><code>{@link #MapAttrs_zOrderOnTop com.ristaurants.ristaurants.app:zOrderOnTop}</code></td><td></td></tr>
+           </table>
+           @see #MapAttrs_cameraBearing
+           @see #MapAttrs_cameraTargetLat
+           @see #MapAttrs_cameraTargetLng
+           @see #MapAttrs_cameraTilt
+           @see #MapAttrs_cameraZoom
+           @see #MapAttrs_mapType
+           @see #MapAttrs_uiCompass
+           @see #MapAttrs_uiRotateGestures
+           @see #MapAttrs_uiScrollGestures
+           @see #MapAttrs_uiTiltGestures
+           @see #MapAttrs_uiZoomControls
+           @see #MapAttrs_uiZoomGestures
+           @see #MapAttrs_useViewLifecycle
+           @see #MapAttrs_zOrderOnTop
+         */
+        public static final int[] MapAttrs = {
+            0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006,
+            0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a,
+            0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e,
+            0x7f01000f, 0x7f010010
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#cameraBearing}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:cameraBearing
+        */
+        public static final int MapAttrs_cameraBearing = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#cameraTargetLat}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:cameraTargetLat
+        */
+        public static final int MapAttrs_cameraTargetLat = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#cameraTargetLng}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:cameraTargetLng
+        */
+        public static final int MapAttrs_cameraTargetLng = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#cameraTilt}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:cameraTilt
+        */
+        public static final int MapAttrs_cameraTilt = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#cameraZoom}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:cameraZoom
+        */
+        public static final int MapAttrs_cameraZoom = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#mapType}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td></td></tr>
+<tr><td><code>normal</code></td><td>1</td><td></td></tr>
+<tr><td><code>satellite</code></td><td>2</td><td></td></tr>
+<tr><td><code>terrain</code></td><td>3</td><td></td></tr>
+<tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
+</table>
+          @attr name com.ristaurants.ristaurants.app:mapType
+        */
+        public static final int MapAttrs_mapType = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#uiCompass}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:uiCompass
+        */
+        public static final int MapAttrs_uiCompass = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#uiRotateGestures}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:uiRotateGestures
+        */
+        public static final int MapAttrs_uiRotateGestures = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#uiScrollGestures}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:uiScrollGestures
+        */
+        public static final int MapAttrs_uiScrollGestures = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#uiTiltGestures}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:uiTiltGestures
+        */
+        public static final int MapAttrs_uiTiltGestures = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#uiZoomControls}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:uiZoomControls
+        */
+        public static final int MapAttrs_uiZoomControls = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#uiZoomGestures}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:uiZoomGestures
+        */
+        public static final int MapAttrs_uiZoomGestures = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#useViewLifecycle}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:useViewLifecycle
+        */
+        public static final int MapAttrs_useViewLifecycle = 12;
+        /**
+          <p>This symbol is the offset where the {@link com.ristaurants.ristaurants.app.R.attr#zOrderOnTop}
+          attribute's value can be found in the {@link #MapAttrs} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.ristaurants.ristaurants.app:zOrderOnTop
+        */
+        public static final int MapAttrs_zOrderOnTop = 13;
+    };
 }

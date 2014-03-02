@@ -8,12 +8,12 @@
 
             <corners android:radius="0dp"/>
 
-            <solid android:color="@android:color/darker_gray" />
+            <solid android:color="@color/restaurants_bg" />
 
         </shape>
     </item>
 
-    <item android:bottom="1dp">
+    <item android:right="@dimen/dish_title_bar_strip">
         <shape
             android:shape="rectangle"
             android:dither="true">
@@ -21,12 +21,6 @@
             <corners android:radius="0dp" />
 
             <solid android:color="@android:color/white" />
-
-            <padding
-                android:bottom="@dimen/row_padding"
-                android:left="@dimen/row_padding"
-                android:right="@dimen/row_padding"
-                android:top="@dimen/row_padding" />
         </shape>
     </item>
 </layer-list>

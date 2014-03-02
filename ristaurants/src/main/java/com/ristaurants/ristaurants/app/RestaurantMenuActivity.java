@@ -59,7 +59,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
         // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_menu)));
         getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setIcon(R.drawable.ic_action_navigation_previous_item);
     }
 
     /**

@@ -40,7 +40,7 @@ public class AddDishReview extends Activity {
         // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_add_dish_review)));
         getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setIcon(R.drawable.ic_action_navigation_previous_item);
 
         // instantiate view
         mEtAuthor = (EditText) findViewById(R.id.et_author);

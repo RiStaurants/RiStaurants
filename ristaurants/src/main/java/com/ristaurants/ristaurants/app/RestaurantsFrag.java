@@ -81,8 +81,9 @@ public class RestaurantsFrag extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // check which item in the menu was clicked
-        switch (item.getItemId()) {
-            case R.id.menu_restaurant_menu:
+        switch (item.getItemId()){
+            case R.id.menu_restaurants_random:
+
                 break;
         }
 

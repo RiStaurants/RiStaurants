@@ -8,12 +8,9 @@ import android.view.*;
 import android.widget.*;
 
 import com.android.volley.toolbox.*;
-import com.parse.Parse;
-import com.parse.ParseUser;
+import com.parse.ParseGeoPoint;
 import com.ristaurants.ristaurants.app.*;
 import com.ristaurants.ristaurants.misc.*;
-
-import org.json.*;
 
 import com.parse.ParseObject;
 
@@ -83,7 +80,8 @@ public class RestaurantsAdapter extends BaseAdapter {
             mViewHolder.mIvRestaurantRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("rate")), SingletonVolley.getImageLoader());
 
             // set restaurant name
-            mViewHolder.mTvRestaurantName.setText(mDataList.get(position).getString("name"));
+            final String name = mDataList.get(position).getString("name");
+            mViewHolder.mTvRestaurantName.setText(name);
 
             // set restaurant phone
             mViewHolder.mTvRestaurantPhone.setText(mDataList.get(position).getString("phone"));
@@ -99,7 +97,7 @@ public class RestaurantsAdapter extends BaseAdapter {
 
             // set restaurant menu
             final String menuClassName = mDataList.get(position).getString("menuClassName");
-            if (!menuClassName.equals("")) {
+            if (!menuClassName.equals("") || !menuClassName.equals(null)) {
                 mViewHolder.mIvRestaurantMenu.setVisibility(View.VISIBLE);
                 mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -115,14 +113,21 @@ public class RestaurantsAdapter extends BaseAdapter {
             }
 
             // set restaurant address
-            final String address = mDataList.get(position).getString("address").toLowerCase();
+            final String address = mDataList.get(position).getString("address");
+            final ParseGeoPoint mGeoPoint = mDataList.get(position).getParseGeoPoint("coordinates");
             mViewHolder.mIvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // open phone dialer with phone number
-                    Intent intent = new Intent(Intent.ACTION_VIEW, null);
-                    intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + address));
+                    // open Google Map
+                    Intent intent = new Intent(mContext, MapLocation.class);
+                    intent.putExtra("mRestaurantName", name);
+                    intent.putExtra("mAddress", address);
+                    intent.putExtra("mLatitude", mGeoPoint.getLatitude());
+                    intent.putExtra("mLongitude", mGeoPoint.getLongitude());
                     mContext.startActivity(intent);
+
+                    // set activity animation
+                    ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_bottom, R.anim.anim_slide_out_top);
                 }
             });
 

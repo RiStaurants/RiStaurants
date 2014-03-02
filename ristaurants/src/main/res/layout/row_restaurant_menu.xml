@@ -8,7 +8,7 @@
 	<com.android.volley.toolbox.NetworkImageView
         android:id="@+id/niv_restaurant_menu_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/restaurants_menu_height"
+        android:layout_height="@dimen/dish_reviews_height"
         android:layout_marginTop="@dimen/row_margin"
         android:scaleType="centerCrop"
         android:scaleGravity="top" />
@@ -23,20 +23,22 @@
 		android:id="@+id/tv_restaurant_menu_name"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-		android:padding="@dimen/row_padding"
+        android:padding="@dimen/row_padding"
         android:layout_marginTop="@dimen/row_margin"
 		android:textSize="@dimen/restaurants_name_size"
 		android:textColor="@android:color/white"
         android:shadowColor="@android:color/black"
         android:shadowDx="1"
         android:shadowDy="1"
-        android:shadowRadius="1"/>
+        android:shadowRadius="1" />
 	
 	<LinearLayout
         android:id="@+id/ll_review_amount_plus_rate"
 		android:layout_below="@+id/niv_restaurant_menu_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/row_margin"
+        android:layout_marginBottom="@dimen/row_margin"
         android:padding="@dimen/row_padding"
         android:orientation="horizontal">
 

@@ -30,5 +30,10 @@
     <dimen name="row_padding">4dp</dimen>
     <dimen name="view_divider_padding">8dp</dimen>
     <dimen name="row_margin">8dp</dimen>
+    <dimen name="row_restaurant_menu_top">16dp</dimen>
+
+    <!-- Misc -->
+    <dimen name="dish_title_bar_strip">10dp</dimen>
+    <dimen name="dish_title_bar_padding_right">16dp</dimen>
 
 </resources>
