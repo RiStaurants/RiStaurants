@@ -52,6 +52,11 @@ public class MapLocation extends FragmentActivity {
             mGeoPoints = new LatLng(latitude, longitude);
             mRestaurantName = getIntent().getExtras().getString("mRestaurantName");
             mAddress = getIntent().getExtras().getString("mAddress");
+
+            // remove \n from string
+            if (mAddress != null) {
+                mAddress = mAddress.replace("\\n", "");
+            }
         }
 
         // instantiate fragment

@@ -1,5 +1,6 @@
 package com.ristaurants.ristaurants.app;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -59,6 +60,9 @@ public class RestaurantDesc extends Activity {
             // display restaurant address
             TextView tvRestaurantDesc = (TextView) findViewById(R.id.tv_restaurant_desc);
             tvRestaurantDesc.setText(formatString(desc));
+
+            // set animation
+            ObjectAnimator.ofFloat(tvRestaurantDesc, "alpha", 0f, 1f).setDuration(1500).start();
         }
     }
 
