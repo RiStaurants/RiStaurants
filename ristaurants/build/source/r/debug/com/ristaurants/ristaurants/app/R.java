@@ -318,7 +318,7 @@ containing a value of this type.
         public static final int view_gradient_top_black=0x7f020050;
     }
     public static final class id {
-        public static final int action_settings=0x7f07002a;
+        public static final int action_settings=0x7f07002b;
         public static final int bt_add=0x7f07000a;
         public static final int dl_drawer=0x7f07000b;
         public static final int et_author=0x7f070005;
@@ -327,23 +327,23 @@ containing a value of this type.
         public static final int gm_map=0x7f070013;
         public static final int hybrid=0x7f070004;
         public static final int iv_drawer_left_icon=0x7f070018;
-        public static final int iv_restaurant_map=0x7f070029;
-        public static final int iv_restaurant_menu=0x7f070028;
-        public static final int ll_phone_number=0x7f070025;
+        public static final int iv_restaurant_map=0x7f07002a;
+        public static final int iv_restaurant_menu=0x7f070029;
+        public static final int ll_phone_number=0x7f070026;
         public static final int ll_rate=0x7f070007;
-        public static final int ll_review_amount_plus_rate=0x7f07001c;
+        public static final int ll_review_amount_plus_rate=0x7f07001d;
         public static final int lv_content=0x7f070010;
         public static final int lv_drawer_left=0x7f07000d;
-        public static final int lv_name_plus_rate=0x7f070022;
-        public static final int menu_directions=0x7f07002c;
-        public static final int menu_dish_review_add=0x7f07002b;
-        public static final int menu_restaurants_random=0x7f07002d;
+        public static final int lv_name_plus_rate=0x7f070023;
+        public static final int menu_directions=0x7f07002d;
+        public static final int menu_dish_review_add=0x7f07002c;
+        public static final int menu_restaurants_random=0x7f07002e;
         public static final int niv_dish_review_rate=0x7f070016;
         public static final int niv_dish_reviews_image=0x7f07000e;
-        public static final int niv_restaurant_image=0x7f070021;
-        public static final int niv_restaurant_menu_image=0x7f07001a;
-        public static final int niv_restaurant_menu_rate=0x7f07001e;
-        public static final int niv_restaurant_rate=0x7f070024;
+        public static final int niv_restaurant_image=0x7f070022;
+        public static final int niv_restaurant_menu_image=0x7f07001b;
+        public static final int niv_restaurant_menu_rate=0x7f07001f;
+        public static final int niv_restaurant_rate=0x7f070025;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
         public static final int pager_title_strip=0x7f070012;
@@ -355,14 +355,15 @@ containing a value of this type.
         public static final int tv_dish_review_review=0x7f070017;
         public static final int tv_dish_reviews_name=0x7f07000f;
         public static final int tv_drawer_left=0x7f070019;
-        public static final int tv_restaurant_menu_desc=0x7f070020;
-        public static final int tv_restaurant_menu_name=0x7f07001b;
-        public static final int tv_restaurant_menu_review_amount=0x7f07001d;
-        public static final int tv_restaurant_name=0x7f070023;
-        public static final int tv_restaurant_phone=0x7f070027;
-        public static final int tv_restaurant_phone_text=0x7f070026;
+        public static final int tv_map_location_name=0x7f07001a;
+        public static final int tv_restaurant_menu_desc=0x7f070021;
+        public static final int tv_restaurant_menu_name=0x7f07001c;
+        public static final int tv_restaurant_menu_review_amount=0x7f07001e;
+        public static final int tv_restaurant_name=0x7f070024;
+        public static final int tv_restaurant_phone=0x7f070028;
+        public static final int tv_restaurant_phone_text=0x7f070027;
         public static final int tv_select_rate=0x7f070008;
-        public static final int v_divider=0x7f07001f;
+        public static final int v_divider=0x7f070020;
         public static final int vp_restaurants_menus=0x7f070011;
     }
     public static final class integer {
@@ -382,8 +383,9 @@ containing a value of this type.
         public static final int frag_settings=0x7f03000a;
         public static final int row_dish_reviews=0x7f03000b;
         public static final int row_drawer_left=0x7f03000c;
-        public static final int row_restaurant_menu=0x7f03000d;
-        public static final int row_restaurants=0x7f03000e;
+        public static final int row_map_location_info_panel=0x7f03000d;
+        public static final int row_restaurant_menu=0x7f03000e;
+        public static final int row_restaurants=0x7f03000f;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;

@@ -1,5 +1,6 @@
 package com.ristaurants.ristaurants.app;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -7,11 +8,14 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -58,6 +62,7 @@ public class MapLocation extends FragmentActivity {
         CameraUpdate center = CameraUpdateFactory.newLatLng(mGeoPoints);
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(mZoomPerc);
 
+        // set camera
         mGoogleMap.moveCamera(center);
         mGoogleMap.animateCamera(zoom);
 
@@ -65,8 +70,38 @@ public class MapLocation extends FragmentActivity {
         Marker marker = mGoogleMap.addMarker(new MarkerOptions()
                 .position(mGeoPoints)
                 .title(mRestaurantName)
-                .snippet(mAddress));
+                .snippet(mAddress)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         marker.showInfoWindow();
+
+        // information click listener
+        mGoogleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                // open google maps with directions
+                openGoogleMaps();
+            }
+        });
+
+        // marker click listener
+        mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                // open google maps with directions
+                openGoogleMaps();
+                return false;
+            }
+        });
+    }
+
+    /**
+     * open Google Maps app
+     */
+    private void openGoogleMaps() {
+        // open google maps with directions
+        Intent intent = new Intent(Intent.ACTION_VIEW, null);
+        intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + mAddress));
+        startActivity(intent);
     }
 
     @Override
@@ -84,9 +119,7 @@ public class MapLocation extends FragmentActivity {
                 break;
             case R.id.menu_directions:
                 // open google maps with directions
-                Intent intent = new Intent(Intent.ACTION_VIEW, null);
-                intent.setData(Uri.parse("http://maps.google.co.in/maps?q=" + mAddress));
-                startActivity(intent);
+                openGoogleMaps();
                 break;
         }
         return super.onOptionsItemSelected(item);

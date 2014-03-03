@@ -60,6 +60,7 @@ public class RestaurantsAdapter extends BaseAdapter {
             mViewHolder.mIvRestaurantImage = (NetworkImageView) view.findViewById(R.id.niv_restaurant_image);
             mViewHolder.mIvRestaurantRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_rate);
             mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
+            mViewHolder.mTvRestaurantPhoneText = (TextView) view.findViewById(R.id.tv_restaurant_phone_text);
             mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
             mViewHolder.mIvRestaurantAddress = (ImageView) view.findViewById(R.id.iv_restaurant_map);
             mViewHolder.mIvRestaurantMenu = (ImageView) view.findViewById(R.id.iv_restaurant_menu);
@@ -97,7 +98,6 @@ public class RestaurantsAdapter extends BaseAdapter {
 
             // set restaurant menu
             final String menuClassName = mDataList.get(position).getString("menuClassName");
-            Toast.makeText(mContext, menuClassName, Toast.LENGTH_LONG).show();
             if (menuClassName != null) {
                 mViewHolder.mIvRestaurantMenu.setVisibility(View.VISIBLE);
                 mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +134,13 @@ public class RestaurantsAdapter extends BaseAdapter {
 
             // set fade in animation
             if (mLastAnimPosition < position) {
-                ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantImage, "alpha", 0f, 1f).setDuration(200).start();
+                //ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantImage, "alpha", 0f, 1f).setDuration(200).start();
+                ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantName, "alpha", 0f, 1f).setDuration(500).start();
+                ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantRate, "alpha", 0f, 1f).setDuration(500).start();
+                ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhoneText, "alpha", 0f, 1f).setDuration(500).start();
+                ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhone, "alpha", 0f, 1f).setDuration(500).start();
+                ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantMenu, "alpha", 0f, 1f).setDuration(500).start();
+                ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantAddress, "alpha", 0f, 1f).setDuration(500).start();
                 mLastAnimPosition = position;
             }
 
@@ -153,6 +159,7 @@ public class RestaurantsAdapter extends BaseAdapter {
         ImageView mIvRestaurantAddress;
         ImageView mIvRestaurantMenu;
         TextView mTvRestaurantName;
+        TextView mTvRestaurantPhoneText;
         TextView mTvRestaurantPhone;
     }
 }
