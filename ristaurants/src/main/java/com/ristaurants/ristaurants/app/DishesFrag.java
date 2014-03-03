@@ -1,6 +1,5 @@
 package com.ristaurants.ristaurants.app;
 
-import android.graphics.drawable.*;
 import android.os.*;
 import android.support.v4.app.*;
 import android.view.*;

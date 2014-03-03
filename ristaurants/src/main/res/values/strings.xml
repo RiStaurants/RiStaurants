@@ -21,10 +21,11 @@
     <string name="menu_restaurant_menu">MENU</string>
     <string name="menu_restaurant_random">Random Restaurants</string>
     <string name="menu_dish_review_add">Add Review</string>
+    <string name="menu_directions">Directions</string>
 
     <!-- Messages -->
     <string name="review_was_added">Your review was successfully added.</string>
 	<string name="please_fill_all_fields">Please compete all field.</string>
-    <string name="menu_directions">Directions</string>
+    <string name="no_description_available">"Sorry, no description available at time."</string>
 
 </resources>

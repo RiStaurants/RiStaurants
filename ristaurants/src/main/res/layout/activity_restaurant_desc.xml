@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/row_margin"
+    android:clipToPadding="false"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/restaurants_height">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/niv_restaurant_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/restaurants_height"
+                android:scaleType="centerCrop"
+                android:scaleGravity="top" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/restaurants_height_half"
+                android:background="@drawable/view_gradient_top_black" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/restaurants_height_half"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/view_gradient_bottom_black" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/row_margin"
+            android:orientation="horizontal">
+
+            <com.ristaurants.ristaurants.views.BenderSolidTextView
+                android:id="@+id/tv_restaurant_name"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1.75"
+                android:textSize="@dimen/restaurants_name_size"
+                android:textColor="@android:color/black" />
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/niv_restaurant_rate"
+                android:layout_height="@dimen/rate_height"
+                android:layout_width="@dimen/rate_width"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.25" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginTop="@dimen/row_margin"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:background="@android:color/darker_gray" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:id="@+id/tv_restaurant_phone"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="@dimen/drawer_padding"
+            android:textSize="@dimen/restaurants_subname_size"
+            android:textColor="@android:color/darker_gray" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:id="@+id/tv_restaurant_address"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:singleLine="false"
+            android:textSize="@dimen/restaurants_subname_size"
+            android:textColor="@android:color/darker_gray" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginTop="@dimen/row_margin"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:background="@android:color/darker_gray" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:id="@+id/tv_restaurant_desc"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/restaurants_subname_size"
+            android:textColor="@android:color/darker_gray" />
+
+    </LinearLayout>
+</ScrollView>

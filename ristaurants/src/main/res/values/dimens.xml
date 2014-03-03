@@ -24,6 +24,7 @@
     <dimen name="pager_title_strip_size">35sp</dimen>
 
     <!-- Padding and Margin -->
+    <dimen name="activity_padding">16dp</dimen>
     <dimen name="drawer_padding">8dp</dimen>
     <dimen name="list_padding_left">8dp</dimen>
     <dimen name="list_padding_right">8dp</dimen>
