@@ -108,7 +108,7 @@ public class RestaurantMenuAdapter extends BaseAdapter {
                     mContext.startActivity(intent);
 
                     // set activity animation
-                    ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                    ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_null);
                 }
             });
 

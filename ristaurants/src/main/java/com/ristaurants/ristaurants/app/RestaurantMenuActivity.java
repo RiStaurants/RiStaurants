@@ -165,7 +165,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
         super.onBackPressed();
 
         // set activity animation
-        this.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+        this.overridePendingTransition(R.anim.anim_null, R.anim.anim_slide_out_right);
     }
 
     /**

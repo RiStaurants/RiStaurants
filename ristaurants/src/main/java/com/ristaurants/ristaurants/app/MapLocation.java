@@ -135,7 +135,7 @@ public class MapLocation extends FragmentActivity {
         super.onBackPressed();
 
         // set activity animation
-        this.overridePendingTransition(R.anim.anim_slide_in_top, R.anim.anim_slide_out_bottom);
+        this.overridePendingTransition(R.anim.anim_null, R.anim.anim_slide_out_bottom);
     }
 
 }

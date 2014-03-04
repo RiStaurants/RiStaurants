@@ -98,7 +98,6 @@ public class DishesReviews extends Activity {
             }
         });
 
-
     }
 
     @Override
@@ -123,7 +122,7 @@ public class DishesReviews extends Activity {
                 startActivity(intent);
 
                 // set activity animation
-                this.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left);
+                this.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_null);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -134,6 +133,6 @@ public class DishesReviews extends Activity {
         super.onBackPressed();
 
         // set activity animation
-        this.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right);
+        this.overridePendingTransition(R.anim.anim_null, R.anim.anim_slide_out_right);
     }
 }
