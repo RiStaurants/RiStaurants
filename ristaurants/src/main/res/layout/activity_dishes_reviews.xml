@@ -1,11 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/row_margin"
+    android:clipToPadding="false"
     android:background="@android:color/white"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/row_padding"
-    android:paddingTop="@dimen/row_padding"
-    android:paddingRight="@dimen/row_padding">
+    android:orientation="vertical">
 
 	<com.android.volley.toolbox.NetworkImageView
         android:id="@+id/niv_dish_reviews_image"
@@ -37,10 +36,6 @@
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
 		android:scrollbars="none"
-		android:clipToPadding="false"
-		android:paddingTop="@dimen/row_margin"
-		android:paddingLeft="@dimen/row_padding"
-		android:paddingRight="@dimen/row_padding"
 		android:divider="@color/restaurants_bg"
 		android:dividerHeight="@dimen/drawer_divider"/>
 

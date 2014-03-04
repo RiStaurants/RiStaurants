@@ -8,51 +8,49 @@
 	<LinearLayout
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:layout_marginTop="@dimen/row_padding"
+        android:layout_marginTop="@dimen/row_margin"
 		android:orientation="horizontal">
 
 		<com.ristaurants.ristaurants.views.BenderSolidTextView
 			android:id="@+id/tv_dish_review_author"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:layout_weight="1.50"
+			android:layout_weight="1.75"
 			android:textColor="@android:color/black"
 			android:textSize="@dimen/restaurants_name_size"/>
 
-		<com.ristaurants.ristaurants.views.BenderSolidTextView
-			android:id="@+id/tv_dish_review_date"
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:layout_weight="0.50"
-			android:gravity="right"
-			android:textColor="@android:color/darker_gray"
-			android:textSize="@dimen/restaurants_name_size"/>
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/niv_dish_review_rate"
+            android:layout_height="@dimen/rate_height"
+            android:layout_width="@dimen/rate_width"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.25" />
 
 	</LinearLayout>
 
-	<com.android.volley.toolbox.NetworkImageView
-		android:id="@+id/niv_dish_review_rate"
-		android:layout_height="@dimen/rate_height"
-		android:layout_width="@dimen/rate_width"
-		android:layout_gravity="center_vertical"
-		android:layout_marginTop="@dimen/row_padding"
-		android:layout_marginBottom="@dimen/row_padding"/>
-
-	<View
+    <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/drawer_divider"
-		android:layout_marginTop="@dimen/row_padding"
-		android:layout_marginBottom="@dimen/row_padding"
-		android:background="@android:color/darker_gray"/>
+        android:layout_marginTop="@dimen/row_margin"
+        android:layout_marginBottom="@dimen/row_margin"
+        android:background="@android:color/darker_gray" />
 
-	<com.ristaurants.ristaurants.views.RobotoThinTextView
+	<com.ristaurants.ristaurants.views.BenderSolidTextView
 		android:id="@+id/tv_dish_review_review"
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:layout_marginBottom="@dimen/row_padding"
-		android:textColor="@android:color/black"
+        android:layout_marginBottom="@dimen/drawer_padding"
+		android:textColor="@android:color/darker_gray"
 		android:textSize="@dimen/restaurants_subname_size"
         android:textStyle="bold"/>
+
+    <com.ristaurants.ristaurants.views.BenderSolidTextView
+        android:id="@+id/tv_dish_review_date"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="right"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="@dimen/restaurants_subname_size"/>
 
 </LinearLayout>
 

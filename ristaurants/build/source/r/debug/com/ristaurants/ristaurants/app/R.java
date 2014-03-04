@@ -340,7 +340,7 @@ containing a value of this type.
         public static final int menu_directions=0x7f07002f;
         public static final int menu_dish_review_add=0x7f07002e;
         public static final int menu_restaurants_random=0x7f070030;
-        public static final int niv_dish_review_rate=0x7f07001c;
+        public static final int niv_dish_review_rate=0x7f07001b;
         public static final int niv_dish_reviews_image=0x7f07000e;
         public static final int niv_restaurant_image=0x7f070013;
         public static final int niv_restaurant_menu_image=0x7f070021;
@@ -353,8 +353,8 @@ containing a value of this type.
         public static final int sp_rate=0x7f070009;
         public static final int terrain=0x7f070003;
         public static final int tv_dish_review_author=0x7f07001a;
-        public static final int tv_dish_review_date=0x7f07001b;
-        public static final int tv_dish_review_review=0x7f07001d;
+        public static final int tv_dish_review_date=0x7f07001d;
+        public static final int tv_dish_review_review=0x7f07001c;
         public static final int tv_dish_reviews_name=0x7f07000f;
         public static final int tv_drawer_left=0x7f07001f;
         public static final int tv_map_location_name=0x7f070020;
