@@ -80,6 +80,7 @@ public class RestaurantMenuFrag extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        // save state
         outState.putString("mMenuCategory", mMenuCategory);
     }
 
