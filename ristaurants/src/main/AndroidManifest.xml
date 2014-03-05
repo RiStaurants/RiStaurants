@@ -77,6 +77,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+		<activity
+            android:name=".Cuisine"
+            android:label="@string/ab_title_app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.ristaurants.ristaurants.app.CUISINE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

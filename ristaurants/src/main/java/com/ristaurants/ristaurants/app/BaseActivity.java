@@ -147,7 +147,7 @@ public class BaseActivity extends FragmentActivity {
 				
 			case 2:
                 // start Cuisine Fragment
-                mFrag = new CuisineFrag();
+                mFrag = new CuisineListFrag();
                 break;
 
 			case 3:
