@@ -23,11 +23,12 @@ public final class R {
         public static final int anim_slide_out_top=0x7f04000b;
     }
     public static final class array {
-        public static final int drawer_title_list=0x7f050000;
-        public static final int rate_image_urls=0x7f050001;
-        public static final int rate_spinner_items=0x7f050002;
-        public static final int restaurants_menu_tab_titles=0x7f050003;
-        public static final int stub=0x7f050004;
+        public static final int cuisine_categories=0x7f050000;
+        public static final int drawer_title_list=0x7f050001;
+        public static final int rate_image_urls=0x7f050002;
+        public static final int rate_spinner_items=0x7f050003;
+        public static final int restaurants_menu_tab_titles=0x7f050004;
+        public static final int stub=0x7f050005;
     }
     public static final class attr {
         /** 
