@@ -2,12 +2,14 @@ package com.ristaurants.ristaurants.app;
 import android.content.*;
 import android.os.*;
 import android.support.v4.app.*;
+import android.util.*;
 import android.view.*;
 import android.widget.*;
 import android.widget.AdapterView.*;
 import com.parse.*;
 import com.ristaurants.ristaurants.adapters.*;
 import com.ristaurants.ristaurants.misc.*;
+import java.util.*;
 
 public class CuisineListFrag extends Fragment {
     // instance variables
@@ -18,17 +20,14 @@ public class CuisineListFrag extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// inflate layout
         View view = inflater.inflate(R.layout.frag_cuisine, container, false);
-		
-		// instantiate Parse Database
-        Parse.initialize(getActivity(), "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
-		
+	
         // set action bar background
         HelperClass.setActionBarBackground(getActivity(), R.color.cuisine_bg);
 		
 		// set adapter
 		String[] mTitles = getActivity().getResources().getStringArray(R.array.cuisine_categories);
 		mAdapter = new CuisineAdapter(getActivity(), mTitles);
-
+		
 		// set list view and adapter
 		mLvContent = (ListView) view.findViewById(R.id.lv_content);
 		mLvContent.setAdapter(mAdapter);

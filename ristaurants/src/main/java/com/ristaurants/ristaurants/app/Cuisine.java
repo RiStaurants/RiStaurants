@@ -21,7 +21,7 @@ public class Cuisine extends Activity {
         super.onCreate(savedInstanceState);
 
         // instantiate Parse Database
-        Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
+        Parse.initialize(Cuisine.this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
 
         // get data from intent
         if (getIntent().getExtras() != null) {
@@ -39,20 +39,24 @@ public class Cuisine extends Activity {
         // get data from database
         ParseQuery<ParseObject> parseObject = ParseQuery.getQuery("Cuisine");
         parseObject.orderByAscending("cuisineCategory");
+		parseObject.include("restaurantPointer");
         parseObject.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> list, ParseException e) {
                 if (e == null) {
                     // get cuisine pointer id list
                     ArrayList<String> pointerID = new ArrayList<String>();
+					
+					ParseObject sale = new ParseObject("Cuisine");
+					sale = list.get(0).getParseObject("restaurantPointer");
 
                     // extract pointers needed
-                    for (int i = 0; i < list.size(); i++) {
-                        if (list.get(i).getString("cuisineCategory").equals(mActionBarTitle)) {
-                            pointerID.add(list.get(i).getString("restaurantPointer"));
-                        }
-                    }
+                    //for (int i = 0; i < list.size(); i++) {
+                    //    if (list.get(i).getString("cuisineCategory").equals(mActionBarTitle)) {
+                    //        pointerID.add(list.get(i).getString("restaurantPointer"));
+                    //    }
+                    //}
 
-                    Toast.makeText(Cuisine.this, pointerID.get(0), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Cuisine.this, sale.getString("name"), Toast.LENGTH_SHORT).show();
 
                 } else {
                     Log.e("ParseObject", "Error: " + e.getMessage());

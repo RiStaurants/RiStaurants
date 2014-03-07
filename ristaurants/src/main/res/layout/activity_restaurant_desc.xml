@@ -2,8 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/row_margin"
-    android:clipToPadding="false"
     android:scrollbars="none">
 
     <LinearLayout
@@ -39,6 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/row_margin"
+			android:paddingLeft="@dimen/row_margin"
+			android:paddingRight="@dimen/row_margin"
             android:orientation="horizontal">
 
             <com.ristaurants.ristaurants.views.BenderSolidTextView
@@ -61,8 +61,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/drawer_divider"
-            android:layout_marginTop="@dimen/row_margin"
-            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_margin="@dimen/row_margin"
             android:background="@android:color/darker_gray" />
 
         <com.ristaurants.ristaurants.views.BenderSolidTextView
@@ -70,6 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginBottom="@dimen/drawer_padding"
+			android:paddingLeft="@dimen/row_margin"
+			android:paddingRight="@dimen/row_margin"
             android:textSize="@dimen/restaurants_subname_size"
             android:textColor="@android:color/darker_gray" />
 
@@ -77,6 +78,8 @@
             android:id="@+id/tv_restaurant_address"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+			android:paddingLeft="@dimen/row_margin"
+			android:paddingRight="@dimen/row_margin"
             android:singleLine="false"
             android:textSize="@dimen/restaurants_subname_size"
             android:textColor="@android:color/darker_gray" />
@@ -84,14 +87,16 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/drawer_divider"
-            android:layout_marginTop="@dimen/row_margin"
-            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_margin="@dimen/row_margin"
             android:background="@android:color/darker_gray" />
 
         <com.ristaurants.ristaurants.views.BenderSolidTextView
             android:id="@+id/tv_restaurant_desc"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+			android:paddingLeft="@dimen/row_margin"
+			android:paddingRight="@dimen/row_margin"
+			android:paddingBottom="@dimen/row_margin"
             android:textSize="@dimen/restaurants_subname_size"
             android:textColor="@android:color/darker_gray" />
 
