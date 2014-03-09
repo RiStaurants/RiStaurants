@@ -3,11 +3,6 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-    android:paddingLeft="@dimen/row_padding"
-    android:paddingTop="@dimen/row_margin"
-    android:paddingRight="@dimen/row_padding"
-    android:paddingBottom="@dimen/row_margin"
-    android:clipToPadding="false"
 	android:orientation="vertical">
 	
 	<com.android.volley.toolbox.NetworkImageView
@@ -26,7 +21,7 @@
 		android:id="@+id/tv_restaurant_menu_name"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-        android:padding="@dimen/row_padding"
+        android:padding="@dimen/row_margin"
 		android:textSize="@dimen/restaurants_name_size"
 		android:textColor="@android:color/white"
         android:shadowColor="@android:color/black"
@@ -39,6 +34,8 @@
 		android:layout_below="@+id/niv_restaurant_menu_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/row_margin"
+        android:layout_marginRight="@dimen/row_margin"
         android:layout_marginTop="@dimen/row_margin"
         android:orientation="horizontal">
 
@@ -56,7 +53,6 @@
             android:layout_width="@dimen/rate_width"
             android:layout_gravity="center_vertical"
             android:layout_weight="0.25" />
-
     </LinearLayout>
 	
 	<View
@@ -64,7 +60,9 @@
 		android:layout_below="@+id/ll_review_amount_plus_rate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/drawer_divider"
+        android:layout_marginLeft="@dimen/row_margin"
         android:layout_marginTop="@dimen/row_margin"
+        android:layout_marginRight="@dimen/row_margin"
         android:layout_marginBottom="@dimen/row_margin"
 		android:background="@android:color/darker_gray"/>
 	
@@ -73,7 +71,10 @@
 		android:layout_below="@+id/v_divider"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-		android:padding="@dimen/row_padding"
+        android:layout_marginLeft="@dimen/row_margin"
+		android:layout_marginTop="@dimen/row_padding"
+        android:layout_marginRight="@dimen/row_margin"
+        android:paddingBottom="@dimen/row_margin"
 		android:textSize="@dimen/restaurants_subname_size"
 		android:textColor="@android:color/darker_gray"/>
 

@@ -36,6 +36,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
     private List<ParseObject> mParseObjectList;
     private String[] mPagerTitles;
     private String mMenuClassName;
+    private String mRestaurantID;
     private int mCurrentPosition;
 
     @Override

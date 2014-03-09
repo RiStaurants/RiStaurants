@@ -102,6 +102,7 @@ public class RestaurantsAdapter extends BaseAdapter {
 
         // set restaurant menu
         final String menuClassName = mDataList.get(position).getString("menuClassName");
+        final String restaurantID = mDataList.get(position).getObjectId();
         if (menuClassName != null) {
             mViewHolder.mIvRestaurantMenu.setVisibility(View.VISIBLE);
             mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +110,7 @@ public class RestaurantsAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
                     intent.putExtra("menuClassName", menuClassName);
+                    intent.putExtra("mRestaurantID", restaurantID);
                     mContext.startActivity(intent);
 
                     // set activity animation
@@ -157,7 +159,6 @@ public class RestaurantsAdapter extends BaseAdapter {
 
         // set fade in animation
         if (mLastAnimPosition < position) {
-            //ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantImage, "alpha", 0f, 1f).setDuration(200).start();
             ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantName, "translationX", -1000, 0).setDuration(1000).start();
             ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantRate, "translationX", 1000, 0).setDuration(1000).start();
             ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhoneText, "translationX", -1000, 0).setDuration(1000).start();
