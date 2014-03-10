@@ -11,20 +11,12 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.ristaurants.ristaurants.adapters.DishReviewsAdapter;
-import com.ristaurants.ristaurants.adapters.RestaurantsAdapter;
 import com.ristaurants.ristaurants.misc.*;
-
-import org.json.*;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,8 +28,6 @@ public class RestaurantMenuActivity extends FragmentActivity {
     private List<ParseObject> mParseObjectList;
     private String[] mPagerTitles;
     private String mMenuClassName;
-    private String mRestaurantID;
-    private int mCurrentPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +43,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
         // get data fom previous activity
         if (getIntent().getExtras() != null) {
             mMenuClassName = getIntent().getExtras().getString("menuClassName");
-            makeNetworkCode(mMenuClassName);
-
-            // get view pager position
-            if (savedInstanceState != null) {
-                mCurrentPosition = savedInstanceState.getInt("mCurrentPosition", 0);
-            }
+            makeNetworkCall(mMenuClassName);
         }
 
         // set action bar background color
@@ -97,7 +82,6 @@ public class RestaurantMenuActivity extends FragmentActivity {
 
             // set view pager adapter
             mViewPager.setAdapter(new MenusPagerAdapter(getSupportFragmentManager()));
-            mViewPager.setCurrentItem(mCurrentPosition);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,9 +92,10 @@ public class RestaurantMenuActivity extends FragmentActivity {
      *
      * @param menuClassName The class name to search for in the database.
      */
-    private void makeNetworkCode(String menuClassName) {
+    private void makeNetworkCall(String menuClassName) {
         // get data from database
         ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(menuClassName);
+        parseObject.orderByAscending("dishCategories");
         parseObject.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjectList, ParseException e) {
                 if (e == null) {
@@ -135,30 +120,6 @@ public class RestaurantMenuActivity extends FragmentActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        // save state
-        outState.putInt("mCurrentPosition", mViewPager.getCurrentItem());
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        // save current position
-        mCurrentPosition = mViewPager.getCurrentItem();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-
-        // make fresh data from server
-        makeNetworkCode(mMenuClassName);
     }
 
     @Override

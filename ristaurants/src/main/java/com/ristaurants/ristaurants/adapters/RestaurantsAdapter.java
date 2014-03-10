@@ -3,6 +3,7 @@ package com.ristaurants.ristaurants.adapters;
 import android.animation.*;
 import android.app.Activity;
 import android.content.*;
+import android.graphics.Color;
 import android.net.*;
 import android.view.*;
 import android.widget.*;
@@ -159,12 +160,12 @@ public class RestaurantsAdapter extends BaseAdapter {
 
         // set fade in animation
         if (mLastAnimPosition < position) {
-            ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantName, "translationX", -1000, 0).setDuration(1000).start();
-            ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantRate, "translationX", 1000, 0).setDuration(1000).start();
-            ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhoneText, "translationX", -1000, 0).setDuration(1000).start();
-            ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhone, "translationX", -1000, 0).setDuration(1000).start();
-            ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantMenu, "translationX", 1000, 0).setDuration(1000).start();
-            ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantAddress, "translationX", 1000, 0).setDuration(1000).start();
+            ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantName, "translationX", -1000, 0).setDuration(700).start();
+            ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantRate, "translationX", 1000, 0).setDuration(700).start();
+            ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhoneText, "translationX", -1000, 0).setDuration(700).start();
+            ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhone, "translationX", -1000, 0).setDuration(700).start();
+            ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantMenu, "translationX", 1000, 0).setDuration(700).start();
+            ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantAddress, "translationX", 1000, 0).setDuration(700).start();
             mLastAnimPosition = position;
         }
 

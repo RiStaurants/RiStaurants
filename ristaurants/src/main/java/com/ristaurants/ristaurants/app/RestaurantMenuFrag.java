@@ -1,7 +1,9 @@
 package com.ristaurants.ristaurants.app;
 
+import android.content.SharedPreferences;
 import android.graphics.*;
 import android.os.*;
+import android.preference.PreferenceManager;
 import android.support.v4.app.*;
 import android.support.v4.view.*;
 import android.view.*;
@@ -19,6 +21,7 @@ import java.util.List;
  */
 public class RestaurantMenuFrag extends Fragment {
     // instance variables
+    private SharedPreferences mPrefs;
     private ListView mLvContent;
     private RestaurantMenuAdapter mAdapter;
     private List<ParseObject> mParseObjectList;

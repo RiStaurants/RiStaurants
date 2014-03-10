@@ -1,8 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/row_margin"
-    android:clipToPadding="false"
     android:background="@android:color/white"
     android:orientation="vertical">
 
@@ -35,8 +33,11 @@
 		android:layout_below="@+id/niv_dish_reviews_image"
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
+        android:padding="@dimen/row_margin"
+        android:clipToPadding="false"
 		android:scrollbars="none"
 		android:divider="@color/restaurants_bg"
-		android:dividerHeight="@dimen/drawer_divider"/>
+		android:dividerHeight="@dimen/drawer_divider"
+        android:background="@android:color/transparent"/>
 
 </RelativeLayout>

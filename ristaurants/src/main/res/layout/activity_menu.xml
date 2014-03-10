@@ -5,7 +5,7 @@
     android:id="@+id/vp_restaurants_menus"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/menus_bg"
+    android:background="@android:color/white"
     android:orientation="vertical" >
 
 	<android.support.v4.view.PagerTitleStrip
@@ -16,6 +16,6 @@
         android:paddingTop="@dimen/row_margin"
         android:paddingBottom="@dimen/row_margin"
 		android:textSize="@dimen/pager_title_strip_size"
-		android:textColor="@android:color/white" />
+		android:textColor="@color/restaurants_bg" />
 
 </android.support.v4.view.ViewPager>

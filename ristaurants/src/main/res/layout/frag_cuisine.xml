@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cuisine_bg"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <ListView
@@ -14,7 +14,7 @@
         android:paddingRight="@dimen/row_margin"
         android:clipToPadding="false"
         android:scrollbars="none"
-        android:divider="@android:color/white"
+        android:divider="@color/cuisine_bg"
         android:dividerHeight="@dimen/drawer_divider" />
 
 </LinearLayout>
