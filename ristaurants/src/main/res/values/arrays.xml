@@ -18,6 +18,7 @@
 	
 	<string-array name="cuisine_categories">
 		<item>American</item>
+        <item>Chinese</item>
 		<item>Latin American</item>
 		<item>Peruvian</item>
         <item>Steakhouse</item>
