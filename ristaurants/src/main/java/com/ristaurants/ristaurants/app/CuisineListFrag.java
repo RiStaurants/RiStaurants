@@ -22,8 +22,26 @@ public class CuisineListFrag extends Fragment {
         View view = inflater.inflate(R.layout.frag_cuisine, container, false);
 	
         // set action bar background
+
+        // instantiate Parse Database
+        Parse.initialize(getActivity(), "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
+
         HelperClass.setActionBarBackground(getActivity(), R.color.cuisine_bg);
-		
+        ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("DishCategories");
+        parseQuery.orderByAscending("type");
+        parseQuery.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> parseObjects, ParseException e) {
+                if (e == null){
+                  mAdapter = new CuisineAdapter(getActivity(), null);
+
+                }else{
+                    Log.e("ParseObject", "Error: " + e.getMessage());
+                }
+            }
+        });
+
+
 		// set adapter
 		String[] mTitles = getActivity().getResources().getStringArray(R.array.cuisine_categories);
 		mAdapter = new CuisineAdapter(getActivity(), mTitles);
