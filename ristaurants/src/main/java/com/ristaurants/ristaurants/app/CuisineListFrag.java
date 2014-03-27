@@ -42,7 +42,7 @@ public class CuisineListFrag extends Fragment {
         mLvContent = (ListView) view.findViewById(R.id.lv_content);
 
         // get data from database
-        ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("DishCategories");
+        ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("CuisineCategories");
         parseQuery.orderByAscending("type");
         parseQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
