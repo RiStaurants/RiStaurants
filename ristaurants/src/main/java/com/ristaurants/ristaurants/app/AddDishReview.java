@@ -22,8 +22,7 @@ public class AddDishReview extends Activity {
     private EditText mEtAuthor;
     private EditText mEtDesc;
     private Spinner mNpRate;
-    private String mDishReviewClassName;
-    private String mMenuClassName;
+    private String mDishName;
     private String mDishID;
 
     @Override
@@ -49,8 +48,7 @@ public class AddDishReview extends Activity {
 
         // get data from previous activity
         if (getIntent().getExtras() != null) {
-            mDishReviewClassName = getIntent().getExtras().getString("mDishReviewClassName");
-            mMenuClassName = getIntent().getExtras().getString("mMenuClassName");
+            mDishName = getIntent().getExtras().getString("mDishName");
             mDishID = getIntent().getExtras().getString("mDishID");
         }
     }
@@ -77,10 +75,11 @@ public class AddDishReview extends Activity {
         // check if fields are empty
         if (!mEtAuthor.getText().toString().equals("") && !mEtDesc.getText().toString().equals("")) {
             // link review to dish
-            ParseObject dishPointerID = ParseObject.createWithoutData(mMenuClassName, mDishID);
+            ParseObject dishPointerID = ParseObject.createWithoutData("RestaurantsMenus", mDishID);
 
             // create and upload review to parse
-            ParseObject parseObjectReview = new ParseObject(mDishReviewClassName);
+            ParseObject parseObjectReview = new ParseObject("DishesReviews");
+            parseObjectReview.put("dishName", mDishName);
             parseObjectReview.put("dishReviewAuthor", mEtAuthor.getText().toString());
             parseObjectReview.put("dishReviewDesc", mEtDesc.getText().toString());
             parseObjectReview.put("dishReviewRate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
@@ -88,7 +87,7 @@ public class AddDishReview extends Activity {
             parseObjectReview.saveInBackground();
 
             // update dish review counter
-            ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery(mMenuClassName);
+            ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("RestaurantsMenus");
             parseQuery.getInBackground(mDishID, new GetCallback<ParseObject>() {
                 public void done(ParseObject parseObject, ParseException e) {
                     if (e == null) {
@@ -104,7 +103,7 @@ public class AddDishReview extends Activity {
             // let user know the review was added
             Toast.makeText(this, R.string.review_was_added, Toast.LENGTH_LONG).show();
         } else {
-            // let user know the review was added
+            // let user know to complete all fields
             Toast.makeText(this, R.string.please_fill_all_fields, Toast.LENGTH_LONG).show();
         }
     }

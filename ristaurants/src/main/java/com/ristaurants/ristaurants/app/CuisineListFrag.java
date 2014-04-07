@@ -32,9 +32,6 @@ public class CuisineListFrag extends Fragment {
         // inflate layout
         View view = inflater.inflate(R.layout.frag_cuisine, container, false);
 
-        // instantiate Parse Database
-        Parse.initialize(getActivity(), "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
-
         // set action bar background
         HelperClass.setActionBarBackground(getActivity(), R.color.cuisine_bg);
 

@@ -104,20 +104,11 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // variable to create the dish name class name for Parse.com
-                    String dishNameClassName = mDataList.get(position).getString("dishName");
-
-                    // replace empty spaces and append the (Reviews) String.
-                    dishNameClassName = dishNameClassName.replace(" ", "");
-                    dishNameClassName += "DishReviews";
-
                     // open reviews activity
                     Intent intent = new Intent(mContext, DishesReviews.class);
-                    intent.putExtra("mDishReviewClassName", dishNameClassName);
                     intent.putExtra("mDishImageUrl", dishImageUrl);
                     intent.putExtra("mDishName", dishName);
                     intent.putExtra("mDishID", mDataList.get(position).getObjectId());
-                    intent.putExtra("mMenuClassName", mDataList.get(position).getClassName());
                     mContext.startActivity(intent);
 
                     // set activity animation

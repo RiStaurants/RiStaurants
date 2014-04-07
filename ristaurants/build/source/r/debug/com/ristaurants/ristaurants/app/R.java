@@ -343,7 +343,6 @@ containing a value of this type.
         public static final int lv_name_plus_rate=0x7f07002b;
         public static final int menu_directions=0x7f070032;
         public static final int menu_dish_review_add=0x7f070031;
-        public static final int menu_restaurants_random=0x7f070033;
         public static final int niv_dish_review_rate=0x7f07001c;
         public static final int niv_dish_reviews_image=0x7f07000e;
         public static final int niv_restaurant_image=0x7f070013;
@@ -405,7 +404,6 @@ containing a value of this type.
         public static final int main=0x7f0c0000;
         public static final int menu_dish_review=0x7f0c0001;
         public static final int menu_google_map=0x7f0c0002;
-        public static final int menu_restaurants=0x7f0c0003;
     }
     public static final class string {
         public static final int ab_title_add_dish_review=0x7f0a0000;

@@ -15,6 +15,7 @@ import com.ristaurants.ristaurants.misc.*;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class RestaurantMenuActivity extends FragmentActivity {
     private ViewPager mViewPager;
     private List<ParseObject> mParseObjectList;
     private String[] mPagerTitles;
-    private String mMenuClassName;
+    private String mRestaurantName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,8 @@ public class RestaurantMenuActivity extends FragmentActivity {
 
         // get data fom previous activity
         if (getIntent().getExtras() != null) {
-            mMenuClassName = getIntent().getExtras().getString("menuClassName");
-            makeNetworkCall(mMenuClassName);
+            mRestaurantName = getIntent().getExtras().getString("mRestaurantName");
+            makeNetworkCall("RestaurantsMenus");
         }
 
         // set action bar background color
@@ -95,6 +96,8 @@ public class RestaurantMenuActivity extends FragmentActivity {
     private void makeNetworkCall(String menuClassName) {
         // get data from database
         ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(menuClassName);
+        parseObject.setLimit(200);
+        parseObject.whereEqualTo("restaurantName", mRestaurantName);
         parseObject.orderByAscending("dishCategories");
         parseObject.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjectList, ParseException e) {
@@ -120,6 +123,14 @@ public class RestaurantMenuActivity extends FragmentActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        // get data from database
+        makeNetworkCall("RestaurantsMenus");
     }
 
     @Override

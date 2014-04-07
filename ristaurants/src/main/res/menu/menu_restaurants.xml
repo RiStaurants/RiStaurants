@@ -1,8 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item
-        android:id="@+id/menu_restaurants_random"
-        android:title="@string/menu_restaurant_random"
-        android:icon="@drawable/ic_action_random"
-        android:orderInCategory="1"
-        android:showAsAction="always" />
-</menu>

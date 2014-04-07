@@ -21,8 +21,7 @@ import java.util.List;
 public class DishesReviews extends Activity {
     // instance variables
     private DishReviewsAdapter mAdapter;
-    private String mDishReviewClassName;
-    private String mMenuClassName;
+    private String mDishName;
 	private String mDishID;
 
     @Override
@@ -41,8 +40,6 @@ public class DishesReviews extends Activity {
         // get data from previous activity
         if (getIntent().getExtras() != null) {
             // get dish review class name and ID
-            mDishReviewClassName = getIntent().getExtras().getString("mDishReviewClassName");
-            mMenuClassName = getIntent().getExtras().getString("mMenuClassName");
 			mDishID = getIntent().getExtras().getString("mDishID");
 			
             // display dish image
@@ -54,15 +51,15 @@ public class DishesReviews extends Activity {
 			HelperClass.toGrayScale(mIvDishImage);
 
             // display dish name
-            String dishName = getIntent().getExtras().getString("mDishName", "No Dish Name");
+            mDishName = getIntent().getExtras().getString("mDishName", "No Dish Name");
             final TextView mTvDishName = (TextView) findViewById(R.id.tv_dish_reviews_name);
-            mTvDishName.setText(dishName);
+            mTvDishName.setText(mDishName);
 
             // animate dish name
             ObjectAnimator.ofFloat(mTvDishName, "alpha", 0f, 1f).setDuration(1000).start();
 
             // get data from database
-            makeNetworkCode(mDishReviewClassName);
+            makeNetworkCall("DishesReviews");
         }
     }
 
@@ -71,17 +68,18 @@ public class DishesReviews extends Activity {
         super.onRestart();
 
         // get data from database
-        makeNetworkCode(mDishReviewClassName);
+        makeNetworkCall("DishesReviews");
     }
 
     /**
      * Get the list of review from the database.
      *
-     * @param dishReviewClassName The class name to search for in the database.
+     * @param className The class name to search for in the database.
      */
-    private void makeNetworkCode(String dishReviewClassName) {
+    private void makeNetworkCall(String className) {
         // get data from database
-        ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(dishReviewClassName);
+        ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(className);
+        parseObject.whereEqualTo("dishName", mDishName);
         parseObject.orderByDescending("createdAt");
         parseObject.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjectList, ParseException e) {
@@ -116,8 +114,7 @@ public class DishesReviews extends Activity {
             case R.id.menu_dish_review_add:
                 // open the add reviews activity
                 Intent intent = new Intent(this, AddDishReview.class);
-                intent.putExtra("mDishReviewClassName", mDishReviewClassName);
-                intent.putExtra("mMenuClassName", mMenuClassName);
+                intent.putExtra("mDishName", mDishName);
 				intent.putExtra("mDishID", mDishID);
                 startActivity(intent);
 

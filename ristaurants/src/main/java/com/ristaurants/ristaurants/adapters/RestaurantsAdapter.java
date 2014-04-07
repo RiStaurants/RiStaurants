@@ -1,21 +1,28 @@
 package com.ristaurants.ristaurants.adapters;
 
-import android.animation.*;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.*;
-import android.graphics.Color;
-import android.net.*;
-import android.view.*;
-import android.widget.*;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.android.volley.toolbox.*;
+import com.android.volley.toolbox.NetworkImageView;
 import com.parse.ParseGeoPoint;
-import com.ristaurants.ristaurants.app.*;
-import com.ristaurants.ristaurants.misc.*;
-
 import com.parse.ParseObject;
+import com.ristaurants.ristaurants.app.MapLocation;
+import com.ristaurants.ristaurants.app.R;
+import com.ristaurants.ristaurants.app.RestaurantDesc;
+import com.ristaurants.ristaurants.app.RestaurantMenuActivity;
+import com.ristaurants.ristaurants.misc.HelperClass;
+import com.ristaurants.ristaurants.misc.SingletonVolley;
 
-import java.util.*;
+import java.util.List;
 
 public class RestaurantsAdapter extends BaseAdapter {
     // instance variables
@@ -102,23 +109,20 @@ public class RestaurantsAdapter extends BaseAdapter {
         });
 
         // set restaurant menu
-        final String menuClassName = mDataList.get(position).getString("menuClassName");
         final String restaurantID = mDataList.get(position).getObjectId();
-        if (menuClassName != null) {
-            mViewHolder.mIvRestaurantMenu.setVisibility(View.VISIBLE);
-            mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
-                    intent.putExtra("menuClassName", menuClassName);
-                    intent.putExtra("mRestaurantID", restaurantID);
-                    mContext.startActivity(intent);
+        mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
+                intent.putExtra("mRestaurantName", name);
+                intent.putExtra("mRestaurantID", restaurantID);
+                mContext.startActivity(intent);
 
-                    // set activity animation
-                    ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_null);
-                }
-            });
-        }
+                // set activity animation
+                ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_null);
+            }
+        });
+
 
         // set restaurant address
         final String address = mDataList.get(position).getString("address");
