@@ -27,5 +27,7 @@
     <string name="review_was_added">Your review was successfully added.</string>
 	<string name="please_fill_all_fields">Please compete all field.</string>
     <string name="no_description_available">"Sorry, no description available at time."</string>
+    <string name="menu_call">Call</string>
+    <string name="menu_location">Display Location</string>
 
 </resources>
