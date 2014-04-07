@@ -130,7 +130,7 @@ public class RestaurantDesc extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        // set activity animation
+        // do activity animation
         this.overridePendingTransition(R.anim.anim_null, R.anim.anim_slide_out_right);
     }
 }
