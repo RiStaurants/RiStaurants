@@ -1,16 +1,23 @@
 package com.ristaurants.ristaurants.adapters;
 
-import android.animation.*;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.content.*;
-import android.view.*;
-import android.widget.*;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-import com.android.volley.toolbox.*;
+import com.android.volley.toolbox.NetworkImageView;
 import com.parse.ParseObject;
-import com.ristaurants.ristaurants.app.*;
-import com.ristaurants.ristaurants.misc.*;
+import com.ristaurants.ristaurants.app.DishesReviews;
+import com.ristaurants.ristaurants.app.R;
+import com.ristaurants.ristaurants.misc.HelperClass;
+import com.ristaurants.ristaurants.misc.SingletonVolley;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class RestaurantMenuAdapter extends BaseAdapter {
@@ -56,8 +63,9 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             mViewHolder = new ViewHolder();
             assert view != null;
             mViewHolder.mIvDishImage = (NetworkImageView) view.findViewById(R.id.niv_restaurant_menu_image);
-			mViewHolder.mIvDishRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_menu_rate);
+            mViewHolder.mIvDishRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_menu_rate);
             mViewHolder.mTvDishName = (TextView) view.findViewById(R.id.tv_restaurant_menu_name);
+            mViewHolder.mTvDishPrice = (TextView) view.findViewById(R.id.tv_restaurant_menu_price);
             mViewHolder.mTvDishDesc = (TextView) view.findViewById(R.id.tv_restaurant_menu_desc);
             mViewHolder.mTvDishReviewCount = (TextView) view.findViewById(R.id.tv_restaurant_menu_review_amount);
 
@@ -72,13 +80,18 @@ public class RestaurantMenuAdapter extends BaseAdapter {
             // set restaurant dish image
             final String dishImageUrl = mDataList.get(position).getString("dishImage");
             mViewHolder.mIvDishImage.setImageUrl(dishImageUrl, SingletonVolley.getImageLoader());
-			
-			// set restaurant rate image
-			mViewHolder.mIvDishRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("dishRate")), SingletonVolley.getImageLoader());
+
+            // set restaurant rate image
+            mViewHolder.mIvDishRate.setImageUrl(HelperClass.getRateImage(mContext, mDataList.get(position).getInt("dishRate")), SingletonVolley.getImageLoader());
 
             // set restaurant dish name
             final String dishName = mDataList.get(position).getString("dishName");
             mViewHolder.mTvDishName.setText(dishName);
+
+            // set restaurant dish price
+            NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+            String dishPrice = currencyFormatter.format(mDataList.get(position).getDouble("dishPrice"));
+            mViewHolder.mTvDishPrice.setText(dishPrice);
 
             // set restaurant dish description
             mViewHolder.mTvDishDesc.setText(mDataList.get(position).getString("dishDesc"));
@@ -128,8 +141,9 @@ public class RestaurantMenuAdapter extends BaseAdapter {
     class ViewHolder {
         // instantiate views
         NetworkImageView mIvDishImage;
-		NetworkImageView mIvDishRate;
+        NetworkImageView mIvDishRate;
         TextView mTvDishName;
+        TextView mTvDishPrice;
         TextView mTvDishDesc;
         TextView mTvDishReviewCount;
     }

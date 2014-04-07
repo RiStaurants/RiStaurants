@@ -3,7 +3,7 @@
 	<color name="drawer_background">#ff0099cc</color>
 	<color name="background">#ff0099cc</color>
 	<color name="selected_item_bg">#44ffffff</color>
-	<color name="text_overlay">#bb005577</color>
+	<color name="text_overlay">#44000000</color>
 
 	<!-- Action Bar Color -->
 	<color name="restaurants_bg">#ff0099cc</color>
