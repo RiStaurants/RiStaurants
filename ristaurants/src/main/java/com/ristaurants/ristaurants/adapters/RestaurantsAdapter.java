@@ -155,6 +155,8 @@ public class RestaurantsAdapter extends BaseAdapter {
                 intent.putExtra("mPhone", phone);
                 intent.putExtra("mDesc", desc);
                 intent.putExtra("mRate", rate);
+                intent.putExtra("mLatitude", mGeoPoint.getLatitude());
+                intent.putExtra("mLongitude", mGeoPoint.getLongitude());
                 mContext.startActivity(intent);
 
                 // set activity animation

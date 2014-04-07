@@ -1,15 +1,11 @@
 package com.ristaurants.ristaurants.app;
 
-import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -47,15 +43,17 @@ public class MapLocation extends FragmentActivity {
 
         // get data from previous activity
         if (getIntent().getExtras() != null) {
-            float latitude = (float)getIntent().getExtras().getDouble("mLatitude");
-            float longitude = (float)getIntent().getExtras().getDouble("mLongitude");
+            float latitude = (float) getIntent().getExtras().getDouble("mLatitude");
+            float longitude = (float) getIntent().getExtras().getDouble("mLongitude");
             mGeoPoints = new LatLng(latitude, longitude);
             mRestaurantName = getIntent().getExtras().getString("mRestaurantName");
             mAddress = getIntent().getExtras().getString("mAddress");
 
             // remove \n from string
             if (mAddress != null) {
-                mAddress = mAddress.replace("\\n", "");
+                if (mAddress.contains("\\n")) {
+                    mAddress = mAddress.replace("\\n", "");
+                }
             }
         }
 
