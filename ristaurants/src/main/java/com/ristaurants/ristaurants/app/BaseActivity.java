@@ -1,55 +1,52 @@
 package com.ristaurants.ristaurants.app;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.*;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.*;
-import android.support.v4.widget.*;
-import android.text.Spannable;
-import android.text.SpannableString;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
-import com.parse.Parse;
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
-import com.ristaurants.ristaurants.views.ActionBarFont;
-
-import android.view.*;
-import android.graphics.drawable.*;
 
 public class BaseActivity extends FragmentActivity {
-	// instance variables
-	private static final String PREF_USER_DRAWER_LEARNED = "drawer_learned";
-	private static final String STATE_SELECTED_POSITION = "drawer_selected_position";
-	private DrawerLayout mDrawerLayout;
-	private ActionBarDrawerToggle mDrawerToggle;
-	private ListView mLvDrawer;
-	private Fragment mFrag;
+    // instance variables
+    private static final String PREF_USER_DRAWER_LEARNED = "drawer_learned";
+    private static final String STATE_SELECTED_POSITION = "drawer_selected_position";
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private ListView mLvDrawer;
+    private Fragment mFrag;
     private String[] mDrawerTitles;
-	private boolean mUserLearnedDrawer;
-	private int mCurrentSelectedPosition;
-	private ColorDrawable[] mDrawerBackgroundColor;
+    private boolean mUserLearnedDrawer;
+    private int mCurrentSelectedPosition;
+    private ColorDrawable[] mDrawerBackgroundColor;
 
-	/** Called when the activity is first created. */
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_base);
+    /**
+     * Called when the activity is first created.
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_base);
 
-        // instantiate Parse Database
-        Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
-
-		// set-up action bar
+        // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_restaurants)));
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         // get the preferences for the activity.
         // check if the user is aware of the navigation drawer.
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -71,25 +68,25 @@ public class BaseActivity extends FragmentActivity {
 
         // get drawer title list
         mDrawerTitles = getResources().getStringArray(R.array.drawer_title_list);
-		
-		// instantiate drawer colors
-		mDrawerBackgroundColor = new ColorDrawable[5];
-		mDrawerBackgroundColor[0] =	new ColorDrawable(getResources().getInteger(R.color.restaurants_bg));
-		mDrawerBackgroundColor[1] = new ColorDrawable(getResources().getInteger(R.color.dishes_bg));
-		mDrawerBackgroundColor[2] = new ColorDrawable(getResources().getInteger(R.color.cuisine_bg));
+
+        // instantiate drawer colors
+        mDrawerBackgroundColor = new ColorDrawable[5];
+        mDrawerBackgroundColor[0] = new ColorDrawable(getResources().getInteger(R.color.restaurants_bg));
+        mDrawerBackgroundColor[1] = new ColorDrawable(getResources().getInteger(R.color.dishes_bg));
+        mDrawerBackgroundColor[2] = new ColorDrawable(getResources().getInteger(R.color.cuisine_bg));
         mDrawerBackgroundColor[3] = new ColorDrawable(getResources().getInteger(R.color.flavors_bg));
-		mDrawerBackgroundColor[4] = new ColorDrawable(getResources().getInteger(R.color.settings_bg));
+        mDrawerBackgroundColor[4] = new ColorDrawable(getResources().getInteger(R.color.settings_bg));
 
         // instantiate views
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_drawer);
         mLvDrawer = (ListView) findViewById(R.id.lv_drawer_left);
 
         // open drawer if the user have not learned the drawer
-		if (!mUserLearnedDrawer) {
-			mDrawerLayout.openDrawer(mLvDrawer);
-		}
-		
-		// set navigation menu adapter and listener
+        if (!mUserLearnedDrawer) {
+            mDrawerLayout.openDrawer(mLvDrawer);
+        }
+
+        // set navigation menu adapter and listener
         mLvDrawer.setAdapter(new NaviDrawerLeftAdapter(this, mDrawerIcons, mDrawerTitles));
         mLvDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -98,7 +95,7 @@ public class BaseActivity extends FragmentActivity {
             }
         });
 
-		// instantiate ActionBarToggle 
+        // instantiate ActionBarToggle
         mDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout,
                 R.drawable.ic_navigation_drawer,
@@ -108,9 +105,9 @@ public class BaseActivity extends FragmentActivity {
             public void onDrawerClosed(View view) {
                 // refresh action bar menu
                 invalidateOptionsMenu();
-				
-				// set drawer background color
-				setDrawerBackground(mCurrentSelectedPosition);
+
+                // set drawer background color
+                setDrawerBackground(mCurrentSelectedPosition);
             }
 
             public void onDrawerOpened(View view) {
@@ -134,7 +131,7 @@ public class BaseActivity extends FragmentActivity {
         if (savedInstanceState == null) {
             selectItem(mCurrentSelectedPosition);
         }
-	}
+    }
 
     private void selectItem(int position) {
         // navigation menu item click
@@ -143,21 +140,21 @@ public class BaseActivity extends FragmentActivity {
                 // start Restaurants Fragment
                 mFrag = new RestaurantsFrag();
                 break;
-				
-			case 1:
-				// start dishes Fragment
-				mFrag = new DishesFrag();
-				break;
-				
-			case 2:
+
+            case 1:
+                // start dishes Fragment
+                mFrag = new DishesFrag();
+                break;
+
+            case 2:
                 // start Cuisine Fragment
                 mFrag = new CuisineListFrag();
                 break;
 
-			case 3:
-				// start Settings Fragment
-				mFrag = new FlavorsFrag();
-				break;
+            case 3:
+                // start Settings Fragment
+                mFrag = new FlavorsFrag();
+                break;
 
             case 4:
                 // start Settings Fragment
@@ -170,15 +167,15 @@ public class BaseActivity extends FragmentActivity {
         //mFragTrans.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         mFragTrans.replace(R.id.fl_drawer, mFrag);
         mFragTrans.commit();
-		
-		// update selected item
+
+        // update selected item
         mLvDrawer.setItemChecked(position, true);
-		
-		// set current selected item
-		mCurrentSelectedPosition = position;
+
+        // set current selected item
+        mCurrentSelectedPosition = position;
 
         // close navigation menu
-		closeLeftDrawer();
+        closeLeftDrawer();
     }
 
     @Override
@@ -257,12 +254,12 @@ public class BaseActivity extends FragmentActivity {
         return mUserLearnedDrawer;
     }
 
-	/**
-	 * Set the navigation drawer background
-	 *
-	 * @params position The position in @mDrawerBackgroundColor containing the color.
-	 */
-	private void setDrawerBackground(int position){
-		mLvDrawer.setBackgroundDrawable(mDrawerBackgroundColor[position]);
-	}
+    /**
+     * Set the navigation drawer background
+     *
+     * @params position The position in @mDrawerBackgroundColor containing the color.
+     */
+    private void setDrawerBackground(int position) {
+        mLvDrawer.setBackgroundDrawable(mDrawerBackgroundColor[position]);
+    }
 }
