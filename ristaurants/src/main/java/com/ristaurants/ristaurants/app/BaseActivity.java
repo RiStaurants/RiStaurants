@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
@@ -32,7 +33,6 @@ public class BaseActivity extends FragmentActivity {
     private String[] mDrawerTitles;
     private boolean mUserLearnedDrawer;
     private int mCurrentSelectedPosition;
-    private ColorDrawable[] mDrawerBackgroundColor;
 
     /**
      * Called when the activity is first created.
@@ -43,7 +43,7 @@ public class BaseActivity extends FragmentActivity {
         setContentView(R.layout.activity_base);
 
         // set-up action bar
-        getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_restaurants)));
+        getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_app_name)));
         getActionBar().setHomeButtonEnabled(true);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -62,20 +62,11 @@ public class BaseActivity extends FragmentActivity {
                 getResources().getDrawable(R.drawable.restaurant_icon),
                 getResources().getDrawable(R.drawable.dishes_icon),
                 getResources().getDrawable(R.drawable.cuisine_icon),
-                getResources().getDrawable(R.drawable.flavors_icon),
-                getResources().getDrawable(R.drawable.settings_icon)
+                getResources().getDrawable(R.drawable.flavors_icon)
         };
 
         // get drawer title list
         mDrawerTitles = getResources().getStringArray(R.array.drawer_title_list);
-
-        // instantiate drawer colors
-        mDrawerBackgroundColor = new ColorDrawable[5];
-        mDrawerBackgroundColor[0] = new ColorDrawable(getResources().getInteger(R.color.restaurants_bg));
-        mDrawerBackgroundColor[1] = new ColorDrawable(getResources().getInteger(R.color.dishes_bg));
-        mDrawerBackgroundColor[2] = new ColorDrawable(getResources().getInteger(R.color.cuisine_bg));
-        mDrawerBackgroundColor[3] = new ColorDrawable(getResources().getInteger(R.color.flavors_bg));
-        mDrawerBackgroundColor[4] = new ColorDrawable(getResources().getInteger(R.color.settings_bg));
 
         // instantiate views
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_drawer);
@@ -105,9 +96,6 @@ public class BaseActivity extends FragmentActivity {
             public void onDrawerClosed(View view) {
                 // refresh action bar menu
                 invalidateOptionsMenu();
-
-                // set drawer background color
-                setDrawerBackground(mCurrentSelectedPosition);
             }
 
             public void onDrawerOpened(View view) {
@@ -155,11 +143,6 @@ public class BaseActivity extends FragmentActivity {
                 // start Settings Fragment
                 mFrag = new FlavorsFrag();
                 break;
-
-            case 4:
-                // start Settings Fragment
-                mFrag = new SettingsFrag();
-                break;
         }
 
         // switch fragment with animation
@@ -188,7 +171,7 @@ public class BaseActivity extends FragmentActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // if the drawer is open, show the global app actions in the action bar. See also
         // showGlobalContextActionBar, which controls the top-left area of the action bar.
-        //getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
     }
@@ -196,8 +179,8 @@ public class BaseActivity extends FragmentActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
-        //return super.onPrepareOptionsMenu(menu);
-        return false;
+        menu.findItem(R.id.menu_about).setVisible(isLeftDrawerOpen());
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -211,6 +194,20 @@ public class BaseActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
+        }
+
+        // display about fragment
+        if (item.getItemId() == R.id.menu_about){
+            // close drawer
+            closeLeftDrawer();
+
+            // switch fragment with animation
+            AboutFrag frag = new AboutFrag();
+            FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
+            mFragTrans.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
+            mFragTrans.replace(R.id.fl_drawer, frag);
+            mFragTrans.addToBackStack(null);
+            mFragTrans.commit();
         }
 
         return super.onOptionsItemSelected(item);
@@ -252,14 +249,5 @@ public class BaseActivity extends FragmentActivity {
      */
     public boolean getUserLearnedDrawer() {
         return mUserLearnedDrawer;
-    }
-
-    /**
-     * Set the navigation drawer background
-     *
-     * @params position The position in @mDrawerBackgroundColor containing the color.
-     */
-    private void setDrawerBackground(int position) {
-        mLvDrawer.setBackgroundDrawable(mDrawerBackgroundColor[position]);
     }
 }

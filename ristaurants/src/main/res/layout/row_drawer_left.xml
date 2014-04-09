@@ -17,7 +17,7 @@
             android:layout_gravity="center_vertical"
             android:contentDescription="@string/content_drawer_left_icon" />
 
-        <com.ristaurants.ristaurants.views.RobotoThinTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:id="@+id/tv_drawer_left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

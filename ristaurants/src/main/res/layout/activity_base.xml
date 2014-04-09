@@ -20,7 +20,7 @@
 		android:choiceMode="singleChoice"
 		android:divider="@android:color/white"
 		android:dividerHeight="@dimen/drawer_divider"
-		android:background="@color/drawer_background" />
+		android:background="@android:color/holo_blue_dark" />
 
 </android.support.v4.widget.DrawerLayout>
 

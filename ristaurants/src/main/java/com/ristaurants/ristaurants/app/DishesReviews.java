@@ -29,9 +29,6 @@ public class DishesReviews extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dishes_reviews);
 
-        // set action bar background
-        HelperClass.setActionBarBackground(this, R.color.restaurants_bg);
-
         // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_reviews)));
         getActionBar().setHomeButtonEnabled(true);

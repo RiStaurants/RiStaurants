@@ -47,9 +47,6 @@ public class RestaurantMenuActivity extends FragmentActivity {
             makeNetworkCall("RestaurantsMenus");
         }
 
-        // set action bar background color
-        HelperClass.setActionBarBackground(this, R.color.menus_bg);
-
         // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_menu)));
         getActionBar().setHomeButtonEnabled(true);

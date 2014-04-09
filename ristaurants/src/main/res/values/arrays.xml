@@ -5,7 +5,6 @@
 		<item>dishes</item>
 		<item>cuisine</item>
         <item>flavors</item>
-		<item>settings</item>
 	</string-array>
 	
 	<string-array name="restaurants_menu_tab_titles">

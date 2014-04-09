@@ -22,8 +22,5 @@ public class FlavorsFrag  extends Fragment{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        // set action bar background
-        HelperClass.setActionBarBackground(getActivity(), R.color.flavors_bg);
     }
 }

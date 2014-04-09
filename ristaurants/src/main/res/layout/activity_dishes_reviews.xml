@@ -10,7 +10,7 @@
         android:layout_height="@dimen/dish_reviews_height"
         android:scaleType="centerCrop"
         android:scaleGravity="top"
-        android:background="@color/restaurants_bg"/>
+        android:background="@android:color/holo_blue_dark"/>
 
     <View
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:padding="@dimen/row_margin"
         android:clipToPadding="false"
 		android:scrollbars="none"
-		android:divider="@color/restaurants_bg"
+		android:divider="@android:color/holo_blue_dark"
 		android:dividerHeight="@dimen/drawer_divider"
         android:background="@android:color/transparent"/>
 

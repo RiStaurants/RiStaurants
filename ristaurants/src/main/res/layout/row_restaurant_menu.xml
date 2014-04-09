@@ -13,7 +13,7 @@
             android:id="@+id/niv_restaurant_menu_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/restaurants_height"
-            android:background="@color/restaurants_bg"
+            android:background="@android:color/holo_blue_dark"
             android:scaleGravity="top"
             android:scaleType="centerCrop" />
 

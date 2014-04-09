@@ -9,14 +9,14 @@ import android.graphics.*;
 /**
  * Class that extends TextView, to change font to Roboto - Thin
  */
-public class RobotoThinTextView extends TextView {
+public class BenderThinTextView extends TextView {
 
-    public RobotoThinTextView (Context mContext, AttributeSet mAttrs){
+    public BenderThinTextView(Context mContext, AttributeSet mAttrs){
         super(mContext, mAttrs);
 
         if (!isInEditMode()){
             // set text view font
-            Typeface mFont = Typeface.createFromAsset(mContext.getAssets(), "fonts/Roboto-Thin.ttf");
+            Typeface mFont = Typeface.createFromAsset(mContext.getAssets(), "fonts/Bender-Thin.otf");
             this.setTypeface(mFont);
         }
     }

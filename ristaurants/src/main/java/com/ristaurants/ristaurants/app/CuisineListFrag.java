@@ -32,9 +32,6 @@ public class CuisineListFrag extends Fragment {
         // inflate layout
         View view = inflater.inflate(R.layout.frag_cuisine, container, false);
 
-        // set action bar background
-        HelperClass.setActionBarBackground(getActivity(), R.color.cuisine_bg);
-
         // set list view and adapter
         mLvContent = (ListView) view.findViewById(R.id.lv_content);
 

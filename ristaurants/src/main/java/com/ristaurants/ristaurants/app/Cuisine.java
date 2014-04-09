@@ -32,9 +32,6 @@ public class Cuisine extends Activity {
             mActionBarTitle = getIntent().getExtras().getString("mCuisine");
         }
 
-        // set action bar background color
-        HelperClass.setActionBarBackground(this, R.color.restaurants_bg);
-
         // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, mActionBarTitle));
         getActionBar().setHomeButtonEnabled(true);

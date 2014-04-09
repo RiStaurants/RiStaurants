@@ -33,9 +33,6 @@ public class AddDishReview extends Activity {
         // instantiate Parse Database
         Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
 
-        // set action bar background
-        HelperClass.setActionBarBackground(this, R.color.restaurants_bg);
-
         // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_add_dish_review)));
         getActionBar().setHomeButtonEnabled(true);

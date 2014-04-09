@@ -15,8 +15,5 @@ public class DishesFrag extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		// set action bar background
-		HelperClass.setActionBarBackground(getActivity(), R.color.dishes_bg);
 	}
 }

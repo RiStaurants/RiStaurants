@@ -43,7 +43,7 @@
             android:layout_alignParentStart="true"
             android:gravity="center_horizontal">
 
-            <com.ristaurants.ristaurants.views.RobotoThinTextView
+            <com.ristaurants.ristaurants.views.BenderThinTextView
                 android:id="@+id/tv_select_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

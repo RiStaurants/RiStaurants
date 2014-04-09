@@ -11,7 +11,7 @@
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
         android:scrollbars="none"
-		android:divider="@color/restaurants_bg"
+		android:divider="@android:color/holo_blue_dark"
 		android:dividerHeight="@dimen/no_diver" />
 
 </LinearLayout>

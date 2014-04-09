@@ -35,9 +35,6 @@ public class RestaurantsFrag extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // set action bar background
-        HelperClass.setActionBarBackground(getActivity(), R.color.restaurants_bg);
-
         // instantiate views
         mLvContent = (ListView) getActivity().findViewById(R.id.lv_content);
 

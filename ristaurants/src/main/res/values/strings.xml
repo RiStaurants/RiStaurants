@@ -22,12 +22,29 @@
     <string name="menu_restaurant_random">Random Restaurants</string>
     <string name="menu_dish_review_add">Add Review</string>
     <string name="menu_directions">Directions</string>
+    <string name="menu_call">Call</string>
+    <string name="menu_location">Display Location</string>
 
     <!-- Messages -->
     <string name="review_was_added">Your review was successfully added.</string>
 	<string name="please_fill_all_fields">Please compete all field.</string>
     <string name="no_description_available">"Sorry, no description available at time."</string>
-    <string name="menu_call">Call</string>
-    <string name="menu_location">Display Location</string>
+
+    <!-- About -->
+    <string name="about">About</string>
+    <string name="app_description">Description</string>
+    <string name="description">RiStaurants is a mobile application for android mobile devices that allows users to play food critic and rate and review their menu item choices. In addition, it assists a user in finding a restaurant  based on several categories, utilizing the information previously entered by fellow users.</string>
+    <string name="developers">Developers</string>
+    <string name="christian_soler">Christian Soler</string>
+    <string name="ashley_kelly">Ashley Kelly</string>
+    <string name="juan_carlos_beteta">Juan Carlos Beteta</string>
+    <string name="danielle_bessler">Danielle Bessler</string>
+    <string name="extras_info">Extra Information</string>
+    <string name="font_info">Font Provided By: <a href='http://jimdore.com'>Jim Dore</a></string>
+    <string name="volley_link">ImageLoader Provided By: <a href='https://android.googlesource.com/platform/frameworks/volley/'>Android Volley</a></string>
+    <string name="parse_link">Server Provided By: <a href='https://www.parse.com'>Parse</a></string>
+    <string name="app_info">Version Information</string>
+    <string name="app_version_info">App Version: 1.0</string>
+    <string name="app_version_released_date">Release Date: May 1, 2014</string>
 
 </resources>

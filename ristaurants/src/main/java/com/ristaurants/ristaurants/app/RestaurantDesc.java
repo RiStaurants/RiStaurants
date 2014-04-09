@@ -40,9 +40,6 @@ public class RestaurantDesc extends Activity {
             String desc = getIntent().getExtras().getString("mDesc");
             int rate = getIntent().getExtras().getInt("mRate");
 
-            // set action bar background color
-            HelperClass.setActionBarBackground(this, R.color.menus_bg);
-
             // set-up action bar
             getActionBar().setTitle(HelperClass.setActionbarTitle(this, mName));
             getActionBar().setHomeButtonEnabled(true);

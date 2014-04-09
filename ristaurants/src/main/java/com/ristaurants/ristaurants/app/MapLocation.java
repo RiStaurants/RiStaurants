@@ -33,9 +33,6 @@ public class MapLocation extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frag_maps);
 
-        // set action bar background color
-        HelperClass.setActionBarBackground(this, R.color.menus_bg);
-
         // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_maps)));
         getActionBar().setHomeButtonEnabled(true);

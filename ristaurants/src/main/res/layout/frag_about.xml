@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:orientation="vertical"
+        android:padding="@dimen/row_margin">
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:id="@+id/tv_app_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_description"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/drawer_text_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@android:color/white" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@android:color/white" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/developers"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/drawer_text_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@android:color/white" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:text="@string/christian_soler"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:text="@string/ashley_kelly"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:text="@string/juan_carlos_beteta"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:text="@string/danielle_bessler"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@android:color/white" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/extras_info"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/drawer_text_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@android:color/white" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:id="@+id/tv_font_bender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:autoLink="web"
+            android:clickable="true"
+            android:textColorLink="@android:color/holo_red_dark"
+            android:text="@string/font_info"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:id="@+id/tv_volley_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:autoLink="web"
+            android:clickable="true"
+            android:textColorLink="@android:color/holo_red_dark"
+            android:text="@string/volley_link"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:id="@+id/tv_parse_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:autoLink="web"
+            android:clickable="true"
+            android:textColorLink="@android:color/holo_red_dark"
+            android:text="@string/parse_link"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@android:color/white" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_info"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/drawer_text_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:layout_marginTop="@dimen/row_margin"
+            android:background="@android:color/white" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:text="@string/app_version_info"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+        <com.ristaurants.ristaurants.views.BenderSolidTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:text="@string/app_version_released_date"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_subname_size" />
+
+    </LinearLayout>
+</ScrollView>
