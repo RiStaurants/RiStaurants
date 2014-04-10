@@ -27,7 +27,7 @@
             android:layout_marginTop="@dimen/row_margin"
             android:background="@android:color/white" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description"
@@ -55,7 +55,7 @@
             android:layout_marginTop="@dimen/row_margin"
             android:background="@android:color/white" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
@@ -63,7 +63,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/restaurants_subname_size" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
@@ -71,7 +71,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/restaurants_subname_size" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
@@ -79,7 +79,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/restaurants_subname_size" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
@@ -108,7 +108,7 @@
             android:layout_marginTop="@dimen/row_margin"
             android:background="@android:color/white" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:id="@+id/tv_font_bender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/restaurants_subname_size" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:id="@+id/tv_volley_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/restaurants_subname_size" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:id="@+id/tv_parse_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
             android:layout_marginTop="@dimen/row_margin"
             android:background="@android:color/white" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
@@ -173,7 +173,7 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/restaurants_subname_size" />
 
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
+        <com.ristaurants.ristaurants.views.BenderThinTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
