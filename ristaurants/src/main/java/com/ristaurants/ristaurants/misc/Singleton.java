@@ -3,6 +3,7 @@ package com.ristaurants.ristaurants.misc;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseInstallation;
 import com.parse.PushService;
 import com.ristaurants.ristaurants.app.BaseActivity;
 
@@ -22,6 +23,8 @@ public class Singleton extends Application {
 
         // notification
         PushService.setDefaultPushCallback(this, BaseActivity.class);
-        PushService.subscribe(this, "Giants", BaseActivity.class);
+
+        // save the current Installation to Parse.
+        ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 }

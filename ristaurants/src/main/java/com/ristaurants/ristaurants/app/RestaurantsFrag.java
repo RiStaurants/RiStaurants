@@ -46,7 +46,7 @@ public class RestaurantsFrag extends Fragment {
     }
 
     /**
-     * Get the list of review from the database.
+     * Get the list of restaurants from the database.
      *
      * @param className The class name to search for in the database.
      */
