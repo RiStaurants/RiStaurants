@@ -68,10 +68,8 @@ public class RestaurantsAdapter extends BaseAdapter {
             mViewHolder.mIvRestaurantImage = (NetworkImageView) view.findViewById(R.id.niv_restaurant_image);
             mViewHolder.mIvRestaurantRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_rate);
             mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
-            mViewHolder.mTvRestaurantPhoneText = (TextView) view.findViewById(R.id.tv_restaurant_phone_text);
-            mViewHolder.mTvRestaurantPhone = (TextView) view.findViewById(R.id.tv_restaurant_phone);
-            mViewHolder.mIvRestaurantAddress = (ImageView) view.findViewById(R.id.iv_restaurant_map);
-            mViewHolder.mIvRestaurantMenu = (ImageView) view.findViewById(R.id.iv_restaurant_menu);
+            
+            
 
             // save view holder in tag
             view.setTag(mViewHolder);
@@ -92,56 +90,12 @@ public class RestaurantsAdapter extends BaseAdapter {
         final String name = mDataList.get(position).getString("name");
         mViewHolder.mTvRestaurantName.setText(name);
 
-        // get restaurant description
+        // get restaurant data
         final String desc = mDataList.get(position).getString("description");
-
-        // set restaurant phone
         final String phone = mDataList.get(position).getString("phone");
-        mViewHolder.mTvRestaurantPhone.setText(phone);
-        mViewHolder.mTvRestaurantPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // open phone dialer with phone number
-                Intent intent = new Intent(Intent.ACTION_DIAL, null);
-                intent.setData(Uri.parse("tel:" + ((TextView) view).getText().toString()));
-                mContext.startActivity(intent);
-            }
-        });
-
-        // set restaurant menu
         final String restaurantID = mDataList.get(position).getObjectId();
-        mViewHolder.mIvRestaurantMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, RestaurantMenuActivity.class);
-                intent.putExtra("mRestaurantName", name);
-                intent.putExtra("mRestaurantID", restaurantID);
-                mContext.startActivity(intent);
-
-                // set activity animation
-                ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_null);
-            }
-        });
-
-
-        // set restaurant address
         final String address = mDataList.get(position).getString("address");
         final ParseGeoPoint mGeoPoint = mDataList.get(position).getParseGeoPoint("coordinates");
-        mViewHolder.mIvRestaurantAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // open Google Map
-                Intent intent = new Intent(mContext, MapLocation.class);
-                intent.putExtra("mRestaurantName", name);
-                intent.putExtra("mAddress", address);
-                intent.putExtra("mLatitude", mGeoPoint.getLatitude());
-                intent.putExtra("mLongitude", mGeoPoint.getLongitude());
-                mContext.startActivity(intent);
-
-                // set activity animation
-                ((Activity) mContext).overridePendingTransition(R.anim.anim_slide_in_bottom, R.anim.anim_null);
-            }
-        });
 
         // set item click listener
         view.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +105,7 @@ public class RestaurantsAdapter extends BaseAdapter {
                 Intent intent = new Intent(mContext, RestaurantDesc.class);
                 intent.putExtra("mImage", image);
                 intent.putExtra("mName", name);
+                intent.putExtra("mRestaurantID", restaurantID);
                 intent.putExtra("mAddress", address);
                 intent.putExtra("mPhone", phone);
                 intent.putExtra("mDesc", desc);
@@ -168,10 +123,6 @@ public class RestaurantsAdapter extends BaseAdapter {
         if (mLastAnimPosition < position) {
             ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantName, "translationX", -1000, 0).setDuration(700).start();
             ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantRate, "translationX", 1000, 0).setDuration(700).start();
-            ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhoneText, "translationX", -1000, 0).setDuration(700).start();
-            ObjectAnimator.ofFloat(mViewHolder.mTvRestaurantPhone, "translationX", -1000, 0).setDuration(700).start();
-            ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantMenu, "translationX", 1000, 0).setDuration(700).start();
-            ObjectAnimator.ofFloat(mViewHolder.mIvRestaurantAddress, "translationX", 1000, 0).setDuration(700).start();
             mLastAnimPosition = position;
         }
 
@@ -183,10 +134,6 @@ public class RestaurantsAdapter extends BaseAdapter {
         // instantiate views
         NetworkImageView mIvRestaurantImage;
         NetworkImageView mIvRestaurantRate;
-        ImageView mIvRestaurantAddress;
-        ImageView mIvRestaurantMenu;
         TextView mTvRestaurantName;
-        TextView mTvRestaurantPhoneText;
-        TextView mTvRestaurantPhone;
     }
 }

@@ -28,7 +28,7 @@
             android:background="@android:color/white" />
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/description"
             android:textColor="@android:color/white"
@@ -56,7 +56,7 @@
             android:background="@android:color/white" />
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:text="@string/christian_soler"
@@ -64,7 +64,7 @@
             android:textSize="@dimen/restaurants_subname_size" />
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:text="@string/ashley_kelly"
@@ -72,7 +72,7 @@
             android:textSize="@dimen/restaurants_subname_size" />
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:text="@string/juan_carlos_beteta"
@@ -80,7 +80,7 @@
             android:textSize="@dimen/restaurants_subname_size" />
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:text="@string/danielle_bessler"
@@ -95,7 +95,7 @@
             android:background="@android:color/white" />
 
         <com.ristaurants.ristaurants.views.BenderSolidTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/extras_info"
             android:textColor="@android:color/white"
@@ -110,7 +110,7 @@
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
             android:id="@+id/tv_font_bender"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:autoLink="web"
@@ -122,7 +122,7 @@
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
             android:id="@+id/tv_volley_link"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:autoLink="web"
@@ -134,7 +134,7 @@
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
             android:id="@+id/tv_parse_link"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:autoLink="web"
@@ -152,7 +152,7 @@
             android:background="@android:color/white" />
 
         <com.ristaurants.ristaurants.views.BenderSolidTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_info"
             android:textColor="@android:color/white"
@@ -166,7 +166,7 @@
             android:background="@android:color/white" />
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:text="@string/app_version_info"
@@ -174,7 +174,7 @@
             android:textSize="@dimen/restaurants_subname_size" />
 
         <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/row_margin"
             android:text="@string/app_version_released_date"

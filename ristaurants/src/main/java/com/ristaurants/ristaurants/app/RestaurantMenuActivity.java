@@ -35,9 +35,6 @@ public class RestaurantMenuActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        // instantiate Parse Database
-        Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
-
         // instantiate view pager after getting json
         mViewPager = (ViewPager) findViewById(R.id.vp_restaurants_menus);
 

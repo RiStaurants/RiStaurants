@@ -47,46 +47,4 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_phone_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="@dimen/row_padding"
-        android:orientation="horizontal"
-        android:visibility="visible">
-
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
-            android:id="@+id/tv_restaurant_phone_text"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="@dimen/restaurants_subname_size"
-            android:textColor="@android:color/white"
-            android:text="@string/phone_text" />
-
-        <com.ristaurants.ristaurants.views.BenderSolidTextView
-            android:id="@+id/tv_restaurant_phone"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="@dimen/restaurants_subname_size"
-            android:textColor="@android:color/holo_blue_dark" />
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/iv_restaurant_menu"
-        android:layout_toLeftOf="@+id/iv_restaurant_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_action_collections_view_as_list"/>
-
-    <ImageView
-        android:id="@+id/iv_restaurant_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_action_location_place"/>
-
 </RelativeLayout>

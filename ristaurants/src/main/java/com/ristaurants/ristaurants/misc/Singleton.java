@@ -22,9 +22,9 @@ public class Singleton extends Application {
         Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
 
         // notification
-        PushService.setDefaultPushCallback(this, BaseActivity.class);
+        //PushService.setDefaultPushCallback(this, BaseActivity.class);
 
         // save the current Installation to Parse.
-        ParseInstallation.getCurrentInstallation().saveInBackground();
+        //ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 }

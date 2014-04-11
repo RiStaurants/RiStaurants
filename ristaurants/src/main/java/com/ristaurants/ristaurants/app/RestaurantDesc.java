@@ -21,6 +21,7 @@ public class RestaurantDesc extends Activity {
     private String mName;
     private String mPhoneNumber;
     private String mAddress;
+	private String mRestaurantID;
     private double mLatitude;
     private double mLongitude;
 
@@ -34,6 +35,7 @@ public class RestaurantDesc extends Activity {
             String image = getIntent().getExtras().getString("mImage");
             mName = getIntent().getExtras().getString("mName");
             mAddress = getIntent().getExtras().getString("mAddress");
+			mRestaurantID = getIntent().getExtras().getString("mRestaurantId");
             mPhoneNumber = getIntent().getExtras().getString("mPhone");
             mLatitude = getIntent().getExtras().getDouble("mLatitude");
             mLongitude = getIntent().getExtras().getDouble("mLongitude");
@@ -48,8 +50,7 @@ public class RestaurantDesc extends Activity {
             // display main image
             NetworkImageView ivRestaurantImage = (NetworkImageView) findViewById(R.id.niv_restaurant_image);
             ivRestaurantImage.setImageUrl(image, SingletonVolley.getImageLoader());
-            //HelperClass.toGrayScale(ivRestaurantImage);
-
+        
             // display main image
             NetworkImageView ivRestaurantRate = (NetworkImageView) findViewById(R.id.niv_restaurant_rate);
             ivRestaurantRate.setImageUrl(HelperClass.getRateImage(this, rate), SingletonVolley.getImageLoader());
@@ -110,6 +111,14 @@ public class RestaurantDesc extends Activity {
                 intent.setData(Uri.parse("tel:" + mPhoneNumber));
                 startActivity(intent);
                 break;
+			case R.id.menu_menu:
+				intent = new Intent(RestaurantDesc.this, RestaurantMenuActivity.class);
+				intent.putExtra("mRestaurantName", mName);
+				startActivity(intent);
+				
+				// animation
+				overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_null);
+				break;
             case R.id.menu_location:
                 // open Google Map
                 intent = new Intent(RestaurantDesc.this, MapLocation.class);
@@ -118,6 +127,9 @@ public class RestaurantDesc extends Activity {
                 intent.putExtra("mLatitude", mLatitude);
                 intent.putExtra("mLongitude", mLongitude);
                 startActivity(intent);
+				
+				// animation
+				overridePendingTransition(R.anim.anim_slide_in_bottom, R.anim.anim_null);
                 break;
         }
         return super.onOptionsItemSelected(item);
