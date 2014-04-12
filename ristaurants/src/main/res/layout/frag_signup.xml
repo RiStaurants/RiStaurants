@@ -9,6 +9,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/iv_profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <EditText
             android:id="@+id/et_username"
             android:layout_width="match_parent"

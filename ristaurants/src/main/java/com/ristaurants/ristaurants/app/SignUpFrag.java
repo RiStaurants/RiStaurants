@@ -3,6 +3,11 @@ package com.ristaurants.ristaurants.app;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,20 +17,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 /**
  * Sign up user fragment
  */
 public class SignUpFrag extends Fragment {
     // instance variables
+    private static final int SELECT_PHOTO = 50;
     private EditText mEtUsername;
     private EditText mEtEmail;
     private EditText mEtPassword;
+    private ImageView mIvProfileImage;
+    private Button mBtProfileImage;
     private Button mBtSignUp;
 
     @Override
@@ -34,9 +46,21 @@ public class SignUpFrag extends Fragment {
         View view = inflater.inflate(R.layout.frag_signup, null);
 
         // views
+        mIvProfileImage = (ImageView) view.findViewById(R.id.iv_profile_image);
         mEtUsername =(EditText) view.findViewById(R.id.et_username);
         mEtEmail = (EditText) view.findViewById(R.id.et_email);
         mEtPassword = (EditText) view.findViewById(R.id.et_password);
+
+        mBtProfileImage = (Button) view.findViewById(R.id.bt_Profile_image);
+        mBtProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, SELECT_PHOTO);
+            }
+        });
+
         mBtSignUp = (Button) view.findViewById(R.id.bt_signup);
         mBtSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +114,27 @@ public class SignUpFrag extends Fragment {
 
         // refresh menu
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch(requestCode) {
+            case SELECT_PHOTO:
+                if(resultCode == getActivity().RESULT_OK){
+                    Uri selectedImage = data.getData();
+                    InputStream imageStream = null;
+                    try {
+                        imageStream = getActivity().getContentResolver().openInputStream(selectedImage);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
+
+                    mIvProfileImage.setImageBitmap(yourSelectedImage);
+                }
+        }
     }
 
     @Override
