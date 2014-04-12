@@ -108,7 +108,7 @@
         <uses-feature
             android:glEsVersion="0x00020000"
             android:required="true"/>
-<!--
+
         <service android:name="com.parse.PushService" />
 
         <receiver android:name="com.parse.ParseBroadcastReceiver">
@@ -133,7 +133,7 @@
                 <category android:name="com.ristaurants.ristaurants.app" />
             </intent-filter>
         </receiver>
--->
+
     </application>
 
 </manifest>

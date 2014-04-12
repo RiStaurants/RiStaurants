@@ -2,6 +2,7 @@ package com.ristaurants.ristaurants.app;
 
 import android.animation.*;
 import android.app.*;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.*;
 import android.util.Log;
@@ -13,6 +14,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.ristaurants.ristaurants.adapters.*;
 import com.ristaurants.ristaurants.misc.*;
 
@@ -20,6 +22,7 @@ import java.util.List;
 
 public class DishesReviews extends Activity {
     // instance variables
+    private ParseUser mParseUser;
     private DishReviewsAdapter mAdapter;
     private String mDishName;
 	private String mDishID;
@@ -38,6 +41,9 @@ public class DishesReviews extends Activity {
         if (getIntent().getExtras() != null) {
             // get dish review class name and ID
 			mDishID = getIntent().getExtras().getString("mDishID");
+
+            // get parse user data
+            mParseUser = ParseUser.getCurrentUser();
 			
             // display dish image
             String dishImageUrl = getIntent().getExtras().getString("mDishImageUrl");
@@ -109,11 +115,28 @@ public class DishesReviews extends Activity {
                 onBackPressed();
                 break;
             case R.id.menu_dish_review_add:
-                // open the add reviews activity
-                Intent intent = new Intent(this, AddDishReview.class);
-                intent.putExtra("mDishName", mDishName);
-				intent.putExtra("mDishID", mDishID);
-                startActivity(intent);
+                // check if user is login
+                if (mParseUser != null) {
+                    // open the add reviews activity
+                    Intent intent = new Intent(this, AddDishReview.class);
+                    intent.putExtra("mDishName", mDishName);
+                    intent.putExtra("mDishID", mDishID);
+                    startActivity(intent);
+                } else {
+                    // let user know to login
+                    // Use the Builder class for convenient dialog construction
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage(R.string.please_login);
+                    builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // do nothing
+                        }
+                    });
+
+                    // show dialog
+                    builder.show();
+                }
+
 
                 // set activity animation
                 this.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_null);

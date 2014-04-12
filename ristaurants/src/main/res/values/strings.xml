@@ -47,5 +47,8 @@
     <string name="app_info">Version Information</string>
     <string name="app_version_info">App Version: 1.0</string>
     <string name="app_version_released_date">Release Date: May 1, 2014</string>
+    <string name="login">Log In</string>
+    <string name="please_login">Please login to post a review.</string>
+    <string name="ok">Ok</string>
 
 </resources>

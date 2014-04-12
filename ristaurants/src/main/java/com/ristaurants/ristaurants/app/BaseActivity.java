@@ -2,7 +2,6 @@ package com.ristaurants.ristaurants.app;
 
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,8 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.parse.ParseUser;
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
 
@@ -26,6 +25,7 @@ public class BaseActivity extends FragmentActivity {
     // instance variables
     private static final String PREF_USER_DRAWER_LEARNED = "drawer_learned";
     private static final String STATE_SELECTED_POSITION = "drawer_selected_position";
+    private ParseUser mParseUser;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mLvDrawer;
@@ -46,11 +46,15 @@ public class BaseActivity extends FragmentActivity {
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_app_name)));
         getActionBar().setHomeButtonEnabled(true);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setIcon(R.drawable.ic_action_logo);
 
         // get the preferences for the activity.
         // check if the user is aware of the navigation drawer.
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mUserLearnedDrawer = mPreferences.getBoolean(PREF_USER_DRAWER_LEARNED, false);
+
+        // get parse user information
+        mParseUser = ParseUser.getCurrentUser();
 
         // set selected item to the latest know position
         if (savedInstanceState != null) {
@@ -62,7 +66,7 @@ public class BaseActivity extends FragmentActivity {
                 getResources().getDrawable(R.drawable.restaurant_icon),
                 getResources().getDrawable(R.drawable.dishes_icon),
                 getResources().getDrawable(R.drawable.cuisine_icon),
-                getResources().getDrawable(R.drawable.flavors_icon)
+                getResources().getDrawable(R.drawable.settings_icon)
         };
 
         // get drawer title list
@@ -141,7 +145,7 @@ public class BaseActivity extends FragmentActivity {
 
             case 3:
                 // start Settings Fragment
-                mFrag = new FlavorsFrag();
+                mFrag = new SettingsFrag();
                 break;
         }
 
@@ -180,6 +184,8 @@ public class BaseActivity extends FragmentActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         menu.findItem(R.id.menu_about).setVisible(isLeftDrawerOpen());
+        menu.findItem(R.id.menu_login).setVisible(mParseUser == null);
+
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -203,6 +209,17 @@ public class BaseActivity extends FragmentActivity {
 
             // switch fragment with animation
             AboutFrag frag = new AboutFrag();
+            FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
+            mFragTrans.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
+            mFragTrans.replace(R.id.fl_drawer, frag);
+            mFragTrans.addToBackStack(null);
+            mFragTrans.commit();
+        }
+
+        // open login screen
+        if (item.getItemId() == R.id.menu_login) {
+            // display login fragment
+            LoginFrag frag = new LoginFrag();
             FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
             mFragTrans.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
             mFragTrans.replace(R.id.fl_drawer, frag);

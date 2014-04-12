@@ -12,12 +12,14 @@ import android.widget.TextView;
 import com.android.volley.toolbox.NetworkImageView;
 import com.ristaurants.ristaurants.misc.HelperClass;
 import com.ristaurants.ristaurants.misc.SingletonVolley;
+import com.ristaurants.ristaurants.views.QuickReturnScrollview;
 
 /**
  * Restaurant Description Activity
  */
-public class RestaurantDesc extends Activity {
+public class RestaurantDesc extends Activity implements QuickReturnScrollview.Callbacks {
     // instance variables
+    private QuickReturnScrollview mScrollViewer;
     private String mName;
     private String mPhoneNumber;
     private String mAddress;
@@ -46,6 +48,10 @@ public class RestaurantDesc extends Activity {
             getActionBar().setTitle(HelperClass.setActionbarTitle(this, mName));
             getActionBar().setHomeButtonEnabled(true);
             getActionBar().setIcon(R.drawable.ic_action_navigation_previous_item);
+
+            // scroll viewer
+            mScrollViewer = (QuickReturnScrollview) findViewById(R.id.sv_scroll_container);
+            mScrollViewer.setCallbacks(this);
 
             // display main image
             NetworkImageView ivRestaurantImage = (NetworkImageView) findViewById(R.id.niv_restaurant_image);
@@ -141,5 +147,20 @@ public class RestaurantDesc extends Activity {
 
         // set activity animation
         this.overridePendingTransition(R.anim.anim_null, R.anim.anim_slide_out_right);
+    }
+
+    @Override
+    public void onScrollChanged(int scrollY) {
+
+    }
+
+    @Override
+    public void onDownMotionEvent() {
+
+    }
+
+    @Override
+    public void onUpOrCancelMotionEvent() {
+
     }
 }

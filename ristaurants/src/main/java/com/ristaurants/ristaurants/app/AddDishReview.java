@@ -13,13 +13,13 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.ristaurants.ristaurants.misc.HelperClass;
 
 import android.widget.*;
 
 public class AddDishReview extends Activity {
     // instance variables
-    private EditText mEtAuthor;
     private EditText mEtDesc;
     private Spinner mNpRate;
     private String mDishName;
@@ -39,7 +39,6 @@ public class AddDishReview extends Activity {
         getActionBar().setIcon(R.drawable.ic_action_navigation_previous_item);
 
         // instantiate view
-        mEtAuthor = (EditText) findViewById(R.id.et_author);
         mEtDesc = (EditText) findViewById(R.id.et_desc);
         mNpRate = (Spinner) findViewById(R.id.sp_rate);
 
@@ -70,16 +69,16 @@ public class AddDishReview extends Activity {
 
     public void onAddReview(View view) {
         // check if fields are empty
-        if (!mEtAuthor.getText().toString().equals("") && !mEtDesc.getText().toString().equals("")) {
+        if (!mEtDesc.getText().toString().equals("")) {
             // link review to dish
             ParseObject dishPointerID = ParseObject.createWithoutData("RestaurantsMenus", mDishID);
 
             // create and upload review to parse
             ParseObject parseObjectReview = new ParseObject("DishesReviews");
             parseObjectReview.put("dishName", mDishName);
-            parseObjectReview.put("dishReviewAuthor", mEtAuthor.getText().toString());
-            parseObjectReview.put("dishReviewDesc", mEtDesc.getText().toString());
-            parseObjectReview.put("dishReviewRate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
+            parseObjectReview.put("username", ParseUser.getCurrentUser().getUsername());
+            parseObjectReview.put("review", mEtDesc.getText().toString());
+            parseObjectReview.put("rate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
             parseObjectReview.put("dishPointer", dishPointerID);
             parseObjectReview.saveInBackground();
 

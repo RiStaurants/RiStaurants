@@ -65,7 +65,7 @@ public class DishReviewsAdapter extends BaseAdapter {
         }
 
         // set review author name
-        String author = mData.get(position).getString("dishReviewAuthor");
+        String author = mData.get(position).getString("username");
         mViewHolder.mTvDishReviewAuthor.setText(author);
 
         // set review date
@@ -74,11 +74,11 @@ public class DishReviewsAdapter extends BaseAdapter {
         mViewHolder.mTvDishReviewDate.setText(dateFormat.format(date));
 
         // set review desc
-        String review = mData.get(position).getString("dishReviewDesc");
+        String review = mData.get(position).getString("review");
         mViewHolder.mTvDishReviewDesc.setText(review);
 
         // set restaurant rate image
-        mViewHolder.mIvDishReviewRate.setImageUrl(HelperClass.getRateImage(mContext, mData.get(position).getInt("dishReviewRate")), SingletonVolley.getImageLoader());
+        mViewHolder.mIvDishReviewRate.setImageUrl(HelperClass.getRateImage(mContext, mData.get(position).getInt("rate")), SingletonVolley.getImageLoader());
 
         // return view
         return view;
