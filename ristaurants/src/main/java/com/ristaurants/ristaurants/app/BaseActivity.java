@@ -221,7 +221,7 @@ public class BaseActivity extends FragmentActivity {
             // display login fragment
             LoginFrag frag = new LoginFrag();
             FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
-            mFragTrans.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
+            mFragTrans.setCustomAnimations(R.anim.anim_slide_in_right, android.R.anim.fade_out);
             mFragTrans.replace(R.id.fl_drawer, frag);
             mFragTrans.addToBackStack(null);
             mFragTrans.commit();

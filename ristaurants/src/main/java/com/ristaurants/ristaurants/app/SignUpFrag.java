@@ -1,8 +1,13 @@
 package com.ristaurants.ristaurants.app;
 
+import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -51,17 +56,24 @@ public class SignUpFrag extends Fragment {
                     public void done(ParseException e) {
                         if (e == null) {
                             // Sign up was successful
-                            Toast.makeText(getActivity(), "Please, check you email to verify your account.", Toast.LENGTH_LONG).show();
+                            // let user know to verify the email
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                            builder.setMessage(R.string.please_verify_email);
+                            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // do nothing
+                                }
+                            });
 
-                            // invalidate menu
-                            getActivity().supportInvalidateOptionsMenu();
+                            // show dialog
+                            builder.show();
 
                             // finish fragment
                             getActivity().onBackPressed();
                         } else {
                             // Sign up didn't succeed. Look at the ParseException
                             // to figure out what went wrong
-                            Toast.makeText(getActivity(), "Sign up was not successful.\n" + e.getMessage() , Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Sign up was not successful.\n\n" + e.getMessage() , Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -70,5 +82,19 @@ public class SignUpFrag extends Fragment {
 
         // return view
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        // refresh menu
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.menu_login).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
     }
 }

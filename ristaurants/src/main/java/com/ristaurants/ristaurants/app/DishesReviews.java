@@ -124,7 +124,6 @@ public class DishesReviews extends Activity {
                     startActivity(intent);
                 } else {
                     // let user know to login
-                    // Use the Builder class for convenient dialog construction
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage(R.string.please_login);
                     builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {

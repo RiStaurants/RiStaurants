@@ -50,5 +50,6 @@
     <string name="login">Log In</string>
     <string name="please_login">Please login to post a review.</string>
     <string name="ok">Ok</string>
+    <string name="please_verify_email">Please, check your email to verify your account.</string>
 
 </resources>
