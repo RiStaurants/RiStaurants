@@ -68,9 +68,8 @@ public class SignUpFrag extends Fragment {
                 user.setEmail(mEtEmail.getText().toString().toLowerCase());
                 user.put("firstName", "Christian");
                 user.put("lastName", "Soler");
-                user.put("dob", "03-21-1980");
-                user.put("bio", "Bio Here!");
                 user.put("place", "Providence, RI");
+                user.put("bio", "Bio Here!");
 
                 // listener
                 user.signUpInBackground(new SignUpCallback() {
@@ -80,7 +79,7 @@ public class SignUpFrag extends Fragment {
                             // let user know to verify the email
                             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                             builder.setMessage(R.string.please_verify_email);
-                            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     // do nothing
                                 }

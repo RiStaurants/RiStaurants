@@ -126,7 +126,7 @@ public class DishesReviews extends Activity {
                     // let user know to login
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage(R.string.please_login);
-                    builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // do nothing
                         }

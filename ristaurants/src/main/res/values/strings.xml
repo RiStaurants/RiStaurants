@@ -34,7 +34,6 @@
     <string name="please_verify_email">Please, check your email to verify your account.</string>
 	<string name="logout_user">Logout?</string>
     <string name="please_login">Please login to post a review.</string>
-    <string name="ok">Ok</string>
 
     <!-- About -->
     <string name="about">About</string>
@@ -58,5 +57,12 @@
     <string name="sign_up"><u>Sign up</u></string>
     <string name="not_login">Not Login</string>
 	<string name="logout">Logout</string>
+    <string name="username_hint">username</string>
+    <string name="password_hint">password</string>
+    <string name="login_dialog">Login</string>
+    <string name="user_full_name">Name: </string>
+    <string name="user_location">Location: </string>
+    <string name="user_bio">Bio: </string>
+    <string name="user_member_since">Member Since: </string>
 
 </resources>

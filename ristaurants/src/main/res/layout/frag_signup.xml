@@ -60,15 +60,6 @@
             android:textSize="@dimen/restaurants_name_size" />
 
         <EditText
-            android:id="@+id/et_dob"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="date of birth (optional)"
-            android:inputType="textPersonName"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/restaurants_name_size" />
-
-        <EditText
             android:id="@+id/et_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

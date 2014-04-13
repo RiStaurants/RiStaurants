@@ -37,5 +37,7 @@
     <!-- Misc -->
     <dimen name="dish_title_bar_strip">10dp</dimen>
     <dimen name="dish_title_bar_padding_right">16dp</dimen>
+    <dimen name="custom_dialog_height">64dp</dimen>
+    <dimen name="login_button_height">64dp</dimen>
 
 </resources>

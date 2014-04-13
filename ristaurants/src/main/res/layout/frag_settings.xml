@@ -17,4 +17,10 @@
 		android:textColor="@android:color/white"
 		android:textSize="@dimen/restaurants_name_size" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/drawer_divider"
+        android:layout_marginTop="@dimen/row_margin"
+        android:background="@android:color/white" />
+
 </LinearLayout>
