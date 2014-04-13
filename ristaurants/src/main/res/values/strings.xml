@@ -32,6 +32,7 @@
 	<string name="please_fill_all_fields">Please compete all field.</string>
     <string name="no_description_available">"Sorry, no description available at time."</string>
     <string name="please_verify_email">Please, check your email to verify your account.</string>
+	<string name="logout_user">Logout?</string>
     <string name="please_login">Please login to post a review.</string>
     <string name="ok">Ok</string>
 
@@ -56,5 +57,6 @@
     <string name="login"><u>Login</u></string>
     <string name="sign_up"><u>Sign up</u></string>
     <string name="not_login">Not Login</string>
+	<string name="logout">Logout</string>
 
 </resources>

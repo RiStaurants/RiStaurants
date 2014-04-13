@@ -212,6 +212,9 @@ public class BaseActivity extends FragmentActivity {
 
         // open login screen
         if (item.getItemId() == R.id.menu_user_profile) {
+			// close drawer
+            closeLeftDrawer();
+			
             // display login fragment
             UserProfileFrag frag = new UserProfileFrag();
             FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
