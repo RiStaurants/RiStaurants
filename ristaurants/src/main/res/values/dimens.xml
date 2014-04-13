@@ -16,6 +16,7 @@
     <dimen name="dish_reviews_height">150dp</dimen>
     <dimen name="rate_width">100dp</dimen>
     <dimen name="rate_height">20dp</dimen>
+    <dimen name="profile_size">80dp</dimen>
 
     <!-- TextView size -->
     <dimen name="drawer_text_size">35sp</dimen>

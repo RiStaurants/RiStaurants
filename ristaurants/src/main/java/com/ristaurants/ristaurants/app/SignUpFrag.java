@@ -1,16 +1,13 @@
 package com.ristaurants.ristaurants.app;
 
 import android.app.AlertDialog;
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -139,7 +136,7 @@ public class SignUpFrag extends Fragment {
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.menu_login).setVisible(false);
+        menu.findItem(R.id.menu_user_profile).setVisible(false);
         super.onPrepareOptionsMenu(menu);
     }
 }

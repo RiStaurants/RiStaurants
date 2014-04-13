@@ -8,9 +8,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.parse.ParseUser;
 
 /**
  * Login user fragment
@@ -58,7 +55,7 @@ public class LoginFrag extends Fragment {
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.menu_login).setVisible(false);
+        menu.findItem(R.id.menu_user_profile).setVisible(false);
         super.onPrepareOptionsMenu(menu);
     }
 }

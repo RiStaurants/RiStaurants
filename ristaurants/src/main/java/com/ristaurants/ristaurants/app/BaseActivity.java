@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.parse.ParseUser;
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
 
@@ -25,7 +24,6 @@ public class BaseActivity extends FragmentActivity {
     // instance variables
     private static final String PREF_USER_DRAWER_LEARNED = "drawer_learned";
     private static final String STATE_SELECTED_POSITION = "drawer_selected_position";
-    private ParseUser mParseUser;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mLvDrawer;
@@ -52,9 +50,6 @@ public class BaseActivity extends FragmentActivity {
         // check if the user is aware of the navigation drawer.
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mUserLearnedDrawer = mPreferences.getBoolean(PREF_USER_DRAWER_LEARNED, false);
-
-        // get parse user information
-        mParseUser = ParseUser.getCurrentUser();
 
         // set selected item to the latest know position
         if (savedInstanceState != null) {
@@ -184,7 +179,6 @@ public class BaseActivity extends FragmentActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
         menu.findItem(R.id.menu_about).setVisible(isLeftDrawerOpen());
-        menu.findItem(R.id.menu_login).setVisible(mParseUser == null);
 
         return super.onPrepareOptionsMenu(menu);
     }
@@ -217,9 +211,9 @@ public class BaseActivity extends FragmentActivity {
         }
 
         // open login screen
-        if (item.getItemId() == R.id.menu_login) {
+        if (item.getItemId() == R.id.menu_user_profile) {
             // display login fragment
-            LoginFrag frag = new LoginFrag();
+            UserProfileFrag frag = new UserProfileFrag();
             FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
             mFragTrans.setCustomAnimations(R.anim.anim_slide_in_right, android.R.anim.fade_out);
             mFragTrans.replace(R.id.fl_drawer, frag);

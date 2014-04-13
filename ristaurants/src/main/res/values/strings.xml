@@ -24,12 +24,16 @@
     <string name="menu_directions">Directions</string>
     <string name="menu_call">Call</string>
     <string name="menu_location">Display Location</string>
-	<string name="menu_menu">Retaurant Menu</string>
+	<string name="menu_menu">Restaurant Menu</string>
+    <string name="user_profile">Log In</string>
 
     <!-- Messages -->
     <string name="review_was_added">Your review was successfully added.</string>
 	<string name="please_fill_all_fields">Please compete all field.</string>
     <string name="no_description_available">"Sorry, no description available at time."</string>
+    <string name="please_verify_email">Please, check your email to verify your account.</string>
+    <string name="please_login">Please login to post a review.</string>
+    <string name="ok">Ok</string>
 
     <!-- About -->
     <string name="about">About</string>
@@ -47,9 +51,10 @@
     <string name="app_info">Version Information</string>
     <string name="app_version_info">App Version: 1.0</string>
     <string name="app_version_released_date">Release Date: May 1, 2014</string>
-    <string name="login">Log In</string>
-    <string name="please_login">Please login to post a review.</string>
-    <string name="ok">Ok</string>
-    <string name="please_verify_email">Please, check your email to verify your account.</string>
+
+    <!-- TextView Text -->
+    <string name="login"><u>Login</u></string>
+    <string name="sign_up"><u>Sign up</u></string>
+    <string name="not_login">Not Login</string>
 
 </resources>
