@@ -70,17 +70,26 @@ public class AddDishReview extends Activity {
     public void onAddReview(View view) {
         // check if fields are empty
         if (!mEtDesc.getText().toString().equals("")) {
+            //
+            ParseUser user = ParseUser.getCurrentUser();
             // link review to dish
             ParseObject dishPointerID = ParseObject.createWithoutData("RestaurantsMenus", mDishID);
+
+            // get user name
+            String fullname = user.getString("firstName") + " " + user.getString("lastName");
 
             // create and upload review to parse
             ParseObject parseObjectReview = new ParseObject("DishesReviews");
             parseObjectReview.put("dishName", mDishName);
-            parseObjectReview.put("username", ParseUser.getCurrentUser().getUsername());
+            parseObjectReview.put("username", fullname);
             parseObjectReview.put("review", mEtDesc.getText().toString());
             parseObjectReview.put("rate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
             parseObjectReview.put("dishPointer", dishPointerID);
             parseObjectReview.saveInBackground();
+
+            // update user total post count
+            user.increment("postTotal");
+            user.saveInBackground();
 
             // update dish review counter
             ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("RestaurantsMenus");

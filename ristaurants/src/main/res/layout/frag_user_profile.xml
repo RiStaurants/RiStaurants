@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
+    android:background="@android:color/white"
     android:clipToPadding="true"
     android:orientation="vertical"
     android:padding="@dimen/row_margin">
@@ -22,16 +23,70 @@
                 android:id="@+id/niv_profile_image"
                 android:layout_width="@dimen/profile_size"
                 android:layout_height="@dimen/profile_size"
-                android:background="@drawable/profile_pic" />
+                android:background="@android:color/holo_blue_dark"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/row_margin">
+
+                <com.ristaurants.ristaurants.views.BenderSolidTextView
+                    android:id="@+id/tv_profile_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/not_login"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/restaurants_name_size" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/drawer_divider"
+                    android:layout_marginBottom="@dimen/row_margin"
+                    android:layout_marginTop="@dimen/row_margin"
+                    android:background="@android:color/darker_gray" />
+
+                <com.ristaurants.ristaurants.views.BenderThinTextView
+                    android:id="@+id/tv_profile_post_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/total_post"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/restaurants_subname_size" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:layout_marginBottom="@dimen/row_margin"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin">
 
             <com.ristaurants.ristaurants.views.BenderSolidTextView
-                android:id="@+id/tv_profile_username"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/user_full_name"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/restaurants_name_size" />
+
+            <com.ristaurants.ristaurants.views.BenderThinTextView
+                android:id="@+id/tv_profile_full_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/row_margin"
-                android:text="@string/not_login"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="@dimen/restaurants_name_size" />
 
         </LinearLayout>
@@ -39,78 +94,102 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/drawer_divider"
-            android:background="@android:color/white"
-            android:layout_marginBottom="@dimen/row_margin" />
-
-        <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:id="@+id/tv_profile_full_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:layout_marginBottom="@dimen/row_margin"
-            android:text="@string/user_full_name"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/restaurants_name_size" />
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin">
+
+            <com.ristaurants.ristaurants.views.BenderSolidTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/user_location"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/restaurants_name_size" />
+
+            <com.ristaurants.ristaurants.views.BenderThinTextView
+                android:id="@+id/tv_profile_location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/restaurants_name_size" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/drawer_divider"
-            android:background="@android:color/white"
-            android:layout_marginBottom="@dimen/row_margin" />
-
-        <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:id="@+id/tv_profile_location"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:layout_marginBottom="@dimen/row_margin"
-            android:text="@string/user_location"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/restaurants_name_size" />
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin">
+
+            <com.ristaurants.ristaurants.views.BenderSolidTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/user_member_since"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/restaurants_name_size" />
+
+            <com.ristaurants.ristaurants.views.BenderThinTextView
+                android:id="@+id/tv_profile_member_since"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/restaurants_name_size" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/drawer_divider"
-            android:background="@android:color/white"
-            android:layout_marginBottom="@dimen/row_margin" />
-
-        <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:id="@+id/tv_profile_member_since"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:layout_marginBottom="@dimen/row_margin"
-            android:text="@string/user_member_since"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/restaurants_name_size" />
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/row_margin">
+
+            <com.ristaurants.ristaurants.views.BenderSolidTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/user_bio"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/restaurants_name_size" />
+
+            <com.ristaurants.ristaurants.views.BenderThinTextView
+                android:id="@+id/tv_profile_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/restaurants_name_size" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/drawer_divider"
-            android:background="@android:color/white"
-            android:layout_marginBottom="@dimen/row_margin" />
-
-        <com.ristaurants.ristaurants.views.BenderThinTextView
-            android:id="@+id/tv_profile_bio"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:layout_marginBottom="@dimen/row_margin"
-            android:text="@string/user_bio"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/restaurants_name_size" />
+            android:background="@android:color/darker_gray" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/drawer_divider"
-            android:background="@android:color/white"
-            android:layout_marginBottom="@dimen/row_margin" />
-
+        <!-- Sign up container -->
         <LinearLayout
             android:id="@+id/ll_login_sign_up"
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_button_height"
-            android:background="@android:color/holo_blue_light"
+            android:background="@android:color/holo_blue_dark"
             android:orientation="horizontal">
 
             <com.ristaurants.ristaurants.views.BenderSolidTextView
@@ -130,7 +209,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/row_padding"
                 android:layout_marginTop="@dimen/row_padding"
-                android:background="@android:color/holo_blue_dark" />
+                android:background="@android:color/holo_blue_light" />
 
             <com.ristaurants.ristaurants.views.BenderSolidTextView
                 android:id="@+id/tv_profile_sign_up"

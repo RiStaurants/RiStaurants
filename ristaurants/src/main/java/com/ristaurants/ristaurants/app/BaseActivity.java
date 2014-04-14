@@ -219,7 +219,7 @@ public class BaseActivity extends FragmentActivity {
             UserProfileFrag frag = new UserProfileFrag();
             FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
             mFragTrans.setCustomAnimations(R.anim.anim_slide_in_right, android.R.anim.fade_out);
-            mFragTrans.replace(R.id.fl_drawer, frag);
+            mFragTrans.replace(R.id.fl_drawer, frag, "UserProfileFrag");
             mFragTrans.addToBackStack(null);
             mFragTrans.commit();
         }

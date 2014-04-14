@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.ristaurants.ristaurants.views.BenderThinTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/custom_dialog_height"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/row_margin"
+            android:text="@string/sign_up"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/restaurants_name_size" />
+
+        <EditText
+            android:id="@+id/et_sign_up_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="@string/username_hint"
+            android:inputType="textAutoComplete" />
+
+        <EditText
+            android:id="@+id/et_sign_up_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/et_sign_up_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/et_sign_up_first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="@string/first_hint"
+            android:inputType="textAutoComplete"/>
+
+        <EditText
+            android:id="@+id/et_sign_up_last"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="@string/last_hint"
+            android:inputType="textAutoComplete"/>
+
+        <EditText
+            android:id="@+id/et_sign_up_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="@string/location_hint"
+            android:inputType="textAutoComplete"/>
+
+        <EditText
+            android:id="@+id/et_sign_up_bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="@string/bio_hint"
+            android:inputType="textMultiLine"/>
+
+        <Button
+            android:id="@+id/bt_upload_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile Image"/>
+
+    </LinearLayout>
+</ScrollView>
