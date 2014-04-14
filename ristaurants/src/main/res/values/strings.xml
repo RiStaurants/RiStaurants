@@ -53,8 +53,8 @@
     <string name="app_version_released_date">Release Date: May 1, 2014</string>
 
     <!-- TextView Text -->
-    <string name="login"><u>Login</u></string>
-    <string name="sign_up"><u>Sign up</u></string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
     <string name="not_login">Not Login</string>
 	<string name="logout">Logout</string>
     <string name="username_hint">username</string>

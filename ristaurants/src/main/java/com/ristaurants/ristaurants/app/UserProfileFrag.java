@@ -184,6 +184,7 @@ public class UserProfileFrag extends Fragment {
                 user.put("lastName", mEtLastName.getText().toString().toLowerCase());
                 user.put("location", mEtLocation.getText().toString().toLowerCase());
                 user.put("bio", mEtBio.getText().toString().toLowerCase());
+                user.put("postTotal", 0);
 
                 // set image
                 if (mProfileImage != null) {
