@@ -1,26 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/dl_drawer"
-	android:layout_height="match_parent"
-	android:layout_width="match_parent">
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dl_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-	<!-- Fragment Holder -->
-	<FrameLayout
-		android:id="@+id/fl_drawer"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"/>
-	
-	<!-- Navigation Drawer Left -->
-	<ListView
-		android:id="@+id/lv_drawer_left"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_gravity="start"
-		android:choiceMode="singleChoice"
-		android:divider="@android:color/white"
-		android:dividerHeight="@dimen/drawer_divider"
-		android:background="@android:color/holo_blue_dark" />
+    <!-- Fragment Holder -->
+    <FrameLayout
+        android:id="@+id/fl_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Navigation Drawer Left -->
+    <LinearLayout
+        android:id="@+id/ll_drawer_left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/holo_blue_dark"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/drawer_padding">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/niv_profile_avatar"
+                android:layout_width="@dimen/drawer_icon_size"
+                android:layout_height="@dimen/drawer_icon_size"
+                android:background="@drawable/profile_pic"
+                android:scaleType="centerCrop" />
+
+            <com.ristaurants.ristaurants.views.BenderThinTextView
+                android:id="@+id/tv_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/drawer_padding"
+                android:text="@string/not_login"
+                android:textSize="@dimen/drawer_text_size"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_divider"
+            android:background="@android:color/white" />
+
+        <ListView
+            android:id="@+id/lv_drawer_left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/white"
+            android:dividerHeight="@dimen/drawer_divider" />
+
+    </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>
 

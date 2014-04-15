@@ -33,6 +33,15 @@
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/view_gradient_bottom_black" />
 
+            <ImageView
+                android:id="@+id/iv_favorites"
+                android:layout_width="@dimen/drawer_icon_size"
+                android:layout_height="@dimen/drawer_icon_size"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_action_rating_favorite_white"
+                android:visibility="gone"/>
+
         </RelativeLayout>
 
         <LinearLayout

@@ -68,8 +68,6 @@ public class RestaurantsAdapter extends BaseAdapter {
             mViewHolder.mIvRestaurantImage = (NetworkImageView) view.findViewById(R.id.niv_restaurant_image);
             mViewHolder.mIvRestaurantRate = (NetworkImageView) view.findViewById(R.id.niv_restaurant_rate);
             mViewHolder.mTvRestaurantName = (TextView) view.findViewById(R.id.tv_restaurant_name);
-            
-            
 
             // save view holder in tag
             view.setTag(mViewHolder);

@@ -2,8 +2,9 @@
 <resources>
 	<string-array name="drawer_title_list">
 		<item>restaurants</item>
-		<item>dishes</item>
+		<item>top dishes</item>
 		<item>cuisine</item>
+        <item>favorites</item>
         <item>settings</item>
 	</string-array>
 	

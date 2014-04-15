@@ -3,13 +3,19 @@ package com.ristaurants.ristaurants.app;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.ristaurants.ristaurants.misc.HelperClass;
 import com.ristaurants.ristaurants.misc.SingletonVolley;
 import com.ristaurants.ristaurants.views.QuickReturnScrollview;
@@ -60,6 +66,22 @@ public class RestaurantDesc extends Activity implements QuickReturnScrollview.Ca
             // display main image
             NetworkImageView ivRestaurantRate = (NetworkImageView) findViewById(R.id.niv_restaurant_rate);
             ivRestaurantRate.setImageUrl(HelperClass.getRateImage(this, rate), SingletonVolley.getImageLoader());
+
+            // add to favorites
+            final ImageView mIvFavorites = (ImageView) findViewById(R.id.iv_favorites);
+            mIvFavorites.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mIvFavorites.setImageResource(R.drawable.ic_action_rating_favorite_blue);
+
+                    // get restaurant object
+                    ParseObject parseObject = new ParseObject("");
+
+                    ParseUser user = ParseUser.getCurrentUser();
+
+                    Toast.makeText(RestaurantDesc.this, mRestaurantID, Toast.LENGTH_LONG).show();
+                }
+            });
 
             // display restaurant name
             TextView tvRestaurantName = (TextView) findViewById(R.id.tv_restaurant_name);

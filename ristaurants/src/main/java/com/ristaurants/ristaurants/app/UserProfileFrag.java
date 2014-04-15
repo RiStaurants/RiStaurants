@@ -1,5 +1,6 @@
 package com.ristaurants.ristaurants.app;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,10 +25,13 @@ import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.parse.LogInCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
+import com.ristaurants.ristaurants.misc.HelperClass;
 import com.ristaurants.ristaurants.misc.SingletonVolley;
 
 import java.io.ByteArrayOutputStream;
@@ -123,6 +127,7 @@ public class UserProfileFrag extends Fragment {
                             fragTrans.detach(frag);
                             fragTrans.attach(frag);
                             fragTrans.commit();
+
                         } else {
                             // Sign up failed. Look at the ParseException to see what happened.
                             Toast.makeText(getActivity(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -251,6 +256,14 @@ public class UserProfileFrag extends Fragment {
         // check if user have an image
         if (user.getParseFile("userImage") != null) {
             mIvProfileImage.setImageUrl(user.getParseFile("userImage").getUrl(), SingletonVolley.getImageLoader());
+            mIvProfileImage.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    startActivityForResult(intent, SELECT_PHOTO);
+                }
+            });
         }
 
         // set user name
@@ -283,7 +296,7 @@ public class UserProfileFrag extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.menu_user_profile).setVisible(false);
+        //menu.findItem(R.id.menu_user_profile).setVisible(false);
         menu.findItem(R.id.menu_profile_edit).setVisible(false);
     }
 
@@ -316,13 +329,13 @@ public class UserProfileFrag extends Fragment {
         // get image from device
         switch(requestCode) {
             case SELECT_PHOTO:
-                if(resultCode == getActivity().RESULT_OK){
+                if(resultCode == Activity.RESULT_OK){
                     try {
                         // input stream
                         InputStream imageStream = getActivity().getContentResolver().openInputStream(data.getData());
 
                         // get image from device
-                        Bitmap image = BitmapFactory.decodeStream(imageStream);
+                        Bitmap image = HelperClass.getCircleImage(BitmapFactory.decodeStream(imageStream));
 
                         // convert image to byte[]
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -331,6 +344,23 @@ public class UserProfileFrag extends Fragment {
                         // convert image to parse file
                         mProfileImage = new ParseFile("profile_image.jpg", stream.toByteArray());
                         mProfileImage.saveInBackground();
+
+                        if (ParseUser.getCurrentUser() != null) {
+                            ParseUser user = ParseUser.getCurrentUser();
+                            user.put("userImage", mProfileImage);
+
+                            user.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    // reload fragment
+                                    Fragment frag = getActivity().getSupportFragmentManager().findFragmentByTag("UserProfileFrag");
+                                    FragmentTransaction fragTrans = getActivity().getSupportFragmentManager().beginTransaction();
+                                    fragTrans.detach(frag);
+                                    fragTrans.attach(frag);
+                                    fragTrans.commit();
+                                }
+                            });
+                        }
 
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();

@@ -74,9 +74,6 @@ public class CuisineListFrag extends Fragment {
             }
         });
 
-        // refresh action bar menu
-        setHasOptionsMenu(true);
-
         // return view
         return view;
     }
@@ -84,5 +81,8 @@ public class CuisineListFrag extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        // refresh action bar menu
+        setHasOptionsMenu(true);
     }
 }

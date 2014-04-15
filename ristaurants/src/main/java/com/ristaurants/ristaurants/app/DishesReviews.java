@@ -71,7 +71,10 @@ public class DishesReviews extends Activity {
         super.onRestart();
 
         // get data from database
-        makeNetworkCall("DishesReviews");
+        //makeNetworkCall("DishesReviews");
+
+        finish();
+        startActivity(getIntent());
     }
 
     /**

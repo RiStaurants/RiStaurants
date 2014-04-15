@@ -15,10 +15,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
+import com.parse.Parse;
+import com.parse.ParseUser;
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
+import com.ristaurants.ristaurants.misc.Singleton;
+import com.ristaurants.ristaurants.misc.SingletonVolley;
 
 public class BaseActivity extends FragmentActivity {
     // instance variables
@@ -26,6 +33,7 @@ public class BaseActivity extends FragmentActivity {
     private static final String STATE_SELECTED_POSITION = "drawer_selected_position";
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
+    private LinearLayout mLeftDrawerContainer;
     private ListView mLvDrawer;
     private Fragment mFrag;
     private String[] mDrawerTitles;
@@ -56,11 +64,23 @@ public class BaseActivity extends FragmentActivity {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
         }
 
+        // set profile date
+        if (ParseUser.getCurrentUser() != null) {
+            // set profile image
+            NetworkImageView mIvProfileAvater = (NetworkImageView) findViewById(R.id.niv_profile_avatar);
+            mIvProfileAvater.setImageUrl(ParseUser.getCurrentUser().getParseFile("userImage").getUrl(), SingletonVolley.getImageLoader());
+
+            // set profile name
+            TextView mTvProfileName = (TextView) findViewById(R.id.tv_profile_name);
+            mTvProfileName.setText(ParseUser.getCurrentUser().getUsername());
+        }
+
         // get drawer icons
         Drawable[] mDrawerIcons = {
                 getResources().getDrawable(R.drawable.restaurant_icon),
                 getResources().getDrawable(R.drawable.dishes_icon),
                 getResources().getDrawable(R.drawable.cuisine_icon),
+                getResources().getDrawable(R.drawable.flavors_icon),
                 getResources().getDrawable(R.drawable.settings_icon)
         };
 
@@ -69,12 +89,30 @@ public class BaseActivity extends FragmentActivity {
 
         // instantiate views
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_drawer);
+        mLeftDrawerContainer = (LinearLayout) findViewById(R.id.ll_drawer_left);
         mLvDrawer = (ListView) findViewById(R.id.lv_drawer_left);
 
         // open drawer if the user have not learned the drawer
         if (!mUserLearnedDrawer) {
-            mDrawerLayout.openDrawer(mLvDrawer);
+            mDrawerLayout.openDrawer(mLeftDrawerContainer);
         }
+
+        // set profile listener
+        mLeftDrawerContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // close drawer
+                closeLeftDrawer();
+
+                // display login fragment
+                UserProfileFrag frag = new UserProfileFrag();
+                FragmentTransaction mFragTrans = getSupportFragmentManager().beginTransaction();
+                mFragTrans.setCustomAnimations(R.anim.anim_slide_in_right, android.R.anim.fade_out);
+                mFragTrans.replace(R.id.fl_drawer, frag, "UserProfileFrag");
+                mFragTrans.addToBackStack(null);
+                mFragTrans.commit();
+            }
+        });
 
         // set navigation menu adapter and listener
         mLvDrawer.setAdapter(new NaviDrawerLeftAdapter(this, mDrawerIcons, mDrawerTitles));
@@ -138,7 +176,7 @@ public class BaseActivity extends FragmentActivity {
                 mFrag = new CuisineListFrag();
                 break;
 
-            case 3:
+            case 4:
                 // start Settings Fragment
                 mFrag = new SettingsFrag();
                 break;
@@ -146,7 +184,7 @@ public class BaseActivity extends FragmentActivity {
 
         // switch fragment with animation
         FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
-        //mFragTrans.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        mFragTrans.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
         mFragTrans.replace(R.id.fl_drawer, mFrag);
         mFragTrans.commit();
 
@@ -206,20 +244,6 @@ public class BaseActivity extends FragmentActivity {
             FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
             mFragTrans.setCustomAnimations(R.anim.anim_in, R.anim.anim_out);
             mFragTrans.replace(R.id.fl_drawer, frag);
-            mFragTrans.addToBackStack(null);
-            mFragTrans.commit();
-        }
-
-        // open login screen
-        if (item.getItemId() == R.id.menu_user_profile) {
-			// close drawer
-            closeLeftDrawer();
-			
-            // display login fragment
-            UserProfileFrag frag = new UserProfileFrag();
-            FragmentTransaction mFragTrans = this.getSupportFragmentManager().beginTransaction();
-            mFragTrans.setCustomAnimations(R.anim.anim_slide_in_right, android.R.anim.fade_out);
-            mFragTrans.replace(R.id.fl_drawer, frag, "UserProfileFrag");
             mFragTrans.addToBackStack(null);
             mFragTrans.commit();
         }

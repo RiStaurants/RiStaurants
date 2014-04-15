@@ -75,4 +75,52 @@ public class HelperClass {
         ColorFilter colorFilter = new ColorMatrixColorFilter(colorMatrix);
         imageView.setColorFilter(colorFilter);
     }
+
+    /**
+     * Create circle image.
+     *
+     * @param bitmap Bitmap to be cropped
+     * @return Returns the circle image
+     */
+    public static Bitmap getCircleImage(Bitmap bitmap){
+        // create Bitmap to draw to
+        Bitmap mBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+
+        // create Rect to hold image
+        final Rect mRec = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        // create Canvas
+        Canvas mCanvas = new Canvas(mBitmap);
+
+        // create Paint
+        final Paint mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+
+        // get the half size of the image
+        int mHalfWidth = bitmap.getWidth() / 2;
+        int mHalfHeight = bitmap.getHeight() / 2;
+
+        // draw circle
+        mCanvas.drawCircle(mHalfWidth, mHalfHeight, Math.max(mHalfWidth, mHalfHeight), mPaint);
+
+        // unknown
+        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+
+        // draw the image
+        mCanvas.drawBitmap(bitmap, mRec, mRec, mPaint);
+
+        // return the circle image
+        return mBitmap;
+    }
+
+    /**
+     * Reload activity
+     *
+     * @param activity Activity to be reloaded
+     */
+    public static void reloadActivity(Activity activity) {
+        // reload activity
+        activity.finish();
+        activity.startActivity(activity.getIntent());
+    }
 }

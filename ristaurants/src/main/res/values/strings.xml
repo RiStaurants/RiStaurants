@@ -62,14 +62,14 @@
     <string name="login_dialog">Login</string>
     <string name="user_full_name">Name: </string>
     <string name="user_location">Location: </string>
-    <string name="user_bio">Bio: </string>
+    <string name="user_occupation">Occupation: </string>
     <string name="user_member_since">Member Since: </string>
     <string name="email_hint">email</string>
     <string name="menu_profile_edit">Edit Profile</string>
     <string name="first_hint">first Name</string>
     <string name="last_hint">last Name</string>
     <string name="location_hint">location</string>
-    <string name="bio_hint">bio</string>
+    <string name="bio_occupation">occupation</string>
     <string name="total_post">Total Post: </string>
 
 </resources>

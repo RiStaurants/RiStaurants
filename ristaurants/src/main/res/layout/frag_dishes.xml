@@ -1,7 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-	android:background="@android:color/holo_blue_dark"
+	android:background="@android:color/white"
     android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/lv_content"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:divider="@android:color/holo_blue_dark"
+        android:dividerHeight="@dimen/no_diver" />
     
 </LinearLayout>

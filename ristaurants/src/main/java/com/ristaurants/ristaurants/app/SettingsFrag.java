@@ -11,6 +11,7 @@ import com.ristaurants.ristaurants.app.*;
 
 import android.support.v4.app.Fragment;
 import com.parse.*;
+import com.ristaurants.ristaurants.misc.HelperClass;
 
 /**
  *
@@ -37,6 +38,9 @@ public class SettingsFrag extends Fragment {
 
 								// let user know he/she is being logout
 								Toast.makeText(getActivity(), "Logout successful", Toast.LENGTH_LONG).show();
+
+                                // reload activity
+                                HelperClass.reloadActivity(getActivity());
 							}
 						});
 					builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener(){

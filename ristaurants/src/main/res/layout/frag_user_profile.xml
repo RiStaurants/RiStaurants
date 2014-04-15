@@ -23,7 +23,7 @@
                 android:id="@+id/niv_profile_image"
                 android:layout_width="@dimen/profile_size"
                 android:layout_height="@dimen/profile_size"
-                android:background="@android:color/holo_blue_dark"
+                android:background="@drawable/profile_pic"
                 android:scaleType="centerCrop" />
 
             <LinearLayout
@@ -164,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="@string/user_bio"
+                android:text="@string/user_occupation"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/restaurants_name_size" />
 

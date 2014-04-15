@@ -52,7 +52,7 @@ public class RestaurantsFrag extends Fragment {
      */
     private void makeNetworkCall(String className) {
         // get data from database
-        ParseQuery<ParseObject> parseObject = ParseQuery.getQuery("RestaurantList");
+        ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(className);
         parseObject.orderByDescending("rate");
         parseObject.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> restaurantList, ParseException e) {
