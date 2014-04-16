@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RiStaurants.iml" filepath="$PROJECT_DIR$/RiStaurants.iml" />
+      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
       <module fileurl="file://$PROJECT_DIR$/ristaurants/ristaurants.iml" filepath="$PROJECT_DIR$/ristaurants/ristaurants.iml" />
     </modules>
   </component>

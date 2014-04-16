@@ -3,14 +3,19 @@ package com.ristaurants.ristaurants.misc;
 import android.app.Application;
 
 import com.parse.Parse;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
 import com.ristaurants.ristaurants.app.BaseActivity;
+import com.ristaurants.ristaurants.app.R;
 
 /**
  * Instantiate all singleton class
  */
 public class Singleton extends Application {
+
+    public static final String FACEBOOK_LOGIN_TAG = "Facebook Login";
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -18,13 +23,13 @@ public class Singleton extends Application {
         // instantiate volley instances
         SingletonVolley.initantiate(this);
 
-        // instantiate Parse Database
-        Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
+        // instantiate parse database
+        Parse.initialize(this, getString(R.string.parse_app_id), getString(R.string.parse_app_secret));
 
         // notification
-        //PushService.setDefaultPushCallback(this, BaseActivity.class);
+        PushService.setDefaultPushCallback(this, BaseActivity.class);
 
         // save the current Installation to Parse.
-        //ParseInstallation.getCurrentInstallation().saveInBackground();
+        ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 }

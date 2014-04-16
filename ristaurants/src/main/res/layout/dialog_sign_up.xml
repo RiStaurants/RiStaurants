@@ -9,15 +9,33 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.ristaurants.ristaurants.views.BenderThinTextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/custom_dialog_height"
+            android:layout_height="wrap_content"
             android:background="@android:color/holo_blue_dark"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/row_margin"
-            android:text="@string/sign_up"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/restaurants_name_size" />
+            android:orientation="horizontal">
+
+            <com.ristaurants.ristaurants.views.BenderThinTextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/custom_dialog_height"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/row_margin"
+                android:layout_marginTop="@dimen/row_margin"
+                android:text="@string/sign_up"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/restaurants_name_size" />
+
+            <ImageView
+                android:id="@+id/iv_sign_up_image_preview"
+                android:layout_width="@dimen/custom_dialog_height"
+                android:layout_height="@dimen/custom_dialog_height"
+                android:layout_margin="@dimen/row_margin"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/profile_pic"/>
+
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/et_sign_up_username"
@@ -61,7 +79,7 @@
             android:layout_marginRight="4dp"
             android:layout_marginTop="4dp"
             android:hint="@string/first_hint"
-            android:inputType="textAutoComplete"/>
+            android:inputType="textAutoComplete" />
 
         <EditText
             android:id="@+id/et_sign_up_last"
@@ -72,7 +90,7 @@
             android:layout_marginRight="4dp"
             android:layout_marginTop="4dp"
             android:hint="@string/last_hint"
-            android:inputType="textAutoComplete"/>
+            android:inputType="textAutoComplete" />
 
         <EditText
             android:id="@+id/et_sign_up_location"
@@ -83,7 +101,7 @@
             android:layout_marginRight="4dp"
             android:layout_marginTop="4dp"
             android:hint="@string/location_hint"
-            android:inputType="textAutoComplete"/>
+            android:inputType="textAutoComplete" />
 
         <EditText
             android:id="@+id/et_sign_up_bio"
@@ -94,13 +112,7 @@
             android:layout_marginRight="4dp"
             android:layout_marginTop="4dp"
             android:hint="@string/bio_occupation"
-            android:inputType="textMultiLine"/>
-
-        <Button
-            android:id="@+id/bt_upload_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Profile Image"/>
+            android:inputType="textAutoComplete" />
 
     </LinearLayout>
 </ScrollView>

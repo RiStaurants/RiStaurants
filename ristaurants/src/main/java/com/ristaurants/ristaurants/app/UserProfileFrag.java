@@ -5,11 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.text.util.Linkify;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,13 +18,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.parse.LogInCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -35,8 +34,6 @@ import com.ristaurants.ristaurants.misc.HelperClass;
 import com.ristaurants.ristaurants.misc.SingletonVolley;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -46,7 +43,7 @@ import java.util.Date;
 public class UserProfileFrag extends Fragment {
     // instance variables
     private ParseFile mProfileImage;
-    private NetworkImageView mIvProfileImage;
+    private ImageView mIvProfileImagePreview;
     private static final int SELECT_PHOTO = 100;
 
     @Override
@@ -89,15 +86,8 @@ public class UserProfileFrag extends Fragment {
         return view;
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        setHasOptionsMenu(true);
-        getActivity().supportInvalidateOptionsMenu();
-    }
-
     /**
-     * try to login user to account
+     * Try to login user to account
      */
     private void loginUser() {
         // dialog
@@ -129,7 +119,8 @@ public class UserProfileFrag extends Fragment {
                             fragTrans.commit();
 
                         } else {
-                            // Sign up failed. Look at the ParseException to see what happened.
+                            /// log error
+                            Log.d("Error Logging in user: ", e.getMessage());
                             Toast.makeText(getActivity(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
@@ -149,7 +140,10 @@ public class UserProfileFrag extends Fragment {
         builder.create().show();
     }
 
-    private void signUp(){
+    /**
+     * Try to sign up user
+     */
+    private void signUp() {
         // dialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -157,13 +151,22 @@ public class UserProfileFrag extends Fragment {
         View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_sign_up, null);
         builder.setView(view);
 
-        Button mBtProfileImage = (Button) view.findViewById(R.id.bt_upload_image);
-        mBtProfileImage.setOnClickListener(new View.OnClickListener() {
+        // views
+        final EditText mEtUsername = (EditText) view.findViewById(R.id.et_sign_up_username);
+        final EditText mEtEmail = (EditText) view.findViewById(R.id.et_sign_up_email);
+        final EditText mEtPassword = (EditText) view.findViewById(R.id.et_sign_up_password);
+        final EditText mEtFirstName = (EditText) view.findViewById(R.id.et_sign_up_first);
+        final EditText mEtLastName = (EditText) view.findViewById(R.id.et_sign_up_last);
+        final EditText mEtLocation = (EditText) view.findViewById(R.id.et_sign_up_location);
+        final EditText mEtBio = (EditText) view.findViewById(R.id.et_sign_up_bio);
+
+        // upload avatar preview
+        mIvProfileImagePreview = (ImageView) view.findViewById(R.id.iv_sign_up_image_preview);
+        mIvProfileImagePreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, SELECT_PHOTO);
+                // open gallery, select image and crop it
+                selectProfileImage();
             }
         });
 
@@ -171,15 +174,6 @@ public class UserProfileFrag extends Fragment {
         builder.setPositiveButton(R.string.sign_up, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                // views
-                EditText mEtUsername = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_sign_up_username);
-                EditText mEtEmail = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_sign_up_email);
-                EditText mEtPassword = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_sign_up_password);
-                EditText mEtFirstName = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_sign_up_first);
-                EditText mEtLastName = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_sign_up_last);
-                EditText mEtLocation = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_sign_up_location);
-                EditText mEtBio = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_sign_up_bio);
-
                 // sign up user
                 ParseUser user = new ParseUser();
                 user.setUsername(mEtUsername.getText().toString().toLowerCase());
@@ -210,11 +204,7 @@ public class UserProfileFrag extends Fragment {
                                     Toast.makeText(getActivity(), "Sign up successful", Toast.LENGTH_LONG).show();
 
                                     // reload fragment
-                                    Fragment frag = getActivity().getSupportFragmentManager().findFragmentByTag("UserProfileFrag");
-                                    FragmentTransaction fragTrans = getActivity().getSupportFragmentManager().beginTransaction();
-                                    fragTrans.detach(frag);
-                                    fragTrans.attach(frag);
-                                    fragTrans.commit();
+                                    reloadFragment();
                                 }
                             });
 
@@ -222,8 +212,8 @@ public class UserProfileFrag extends Fragment {
                             builder.show();
 
                         } else {
-                            // Sign up didn't succeed. Look at the ParseException
-                            // to figure out what went wrong
+                            // log error
+                            Log.d("Error Saving user: ", e.getMessage());
                             Toast.makeText(getActivity(), "Sign up was not successful.\n\n" + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
@@ -244,26 +234,16 @@ public class UserProfileFrag extends Fragment {
     }
 
     /**
-     * display user information
+     * Display user information
      */
     private void displayUserInfo(View view) {
         // get user data
-        ParseUser user = ParseUser.getCurrentUser();
-
-        // set user image
-        mIvProfileImage = (NetworkImageView) view.findViewById(R.id.niv_profile_image);
+        final ParseUser user = ParseUser.getCurrentUser();
 
         // check if user have an image
-        if (user.getParseFile("userImage") != null) {
+        if (user.getParseFile("userImage") != null) {// set user image
+            NetworkImageView mIvProfileImage = (NetworkImageView) view.findViewById(R.id.niv_profile_image);
             mIvProfileImage.setImageUrl(user.getParseFile("userImage").getUrl(), SingletonVolley.getImageLoader());
-            mIvProfileImage.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent, SELECT_PHOTO);
-                }
-            });
         }
 
         // set user name
@@ -291,6 +271,42 @@ public class UserProfileFrag extends Fragment {
         // set bio
         TextView mTvPost = (TextView) view.findViewById(R.id.tv_profile_post_count);
         mTvPost.setText(mTvPost.getText().toString() + " " + user.getInt("postTotal"));
+    }
+
+    /**
+     * Open gallery to select image and crop.
+     */
+    private void selectProfileImage() {
+        // open gallery, select image and crop it
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_PICK);
+        intent.putExtra("crop", "true");
+        intent.putExtra("aspectX", 0);
+        intent.putExtra("aspectY", 0);
+        intent.putExtra("outputX", 128);
+        intent.putExtra("outputY", 128);
+        intent.putExtra("return-data", true);
+        startActivityForResult(intent, SELECT_PHOTO);
+    }
+
+    /**
+     * Reload fragment
+     */
+    private void reloadFragment(){
+        // reload fragment
+        Fragment frag = getActivity().getSupportFragmentManager().findFragmentByTag("UserProfileFrag");
+        FragmentTransaction fragTrans = getActivity().getSupportFragmentManager().beginTransaction();
+        fragTrans.detach(frag);
+        fragTrans.attach(frag);
+        fragTrans.commit();
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
+        getActivity().supportInvalidateOptionsMenu();
     }
 
     @Override
@@ -327,19 +343,23 @@ public class UserProfileFrag extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         // get image from device
-        switch(requestCode) {
+        switch (requestCode) {
             case SELECT_PHOTO:
-                if(resultCode == Activity.RESULT_OK){
+                if (resultCode == Activity.RESULT_OK) {
                     try {
                         // input stream
-                        InputStream imageStream = getActivity().getContentResolver().openInputStream(data.getData());
+                        Bundle extras = data.getExtras();
 
                         // get image from device
-                        Bitmap image = HelperClass.getCircleImage(BitmapFactory.decodeStream(imageStream));
+                        Bitmap image = extras.getParcelable("data");
+                        image = HelperClass.getCircleImage(image);
 
                         // convert image to byte[]
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+                        // set preview avatar image
+                        mIvProfileImagePreview.setImageBitmap(image);
 
                         // convert image to parse file
                         mProfileImage = new ParseFile("profile_image.jpg", stream.toByteArray());
@@ -362,7 +382,7 @@ public class UserProfileFrag extends Fragment {
                             });
                         }
 
-                    } catch (FileNotFoundException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }

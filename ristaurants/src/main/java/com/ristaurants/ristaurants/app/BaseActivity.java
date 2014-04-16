@@ -1,5 +1,8 @@
 package com.ristaurants.ristaurants.app;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -10,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,14 +22,25 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
-import com.parse.Parse;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.model.GraphUser;
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
 import com.ristaurants.ristaurants.misc.Singleton;
 import com.ristaurants.ristaurants.misc.SingletonVolley;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class BaseActivity extends FragmentActivity {
     // instance variables
@@ -35,6 +50,7 @@ public class BaseActivity extends FragmentActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private LinearLayout mLeftDrawerContainer;
     private ListView mLvDrawer;
+    private Dialog mProgressDialog;
     private Fragment mFrag;
     private String[] mDrawerTitles;
     private boolean mUserLearnedDrawer;
@@ -64,23 +80,11 @@ public class BaseActivity extends FragmentActivity {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
         }
 
-        // set profile date
-        if (ParseUser.getCurrentUser() != null) {
-            // set profile image
-            NetworkImageView mIvProfileAvater = (NetworkImageView) findViewById(R.id.niv_profile_avatar);
-            mIvProfileAvater.setImageUrl(ParseUser.getCurrentUser().getParseFile("userImage").getUrl(), SingletonVolley.getImageLoader());
-
-            // set profile name
-            TextView mTvProfileName = (TextView) findViewById(R.id.tv_profile_name);
-            mTvProfileName.setText(ParseUser.getCurrentUser().getUsername());
-        }
-
         // get drawer icons
         Drawable[] mDrawerIcons = {
                 getResources().getDrawable(R.drawable.restaurant_icon),
                 getResources().getDrawable(R.drawable.dishes_icon),
                 getResources().getDrawable(R.drawable.cuisine_icon),
-                getResources().getDrawable(R.drawable.flavors_icon),
                 getResources().getDrawable(R.drawable.settings_icon)
         };
 
@@ -104,13 +108,7 @@ public class BaseActivity extends FragmentActivity {
                 // close drawer
                 closeLeftDrawer();
 
-                // display login fragment
-                UserProfileFrag frag = new UserProfileFrag();
-                FragmentTransaction mFragTrans = getSupportFragmentManager().beginTransaction();
-                mFragTrans.setCustomAnimations(R.anim.anim_slide_in_right, android.R.anim.fade_out);
-                mFragTrans.replace(R.id.fl_drawer, frag, "UserProfileFrag");
-                mFragTrans.addToBackStack(null);
-                mFragTrans.commit();
+                showUserDetailsActivity();
             }
         });
 
@@ -156,6 +154,17 @@ public class BaseActivity extends FragmentActivity {
         if (savedInstanceState == null) {
             selectItem(mCurrentSelectedPosition);
         }
+
+        // set profile date
+        if (ParseUser.getCurrentUser() != null) {
+            // set profile image
+            NetworkImageView mIvProfileAvater = (NetworkImageView) findViewById(R.id.niv_profile_avatar);
+            mIvProfileAvater.setImageUrl(ParseUser.getCurrentUser().getParseFile("userImage").getUrl(), SingletonVolley.getImageLoader());
+
+            // set profile name
+            TextView mTvProfileName = (TextView) findViewById(R.id.tv_profile_name);
+            mTvProfileName.setText(ParseUser.getCurrentUser().getUsername());
+        }
     }
 
     private void selectItem(int position) {
@@ -176,7 +185,7 @@ public class BaseActivity extends FragmentActivity {
                 mFrag = new CuisineListFrag();
                 break;
 
-            case 4:
+            case 3:
                 // start Settings Fragment
                 mFrag = new SettingsFrag();
                 break;
@@ -255,6 +264,16 @@ public class BaseActivity extends FragmentActivity {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
+    }
+
+    private void showUserDetailsActivity() {
+        // display login fragment
+        UserProfileFrag frag = new UserProfileFrag();
+        FragmentTransaction mFragTrans = getSupportFragmentManager().beginTransaction();
+        mFragTrans.setCustomAnimations(R.anim.anim_slide_in_right, android.R.anim.fade_out);
+        mFragTrans.replace(R.id.fl_drawer, frag, "UserProfileFrag");
+        mFragTrans.addToBackStack(null);
+        mFragTrans.commit();
     }
 
     /**

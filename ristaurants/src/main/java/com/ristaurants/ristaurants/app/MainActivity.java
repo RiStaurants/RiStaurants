@@ -1,9 +1,14 @@
 package com.ristaurants.ristaurants.app;
 
-import android.app.*;
-import android.os.*;
-import android.view.*;
-import android.widget.*;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.model.GraphUser;
 
 public class MainActivity extends BaseActivity {
     @Override
