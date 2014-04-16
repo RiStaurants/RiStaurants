@@ -80,8 +80,9 @@ public class AddDishReview extends Activity {
 
             // create and upload review to parse
             ParseObject parseObjectReview = new ParseObject("DishesReviews");
-            parseObjectReview.put("dishName", mDishName);
+            parseObjectReview.put("userImage", user.getParseFile("userImage").getUrl());
             parseObjectReview.put("username", fullname);
+            parseObjectReview.put("dishName", mDishName);
             parseObjectReview.put("review", mEtDesc.getText().toString());
             parseObjectReview.put("rate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
             parseObjectReview.put("dishPointer", dishPointerID);

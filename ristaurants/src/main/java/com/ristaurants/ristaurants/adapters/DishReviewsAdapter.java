@@ -52,6 +52,7 @@ public class DishReviewsAdapter extends BaseAdapter {
             // instantiate views
             mViewHolder = new ViewHolder();
             assert view != null;
+            mViewHolder.mIvDishReviewUserImage = (NetworkImageView) view.findViewById(R.id.niv_dish_review_author_image);
             mViewHolder.mIvDishReviewRate = (NetworkImageView) view.findViewById(R.id.niv_dish_review_rate);
             mViewHolder.mTvDishReviewAuthor = (TextView) view.findViewById(R.id.tv_dish_review_author);
             mViewHolder.mTvDishReviewDate = (TextView) view.findViewById(R.id.tv_dish_review_date);
@@ -63,6 +64,9 @@ public class DishReviewsAdapter extends BaseAdapter {
             // get view holder from tag
             mViewHolder = (ViewHolder) view.getTag();
         }
+
+        // set user image
+        mViewHolder.mIvDishReviewUserImage.setImageUrl(mData.get(position).getString("userImage"), SingletonVolley.getImageLoader());
 
         // set review author name
         String author = mData.get(position).getString("username");
@@ -86,6 +90,7 @@ public class DishReviewsAdapter extends BaseAdapter {
 
     class ViewHolder {
         // instantiate views
+        NetworkImageView mIvDishReviewUserImage;
         NetworkImageView mIvDishReviewRate;
         TextView mTvDishReviewAuthor;
         TextView mTvDishReviewDate;
