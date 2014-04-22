@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -174,50 +173,64 @@ public class UserProfileFrag extends Fragment {
         builder.setPositiveButton(R.string.sign_up, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                // sign up user
-                ParseUser user = new ParseUser();
-                user.setUsername(mEtUsername.getText().toString().toLowerCase());
-                user.setPassword(mEtPassword.getText().toString().toLowerCase());
-                user.setEmail(mEtEmail.getText().toString().toLowerCase());
-                user.put("firstName", mEtFirstName.getText().toString().toLowerCase());
-                user.put("lastName", mEtLastName.getText().toString().toLowerCase());
-                user.put("location", mEtLocation.getText().toString().toLowerCase());
-                user.put("bio", mEtBio.getText().toString().toLowerCase());
-                user.put("postTotal", 0);
+                //
+                if (!mEtUsername.getText().toString().equals("") &&
+                        !mEtEmail.getText().toString().equals("") &&
+                        !mEtFirstName.getText().toString().equals("") &&
+                        !mEtLastName.getText().toString().equals("") &&
+                        !mEtPassword.getText().toString().equals("") &&
+                        !mEtLocation.getText().toString().equals("") &&
+                        !mEtBio.getText().toString().equals("")) {
 
-                // set image
-                if (mProfileImage != null) {
-                    user.put("userImage", mProfileImage);
-                }
+                    // sign up user
+                    ParseUser user = new ParseUser();
+                    user.setUsername(mEtUsername.getText().toString().toLowerCase());
+                    user.setPassword(mEtPassword.getText().toString().toLowerCase());
+                    user.setEmail(mEtEmail.getText().toString().toLowerCase());
+                    user.put("firstName", mEtFirstName.getText().toString().toLowerCase());
+                    user.put("lastName", mEtLastName.getText().toString().toLowerCase());
+                    user.put("location", mEtLocation.getText().toString().toLowerCase());
+                    user.put("bio", mEtBio.getText().toString().toLowerCase());
+                    user.put("postTotal", 0);
 
-                // listener
-                user.signUpInBackground(new SignUpCallback() {
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            // Sign up was successful
-                            // let user know to verify the email
-                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                            builder.setMessage(R.string.please_verify_email);
-                            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // let user know everything went well
-                                    Toast.makeText(getActivity(), "Sign up successful", Toast.LENGTH_LONG).show();
-
-                                    // reload fragment
-                                    reloadFragment();
-                                }
-                            });
-
-                            // show dialog
-                            builder.show();
-
-                        } else {
-                            // log error
-                            Log.d("Error Saving user: ", e.getMessage());
-                            Toast.makeText(getActivity(), "Sign up was not successful.\n\n" + e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
+                    // set image
+                    if (mProfileImage != null) {
+                        user.put("userImage", mProfileImage);
                     }
-                });
+
+                    // listener
+                    user.signUpInBackground(new SignUpCallback() {
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                // Sign up was successful
+                                // let user know to verify the email
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setMessage(R.string.please_verify_email);
+                                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // let user know everything went well
+                                        Toast.makeText(getActivity(), "Sign up successful", Toast.LENGTH_LONG).show();
+
+                                        // reload fragment
+                                        reloadFragment();
+                                    }
+                                });
+
+                                // show dialog
+                                builder.show();
+
+                            } else {
+                                // log error
+                                Log.d("Error Saving user: ", e.getMessage());
+                                Toast.makeText(getActivity(), "Sign up was not successful.\n\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+
+                } else {
+                    // let user know to complete all fields
+                    Toast.makeText(getActivity(), R.string.please_fill_all_fields, Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -293,7 +306,7 @@ public class UserProfileFrag extends Fragment {
     /**
      * Reload fragment
      */
-    private void reloadFragment(){
+    private void reloadFragment() {
         // reload fragment
         Fragment frag = getActivity().getSupportFragmentManager().findFragmentByTag("UserProfileFrag");
         FragmentTransaction fragTrans = getActivity().getSupportFragmentManager().beginTransaction();
@@ -312,7 +325,6 @@ public class UserProfileFrag extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        //menu.findItem(R.id.menu_user_profile).setVisible(false);
         menu.findItem(R.id.menu_profile_edit).setVisible(false);
     }
 

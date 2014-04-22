@@ -24,9 +24,6 @@ public class Cuisine extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frag_restaurants);
 
-        // instantiate Parse Database
-        Parse.initialize(Cuisine.this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
-
         // get data from intent
         if (getIntent().getExtras() != null) {
             mActionBarTitle = getIntent().getExtras().getString("mCuisine");

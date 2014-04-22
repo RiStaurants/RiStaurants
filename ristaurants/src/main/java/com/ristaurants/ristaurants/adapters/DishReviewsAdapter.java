@@ -66,7 +66,8 @@ public class DishReviewsAdapter extends BaseAdapter {
         }
 
         // set user image
-        mViewHolder.mIvDishReviewUserImage.setImageUrl(mData.get(position).getString("userImage"), SingletonVolley.getImageLoader());
+        mViewHolder.mIvDishReviewUserImage.setImageUrl(mData.get(position).getParseObject("userPointer").getParseFile("userImage").getUrl(), SingletonVolley.getImageLoader());
+        //mViewHolder.mIvDishReviewUserImage.setImageUrl(mData.get(position).getString("userImage"), SingletonVolley.getImageLoader());
 
         // set review author name
         String author = mData.get(position).getString("username");

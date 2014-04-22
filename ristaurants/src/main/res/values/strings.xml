@@ -76,5 +76,9 @@
     <string name="location_hint">location</string>
     <string name="bio_occupation">occupation</string>
     <string name="total_post">Total Post: </string>
+    <string name="spinner_select_flavors">Select flavor: </string>
+    <string name="spinner_select_rate">Select Rate: </string>
+    <string name="hint_review">review</string>
+    <string name="add">Add</string>
 
 </resources>

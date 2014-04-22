@@ -22,6 +22,7 @@ public class AddDishReview extends Activity {
     // instance variables
     private EditText mEtDesc;
     private Spinner mNpRate;
+    private Spinner mNpFlavors;
     private String mDishName;
     private String mDishID;
 
@@ -29,9 +30,6 @@ public class AddDishReview extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_dish_review);
-
-        // instantiate Parse Database
-        Parse.initialize(this, "WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ", "EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh");
 
         // set-up action bar
         getActionBar().setTitle(HelperClass.setActionbarTitle(this, getResources().getString(R.string.ab_title_add_dish_review)));
@@ -41,6 +39,7 @@ public class AddDishReview extends Activity {
         // instantiate view
         mEtDesc = (EditText) findViewById(R.id.et_desc);
         mNpRate = (Spinner) findViewById(R.id.sp_rate);
+        mNpFlavors = (Spinner) findViewById(R.id.sp_flavors);
 
         // get data from previous activity
         if (getIntent().getExtras() != null) {
@@ -74,18 +73,20 @@ public class AddDishReview extends Activity {
             ParseUser user = ParseUser.getCurrentUser();
             // link review to dish
             ParseObject dishPointerID = ParseObject.createWithoutData("RestaurantsMenus", mDishID);
+            ParseObject userPointerID = ParseObject.createWithoutData("_User", user.getObjectId());
 
             // get user name
-            String fullname = user.getString("firstName") + " " + user.getString("lastName");
+            String fullName = user.getString("firstName") + " " + user.getString("lastName");
 
             // create and upload review to parse
             ParseObject parseObjectReview = new ParseObject("DishesReviews");
-            parseObjectReview.put("userImage", user.getParseFile("userImage").getUrl());
-            parseObjectReview.put("username", fullname);
+            parseObjectReview.put("username", fullName);
             parseObjectReview.put("dishName", mDishName);
             parseObjectReview.put("review", mEtDesc.getText().toString());
             parseObjectReview.put("rate", Integer.parseInt(mNpRate.getSelectedItem().toString()));
+            parseObjectReview.put("flavor", mNpFlavors.getSelectedItem().toString().toLowerCase());
             parseObjectReview.put("dishPointer", dishPointerID);
+            parseObjectReview.put("userPointer", userPointerID);
             parseObjectReview.saveInBackground();
 
             // update user total post count

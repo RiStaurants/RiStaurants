@@ -11,6 +11,7 @@ import android.widget.*;
 
 import com.android.volley.toolbox.*;
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -70,9 +71,6 @@ public class DishesReviews extends Activity {
     protected void onRestart() {
         super.onRestart();
 
-        // get data from database
-        //makeNetworkCall("DishesReviews");
-
         finish();
         startActivity(getIntent());
     }
@@ -87,6 +85,7 @@ public class DishesReviews extends Activity {
         ParseQuery<ParseObject> parseObject = ParseQuery.getQuery(className);
         parseObject.whereEqualTo("dishName", mDishName);
         parseObject.orderByDescending("createdAt");
+        parseObject.include("userPointer");
         parseObject.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> parseObjectList, ParseException e) {
                 if (e == null) {
