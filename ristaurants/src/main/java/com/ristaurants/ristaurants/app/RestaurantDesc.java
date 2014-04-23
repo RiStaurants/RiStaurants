@@ -136,7 +136,7 @@ public class RestaurantDesc extends Activity implements QuickReturnScrollview.Ca
                                         // set image color
                                         if (mIsFavorite) {
                                             mIvFavorites.setImageResource(R.drawable.ic_action_rating_favorite_blue);
-                                        } else if (parseObjectList.size() == 0) {
+                                        } else {
                                             mIvFavorites.setImageResource(R.drawable.ic_action_rating_favorite_white);
                                         }
 
