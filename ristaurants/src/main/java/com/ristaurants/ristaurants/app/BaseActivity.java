@@ -85,6 +85,7 @@ public class BaseActivity extends FragmentActivity {
                 getResources().getDrawable(R.drawable.restaurant_icon),
                 getResources().getDrawable(R.drawable.dishes_icon),
                 getResources().getDrawable(R.drawable.cuisine_icon),
+                getResources().getDrawable(R.drawable.flavors_icon),
                 getResources().getDrawable(R.drawable.settings_icon)
         };
 
@@ -186,6 +187,11 @@ public class BaseActivity extends FragmentActivity {
                 break;
 
             case 3:
+                // start flavors Fragment
+                mFrag = new FavoritesFrag();
+                break;
+
+            case 4:
                 // start Settings Fragment
                 mFrag = new SettingsFrag();
                 break;

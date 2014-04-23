@@ -23,6 +23,9 @@ public class SettingsFrag extends Fragment {
         // inflate layout
         View view = inflater.inflate(R.layout.frag_settings, null);
 
+        // set-up action bar
+        getActivity().getActionBar().setTitle(HelperClass.setActionbarTitle(getActivity(), getResources().getString(R.string.ab_title_settings)));
+
 		// logout user
 		TextView mTvLogout = (TextView) view.findViewById(R.id.tv_profile_logout);
 		mTvLogout.setOnClickListener(new OnClickListener(){

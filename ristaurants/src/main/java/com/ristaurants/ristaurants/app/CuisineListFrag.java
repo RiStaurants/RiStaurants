@@ -32,6 +32,9 @@ public class CuisineListFrag extends Fragment {
         // inflate layout
         View view = inflater.inflate(R.layout.frag_cuisine, container, false);
 
+        // set-up action bar
+        getActivity().getActionBar().setTitle(HelperClass.setActionbarTitle(getActivity(), getResources().getString(R.string.ab_title_cuisine)));
+
         // set list view and adapter
         mLvContent = (ListView) view.findViewById(R.id.lv_content);
 

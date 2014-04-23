@@ -28,18 +28,24 @@ public class RestaurantsFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // inflate layout
-        return inflater.inflate(R.layout.frag_restaurants, null);
+        View view = inflater.inflate(R.layout.frag_restaurants, null);
+
+        // set-up action bar
+        getActivity().getActionBar().setTitle(HelperClass.setActionbarTitle(getActivity(), getResources().getString(R.string.ab_title_restaurants)));
+
+        // instantiate views
+        mLvContent = (ListView) view.findViewById(R.id.lv_content);
+
+        // get data from database
+        makeNetworkCall("RestaurantList");
+
+        // return view
+        return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        // instantiate views
-        mLvContent = (ListView) getActivity().findViewById(R.id.lv_content);
-
-        // get data from database
-        makeNetworkCall("RestaurantList");
 
         // refresh action bar menu
         setHasOptionsMenu(true);

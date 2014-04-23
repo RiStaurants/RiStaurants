@@ -50,6 +50,9 @@ public class UserProfileFrag extends Fragment {
         // inflate view
         View view = inflater.inflate(R.layout.frag_user_profile, null);
 
+        // set-up action bar
+        getActivity().getActionBar().setTitle(HelperClass.setActionbarTitle(getActivity(), getResources().getString(R.string.ab_title_profile)));
+
         // get user data
         if (ParseUser.getCurrentUser() != null) {
             // hide sign up container

@@ -28,6 +28,9 @@ public class DishesFrag extends Fragment {
 		// inflate layout
 		View view = inflater.inflate(R.layout.frag_dishes, null);
 
+        // set-up action bar
+        getActivity().getActionBar().setTitle(HelperClass.setActionbarTitle(getActivity(), getResources().getString(R.string.ab_title_top_dishes)));
+
         // instantiate views
         mLvContent = (ListView) view.findViewById(R.id.lv_content);
 

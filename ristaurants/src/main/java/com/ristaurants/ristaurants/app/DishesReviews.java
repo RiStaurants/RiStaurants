@@ -130,7 +130,7 @@ public class DishesReviews extends Activity {
                     builder.setMessage(R.string.please_login);
                     builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // do nothing
+                            dialog.dismiss();
                         }
                     });
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.parse.ParseGeoPoint;
@@ -93,6 +94,7 @@ public class RestaurantsAdapter extends BaseAdapter {
         final String phone = mDataList.get(position).getString("phone");
         final String restaurantID = mDataList.get(position).getObjectId();
         final String address = mDataList.get(position).getString("address");
+        final boolean isFavorite = mDataList.get(position).getBoolean("isFavorite");
         final ParseGeoPoint mGeoPoint = mDataList.get(position).getParseGeoPoint("coordinates");
 
         // set item click listener
@@ -110,6 +112,7 @@ public class RestaurantsAdapter extends BaseAdapter {
                 intent.putExtra("mRate", rate);
                 intent.putExtra("mLatitude", mGeoPoint.getLatitude());
                 intent.putExtra("mLongitude", mGeoPoint.getLongitude());
+                intent.putExtra("mIsFavorite", isFavorite);
                 mContext.startActivity(intent);
 
                 // set activity animation
