@@ -164,7 +164,7 @@ public class BaseActivity extends FragmentActivity {
 
             // set profile name
             TextView mTvProfileName = (TextView) findViewById(R.id.tv_profile_name);
-            mTvProfileName.setText(ParseUser.getCurrentUser().getUsername());
+            mTvProfileName.setText(ParseUser.getCurrentUser().getString("firstName") + " " + ParseUser.getCurrentUser().getString("lastName"));
         }
     }
 

@@ -34,7 +34,7 @@
                 android:paddingLeft="@dimen/row_margin">
 
                 <com.ristaurants.ristaurants.views.BenderSolidTextView
-                    android:id="@+id/tv_profile_username"
+                    android:id="@+id/tv_profile_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
@@ -59,35 +59,6 @@
                     android:textSize="@dimen/restaurants_subname_size" />
 
             </LinearLayout>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/drawer_divider"
-            android:layout_marginBottom="@dimen/row_margin"
-            android:background="@android:color/darker_gray" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/row_margin">
-
-            <com.ristaurants.ristaurants.views.BenderSolidTextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="@string/user_full_name"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/restaurants_name_size" />
-
-            <com.ristaurants.ristaurants.views.BenderThinTextView
-                android:id="@+id/tv_profile_full_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="@dimen/restaurants_name_size" />
 
         </LinearLayout>
 

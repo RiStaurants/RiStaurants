@@ -27,6 +27,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 import com.ristaurants.ristaurants.misc.HelperClass;
@@ -95,19 +96,33 @@ public class UserProfileFrag extends Fragment {
         // dialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+        // get dialog view
+        View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_login, null);
+
+        // views
+        final EditText mEtEmail = (EditText) view.findViewById(R.id.et_login_email);
+        final EditText mEtPassword = (EditText) view.findViewById(R.id.et_login_password);
+        TextView mTvForgotPassword = (TextView) view.findViewById(R.id.tv_forgot_password);
+
+        // handle forgot password
+        mTvForgotPassword.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                forgotPassword(mEtEmail.getText().toString());
+            }
+        });
+
         // inflate and set the layout for the dialog
-        builder.setView(getActivity().getLayoutInflater().inflate(R.layout.dialog_login, null));
+        builder.setView(view);
 
         // handle ok button
         builder.setPositiveButton(R.string.login, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                // views
-                EditText mEtUsername = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_login_username);
-                EditText mEtPassword = (EditText) ((AlertDialog) dialog).findViewById(R.id.et_login_password);
+
 
                 // login user
-                ParseUser.logInInBackground(mEtUsername.getText().toString(), mEtPassword.getText().toString(), new LogInCallback() {
+                ParseUser.logInInBackground(mEtEmail.getText().toString(), mEtPassword.getText().toString(), new LogInCallback() {
                     public void done(ParseUser user, ParseException e) {
                         if (user != null) {
                             // let user know everything went well
@@ -122,7 +137,6 @@ public class UserProfileFrag extends Fragment {
 
                         } else {
                             /// log error
-                            Log.d("Error Logging in user: ", e.getMessage());
                             Toast.makeText(getActivity(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
@@ -154,7 +168,6 @@ public class UserProfileFrag extends Fragment {
         builder.setView(view);
 
         // views
-        final EditText mEtUsername = (EditText) view.findViewById(R.id.et_sign_up_username);
         final EditText mEtEmail = (EditText) view.findViewById(R.id.et_sign_up_email);
         final EditText mEtPassword = (EditText) view.findViewById(R.id.et_sign_up_password);
         final EditText mEtFirstName = (EditText) view.findViewById(R.id.et_sign_up_first);
@@ -177,8 +190,7 @@ public class UserProfileFrag extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 //
-                if (!mEtUsername.getText().toString().equals("") &&
-                        !mEtEmail.getText().toString().equals("") &&
+                if (!mEtEmail.getText().toString().equals("") &&
                         !mEtFirstName.getText().toString().equals("") &&
                         !mEtLastName.getText().toString().equals("") &&
                         !mEtPassword.getText().toString().equals("") &&
@@ -187,7 +199,7 @@ public class UserProfileFrag extends Fragment {
 
                     // sign up user
                     ParseUser user = new ParseUser();
-                    user.setUsername(mEtUsername.getText().toString().toLowerCase());
+                    user.setUsername(mEtEmail.getText().toString().toLowerCase());
                     user.setPassword(mEtPassword.getText().toString().toLowerCase());
                     user.setEmail(mEtEmail.getText().toString().toLowerCase());
                     user.put("firstName", mEtFirstName.getText().toString().toLowerCase());
@@ -224,7 +236,6 @@ public class UserProfileFrag extends Fragment {
 
                             } else {
                                 // log error
-                                Log.d("Error Saving user: ", e.getMessage());
                                 Toast.makeText(getActivity(), "Sign up was not successful.\n\n" + e.getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
@@ -250,6 +261,37 @@ public class UserProfileFrag extends Fragment {
     }
 
     /**
+     * handle user forgot password
+     */
+    private void forgotPassword(String email) {
+        if (!email.equals("") || !email.equals(null)) {
+            ParseUser.requestPasswordResetInBackground(email,
+                    new RequestPasswordResetCallback() {
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                // An email was successfully sent with reset instructions.
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setMessage("An email was successfully sent with password reset instructions.");
+                                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                                // show dialog
+                                builder.show();
+
+                            } else {
+                                // Something went wrong. Look at the ParseException to see what's up.
+                                Toast.makeText(getActivity(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+            );
+        }
+    }
+
+    /**
      * Display user information
      */
     private void displayUserInfo(View view) {
@@ -262,13 +304,9 @@ public class UserProfileFrag extends Fragment {
             mIvProfileImage.setImageUrl(user.getParseFile("userImage").getUrl(), SingletonVolley.getImageLoader());
         }
 
-        // set user name
-        TextView mTvUsername = (TextView) view.findViewById(R.id.tv_profile_username);
-        mTvUsername.setText(user.getUsername());
-
         // set full name
         TextView mTvFullName = (TextView) view.findViewById(R.id.tv_profile_full_name);
-        mTvFullName.setText(mTvFullName.getText().toString() + " " + user.getString("firstName") + " " + user.getString("lastName"));
+        mTvFullName.setText(user.getString("firstName") + " " + user.getString("lastName"));
 
         // set location
         TextView mTvLocation = (TextView) view.findViewById(R.id.tv_profile_location);
