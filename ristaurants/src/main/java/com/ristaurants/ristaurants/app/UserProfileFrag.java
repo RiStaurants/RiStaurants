@@ -129,11 +129,7 @@ public class UserProfileFrag extends Fragment {
                             Toast.makeText(getActivity(), "Login successful", Toast.LENGTH_LONG).show();
 
                             // reload fragment
-                            Fragment frag = getActivity().getSupportFragmentManager().findFragmentByTag("UserProfileFrag");
-                            FragmentTransaction fragTrans = getActivity().getSupportFragmentManager().beginTransaction();
-                            fragTrans.detach(frag);
-                            fragTrans.attach(frag);
-                            fragTrans.commit();
+                            reloadFragment();
 
                         } else {
                             /// log error
@@ -348,12 +344,17 @@ public class UserProfileFrag extends Fragment {
      * Reload fragment
      */
     private void reloadFragment() {
+        /**
         // reload fragment
         Fragment frag = getActivity().getSupportFragmentManager().findFragmentByTag("UserProfileFrag");
         FragmentTransaction fragTrans = getActivity().getSupportFragmentManager().beginTransaction();
         fragTrans.detach(frag);
         fragTrans.attach(frag);
         fragTrans.commit();
+         */
+
+        // reload activity
+        HelperClass.reloadActivity(getActivity());
     }
 
     @Override
