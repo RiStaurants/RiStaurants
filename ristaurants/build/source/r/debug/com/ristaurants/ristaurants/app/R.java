@@ -23,13 +23,14 @@ public final class R {
         public static final int anim_slide_out_top=0x7f04000b;
     }
     public static final class array {
-        public static final int cuisine_categories=0x7f050000;
-        public static final int drawer_title_list=0x7f050001;
-        public static final int flavors_spinner_items=0x7f050002;
-        public static final int rate_image_urls=0x7f050003;
-        public static final int rate_spinner_items=0x7f050004;
-        public static final int restaurants_menu_tab_titles=0x7f050005;
-        public static final int stub=0x7f050006;
+        public static final int cities=0x7f050000;
+        public static final int cuisine_categories=0x7f050001;
+        public static final int drawer_title_list=0x7f050002;
+        public static final int flavors_spinner_items=0x7f050003;
+        public static final int rate_image_urls=0x7f050004;
+        public static final int rate_spinner_items=0x7f050005;
+        public static final int restaurants_menu_tab_titles=0x7f050006;
+        public static final int stub=0x7f050007;
     }
     public static final class attr {
         /** 
@@ -562,7 +563,6 @@ containing a value of this type.
         public static final int et_sign_up_email=0x7f07003b;
         public static final int et_sign_up_first=0x7f07003d;
         public static final int et_sign_up_last=0x7f07003e;
-        public static final int et_sign_up_location=0x7f07003f;
         public static final int et_sign_up_password=0x7f07003c;
         public static final int fl_drawer=0x7f070010;
         public static final int gm_map=0x7f070045;
@@ -604,6 +604,7 @@ containing a value of this type.
         public static final int small=0x7f070005;
         public static final int sp_flavors=0x7f07000d;
         public static final int sp_rate=0x7f07000a;
+        public static final int sp_sign_up_location=0x7f07003f;
         public static final int sv_scroll_container=0x7f07001a;
         public static final int terrain=0x7f070003;
         public static final int tv_app_desc=0x7f070041;

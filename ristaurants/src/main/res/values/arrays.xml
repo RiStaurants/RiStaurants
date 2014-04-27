@@ -49,6 +49,48 @@
         <item>savory</item>
         <item>bitter</item>
     </string-array>
+
+    <string-array name="cities">
+        <item>Barrington</item>
+        <item>Bristol</item>
+        <item>Burrillville</item>
+        <item>Central Falls</item>
+        <item>Charlestown</item>
+        <item>Coventry</item>
+        <item>Cranston</item>
+        <item>Cumberland</item>
+        <item>East Greenwich</item>
+        <item>East Providence</item>
+        <item>Exeter</item>
+        <item>Foster</item>
+        <item>Glocester</item>
+        <item>Hopkinton</item>
+        <item>Jamestown</item>
+        <item>Johnston</item>
+        <item>Lincoln</item>
+        <item>Little Compton</item>
+        <item>Middletown</item>
+        <item>Narragansett</item>
+        <item>New Shoreham</item>
+        <item>Newport</item>
+        <item>North Kingstown</item>
+        <item>North Providence</item>
+        <item>North Smithfield</item>
+        <item>Pawtucket</item>
+        <item>Portsmouth</item>
+        <item>Providence</item>
+        <item>Richmond</item>
+        <item>Scituate</item>
+        <item>Smithfield</item>
+        <item>South Kingstown</item>
+        <item>Tiverton</item>
+        <item>Warren</item>
+        <item>Warwick</item>
+        <item>West Greenwich</item>
+        <item>West Warwick</item>
+        <item>Westerly</item>
+        <item>Woonsocket</item>
+    </string-array>
 	
 	<string-array name="stub">
 		<item>breakfast</item>

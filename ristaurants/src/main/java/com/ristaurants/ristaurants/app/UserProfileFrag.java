@@ -2,6 +2,8 @@ package com.ristaurants.ristaurants.app;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,23 +21,29 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.facebook.LoginActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 import com.ristaurants.ristaurants.misc.HelperClass;
+import com.ristaurants.ristaurants.misc.Singleton;
 import com.ristaurants.ristaurants.misc.SingletonVolley;
 
 import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Fragment to display user profile
@@ -43,6 +51,7 @@ import java.util.Date;
 public class UserProfileFrag extends Fragment {
     // instance variables
     private ParseFile mProfileImage;
+    private Dialog progressDialog;
     private ImageView mIvProfileImagePreview;
     private static final int SELECT_PHOTO = 100;
 
@@ -83,6 +92,8 @@ public class UserProfileFrag extends Fragment {
                     signUp();
                 }
             });
+
+            //facebookLogin();
         }
 
         // return view
@@ -168,7 +179,7 @@ public class UserProfileFrag extends Fragment {
         final EditText mEtPassword = (EditText) view.findViewById(R.id.et_sign_up_password);
         final EditText mEtFirstName = (EditText) view.findViewById(R.id.et_sign_up_first);
         final EditText mEtLastName = (EditText) view.findViewById(R.id.et_sign_up_last);
-        final EditText mEtLocation = (EditText) view.findViewById(R.id.et_sign_up_location);
+        final Spinner mSpLocation = (Spinner) view.findViewById(R.id.sp_sign_up_location);
         final EditText mEtBio = (EditText) view.findViewById(R.id.et_sign_up_bio);
 
         // upload avatar preview
@@ -190,7 +201,7 @@ public class UserProfileFrag extends Fragment {
                         !mEtFirstName.getText().toString().equals("") &&
                         !mEtLastName.getText().toString().equals("") &&
                         !mEtPassword.getText().toString().equals("") &&
-                        !mEtLocation.getText().toString().equals("") &&
+                        !mSpLocation.getSelectedItem().toString().toString().equals("") &&
                         !mEtBio.getText().toString().equals("")) {
 
                     // sign up user
@@ -200,7 +211,7 @@ public class UserProfileFrag extends Fragment {
                     user.setEmail(mEtEmail.getText().toString().toLowerCase());
                     user.put("firstName", mEtFirstName.getText().toString().toLowerCase());
                     user.put("lastName", mEtLastName.getText().toString().toLowerCase());
-                    user.put("location", mEtLocation.getText().toString().toLowerCase());
+                    user.put("location", mSpLocation.getSelectedItem().toString().toLowerCase() + ", RI");
                     user.put("bio", mEtBio.getText().toString().toLowerCase());
                     user.put("postTotal", 0);
 
@@ -338,6 +349,29 @@ public class UserProfileFrag extends Fragment {
         intent.putExtra("outputY", 128);
         intent.putExtra("return-data", true);
         startActivityForResult(intent, SELECT_PHOTO);
+    }
+
+    private void facebookLogin() {
+        List<String> permissions = Arrays.asList("basic_info", "user_about_me",
+                "user_relationships", "user_birthday", "user_location");
+        ParseFacebookUtils.logIn(permissions, getActivity(), new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException err) {
+                if (user == null) {
+                    Log.d(Singleton.FACEBOOK_LOGIN_TAG, "Uh oh. The user cancelled the Facebook login." + err.getMessage());
+
+                } else if (user.isNew()) {
+                    Log.d(Singleton.FACEBOOK_LOGIN_TAG, "User signed up and logged in through Facebook!" + err.getMessage());
+                    //showUserDetailsActivity();
+                } else {
+                    Log.d(Singleton.FACEBOOK_LOGIN_TAG, "User logged in through Facebook!" + err.getMessage());
+                    user.saveInBackground();
+                    //showUserDetailsActivity();
+                }
+
+                Toast.makeText(getActivity(), err.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /**

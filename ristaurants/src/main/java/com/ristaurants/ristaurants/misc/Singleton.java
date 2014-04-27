@@ -14,7 +14,7 @@ import com.ristaurants.ristaurants.app.R;
  */
 public class Singleton extends Application {
 
-    public static final String FACEBOOK_LOGIN_TAG = "Facebook Login";
+    public static final String FACEBOOK_LOGIN_TAG = "Facebook Login: ";
 
     @Override
     public void onCreate() {
@@ -25,6 +25,9 @@ public class Singleton extends Application {
 
         // instantiate parse database
         Parse.initialize(this, getString(R.string.parse_app_id), getString(R.string.parse_app_secret));
+
+        // Set your Facebook App Id in strings.xml
+        ParseFacebookUtils.initialize(getString(R.string.facebook_app_id));
 
         // notification
         PushService.setDefaultPushCallback(this, BaseActivity.class);
