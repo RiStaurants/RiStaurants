@@ -72,9 +72,16 @@
 			android:layout_below="@+id/ll_flavors"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
 			android:onClick="onAddReview"
 			android:text="@string/add"/>
+
+        <ImageView
+            android:id="@+id/dish_image_preview"
+            android:layout_below="@+id/bt_add"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/restaurants_height"
+            android:scaleType="centerCrop"
+            android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>
 

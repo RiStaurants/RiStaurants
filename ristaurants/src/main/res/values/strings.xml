@@ -87,6 +87,7 @@
     <string name="added_to_favorites">Successfully added to favorites.</string>
     <string name="remove_to_favorites">Successfully removed from favorites.</string>
     <string name="forgot_password"><a href='https://www.parse.com'>forgot password</a></string>
+    <string name="menu_upload_image">Upload Image</string>
 
 
 </resources>

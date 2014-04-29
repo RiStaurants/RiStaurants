@@ -11,7 +11,6 @@ import android.widget.*;
 
 import com.android.volley.toolbox.*;
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -25,6 +24,7 @@ public class DishesReviews extends Activity {
     // instance variables
     private ParseUser mParseUser;
     private DishReviewsAdapter mAdapter;
+    private String mDishImageUrl;
     private String mDishName;
 	private String mDishID;
 
@@ -47,9 +47,9 @@ public class DishesReviews extends Activity {
             mParseUser = ParseUser.getCurrentUser();
 			
             // display dish image
-            String dishImageUrl = getIntent().getExtras().getString("mDishImageUrl");
+            mDishImageUrl = getIntent().getExtras().getString("mDishImageUrl");
             NetworkImageView mIvDishImage = (NetworkImageView) findViewById(R.id.niv_dish_reviews_image);
-            mIvDishImage.setImageUrl(dishImageUrl, SingletonVolley.getImageLoader());
+            mIvDishImage.setImageUrl(mDishImageUrl, SingletonVolley.getImageLoader());
             
 			// set image to black and white
 			HelperClass.toGrayScale(mIvDishImage);
@@ -118,12 +118,29 @@ public class DishesReviews extends Activity {
                 break;
             case R.id.menu_dish_review_add:
                 // check if user is login
-                if (mParseUser != null) {
+                if (mParseUser != null && mParseUser.getBoolean("emailVerified")) {
+                    // check if dish contains an image
+                    boolean containImage = mDishImageUrl.equals("http://i.imgur.com/DV3PNUx.png");
+
                     // open the add reviews activity
                     Intent intent = new Intent(this, AddDishReview.class);
                     intent.putExtra("mDishName", mDishName);
                     intent.putExtra("mDishID", mDishID);
+                    intent.putExtra("mContainImage", containImage);
                     startActivity(intent);
+
+                } else if (mParseUser != null && !mParseUser.getBoolean("emailVerified")) {
+                    // let user know to login
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage(R.string.please_verify_email);
+                    builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    // show dialog
+                    builder.show();
                 } else {
                     // let user know to login
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -138,9 +155,9 @@ public class DishesReviews extends Activity {
                     builder.show();
                 }
 
-
                 // set activity animation
                 this.overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_null);
+
                 break;
         }
         return super.onOptionsItemSelected(item);
