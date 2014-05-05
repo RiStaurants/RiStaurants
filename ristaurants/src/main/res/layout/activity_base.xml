@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/drawer_padding">
 
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/niv_profile_avatar"
+            <com.facebook.widget.ProfilePictureView
+                android:id="@+id/ppv_profile_avatar"
                 android:layout_width="@dimen/drawer_icon_size"
                 android:layout_height="@dimen/drawer_icon_size"
                 android:background="@drawable/profile_pic"

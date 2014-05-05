@@ -1,8 +1,6 @@
 package com.ristaurants.ristaurants.app;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -13,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,25 +19,12 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.toolbox.NetworkImageView;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.model.GraphUser;
-import com.parse.LogInCallback;
-import com.parse.ParseException;
-import com.parse.ParseFacebookUtils;
+import com.facebook.widget.ProfilePictureView;
 import com.parse.ParseUser;
 import com.ristaurants.ristaurants.adapters.NaviDrawerLeftAdapter;
 import com.ristaurants.ristaurants.misc.HelperClass;
-import com.ristaurants.ristaurants.misc.Singleton;
 import com.ristaurants.ristaurants.misc.SingletonVolley;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class BaseActivity extends FragmentActivity {
     // instance variables
@@ -159,12 +143,12 @@ public class BaseActivity extends FragmentActivity {
         // set profile date
         if (ParseUser.getCurrentUser() != null) {
             // set profile image
-            NetworkImageView mIvProfileAvater = (NetworkImageView) findViewById(R.id.niv_profile_avatar);
-            mIvProfileAvater.setImageUrl(ParseUser.getCurrentUser().getParseFile("userImage").getUrl(), SingletonVolley.getImageLoader());
+            ProfilePictureView mIvProfileAvater = (ProfilePictureView) findViewById(R.id.ppv_profile_avatar);
+            mIvProfileAvater.setProfileId(ParseUser.getCurrentUser().getString("facebookId"));
 
             // set profile name
             TextView mTvProfileName = (TextView) findViewById(R.id.tv_profile_name);
-            mTvProfileName.setText(ParseUser.getCurrentUser().getString("firstName") + " " + ParseUser.getCurrentUser().getString("lastName"));
+            mTvProfileName.setText(ParseUser.getCurrentUser().getString("name"));
         }
     }
 

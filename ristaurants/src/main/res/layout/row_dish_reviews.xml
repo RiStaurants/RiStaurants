@@ -10,12 +10,11 @@
         android:layout_marginTop="@dimen/row_margin"
         android:orientation="horizontal">
 
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/niv_dish_review_author_image"
+        <com.facebook.widget.ProfilePictureView
+            android:id="@+id/ppv_dish_review_author_image"
             android:layout_width="@dimen/drawer_icon_size"
             android:layout_height="@dimen/drawer_icon_size"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/profile_pic" />
+            android:layout_gravity="center_vertical" />
 
         <LinearLayout
             android:layout_width="match_parent"

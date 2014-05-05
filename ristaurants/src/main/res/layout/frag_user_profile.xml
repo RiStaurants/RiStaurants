@@ -19,12 +19,10 @@
             android:layout_marginBottom="@dimen/row_margin"
             android:orientation="horizontal">
 
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/niv_profile_image"
+            <com.facebook.widget.ProfilePictureView
+                android:id="@+id/ppv_profile_image"
                 android:layout_width="@dimen/profile_size"
-                android:layout_height="@dimen/profile_size"
-                android:background="@drawable/profile_pic"
-                android:scaleType="centerCrop" />
+                android:layout_height="@dimen/profile_size" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,12 +75,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="@string/user_location"
+                android:text="@string/user_email"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/restaurants_name_size" />
 
             <com.ristaurants.ristaurants.views.BenderThinTextView
-                android:id="@+id/tv_profile_location"
+                android:id="@+id/tv_profile_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
@@ -129,7 +127,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/row_margin">
+            android:layout_marginBottom="@dimen/row_margin"
+            android:visibility="gone">
 
             <com.ristaurants.ristaurants.views.BenderSolidTextView
                 android:layout_width="wrap_content"
@@ -153,47 +152,15 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/drawer_divider"
             android:layout_marginBottom="@dimen/row_margin"
-            android:background="@android:color/darker_gray" />
+            android:background="@android:color/darker_gray"
+            android:visibility="gone"/>
 
-        <!-- Sign up container -->
-        <LinearLayout
-            android:id="@+id/ll_login_sign_up"
+        <ImageView
+            android:id="@+id/iv_fb_login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/login_button_height"
-            android:background="@android:color/holo_blue_dark"
-            android:orientation="horizontal">
-
-            <com.ristaurants.ristaurants.views.BenderSolidTextView
-                android:id="@+id/tv_profile_login"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:autoLink="all"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingBottom="@dimen/row_padding"
-                android:text="@string/login"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/restaurants_name_size" />
-
-            <View
-                android:layout_width="@dimen/drawer_divider"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/row_padding"
-                android:layout_marginTop="@dimen/row_padding"
-                android:background="@android:color/holo_blue_light" />
-
-            <com.ristaurants.ristaurants.views.BenderSolidTextView
-                android:id="@+id/tv_profile_sign_up"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingLeft="@dimen/row_padding"
-                android:text="@string/sign_up"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/restaurants_name_size" />
-
-        </LinearLayout>
+            android:background="@drawable/fb_login_button"
+            android:visibility="gone"/>
 
     </LinearLayout>
 </ScrollView>

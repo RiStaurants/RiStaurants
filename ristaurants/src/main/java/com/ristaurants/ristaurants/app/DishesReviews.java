@@ -118,7 +118,7 @@ public class DishesReviews extends Activity {
                 break;
             case R.id.menu_dish_review_add:
                 // check if user is login
-                if (mParseUser != null && mParseUser.getBoolean("emailVerified")) {
+                if (mParseUser != null) {
                     // check if dish contains an image
                     boolean containImage = mDishImageUrl.equals("http://i.imgur.com/DV3PNUx.png");
 
@@ -129,18 +129,6 @@ public class DishesReviews extends Activity {
                     intent.putExtra("mContainImage", containImage);
                     startActivity(intent);
 
-                } else if (mParseUser != null && !mParseUser.getBoolean("emailVerified")) {
-                    // let user know to login
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage(R.string.please_verify_email);
-                    builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.dismiss();
-                        }
-                    });
-
-                    // show dialog
-                    builder.show();
                 } else {
                     // let user know to login
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);

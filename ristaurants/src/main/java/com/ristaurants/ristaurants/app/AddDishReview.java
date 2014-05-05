@@ -112,12 +112,9 @@ public class AddDishReview extends Activity {
             ParseObject dishPointerID = ParseObject.createWithoutData("RestaurantsMenus", mDishID);
             ParseObject userPointerID = ParseObject.createWithoutData("_User", user.getObjectId());
 
-            // get user name
-            String fullName = user.getString("firstName") + " " + user.getString("lastName");
-
             // create and upload review to parse
             ParseObject parseObjectReview = new ParseObject("DishesReviews");
-            parseObjectReview.put("username", fullName);
+            parseObjectReview.put("username", ParseUser.getCurrentUser().getString("name"));
             parseObjectReview.put("dishName", mDishName);
             parseObjectReview.put("review", mEtDesc.getText().toString());
             parseObjectReview.put("rate", Integer.parseInt(mNpRate.getSelectedItem().toString()));

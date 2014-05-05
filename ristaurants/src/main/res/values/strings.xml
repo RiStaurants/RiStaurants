@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App ID's -->
-    <string name="facebook_app_id">1438174023091537</string>
-    <string name="facebook_app_secret">bc898e437ebbf4a1e4b9c4c726effc19</string>
+    <string name="facebook_app_id">1431699690421953</string>
+    <string name="facebook_app_secret">d641a132184cf814a0b308259f62d5a0</string>
     <string name="parse_app_id">WB3Th85cP3viS7jJ5zkXzkZ2MTsFagIg0AKQeBpQ</string>
     <string name="parse_app_secret">EGZKA60G8Iy4vVCPPvBDjn2XoeBbqQ1rtWReRvRh</string>
 
@@ -88,6 +88,7 @@
     <string name="remove_to_favorites">Successfully removed from favorites.</string>
     <string name="forgot_password"><a href='https://www.parse.com'>forgot password</a></string>
     <string name="menu_upload_image">Upload Image</string>
+    <string name="user_email">Email:</string>
 
 
 </resources>
