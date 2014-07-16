@@ -27,7 +27,6 @@
     <application
         android:name="com.ristaurants.ristaurants.misc.Singleton"
         android:allowBackup="true"
-        android:debuggable="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/ab_title_app_name"
         android:theme="@style/Theme.Theme">
